@@ -1,0 +1,37 @@
+Saving current system topology to XML...
+Saving current system topology to a tarball...
+I/O files won't be saved (--io not given).
+DMI files won't be saved (--dmi not given).
+
+*** Note that this tool may be slow on large nodes or when I/O is enabled. ***
+
+Gathering main files and directories...
+ file /proc/cmdline
+ file /proc/cpuinfo
+ file /proc/meminfo
+ file /proc/mounts
+ file /proc/stat
+ file /proc/version
+ file /proc/self/cpuset
+ file /proc/self/cgroup
+ directory /sys/devices/system/cpu/
+ directory /sys/devices/system/node/
+ directory /sys/bus/cpu/devices/
+ directory /sys/bus/node/devices/
+ directory /sys/class/dmi/id/
+ directory /sys/devices/virtual/dmi/id/
+ directory /sys/kernel/mm/hugepages/
+ directory /proc/device-tree/cpus/
+ directory /sys/fs/cgroup/cpuset/
+Exporting /proc/hwloc-nofile-info
+
+Topology files gathered in /tmp/tmp.Cqt2jZwFaT/save.tar.bz2
+Expected topology output stored in /tmp/tmp.Cqt2jZwFaT/save.output
+XML topology stored in in /tmp/tmp.Cqt2jZwFaT/save.xml
+
+WARNING: Do not post these files on a public list or website unless you
+WARNING: are sure that no information about this platform is sensitive.
+Extracting tarball...
+Saving tarball topology to XML...
+Comparing XML outputs...
+PASS test-gather-topology.sh (exit status: 0)

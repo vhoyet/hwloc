@@ -1,0 +1,13 @@
+using default import and export
+exported to buffer 0x557d5552c670 length 20847
+re-exported to buffer 0x557d5551c7b0 length 20847
+using minimalistic import and default export
+exported to buffer 0x557d5552f6f0 length 20847
+re-exported to buffer 0x557d55501460 length 20847
+using default import and minimalistic export
+exported to buffer 0x557d5552f580 length 20847
+re-exported to buffer 0x557d554f7810 length 20847
+using minimalistic import and export
+exported to buffer 0x557d55507180 length 20847
+re-exported to buffer 0x557d55536f40 length 20847
+PASS xmlbuffer (exit status: 0)

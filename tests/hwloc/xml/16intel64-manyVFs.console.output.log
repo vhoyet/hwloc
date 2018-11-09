@@ -1,0 +1,5 @@
+Importing with default parser
+/home/valentin/Bureau/hwloc/utils/lstopo/lstopo-no-graphics --if xml --input ./16intel64-manyVFs.xml /tmp/fooGqfycU/lstopo_xml.output --of console -v
+Importing with minimalistic parser
+/home/valentin/Bureau/hwloc/utils/lstopo/lstopo-no-graphics --if xml --input ./16intel64-manyVFs.xml /tmp/fooGqfycU/lstopo_xml.output --of console -v
+PASS 16intel64-manyVFs.console.output (exit status: 0)

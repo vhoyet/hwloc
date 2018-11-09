@@ -1,0 +1,2 @@
+ibv_get_device_list failed
+PASS openfabrics-verbs (exit status: 0)

@@ -1,0 +1,5 @@
+duplicating
+destroying the old topology
+removing one node
+checking the result
+PASS hwloc_topology_dup (exit status: 0)

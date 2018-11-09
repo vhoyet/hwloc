@@ -1,0 +1,4 @@
+Binding with OS backend       : OK
+Binding with synthetic backend: OK
+Binding with synthetic backend faking is_thissystem: OK
+PASS hwloc_is_thissystem (exit status: 0)

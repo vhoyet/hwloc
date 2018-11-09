@@ -1,0 +1,61 @@
+exported to 0x0
+exported to list 
+exported to taskset 0x0
+exported to 0x0
+exported to list 
+exported to taskset 0x0
+exported to 0x0
+exported to list 
+exported to taskset 0x0
+exported to 0xf...f
+exported to list 0-
+exported to taskset 0xf...f
+exported to 0xf...f
+exported to list 0-
+exported to taskset 0xf...f
+exported to 0xf...f
+exported to list 0-
+exported to taskset 0xf...f
+exported to 0xf...f,0xffffdfff,0xffffffff,0xffffffff,0xffffff80,0x0fffffff,0xffffffff
+exported to list 0-59,71-172,174-
+exported to taskset 0xf...fffffdfffffffffffffffffffffffff800fffffffffffffff
+exported to 0x00000078,,0x00000004
+exported to list 2,67-70
+exported to taskset 0x780000000000000004
+exported to 0x0000ffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff
+exported to list 0-719
+exported to taskset 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+exported to 0x00000001
+exported to list 0
+exported to taskset 0x1
+exported to 0x00008000,,,,,,,,,,,,,,,,,,,,,,0x0
+exported to list 719
+exported to taskset 0x800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+empty cpuset converted back and forth, ok
+uselessly modified empty cpuset converted back and forth, ok
+twice uselessly modified empty cpuset converted back and forth, ok
+full cpuset converted back and forth, ok
+uselessly modified full cpuset converted back and forth, ok
+twice uselessly modified full cpuset converted back and forth, ok
+infinite/nonfull cpuset converted back and forth, ok
+finite/nonnull cpuset converted back and forth, ok
+system cpuset is 0x0000ffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff
+system cpuset converted back and forth, ok
+truncating system cpuset to NULL buffer
+truncating system cpuset to 0 char (no modification)
+252 == 252 (X)
+truncating system cpuset to 1 char (empty string)
+got 
+truncating system cpuset to 10 chars (single 32bit subset except last char)
+got 0x0000fff
+truncating system cpuset to 11 chars (single 32bit subset)
+got 0x0000ffff
+truncating system cpuset to 23 chars (two 32bit subsets with ending comma)
+got 0x0000ffff,0xffffffff,
+truncating system cpuset to 51 chars (truncate to four and a half 32bit subsets)
+got 0x0000ffff,0xffffffff,0xffffffff,0xffffffff,0xffff
+first cpu cpuset is 0x00000001
+first cpu cpuset converted back and forth, ok
+last cpu cpuset is 0x00008000,,,,,,,,,,,,,,,,,,,,,,0x0
+last cpu cpuset converted back and forth, ok
+PASS hwloc_bitmap_string (exit status: 0)

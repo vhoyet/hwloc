@@ -1,0 +1,6 @@
+got 10 EQUAL
+got 30 INCLUDED
+got 30 CONTAINS
+got 14 INTERSECTS
+got 16 DIFFERENT
+PASS hwloc_bitmap_compare_inclusion (exit status: 0)

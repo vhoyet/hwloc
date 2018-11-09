@@ -1,0 +1,5 @@
+Importing with default parser
+/home/valentin/Bureau/hwloc/utils/lstopo/lstopo-no-graphics --if xml --input ./16amd64-4distances.xml /tmp/fooTQBJrr/lstopo_xml.output --of console -v
+Importing with minimalistic parser
+/home/valentin/Bureau/hwloc/utils/lstopo/lstopo-no-graphics --if xml --input ./16amd64-4distances.xml /tmp/fooTQBJrr/lstopo_xml.output --of console -v
+PASS 16amd64-4distances.console.output (exit status: 0)

@@ -1,0 +1,5 @@
+Importing with default parser
+/home/valentin/Bureau/hwloc/utils/lstopo/lstopo-no-graphics --if xml --input ./16-2gr2gr2n2c+misc.xml /tmp/fooU0f8xn/lstopo_xml.output --of console -v
+Importing with minimalistic parser
+/home/valentin/Bureau/hwloc/utils/lstopo/lstopo-no-graphics --if xml --input ./16-2gr2gr2n2c+misc.xml /tmp/fooU0f8xn/lstopo_xml.output --of console -v
+PASS 16-2gr2gr2n2c+misc.console.output (exit status: 0)

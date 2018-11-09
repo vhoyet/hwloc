@@ -1,0 +1,86 @@
+No distance
+
+Inserting NUMA distances
+No distance at depth 0
+No distance at depth 1
+No distance at depth 2
+No distance at depth 3
+No distance at depth 4
+distance matrix for depth -3:
+          0     1     2     3
+    0     1     4     8     8
+    1     4     1     8     8
+    2     8     8     1     4
+    3     8     8     4     1
+Checking NUMA distances
+
+Inserting PU distances
+No distance at depth 0
+No distance at depth 1
+No distance at depth 2
+No distance at depth 3
+No distance at depth 4
+distance matrix for depth 5:
+          0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15
+    0     1     2     4     4     8     8     8     8     8     8     8     8     8     8     8     8
+    1     2     1     4     4     8     8     8     8     8     8     8     8     8     8     8     8
+    2     4     4     1     2     8     8     8     8     8     8     8     8     8     8     8     8
+    3     4     4     2     1     8     8     8     8     8     8     8     8     8     8     8     8
+    4     8     8     8     8     1     2     4     4     8     8     8     8     8     8     8     8
+    5     8     8     8     8     2     1     4     4     8     8     8     8     8     8     8     8
+    6     8     8     8     8     4     4     1     2     8     8     8     8     8     8     8     8
+    7     8     8     8     8     4     4     2     1     8     8     8     8     8     8     8     8
+    8     8     8     8     8     8     8     8     8     1     2     4     4     8     8     8     8
+    9     8     8     8     8     8     8     8     8     2     1     4     4     8     8     8     8
+   10     8     8     8     8     8     8     8     8     4     4     1     2     8     8     8     8
+   11     8     8     8     8     8     8     8     8     4     4     2     1     8     8     8     8
+   12     8     8     8     8     8     8     8     8     8     8     8     8     1     2     4     4
+   13     8     8     8     8     8     8     8     8     8     8     8     8     2     1     4     4
+   14     8     8     8     8     8     8     8     8     8     8     8     8     4     4     1     2
+   15     8     8     8     8     8     8     8     8     8     8     8     8     4     4     2     1
+distance matrix for depth -3:
+          0     1     2     3
+    0     1     4     8     8
+    1     4     1     8     8
+    2     8     8     1     4
+    3     8     8     4     1
+Checking PU distances
+
+Inserting 2nd PU distances
+No distance at depth 0
+No distance at depth 1
+No distance at depth 2
+No distance at depth 3
+No distance at depth 4
+distance matrix for depth 5:
+          0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15
+    0     1     2     4     4     8     8     8     8     8     8     8     8     8     8     8     8
+    1     2     1     4     4     8     8     8     8     8     8     8     8     8     8     8     8
+    2     4     4     1     2     8     8     8     8     8     8     8     8     8     8     8     8
+    3     4     4     2     1     8     8     8     8     8     8     8     8     8     8     8     8
+    4     8     8     8     8     1     2     4     4     8     8     8     8     8     8     8     8
+    5     8     8     8     8     2     1     4     4     8     8     8     8     8     8     8     8
+    6     8     8     8     8     4     4     1     2     8     8     8     8     8     8     8     8
+    7     8     8     8     8     4     4     2     1     8     8     8     8     8     8     8     8
+    8     8     8     8     8     8     8     8     8     1     2     4     4     8     8     8     8
+    9     8     8     8     8     8     8     8     8     2     1     4     4     8     8     8     8
+   10     8     8     8     8     8     8     8     8     4     4     1     2     8     8     8     8
+   11     8     8     8     8     8     8     8     8     4     4     2     1     8     8     8     8
+   12     8     8     8     8     8     8     8     8     8     8     8     8     1     2     4     4
+   13     8     8     8     8     8     8     8     8     8     8     8     8     2     1     4     4
+   14     8     8     8     8     8     8     8     8     8     8     8     8     4     4     1     2
+   15     8     8     8     8     8     8     8     8     8     8     8     8     4     4     2     1
+          0     1     2     3
+    0     7     3     3     3
+    1     3     7     3     3
+    2     3     3     7     3
+    3     3     3     3     7
+distance matrix for depth -3:
+          0     1     2     3
+    0     1     4     8     8
+    1     4     1     8     8
+    2     8     8     1     4
+    3     8     8     4     1
+Checking 2nd PU distances
+Removing distances
+PASS hwloc_distances (exit status: 0)

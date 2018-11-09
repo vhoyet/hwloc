@@ -1,0 +1,775 @@
+testing the local topology ...
+  checking Machine L#0 ...
+    parsing hwloc_obj_type_string() output = Machine
+    parsing hwloc_obj_type_snprintf() normal output = Machine
+    parsing hwloc_obj_type_snprintf() verbose output = Machine
+  checking Package L#0 ...
+    parsing hwloc_obj_type_string() output = Package
+    parsing hwloc_obj_type_snprintf() normal output = Package
+    parsing hwloc_obj_type_snprintf() verbose output = Package
+  checking L3Cache L#0 ...
+    parsing hwloc_obj_type_string() output = L3Cache
+    parsing hwloc_obj_type_snprintf() normal output = L3
+    parsing hwloc_obj_type_snprintf() verbose output = L3Cache
+  checking L2Cache L#0 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#0 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1d
+    parsing hwloc_obj_type_snprintf() verbose output = L1dCache
+  checking L1iCache L#0 ...
+    parsing hwloc_obj_type_string() output = L1iCache
+    parsing hwloc_obj_type_snprintf() normal output = L1i
+    parsing hwloc_obj_type_snprintf() verbose output = L1iCache
+  checking Core L#0 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#0 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#1 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#1 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#1 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1d
+    parsing hwloc_obj_type_snprintf() verbose output = L1dCache
+  checking L1iCache L#1 ...
+    parsing hwloc_obj_type_string() output = L1iCache
+    parsing hwloc_obj_type_snprintf() normal output = L1i
+    parsing hwloc_obj_type_snprintf() verbose output = L1iCache
+  checking Core L#1 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#2 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#3 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#2 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#2 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1d
+    parsing hwloc_obj_type_snprintf() verbose output = L1dCache
+  checking L1iCache L#2 ...
+    parsing hwloc_obj_type_string() output = L1iCache
+    parsing hwloc_obj_type_snprintf() normal output = L1i
+    parsing hwloc_obj_type_snprintf() verbose output = L1iCache
+  checking Core L#2 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#4 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#5 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#3 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#3 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1d
+    parsing hwloc_obj_type_snprintf() verbose output = L1dCache
+  checking L1iCache L#3 ...
+    parsing hwloc_obj_type_string() output = L1iCache
+    parsing hwloc_obj_type_snprintf() normal output = L1i
+    parsing hwloc_obj_type_snprintf() verbose output = L1iCache
+  checking Core L#3 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#6 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#7 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking NUMANode L#0 ...
+    parsing hwloc_obj_type_string() output = NUMANode
+    parsing hwloc_obj_type_snprintf() normal output = NUMANode
+    parsing hwloc_obj_type_snprintf() verbose output = NUMANode
+  checking Bridge L#0 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = HostBridge
+    parsing hwloc_obj_type_snprintf() verbose output = HostBridge
+  checking PCIDev L#0 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking PCIDev L#1 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#0 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = GPU
+    parsing hwloc_obj_type_snprintf() verbose output = GPU
+  checking OSDev L#1 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = GPU
+    parsing hwloc_obj_type_snprintf() verbose output = GPU
+  checking PCIDev L#2 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking PCIDev L#3 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking PCIDev L#4 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking PCIDev L#5 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#2 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = DMA
+    parsing hwloc_obj_type_snprintf() verbose output = DMA
+  checking OSDev L#3 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = DMA
+    parsing hwloc_obj_type_snprintf() verbose output = DMA
+  checking PCIDev L#6 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#4 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = DMA
+    parsing hwloc_obj_type_snprintf() verbose output = DMA
+  checking OSDev L#5 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = DMA
+    parsing hwloc_obj_type_snprintf() verbose output = DMA
+  checking PCIDev L#7 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#6 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = DMA
+    parsing hwloc_obj_type_snprintf() verbose output = DMA
+  checking OSDev L#7 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = DMA
+    parsing hwloc_obj_type_snprintf() verbose output = DMA
+  checking PCIDev L#8 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#8 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = DMA
+    parsing hwloc_obj_type_snprintf() verbose output = DMA
+  checking OSDev L#9 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = DMA
+    parsing hwloc_obj_type_snprintf() verbose output = DMA
+  checking PCIDev L#9 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking Bridge L#1 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking PCIDev L#10 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking Bridge L#2 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking PCIDev L#11 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#10 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = Net
+    parsing hwloc_obj_type_snprintf() verbose output = Network
+  checking Bridge L#3 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking Bridge L#4 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking Bridge L#5 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking PCIDev L#12 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking Bridge L#6 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking Bridge L#7 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking Bridge L#8 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking Bridge L#9 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking Bridge L#10 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking Bridge L#11 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking PCIDev L#13 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#11 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = Net
+    parsing hwloc_obj_type_snprintf() verbose output = Network
+  checking Bridge L#12 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking Bridge L#13 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking Bridge L#14 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking PCIDev L#14 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#12 (Disk) ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = Block
+    parsing hwloc_obj_type_snprintf() verbose output = Block
+  checking PCIDev L#15 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking PCIDev L#16 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking PCIDev L#17 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking PCIDev L#18 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking PCIDev L#19 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#13 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = Net
+    parsing hwloc_obj_type_snprintf() verbose output = Network
+testing topology 32em64t-2n8c2t-pci-wholeio.xml ...
+  checking Machine L#0 ...
+    parsing hwloc_obj_type_string() output = Machine
+    parsing hwloc_obj_type_snprintf() normal output = Machine
+    parsing hwloc_obj_type_snprintf() verbose output = Machine
+  checking Package L#0 ...
+    parsing hwloc_obj_type_string() output = Package
+    parsing hwloc_obj_type_snprintf() normal output = Package
+    parsing hwloc_obj_type_snprintf() verbose output = Package
+  checking L3Cache L#0 ...
+    parsing hwloc_obj_type_string() output = L3Cache
+    parsing hwloc_obj_type_snprintf() normal output = L3
+    parsing hwloc_obj_type_snprintf() verbose output = L3Cache
+  checking L2Cache L#0 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#0 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#0 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#0 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#1 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#1 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#1 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#1 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#2 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#3 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#2 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#2 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#2 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#4 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#5 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#3 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#3 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#3 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#6 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#7 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#4 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#4 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#4 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#8 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#9 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#5 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#5 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#5 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#10 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#11 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#6 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#6 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#6 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#12 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#13 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#7 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#7 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#7 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#14 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#15 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking NUMANode L#0 ...
+    parsing hwloc_obj_type_string() output = NUMANode
+    parsing hwloc_obj_type_snprintf() normal output = NUMANode
+    parsing hwloc_obj_type_snprintf() verbose output = NUMANode
+  checking Bridge L#0 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = HostBridge
+    parsing hwloc_obj_type_snprintf() verbose output = HostBridge
+  checking Bridge L#1 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking PCIDev L#0 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking Bridge L#2 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking PCIDev L#1 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking Bridge L#3 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking PCIDev L#2 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking PCIDev L#3 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#0 (Disk) ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = Block
+    parsing hwloc_obj_type_snprintf() verbose output = Block
+  checking Package L#1 ...
+    parsing hwloc_obj_type_string() output = Package
+    parsing hwloc_obj_type_snprintf() normal output = Package
+    parsing hwloc_obj_type_snprintf() verbose output = Package
+  checking L3Cache L#1 ...
+    parsing hwloc_obj_type_string() output = L3Cache
+    parsing hwloc_obj_type_snprintf() normal output = L3
+    parsing hwloc_obj_type_snprintf() verbose output = L3Cache
+  checking L2Cache L#8 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#8 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#8 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#16 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#17 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#9 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#9 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#9 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#18 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#19 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#10 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#10 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#10 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#20 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#21 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#11 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#11 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#11 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#22 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#23 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#12 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#12 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#12 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#24 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#25 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#13 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#13 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#13 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#26 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#27 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#14 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#14 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#14 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#28 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#29 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking L2Cache L#15 ...
+    parsing hwloc_obj_type_string() output = L2Cache
+    parsing hwloc_obj_type_snprintf() normal output = L2
+    parsing hwloc_obj_type_snprintf() verbose output = L2Cache
+  checking L1Cache L#15 ...
+    parsing hwloc_obj_type_string() output = L1Cache
+    parsing hwloc_obj_type_snprintf() normal output = L1
+    parsing hwloc_obj_type_snprintf() verbose output = L1Cache
+  checking Core L#15 ...
+    parsing hwloc_obj_type_string() output = Core
+    parsing hwloc_obj_type_snprintf() normal output = Core
+    parsing hwloc_obj_type_snprintf() verbose output = Core
+  checking PU L#30 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking PU L#31 ...
+    parsing hwloc_obj_type_string() output = PU
+    parsing hwloc_obj_type_snprintf() normal output = PU
+    parsing hwloc_obj_type_snprintf() verbose output = PU
+  checking NUMANode L#1 ...
+    parsing hwloc_obj_type_string() output = NUMANode
+    parsing hwloc_obj_type_snprintf() normal output = NUMANode
+    parsing hwloc_obj_type_snprintf() verbose output = NUMANode
+  checking Bridge L#4 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = HostBridge
+    parsing hwloc_obj_type_snprintf() verbose output = HostBridge
+  checking Bridge L#5 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking PCIDev L#4 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#1 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = Net
+    parsing hwloc_obj_type_snprintf() verbose output = Network
+  checking PCIDev L#5 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#2 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = Net
+    parsing hwloc_obj_type_snprintf() verbose output = Network
+  checking Bridge L#6 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking PCIDev L#6 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking Bridge L#7 ...
+    parsing hwloc_obj_type_string() output = Bridge
+    parsing hwloc_obj_type_snprintf() normal output = PCIBridge
+    parsing hwloc_obj_type_snprintf() verbose output = PCIBridge
+  checking PCIDev L#7 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#3 (CUDA) ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = CoProc
+    parsing hwloc_obj_type_snprintf() verbose output = Co-Processor
+  checking OSDev L#4 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = GPU
+    parsing hwloc_obj_type_snprintf() verbose output = GPU
+  checking PCIDev L#8 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#5 (OpenCL) ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = CoProc
+    parsing hwloc_obj_type_snprintf() verbose output = Co-Processor
+  checking PCIDev L#9 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#6 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = Net
+    parsing hwloc_obj_type_snprintf() verbose output = Network
+  checking OSDev L#7 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = OpenFabrics
+    parsing hwloc_obj_type_snprintf() verbose output = OpenFabrics
+  checking PCIDev L#10 ...
+    parsing hwloc_obj_type_string() output = PCIDev
+    parsing hwloc_obj_type_snprintf() normal output = PCI
+    parsing hwloc_obj_type_snprintf() verbose output = PCI
+  checking OSDev L#8 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = DMA
+    parsing hwloc_obj_type_snprintf() verbose output = DMA
+  checking OSDev L#9 ...
+    parsing hwloc_obj_type_string() output = OSDev
+    parsing hwloc_obj_type_snprintf() normal output = DMA
+    parsing hwloc_obj_type_snprintf() verbose output = DMA
+PASS hwloc_type_sscanf (exit status: 0)

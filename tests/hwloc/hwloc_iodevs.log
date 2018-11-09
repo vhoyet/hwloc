@@ -1,0 +1,53 @@
+Found 15 bridges
+ Found host->PCI bridge for domain 0000 bus 00-3c
+ Found PCI->PCI bridge [8086:9d10] for domain 0000 bus 01-01
+ Found PCI->PCI bridge [8086:9d12] for domain 0000 bus 02-02
+ Found PCI->PCI bridge [8086:9d14] for domain 0000 bus 03-3b
+ Found PCI->PCI bridge [8086:15da] for domain 0000 bus 04-3b
+ Found PCI->PCI bridge [8086:15da] for domain 0000 bus 05-05
+ Found PCI->PCI bridge [8086:15da] for domain 0000 bus 06-3a
+ Found PCI->PCI bridge [8086:1578] for domain 0000 bus 07-3a
+ Found PCI->PCI bridge [8086:1578] for domain 0000 bus 08-08
+ Found PCI->PCI bridge [8086:1578] for domain 0000 bus 09-3a
+ Found PCI->PCI bridge [8086:1578] for domain 0000 bus 0a-3a
+ Found PCI->PCI bridge [8086:1578] for domain 0000 bus 0b-0b
+ Found PCI->PCI bridge [8086:1578] for domain 0000 bus 0c-3a
+ Found PCI->PCI bridge [8086:15da] for domain 0000 bus 3b-3b
+ Found PCI->PCI bridge [8086:9d18] for domain 0000 bus 3c-3c
+Found 20 PCI devices
+ Found PCI device class 0600 vendor 8086 model 5914
+ Found PCI device class 0300 vendor 8086 model 5917
+ Found PCI device class 1180 vendor 8086 model 1903
+ Found PCI device class 0c03 vendor 8086 model 9d2f
+ Found PCI device class 1180 vendor 8086 model 9d31
+ Found PCI device class 1180 vendor 8086 model 9d60
+ Found PCI device class 1180 vendor 8086 model 9d61
+ Found PCI device class 1180 vendor 8086 model 9d62
+ Found PCI device class 1180 vendor 8086 model 9d63
+ Found PCI device class 0780 vendor 8086 model 9d3a
+ Found PCI device class ff00 vendor 10ec model 525a
+ Found PCI device class 0280 vendor 8086 model 24fd
+ Found PCI device class 0880 vendor 8086 model 15d9
+ Found PCI device class 0c03 vendor 1b21 model 1142
+ Found PCI device class 0108 vendor 1179 model 0116
+ Found PCI device class 0601 vendor 8086 model 9d4e
+ Found PCI device class 0580 vendor 8086 model 9d21
+ Found PCI device class 0403 vendor 8086 model 9d71
+ Found PCI device class 0c05 vendor 8086 model 9d23
+ Found PCI device class 0200 vendor 8086 model 15d7
+Found 14 OS devices
+ Found OS device renderD128 subtype 1
+ Found OS device card0 subtype 1
+ Found OS device dma0chan0 subtype 4
+ Found OS device dma0chan1 subtype 4
+ Found OS device dma1chan0 subtype 4
+ Found OS device dma1chan1 subtype 4
+ Found OS device dma2chan0 subtype 4
+ Found OS device dma2chan1 subtype 4
+ Found OS device dma3chan0 subtype 4
+ Found OS device dma3chan1 subtype 4
+ Found OS device wlp2s0 subtype 2
+ Found OS device enxe4b97aa5dc7e subtype 2
+ Found OS device nvme0n1 subtype 0
+ Found OS device enp0s31f6 subtype 2
+PASS hwloc_iodevs (exit status: 0)

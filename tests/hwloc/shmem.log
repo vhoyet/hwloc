@@ -1,0 +1,76 @@
+ opening /tmp/hwloc_test_shmem.sVYuuN
+ reading XML dump
+ adopting from file at offset 24576 with address 0x200000000000 len 40960
+ adopted OK
+ XML export 20605 bytes
+ XML export is identical to original
+ destroyed
+ opening /tmp/hwloc_test_shmem.tc55i4
+ reading XML dump
+ adopting from file at offset 8192 with address 0x200000000000 len 28672
+ adopted OK
+ distances OK
+ XML export 6759 bytes
+ XML export is identical to original
+ destroyed
+########################
+creating native topology
+opening temporary file
+opened /tmp/hwloc_test_shmem.sVYuuN
+exporting XML
+exported 20605 bytes
+will mmap at file offset 24576
+need mmap length 40960
+testing mmaps to find room for length 40960
+ test mmap at 0x8000000000000000 returned another address
+ test mmap at 0x1000000000000000 returned another address
+ test mmap at 0x200000000000000 returned another address
+ test mmap at 0x40000000000000 returned another address
+ test mmap at 0x8000000000000 returned another address
+ test mmap at 0x1000000000000 returned another address
+ test mmap at 0x200000000000 succeeded, let's use that!
+write to shmem at address 0x200000000000 in file /tmp/hwloc_test_shmem.sVYuuN offset 24576
+wrote length 40960
+adopting locally
+ reading XML dump
+ adopting from file at offset 24576 with address 0x200000000000 len 40960
+ adopted OK
+ XML export 20605 bytes
+ XML export is identical to original
+ destroyed
+adopting in other child process
+running command /home/valentin/Bureau/hwloc/tests/hwloc/.libs/shmem /tmp/hwloc_test_shmem.sVYuuN 24576 0x200000000000 40960 0
+child process returned 0
+destroying original
+###############################################
+creating synthetic topo with distances topology
+adding distance matrix
+opening temporary file
+opened /tmp/hwloc_test_shmem.tc55i4
+exporting XML
+exported 6759 bytes
+will mmap at file offset 8192
+need mmap length 28672
+testing mmaps to find room for length 28672
+ test mmap at 0x8000000000000000 returned another address
+ test mmap at 0x1000000000000000 returned another address
+ test mmap at 0x200000000000000 returned another address
+ test mmap at 0x40000000000000 returned another address
+ test mmap at 0x8000000000000 returned another address
+ test mmap at 0x1000000000000 returned another address
+ test mmap at 0x200000000000 succeeded, let's use that!
+write to shmem at address 0x200000000000 in file /tmp/hwloc_test_shmem.tc55i4 offset 8192
+wrote length 28672
+adopting locally
+ reading XML dump
+ adopting from file at offset 8192 with address 0x200000000000 len 28672
+ adopted OK
+ distances OK
+ XML export 6759 bytes
+ XML export is identical to original
+ destroyed
+adopting in other child process
+running command /home/valentin/Bureau/hwloc/tests/hwloc/.libs/shmem /tmp/hwloc_test_shmem.tc55i4 8192 0x200000000000 28672 1
+child process returned 0
+destroying original
+PASS shmem (exit status: 0)

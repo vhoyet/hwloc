@@ -1,0 +1,160 @@
+testing at top level
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+testing at depth 3
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+testing at bottom level
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_THREAD...
+  binding
+  getting cpu location
+  checking inclusion
+ with HWLOC_CPUBIND_PROCESS...
+  binding
+  getting cpu location
+  checking inclusion
+ with flags 0...
+  binding
+  getting cpu location
+  checking inclusion
+PASS hwloc_get_last_cpu_location (exit status: 0)

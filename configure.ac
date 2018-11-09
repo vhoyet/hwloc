@@ -15,6 +15,9 @@
 ####################################################################
 # Autoconf, Automake, and Libtool bootstrapping
 ####################################################################
+PKG_CHECK_VAR(bashcompdir, [bash-completion], [completionsdir], ,
+  bashcompdir="${sysconfdir}/bash_completion.d")
+AC_SUBST(bashcompdir)
 
 AC_INIT([hwloc],
         [m4_normalize(esyscmd([config/hwloc_get_version.sh VERSION --version]))],

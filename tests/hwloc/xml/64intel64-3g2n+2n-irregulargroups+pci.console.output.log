@@ -1,0 +1,5 @@
+Importing with default parser
+/home/valentin/Bureau/hwloc/utils/lstopo/lstopo-no-graphics --if xml --input ./64intel64-3g2n+2n-irregulargroups+pci.xml /tmp/foo2C5UuU/lstopo_xml.output --of console -v --disallowed
+Importing with minimalistic parser
+/home/valentin/Bureau/hwloc/utils/lstopo/lstopo-no-graphics --if xml --input ./64intel64-3g2n+2n-irregulargroups+pci.xml /tmp/foo2C5UuU/lstopo_xml.output --of console -v --disallowed
+PASS 64intel64-3g2n+2n-irregulargroups+pci.console.output (exit status: 0)

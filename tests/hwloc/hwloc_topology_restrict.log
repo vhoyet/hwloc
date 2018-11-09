@@ -1,0 +1,90 @@
+starting from full topology
+          0     1     2
+    0    10    20    20
+    1    20    10    20
+    2    20    20    10
+          0     1     2     3     4     5
+    0     4     8     8     8     8     8
+    1     8     4     8     8     8     8
+    2     8     8     4     8     8     8
+    3     8     8     8     4     8     8
+    4     8     8     8     8     4     8
+    5     8     8     8     8     8     4
+restricting to nothing, must fail
+restricting to unexisting PU:24, must fail
+          0     1     2
+    0    10    20    20
+    1    20    10    20
+    2    20    20    10
+          0     1     2     3     4     5
+    0     4     8     8     8     8     8
+    1     8     4     8     8     8     8
+    2     8     8     4     8     8     8
+    3     8     8     8     4     8     8
+    4     8     8     8     8     4     8
+    5     8     8     8     8     8     4
+restricting to everything, does nothing
+          0     1     2
+    0    10    20    20
+    1    20    10    20
+    2    20    20    10
+          0     1     2     3     4     5
+    0     4     8     8     8     8     8
+    1     8     4     8     8     8     8
+    2     8     8     4     8     8     8
+    3     8     8     8     4     8     8
+    4     8     8     8     8     4     8
+    5     8     8     8     8     8     4
+removing second PU of second core of second node
+          0     1     2
+    0    10    20    20
+    1    20    10    20
+    2    20    20    10
+          0     1     2     3     4     5
+    0     4     8     8     8     8     8
+    1     8     4     8     8     8     8
+    2     8     8     4     8     8     8
+    3     8     8     8     4     8     8
+    4     8     8     8     8     4     8
+    5     8     8     8     8     8     4
+removing entire second core of first node
+          0     1     2
+    0    10    20    20
+    1    20    10    20
+    2    20    20    10
+          0     2     3     4     5
+    0     4     8     8     8     8
+    2     8     4     8     8     8
+    3     8     8     4     8     8
+    4     8     8     8     4     8
+    5     8     8     8     8     4
+removing all PUs under third node, but keep that CPU-less node
+          0     1     2
+    0    10    20    20
+    1    20    10    20
+    2    20    20    10
+          0     2     3
+    0     4     8     8
+    2     8     4     8
+    3     8     8     4
+restricting to 3 PUs in 2 cores in 2 nodes, and remove the CPU-less node, and auto-merge groups
+          0     1
+    0    10    20
+    1    20    10
+          0     3
+    0     4     8
+    3     8     4
+restricting to only some already removed node, must fail
+          0     1
+    0    10    20
+    1    20    10
+          0     3
+    0     4     8
+    3     8     4
+restricting to a Group covering only the of the PU level
+restricting bynodeset to two numa nodes
+further restricting bynodeset to a single numa node
+restricting with invalid flags
+restricting so that PUs get reordered
+restricting by nodeset so that remaining non-memless PUs get reordered
+PASS hwloc_topology_restrict (exit status: 0)

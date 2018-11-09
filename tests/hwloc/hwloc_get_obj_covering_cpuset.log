@@ -1,0 +1,5 @@
+found covering object type Group covering cpuset 0x0,0x0fff,0xf0000000
+covering object of 0x0,0x0fff,0xf0000000 is 0x0000ffff,0xff000000, expected 0x0000ffff,0xff000000
+found system as covering object of first+last cpus cpuset 0x8000,,,,,,,,,,,,,,,,,,,,,,0x1
+found no covering object for too-large cpuset 0x10000,,,,,,,,,,,,,,,,,,,,,,0x0
+PASS hwloc_get_obj_covering_cpuset (exit status: 0)

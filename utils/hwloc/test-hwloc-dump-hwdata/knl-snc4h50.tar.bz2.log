@@ -1,0 +1,39 @@
+Dumping Xeon Phi SMBIOS Memory-Side Cache information:
+  File = /tmp/fooa7GGq3/knl-snc4h50//sys/firmware/dmi/entries/14-0/raw
+    Read 47 bytes
+  Looking for "Group: Knights Landing Information" in group string "Group: Knights Landing Information"
+  Found Phi group
+    Found Xeon Phi type = 160
+    Found Xeon Phi type = 161
+
+  Seeking dir ̀`160-' 4
+  File = /tmp/fooa7GGq3/knl-snc4h50//sys/firmware/dmi/entries/160-0/raw
+    Read 57 bytes
+  Getting general Xeon Phi info
+
+  Seeking dir ̀`161-' 4
+  File = /tmp/fooa7GGq3/knl-snc4h50//sys/firmware/dmi/entries/161-0/raw
+    Read 160 bytes
+  Getting Xeon Phi MCDRAM info. Count=8 struct size=12
+  MCDRAM controller 0
+  Size = 2048 MB
+  MCDRAM controller 1
+  Size = 2048 MB
+  MCDRAM controller 2
+  Size = 2048 MB
+  MCDRAM controller 3
+  Size = 2048 MB
+  MCDRAM controller 4
+  Size = 2048 MB
+  MCDRAM controller 5
+  Size = 2048 MB
+  MCDRAM controller 6
+  Size = 2048 MB
+  MCDRAM controller 7
+  Size = 2048 MB
+  Total MCDRAM 16384 MB
+  Cluster Mode: SNC4 Memory Mode: Hybrid25
+  MCDRAM total = 12884901888 bytes, cache = 4294967296 bytes
+  MCDRAM total = 3221225472 bytes, cache = 1073741824 bytes per node
+
+PASS knl-snc4h50.tar.bz2 (exit status: 0)

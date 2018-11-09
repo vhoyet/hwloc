@@ -1,0 +1,19 @@
+duplicate topo1 into topo2
+check that topo2 is identical
+add a new info to topo2
+check that topo2 cannot be diff'ed from topo1
+add a similar info to topo1, and change memory sizes
+check that topo2 is now properly diff'ed
+apply the diff to new duplicate topo3 of topo1
+check that topo2 and topo3 are identical
+apply the reverse diff to topo2
+check that topo2 and topo1 are identical
+exporting and reloading diff from XML buffer without refname
+exporting and reloading diff from XML buffer with refname
+reapplying to topo2
+check that topo2 and topo3 are again identical
+adding new key to the bottom of topo3
+check that diff fails at the last entry
+adding similar key to topo1
+checking that topo3 diff fails to reverse apply to topo2
+PASS hwloc_topology_diff (exit status: 0)

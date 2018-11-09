@@ -1,0 +1,6 @@
+buffer 0x7fa544c2e000 length 1048576
+address 0x7fa544c2e000 length 1048576 allocated in nodeset 0x0
+binding to 1st node and touching 1st quarter
+address 0x7fa544c2e000 length 262144 allocated in nodeset 0x00000001
+address 0x7fa544c2e000 length 1048576 located on 0x00000001
+PASS hwloc_get_area_memlocation (exit status: 0)

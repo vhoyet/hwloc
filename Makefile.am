@@ -9,7 +9,7 @@ ACLOCAL_AMFLAGS = -I ./config
 
 SUBDIRS = src include
 if HWLOC_BUILD_STANDALONE
-SUBDIRS += utils tests contrib/systemd
+SUBDIRS += utils tests contrib/systemd contrib/windows
 # We need doc/ if HWLOC_BUILD_DOXYGEN, or during make install if HWLOC_INSTALL_DOXYGEN.
 # There's no INSTALL_SUBDIRS, so always enter doc/ and check HWLOC_BUILD/INSTALL_DOXYGEN there
 SUBDIRS += doc
@@ -27,6 +27,7 @@ endif
 
 # Only install the valgrind suppressions file if we're building in standalone mode
 if HWLOC_BUILD_STANDALONE
+dist_bashcomp_DATA = contrib/completion/hwloc-completion.bash
 dist_pkgdata_DATA = contrib/hwloc-valgrind.supp
 endif
 
