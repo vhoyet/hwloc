@@ -742,7 +742,7 @@ output_ps(struct lstopo_output *loutput, const char *filename)
 #ifdef CAIRO_HAS_SVG_SURFACE
 /* SVG back-end */
 
-static struct draw_methods svg_draw_methods = {
+static struct draw_methods cairosvg_draw_methods = {
   NULL,
   topo_cairo_box,
   topo_cairo_line,
@@ -751,7 +751,7 @@ static struct draw_methods svg_draw_methods = {
 };
 
 int
-output_svg(struct lstopo_output *loutput, const char *filename)
+output_cairosvg(struct lstopo_output *loutput, const char *filename)
 {
   struct lstopo_cairo_output coutput;
   FILE *output;
@@ -766,7 +766,7 @@ output_svg(struct lstopo_output *loutput, const char *filename)
   memset(&coutput, 0, sizeof(coutput));
   coutput.loutput = loutput;
   loutput->backend_data = &coutput;
-  loutput->methods = &svg_draw_methods;
+  loutput->methods = &cairosvg_draw_methods;
   loutput->file = output;
 
   /* create a fake surface */
