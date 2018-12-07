@@ -584,6 +584,7 @@ enum output_format {
   LSTOPO_OUTPUT_PNG,
   LSTOPO_OUTPUT_PDF,
   LSTOPO_OUTPUT_PS,
+  LSTOPO_OUTPUT_SVG,
   LSTOPO_OUTPUT_CAIROSVG,
   LSTOPO_OUTPUT_XML,
   LSTOPO_OUTPUT_ERROR
@@ -611,6 +612,8 @@ parse_output_format(const char *name, char *callname __hwloc_attribute_unused)
     return LSTOPO_OUTPUT_PS;
   else if (!strcasecmp(name, "cairosvg"))
     return LSTOPO_OUTPUT_CAIROSVG;
+  else if (!strcasecmp(name, "svg"))
+    return LSTOPO_OUTPUT_SVG;
   else if (!strcasecmp(name, "xml"))
     return LSTOPO_OUTPUT_XML;
   else
@@ -1267,6 +1270,11 @@ main (int argc, char *argv[])
 # ifdef CAIRO_HAS_PS_SURFACE
   case LSTOPO_OUTPUT_PS:
     output_func = output_ps;
+    break;
+# endif /* CAIRO_HAS_PS_SURFACE */
+# ifdef CAIRO_HAS_SVG_SURFACE
+  case LSTOPO_OUTPUT_SVG:
+    output_func = output_svg;
     break;
 # endif /* CAIRO_HAS_PS_SURFACE */
 # ifdef CAIRO_HAS_SVG_SURFACE

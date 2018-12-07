@@ -134,12 +134,14 @@ get_textwidth(void *output,
 	      const char *text, unsigned length,
 	      unsigned fontsize)
 {
-  struct lstopo_output *loutput = output;
+
+    
   unsigned width;
 
 #ifdef HWLOC_DEBUG
   assert(loutput->methods->textsize);
 #endif
+  struct lstopo_output *loutput = output;
   loutput->methods->textsize(output, text, length, fontsize, &width);
   return width;
 }
@@ -1264,6 +1266,7 @@ output_compute_pu_min_textwidth(struct lstopo_output *output)
 void
 output_draw(struct lstopo_output *loutput)
 {
+
   hwloc_topology_t topology = loutput->topology;
   struct draw_methods *methods = loutput->methods;
   int legend = loutput->legend;
@@ -1291,11 +1294,12 @@ output_draw(struct lstopo_output *loutput)
       gethostname(hostname, hostname_size);
 #endif
     }
+
     if (forcedhostname || *hostname) {
       if (forcedhostname)
-	snprintf(text[ntext], sizeof(text[ntext]), "Host: %s", forcedhostname);
+    snprintf(text[ntext], sizeof(text[ntext]), "Host: %s", forcedhostname);      
       else
-	snprintf(text[ntext], sizeof(text[ntext]), "Host: %s", hostname);
+    snprintf(text[ntext], sizeof(text[ntext]), "Host: %s", hostname);
       textwidth = get_textwidth(loutput, text[ntext], (unsigned) strlen(text[ntext]), fontsize);
       if (textwidth > maxtextwidth)
 	maxtextwidth = textwidth;

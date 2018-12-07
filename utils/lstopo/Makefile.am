@@ -24,6 +24,7 @@ lstopo_no_graphics_SOURCES = \
         lstopo.c \
         lstopo-draw.c \
         lstopo-fig.c \
+        lstopo-svg.c \
         lstopo-ascii.c \
         lstopo-text.c \
         lstopo-xml.c
