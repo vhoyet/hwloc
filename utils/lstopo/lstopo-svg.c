@@ -22,19 +22,19 @@
 
 
 /* Cairo methods */
-static void topo_native_svg_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned width, unsigned y, unsigned height)
+static void topo_native_svg_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned width, unsigned y, unsigned height, hwloc_obj_t level, unsigned id_complement)
 {
+	char complement[12] = "";
+	if(id_complement)
+		snprintf(complement, sizeof complement, "_%d", id_complement);
 	int r = lcolor->r, g = lcolor->g, b = lcolor->b;
 	FILE *file = loutput->file;
-	#if 0
-	char type[128];
-	hwloc_obj_type_snprintf(type, sizeof(type), level, 0);
-	if (type != NULL) // && level->logical_index >= 0)
-		fprintf(file,"\t<rect id='rect_%s_%d' class='%s' x='%d' y='%d' width='%d' height='%d' style='fill:rgb(%d,%d,%d);stoke-width:1;stroke:rgb(0,0,0)'/>\n",type,0/*FIXME*/,type,x,y,width,height,r,g,b);
-	else
+	if(level){
+		char type[128];
+		hwloc_obj_type_snprintf(type, sizeof(type), level, 0);
+		fprintf(file,"\t<rect id='%s_%d_rect%s' class='%s' x='%d' y='%d' width='%d' height='%d' style='fill:rgb(%d,%d,%d);stoke-width:1;stroke:rgb(0,0,0)'/>\n",type,level->logical_index,complement,type,x,y,width,height,r,g,b);
+	}else
 		fprintf(file,"\t<rect x='%d' y='%d' width='%d' height='%d' style='fill:rgb(%d,%d,%d);stoke-width:1;stroke:rgb(0,0,0)'/>\n",x,y,width,height,r,g,b);
-	#endif
-	fprintf(file,"\t<rect x='%d' y='%d' width='%d' height='%d' style='fill:rgb(%d,%d,%d);stoke-width:1;stroke:rgb(0,0,0)'/>\n",x,y,width,height,r,g,b);
 }
 
 
@@ -55,19 +55,19 @@ svg_textsize(struct lstopo_output *loutput __hwloc_attribute_unused, const char 
 
 
 static void
-topo_native_svg_text(struct lstopo_output *loutput, const struct lstopo_color *lcolor, int size, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned y, const char *text)
+topo_native_svg_text(struct lstopo_output *loutput, const struct lstopo_color *lcolor, int size, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned y, const char *text, hwloc_obj_t level, unsigned id_complement)
 {
+	char complement[12] = "";
+	if(id_complement)
+		snprintf(complement, sizeof complement, "_%d", id_complement);
 	FILE *file = loutput->file;
 	int r = lcolor->r, g = lcolor->g, b = lcolor->b;
-	#if 0
-	char type[128];
-	hwloc_obj_type_snprintf(type, sizeof(type), level, 0);
-	if (type != NULL && level->logical_index >= 0)
-		fprintf(file,"\t<text id='text_%s_%d' class='%s' x='%d' y='%d' fill='rgb(%d,%d,%d)' style='font-size:%dpx'>%s</text>\n",type,level->logical_index,type,x,y+size,r,g,b,size,text);
-	else
+	if(level){
+		char type[128];
+		hwloc_obj_type_snprintf(type, sizeof(type), level, 0);
+		fprintf(file,"\t<text id='%s_%d_text%s' class='%s' x='%d' y='%d' fill='rgb(%d,%d,%d)' style='font-size:%dpx'>%s</text>\n",type,level->logical_index,complement,type,x,y+size,r,g,b,size,text);
+	}else
 		fprintf(file,"\t<text x='%d' y='%d' fill='rgb(%d,%d,%d)' style='font-size:%d'>%s</text>\n",x,y+size,r,g,b,size,text);
-	#endif
-	fprintf(file,"\t<text x='%d' y='%d' fill='rgb(%d,%d,%d)' style='font-size:%d'>%s</text>\n",x,y+size,r,g,b,size,text);
 }
 
 
