@@ -18,10 +18,8 @@
 #include "lstopo.h"
 
 #define SVG_TEXT_WIDTH(length, fontsize) (((length) * (fontsize))/2)
-#define SVG_FONTSIZE_SCALE(size) (((size) * 11) / 10)
+#define SVG_FONTSIZE_SCALE(size) (((size) * 11) / 9)
 
-
-/* Cairo methods */
 static void topo_native_svg_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned width, unsigned y, unsigned height, hwloc_obj_t level, unsigned id_complement)
 {
 	char complement[12] = "";
@@ -65,9 +63,9 @@ topo_native_svg_text(struct lstopo_output *loutput, const struct lstopo_color *l
 	if(level){
 		char type[128];
 		hwloc_obj_type_snprintf(type, sizeof(type), level, 0);
-		fprintf(file,"\t<text id='%s_%d_text%s' class='%s' x='%d' y='%d' fill='rgb(%d,%d,%d)' style='font-size:%dpx'>%s</text>\n",type,level->logical_index,complement,type,x,y+size,r,g,b,size,text);
+		fprintf(file,"\t<text font-family='Monospace' id='%s_%d_text%s' class='%s' x='%d' y='%d' fill='rgb(%d,%d,%d)' style='font-size:%dpx'>%s</text>\n",type,level->logical_index,complement,type,x,y+size,r,g,b,size,text);
 	}else
-		fprintf(file,"\t<text x='%d' y='%d' fill='rgb(%d,%d,%d)' style='font-size:%d'>%s</text>\n",x,y+size,r,g,b,size,text);
+		fprintf(file,"\t<text font-family='Monospace' x='%d' y='%d' fill='rgb(%d,%d,%d)' style='font-size:%d'>%s</text>\n",x,y+size,r,g,b,size,text);
 }
 
 
@@ -97,6 +95,7 @@ int output_svg(struct lstopo_output * loutput, const char *filename)
 	loutput->drawing = LSTOPO_DRAWING_DRAW;
 	lstopo_prepare_custom_styles(loutput);
 
+	
 	fprintf(output,"%s","<?xml version='1.0' encoding='UTF-8'?>\n");
 	fprintf(output,"<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='%dpx' height='%dpx' viewBox='0 0 %dpx %dpx' version='1.1'>\n",loutput->width,loutput->height,loutput->width,loutput->height);
 	
