@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dynamic SVG</title>
+  <script type='text/javascript' src='jsExample.js'></script>
+</head>
+<body>
+	<object id="svg-object" type="image/svg+xml" data="foo.svg">
+	  Your browser does not support SVG
+	</object> 
+</body>
+<footer>
+
+	<script type="text/javascript">
+      	setTimeout(function() {
+	        let svgObject = document.getElementById('svg-object').contentDocument;
+	        let svgElement = svgObject.getElementById('Machine_0_rect')
+	       	console.log(svgElement)
+	       	if(svgObject.getElementById('Machine_0_rect'))
+				start(svgObject)
+			else{
+				const h1 = document.createElement('h1')
+				h1.innerHTML = "Your svg file doesn't have the good format to load javascript"
+				document.body.appendChild(h1)
+			}
+      	}, 200);
+
+    </script>
+</footer>
+</html>

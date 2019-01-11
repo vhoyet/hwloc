@@ -30,7 +30,7 @@ static void topo_native_svg_box(struct lstopo_output *loutput, const struct lsto
 	if(level){
 		char type[128];
 		hwloc_obj_type_snprintf(type, sizeof(type), level, 0);
-		fprintf(file,"\t<rect id='%s_%d_rect%s' class='%s' x='%d' y='%d' width='%d' height='%d' style='fill:rgb(%d,%d,%d);stoke-width:1;stroke:rgb(0,0,0)'/>\n",type,level->logical_index,complement,type,x,y,width,height,r,g,b);
+		fprintf(file,"\t<rect id='%s_%d_rect%s' class='%s' x='%d' y='%d' width='%d' height='%d' fill=\"rgb(%d,%d,%d)\" style='stoke-width:1;stroke:rgb(0,0,0)'/>\n",type,level->logical_index,complement,type,x,y,width,height,r,g,b);
 	}else
 		fprintf(file,"\t<rect x='%d' y='%d' width='%d' height='%d' style='fill:rgb(%d,%d,%d);stoke-width:1;stroke:rgb(0,0,0)'/>\n",x,y,width,height,r,g,b);
 }
@@ -97,7 +97,7 @@ int output_svg(struct lstopo_output * loutput, const char *filename)
 
 	
 	fprintf(output,"%s","<?xml version='1.0' encoding='UTF-8'?>\n");
-	fprintf(output,"<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='%dpx' height='%dpx' viewBox='0 0 %dpx %dpx' version='1.1'>\n",loutput->width,loutput->height,loutput->width,loutput->height);
+	fprintf(output,"<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='%dpx' height='%dpx' version='1.1'>\n",loutput->width,loutput->height);
 	
 	output_draw(loutput);
 	fprintf(output,"</svg>\n");
