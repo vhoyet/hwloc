@@ -1,0 +1,343 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='1085px' height='659px' version='1.1'>
+	<rect id='Machine_0_rect' class='Machine' x='0' y='0' width='1085' height='621' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Machine_0_text' class='Machine' x='7' y='17' fill='rgb(0,0,0)' style='font-size:10px'>Machine (12GB total)</text>
+	<rect id='Package_0_rect' class='Package' x='7' y='24' width='1071' height='590' fill="rgb(210,231,164)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Package_0_text' class='Package' x='14' y='41' fill='rgb(0,0,0)' style='font-size:10px'>Package</text>
+	<rect id='L3_0_rect' class='L3' x='14' y='93' width='525' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L3_0_text' class='L3' x='21' y='110' fill='rgb(0,0,0)' style='font-size:10px'>MemorySideCache (2048MB)</text>
+	<rect id='L2_0_rect' class='L2' x='14' y='124' width='259' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L2_0_text' class='L2' x='21' y='141' fill='rgb(0,0,0)' style='font-size:10px'>L2 (4096KB)</text>
+	<rect id='L1d_0_rect' class='L1d' x='14' y='155' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_0_text' class='L1d' x='21' y='172' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_0_rect' class='L1i' x='14' y='186' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_0_text' class='L1i' x='21' y='203' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_0_rect' class='Core' x='14' y='217' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_0_text' class='Core' x='21' y='234' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_0_rect' class='PU' x='21' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_0_text' class='PU' x='31' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#0</text>
+	<text font-family='Monospace' id='PU_0_text_1' class='PU' x='40' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#0</text>
+	<rect id='PU_1_rect' class='PU' x='77' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_1_text' class='PU' x='87' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#1</text>
+	<text font-family='Monospace' id='PU_1_text_1' class='PU' x='93' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#16</text>
+	<rect id='PU_2_rect' class='PU' x='21' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_2_text' class='PU' x='31' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#2</text>
+	<text font-family='Monospace' id='PU_2_text_1' class='PU' x='37' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#32</text>
+	<rect id='PU_3_rect' class='PU' x='77' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_3_text' class='PU' x='87' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#3</text>
+	<text font-family='Monospace' id='PU_3_text_1' class='PU' x='93' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#48</text>
+	<rect id='L1d_1_rect' class='L1d' x='147' y='155' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_1_text' class='L1d' x='154' y='172' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_1_rect' class='L1i' x='147' y='186' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_1_text' class='L1i' x='154' y='203' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_1_rect' class='Core' x='147' y='217' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_1_text' class='Core' x='154' y='234' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_4_rect' class='PU' x='154' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_4_text' class='PU' x='164' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#4</text>
+	<text font-family='Monospace' id='PU_4_text_1' class='PU' x='173' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#1</text>
+	<rect id='PU_5_rect' class='PU' x='210' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_5_text' class='PU' x='220' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#5</text>
+	<text font-family='Monospace' id='PU_5_text_1' class='PU' x='226' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#17</text>
+	<rect id='PU_6_rect' class='PU' x='154' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_6_text' class='PU' x='164' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#6</text>
+	<text font-family='Monospace' id='PU_6_text_1' class='PU' x='170' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#33</text>
+	<rect id='PU_7_rect' class='PU' x='210' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_7_text' class='PU' x='220' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#7</text>
+	<text font-family='Monospace' id='PU_7_text_1' class='PU' x='226' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#49</text>
+	<rect id='L2_1_rect' class='L2' x='280' y='124' width='259' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L2_1_text' class='L2' x='287' y='141' fill='rgb(0,0,0)' style='font-size:10px'>L2 (4096KB)</text>
+	<rect id='L1d_2_rect' class='L1d' x='280' y='155' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_2_text' class='L1d' x='287' y='172' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_2_rect' class='L1i' x='280' y='186' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_2_text' class='L1i' x='287' y='203' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_2_rect' class='Core' x='280' y='217' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_2_text' class='Core' x='287' y='234' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_8_rect' class='PU' x='287' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_8_text' class='PU' x='297' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#8</text>
+	<text font-family='Monospace' id='PU_8_text_1' class='PU' x='306' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#2</text>
+	<rect id='PU_9_rect' class='PU' x='343' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_9_text' class='PU' x='353' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#9</text>
+	<text font-family='Monospace' id='PU_9_text_1' class='PU' x='359' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#18</text>
+	<rect id='PU_10_rect' class='PU' x='287' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_10_text' class='PU' x='294' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#10</text>
+	<text font-family='Monospace' id='PU_10_text_1' class='PU' x='303' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#34</text>
+	<rect id='PU_11_rect' class='PU' x='343' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_11_text' class='PU' x='350' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#11</text>
+	<text font-family='Monospace' id='PU_11_text_1' class='PU' x='359' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#50</text>
+	<rect id='L1d_3_rect' class='L1d' x='413' y='155' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_3_text' class='L1d' x='420' y='172' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_3_rect' class='L1i' x='413' y='186' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_3_text' class='L1i' x='420' y='203' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_3_rect' class='Core' x='413' y='217' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_3_text' class='Core' x='420' y='234' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_12_rect' class='PU' x='420' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_12_text' class='PU' x='427' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#12</text>
+	<text font-family='Monospace' id='PU_12_text_1' class='PU' x='439' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#3</text>
+	<rect id='PU_13_rect' class='PU' x='476' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_13_text' class='PU' x='483' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#13</text>
+	<text font-family='Monospace' id='PU_13_text_1' class='PU' x='492' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#19</text>
+	<rect id='PU_14_rect' class='PU' x='420' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_14_text' class='PU' x='427' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#14</text>
+	<text font-family='Monospace' id='PU_14_text_1' class='PU' x='436' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#35</text>
+	<rect id='PU_15_rect' class='PU' x='476' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_15_text' class='PU' x='483' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#15</text>
+	<text font-family='Monospace' id='PU_15_text_1' class='PU' x='492' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#51</text>
+	<rect id='L3_0_rect_1' class='L3' x='14' y='48' width='525' height='38' fill="rgb(242,232,232)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<rect id='NUMANode_0_rect' class='NUMANode' x='21' y='55' width='164' height='24' fill="rgb(239,223,222)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='NUMANode_0_text' class='NUMANode' x='28' y='72' fill='rgb(0,0,0)' style='font-size:10px'>NUMANode L#0 P#0 (1024MB)</text>
+	<rect id='NUMANode_1_rect' class='NUMANode' x='192' y='55' width='152' height='24' fill="rgb(239,223,222)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='NUMANode_1_text' class='NUMANode' x='199' y='72' fill='rgb(0,0,0)' style='font-size:10px'>MCDRAM L#1 P#7 (2048MB)</text>
+	<rect id='L3_1_rect' class='L3' x='546' y='93' width='525' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L3_1_text' class='L3' x='553' y='110' fill='rgb(0,0,0)' style='font-size:10px'>MemorySideCache (2048MB)</text>
+	<rect id='L2_2_rect' class='L2' x='546' y='124' width='259' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L2_2_text' class='L2' x='553' y='141' fill='rgb(0,0,0)' style='font-size:10px'>L2 (4096KB)</text>
+	<rect id='L1d_4_rect' class='L1d' x='546' y='155' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_4_text' class='L1d' x='553' y='172' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_4_rect' class='L1i' x='546' y='186' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_4_text' class='L1i' x='553' y='203' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_4_rect' class='Core' x='546' y='217' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_4_text' class='Core' x='553' y='234' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_16_rect' class='PU' x='553' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_16_text' class='PU' x='560' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#16</text>
+	<text font-family='Monospace' id='PU_16_text_1' class='PU' x='572' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#4</text>
+	<rect id='PU_17_rect' class='PU' x='609' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_17_text' class='PU' x='616' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#17</text>
+	<text font-family='Monospace' id='PU_17_text_1' class='PU' x='625' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#20</text>
+	<rect id='PU_18_rect' class='PU' x='553' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_18_text' class='PU' x='560' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#18</text>
+	<text font-family='Monospace' id='PU_18_text_1' class='PU' x='569' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#36</text>
+	<rect id='PU_19_rect' class='PU' x='609' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_19_text' class='PU' x='616' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#19</text>
+	<text font-family='Monospace' id='PU_19_text_1' class='PU' x='625' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#52</text>
+	<rect id='L1d_5_rect' class='L1d' x='679' y='155' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_5_text' class='L1d' x='686' y='172' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_5_rect' class='L1i' x='679' y='186' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_5_text' class='L1i' x='686' y='203' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_5_rect' class='Core' x='679' y='217' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_5_text' class='Core' x='686' y='234' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_20_rect' class='PU' x='686' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_20_text' class='PU' x='693' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#20</text>
+	<text font-family='Monospace' id='PU_20_text_1' class='PU' x='705' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#5</text>
+	<rect id='PU_21_rect' class='PU' x='742' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_21_text' class='PU' x='749' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#21</text>
+	<text font-family='Monospace' id='PU_21_text_1' class='PU' x='758' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#21</text>
+	<rect id='PU_22_rect' class='PU' x='686' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_22_text' class='PU' x='693' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#22</text>
+	<text font-family='Monospace' id='PU_22_text_1' class='PU' x='702' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#37</text>
+	<rect id='PU_23_rect' class='PU' x='742' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_23_text' class='PU' x='749' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#23</text>
+	<text font-family='Monospace' id='PU_23_text_1' class='PU' x='758' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#53</text>
+	<rect id='L2_3_rect' class='L2' x='812' y='124' width='259' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L2_3_text' class='L2' x='819' y='141' fill='rgb(0,0,0)' style='font-size:10px'>L2 (4096KB)</text>
+	<rect id='L1d_6_rect' class='L1d' x='812' y='155' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_6_text' class='L1d' x='819' y='172' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_6_rect' class='L1i' x='812' y='186' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_6_text' class='L1i' x='819' y='203' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_6_rect' class='Core' x='812' y='217' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_6_text' class='Core' x='819' y='234' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_24_rect' class='PU' x='819' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_24_text' class='PU' x='826' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#24</text>
+	<text font-family='Monospace' id='PU_24_text_1' class='PU' x='838' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#6</text>
+	<rect id='PU_25_rect' class='PU' x='875' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_25_text' class='PU' x='882' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#25</text>
+	<text font-family='Monospace' id='PU_25_text_1' class='PU' x='891' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#22</text>
+	<rect id='PU_26_rect' class='PU' x='819' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_26_text' class='PU' x='826' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#26</text>
+	<text font-family='Monospace' id='PU_26_text_1' class='PU' x='835' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#38</text>
+	<rect id='PU_27_rect' class='PU' x='875' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_27_text' class='PU' x='882' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#27</text>
+	<text font-family='Monospace' id='PU_27_text_1' class='PU' x='891' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#54</text>
+	<rect id='L1d_7_rect' class='L1d' x='945' y='155' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_7_text' class='L1d' x='952' y='172' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_7_rect' class='L1i' x='945' y='186' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_7_text' class='L1i' x='952' y='203' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_7_rect' class='Core' x='945' y='217' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_7_text' class='Core' x='952' y='234' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_28_rect' class='PU' x='952' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_28_text' class='PU' x='959' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#28</text>
+	<text font-family='Monospace' id='PU_28_text_1' class='PU' x='971' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#7</text>
+	<rect id='PU_29_rect' class='PU' x='1008' y='241' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_29_text' class='PU' x='1015' y='258' fill='rgb(0,0,0)' style='font-size:10px'>PU L#29</text>
+	<text font-family='Monospace' id='PU_29_text_1' class='PU' x='1024' y='272' fill='rgb(0,0,0)' style='font-size:10px'>P#23</text>
+	<rect id='PU_30_rect' class='PU' x='952' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_30_text' class='PU' x='959' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#30</text>
+	<text font-family='Monospace' id='PU_30_text_1' class='PU' x='968' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#39</text>
+	<rect id='PU_31_rect' class='PU' x='1008' y='279' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_31_text' class='PU' x='1015' y='296' fill='rgb(0,0,0)' style='font-size:10px'>PU L#31</text>
+	<text font-family='Monospace' id='PU_31_text_1' class='PU' x='1024' y='310' fill='rgb(0,0,0)' style='font-size:10px'>P#55</text>
+	<rect id='L3_1_rect_1' class='L3' x='546' y='48' width='525' height='38' fill="rgb(242,232,232)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<rect id='NUMANode_2_rect' class='NUMANode' x='553' y='55' width='164' height='24' fill="rgb(239,223,222)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='NUMANode_2_text' class='NUMANode' x='560' y='72' fill='rgb(0,0,0)' style='font-size:10px'>NUMANode L#2 P#1 (1024MB)</text>
+	<rect id='NUMANode_3_rect' class='NUMANode' x='724' y='55' width='152' height='24' fill="rgb(239,223,222)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='NUMANode_3_text' class='NUMANode' x='731' y='72' fill='rgb(0,0,0)' style='font-size:10px'>MCDRAM L#3 P#4 (2048MB)</text>
+	<rect id='L3_2_rect' class='L3' x='14' y='376' width='525' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L3_2_text' class='L3' x='21' y='393' fill='rgb(0,0,0)' style='font-size:10px'>MemorySideCache (2048MB)</text>
+	<rect id='L2_4_rect' class='L2' x='14' y='407' width='259' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L2_4_text' class='L2' x='21' y='424' fill='rgb(0,0,0)' style='font-size:10px'>L2 (4096KB)</text>
+	<rect id='L1d_8_rect' class='L1d' x='14' y='438' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_8_text' class='L1d' x='21' y='455' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_8_rect' class='L1i' x='14' y='469' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_8_text' class='L1i' x='21' y='486' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_8_rect' class='Core' x='14' y='500' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_8_text' class='Core' x='21' y='517' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_32_rect' class='PU' x='21' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_32_text' class='PU' x='28' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#32</text>
+	<text font-family='Monospace' id='PU_32_text_1' class='PU' x='40' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#8</text>
+	<rect id='PU_33_rect' class='PU' x='77' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_33_text' class='PU' x='84' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#33</text>
+	<text font-family='Monospace' id='PU_33_text_1' class='PU' x='93' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#24</text>
+	<rect id='PU_34_rect' class='PU' x='21' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_34_text' class='PU' x='28' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#34</text>
+	<text font-family='Monospace' id='PU_34_text_1' class='PU' x='37' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#40</text>
+	<rect id='PU_35_rect' class='PU' x='77' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_35_text' class='PU' x='84' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#35</text>
+	<text font-family='Monospace' id='PU_35_text_1' class='PU' x='93' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#56</text>
+	<rect id='L1d_9_rect' class='L1d' x='147' y='438' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_9_text' class='L1d' x='154' y='455' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_9_rect' class='L1i' x='147' y='469' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_9_text' class='L1i' x='154' y='486' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_9_rect' class='Core' x='147' y='500' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_9_text' class='Core' x='154' y='517' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_36_rect' class='PU' x='154' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_36_text' class='PU' x='161' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#36</text>
+	<text font-family='Monospace' id='PU_36_text_1' class='PU' x='173' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#9</text>
+	<rect id='PU_37_rect' class='PU' x='210' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_37_text' class='PU' x='217' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#37</text>
+	<text font-family='Monospace' id='PU_37_text_1' class='PU' x='226' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#25</text>
+	<rect id='PU_38_rect' class='PU' x='154' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_38_text' class='PU' x='161' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#38</text>
+	<text font-family='Monospace' id='PU_38_text_1' class='PU' x='170' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#41</text>
+	<rect id='PU_39_rect' class='PU' x='210' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_39_text' class='PU' x='217' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#39</text>
+	<text font-family='Monospace' id='PU_39_text_1' class='PU' x='226' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#57</text>
+	<rect id='L2_5_rect' class='L2' x='280' y='407' width='259' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L2_5_text' class='L2' x='287' y='424' fill='rgb(0,0,0)' style='font-size:10px'>L2 (4096KB)</text>
+	<rect id='L1d_10_rect' class='L1d' x='280' y='438' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_10_text' class='L1d' x='287' y='455' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_10_rect' class='L1i' x='280' y='469' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_10_text' class='L1i' x='287' y='486' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_10_rect' class='Core' x='280' y='500' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_10_text' class='Core' x='287' y='517' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_40_rect' class='PU' x='287' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_40_text' class='PU' x='294' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#40</text>
+	<text font-family='Monospace' id='PU_40_text_1' class='PU' x='303' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#10</text>
+	<rect id='PU_41_rect' class='PU' x='343' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_41_text' class='PU' x='350' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#41</text>
+	<text font-family='Monospace' id='PU_41_text_1' class='PU' x='359' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#26</text>
+	<rect id='PU_42_rect' class='PU' x='287' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_42_text' class='PU' x='294' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#42</text>
+	<text font-family='Monospace' id='PU_42_text_1' class='PU' x='303' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#42</text>
+	<rect id='PU_43_rect' class='PU' x='343' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_43_text' class='PU' x='350' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#43</text>
+	<text font-family='Monospace' id='PU_43_text_1' class='PU' x='359' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#58</text>
+	<rect id='L1d_11_rect' class='L1d' x='413' y='438' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_11_text' class='L1d' x='420' y='455' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_11_rect' class='L1i' x='413' y='469' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_11_text' class='L1i' x='420' y='486' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_11_rect' class='Core' x='413' y='500' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_11_text' class='Core' x='420' y='517' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_44_rect' class='PU' x='420' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_44_text' class='PU' x='427' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#44</text>
+	<text font-family='Monospace' id='PU_44_text_1' class='PU' x='436' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#11</text>
+	<rect id='PU_45_rect' class='PU' x='476' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_45_text' class='PU' x='483' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#45</text>
+	<text font-family='Monospace' id='PU_45_text_1' class='PU' x='492' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#27</text>
+	<rect id='PU_46_rect' class='PU' x='420' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_46_text' class='PU' x='427' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#46</text>
+	<text font-family='Monospace' id='PU_46_text_1' class='PU' x='436' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#43</text>
+	<rect id='PU_47_rect' class='PU' x='476' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_47_text' class='PU' x='483' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#47</text>
+	<text font-family='Monospace' id='PU_47_text_1' class='PU' x='492' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#59</text>
+	<rect id='L3_2_rect_1' class='L3' x='14' y='331' width='525' height='38' fill="rgb(242,232,232)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<rect id='NUMANode_4_rect' class='NUMANode' x='21' y='338' width='164' height='24' fill="rgb(239,223,222)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='NUMANode_4_text' class='NUMANode' x='28' y='355' fill='rgb(0,0,0)' style='font-size:10px'>NUMANode L#4 P#2 (1024MB)</text>
+	<rect id='NUMANode_5_rect' class='NUMANode' x='192' y='338' width='152' height='24' fill="rgb(239,223,222)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='NUMANode_5_text' class='NUMANode' x='199' y='355' fill='rgb(0,0,0)' style='font-size:10px'>MCDRAM L#5 P#5 (2048MB)</text>
+	<rect id='L3_3_rect' class='L3' x='546' y='376' width='525' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L3_3_text' class='L3' x='553' y='393' fill='rgb(0,0,0)' style='font-size:10px'>MemorySideCache (2048MB)</text>
+	<rect id='L2_6_rect' class='L2' x='546' y='407' width='259' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L2_6_text' class='L2' x='553' y='424' fill='rgb(0,0,0)' style='font-size:10px'>L2 (4096KB)</text>
+	<rect id='L1d_12_rect' class='L1d' x='546' y='438' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_12_text' class='L1d' x='553' y='455' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_12_rect' class='L1i' x='546' y='469' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_12_text' class='L1i' x='553' y='486' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_12_rect' class='Core' x='546' y='500' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_12_text' class='Core' x='553' y='517' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_48_rect' class='PU' x='553' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_48_text' class='PU' x='560' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#48</text>
+	<text font-family='Monospace' id='PU_48_text_1' class='PU' x='569' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#12</text>
+	<rect id='PU_49_rect' class='PU' x='609' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_49_text' class='PU' x='616' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#49</text>
+	<text font-family='Monospace' id='PU_49_text_1' class='PU' x='625' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#28</text>
+	<rect id='PU_50_rect' class='PU' x='553' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_50_text' class='PU' x='560' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#50</text>
+	<text font-family='Monospace' id='PU_50_text_1' class='PU' x='569' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#44</text>
+	<rect id='PU_51_rect' class='PU' x='609' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_51_text' class='PU' x='616' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#51</text>
+	<text font-family='Monospace' id='PU_51_text_1' class='PU' x='625' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#60</text>
+	<rect id='L1d_13_rect' class='L1d' x='679' y='438' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_13_text' class='L1d' x='686' y='455' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_13_rect' class='L1i' x='679' y='469' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_13_text' class='L1i' x='686' y='486' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_13_rect' class='Core' x='679' y='500' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_13_text' class='Core' x='686' y='517' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_52_rect' class='PU' x='686' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_52_text' class='PU' x='693' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#52</text>
+	<text font-family='Monospace' id='PU_52_text_1' class='PU' x='702' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#13</text>
+	<rect id='PU_53_rect' class='PU' x='742' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_53_text' class='PU' x='749' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#53</text>
+	<text font-family='Monospace' id='PU_53_text_1' class='PU' x='758' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#29</text>
+	<rect id='PU_54_rect' class='PU' x='686' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_54_text' class='PU' x='693' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#54</text>
+	<text font-family='Monospace' id='PU_54_text_1' class='PU' x='702' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#45</text>
+	<rect id='PU_55_rect' class='PU' x='742' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_55_text' class='PU' x='749' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#55</text>
+	<text font-family='Monospace' id='PU_55_text_1' class='PU' x='758' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#61</text>
+	<rect id='L2_7_rect' class='L2' x='812' y='407' width='259' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L2_7_text' class='L2' x='819' y='424' fill='rgb(0,0,0)' style='font-size:10px'>L2 (4096KB)</text>
+	<rect id='L1d_14_rect' class='L1d' x='812' y='438' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_14_text' class='L1d' x='819' y='455' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_14_rect' class='L1i' x='812' y='469' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_14_text' class='L1i' x='819' y='486' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_14_rect' class='Core' x='812' y='500' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_14_text' class='Core' x='819' y='517' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_56_rect' class='PU' x='819' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_56_text' class='PU' x='826' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#56</text>
+	<text font-family='Monospace' id='PU_56_text_1' class='PU' x='835' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#14</text>
+	<rect id='PU_57_rect' class='PU' x='875' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_57_text' class='PU' x='882' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#57</text>
+	<text font-family='Monospace' id='PU_57_text_1' class='PU' x='891' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#30</text>
+	<rect id='PU_58_rect' class='PU' x='819' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_58_text' class='PU' x='826' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#58</text>
+	<text font-family='Monospace' id='PU_58_text_1' class='PU' x='835' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#46</text>
+	<rect id='PU_59_rect' class='PU' x='875' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_59_text' class='PU' x='882' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#59</text>
+	<text font-family='Monospace' id='PU_59_text_1' class='PU' x='891' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#62</text>
+	<rect id='L1d_15_rect' class='L1d' x='945' y='438' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1d_15_text' class='L1d' x='952' y='455' fill='rgb(0,0,0)' style='font-size:10px'>L1d (32KB)</text>
+	<rect id='L1i_15_rect' class='L1i' x='945' y='469' width='126' height='24' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='L1i_15_text' class='L1i' x='952' y='486' fill='rgb(0,0,0)' style='font-size:10px'>L1i (32KB)</text>
+	<rect id='Core_15_rect' class='Core' x='945' y='500' width='126' height='107' fill="rgb(190,190,190)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='Core_15_text' class='Core' x='952' y='517' fill='rgb(0,0,0)' style='font-size:10px'>Core</text>
+	<rect id='PU_60_rect' class='PU' x='952' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_60_text' class='PU' x='959' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#60</text>
+	<text font-family='Monospace' id='PU_60_text_1' class='PU' x='968' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#15</text>
+	<rect id='PU_61_rect' class='PU' x='1008' y='524' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_61_text' class='PU' x='1015' y='541' fill='rgb(0,0,0)' style='font-size:10px'>PU L#61</text>
+	<text font-family='Monospace' id='PU_61_text_1' class='PU' x='1024' y='555' fill='rgb(0,0,0)' style='font-size:10px'>P#31</text>
+	<rect id='PU_62_rect' class='PU' x='952' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_62_text' class='PU' x='959' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#62</text>
+	<text font-family='Monospace' id='PU_62_text_1' class='PU' x='968' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#47</text>
+	<rect id='PU_63_rect' class='PU' x='1008' y='562' width='56' height='38' fill="rgb(255,255,255)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='PU_63_text' class='PU' x='1015' y='579' fill='rgb(0,0,0)' style='font-size:10px'>PU L#63</text>
+	<text font-family='Monospace' id='PU_63_text_1' class='PU' x='1024' y='593' fill='rgb(0,0,0)' style='font-size:10px'>P#63</text>
+	<rect id='L3_3_rect_1' class='L3' x='546' y='331' width='525' height='38' fill="rgb(242,232,232)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<rect id='NUMANode_6_rect' class='NUMANode' x='553' y='338' width='164' height='24' fill="rgb(239,223,222)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='NUMANode_6_text' class='NUMANode' x='560' y='355' fill='rgb(0,0,0)' style='font-size:10px'>NUMANode L#6 P#3 (1024MB)</text>
+	<rect id='NUMANode_7_rect' class='NUMANode' x='724' y='338' width='152' height='24' fill="rgb(239,223,222)" style='stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' id='NUMANode_7_text' class='NUMANode' x='731' y='355' fill='rgb(0,0,0)' style='font-size:10px'>MCDRAM L#7 P#6 (2048MB)</text>
+	<rect x='0' y='621' width='1085' height='38' style='fill:rgb(255,255,255);stoke-width:1;stroke:rgb(0,0,0)'/>
+	<text font-family='Monospace' x='7' y='638' fill='rgb(0,0,0)' style='font-size:10'>Host: localhost.localdomain</text>
+	<text font-family='Monospace' x='7' y='652' fill='rgb(0,0,0)' style='font-size:10'>Date: jeu. 10 janv. 2019 17:11:02 CET</text>
+
+</svg>

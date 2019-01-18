@@ -1,34 +1,36 @@
 function start(svgObject){
-	console.log("ok")
+	makeDraggable(svgObject)
+
 	const texts = svgObject.getElementsByTagName('text')
-	    for (let text of texts) {
-	    	text.setAttribute("style", text.getAttribute("style") + ";pointer-events:none;")
-	    }
+    for (let text of texts) {
+    	text.setAttribute("style", text.getAttribute("style") + ";pointer-events:none;")
+    }
 
 	const elements = svgObject.getElementsByTagName('rect')
-
-	    for (let element of elements) {
-	    	if(!element.id.includes("Bridge")){
-	    		element.addEventListener('mouseup', function(e) {
-
-				    target = e.target
-				    oldColor = target.getAttribute("saveColor")
-
-				    if(!oldColor){
-				    	target.setAttribute("saveColor", target.getAttribute("fill"))
-						target.setAttribute("fill", "red")
-				    }else{
-				    	target.setAttribute("fill", oldColor)
-				    	target.removeAttribute("saveColor")
-				    }
-				    changeText(target, svgObject)
-    			})
-	    	}	    	
-		}
+    for (let element of elements) {
+    	if(!element.id.includes("Bridge")){
+    		element.addEventListener('click', function(e) {
+    			changeColor(svgObject, e.target)
+			    changeText(svgObject, e.target)
+			})
+    	}	    	
+	}
 }
 
-function changeText(element, svgObject){
-	const text = getText(element.id, svgObject)
+function changeColor(svgObject, element){
+    oldColor = element.getAttribute("saveColor")
+
+    if(!oldColor){
+    	element.setAttribute("saveColor", element.getAttribute("fill"))
+		element.setAttribute("fill", "red")
+    }else{
+    	element.setAttribute("fill", oldColor)
+    	element.removeAttribute("saveColor")
+    }
+}
+
+function changeText(svgObject, element){
+	const text = getText(svgObject, element.id)
 
 	let textContent = element.getAttribute("saveText")
 
@@ -41,26 +43,60 @@ function changeText(element, svgObject){
 
 	let svg   = svgObject.documentElement;
 	let svgNS = svg.namespaceURI;
-	let newText = document.createElementNS(svgNS, "text");
-	newText.setAttributeNS(null,"x", text.getAttribute("x"));
-	newText.setAttributeNS(null,"y", text.getAttribute("y"));
-	newText.setAttributeNS(null,"width", text.getAttribute("width"));
-	newText.setAttributeNS(null,"height", text.getAttribute("height"));
-	newText.setAttributeNS(null,"font-size",text.getAttribute("font-size"));
-	newText.setAttributeNS(null,"font-family",text.getAttribute("font-family"));
-	newText.setAttributeNS(null,"class",text.getAttribute("class"));
-	newText.setAttributeNS(null,"fill",text.getAttribute("fill"));
-	newText.setAttributeNS(null,"style",text.getAttribute("style"));
-	newText.setAttributeNS(null,"id",text.getAttribute("id"));
+	let newText = text.cloneNode(false)
 
-	newText.appendChild(svgObject.createTextNode(textContent));
+	newText.appendChild(svgObject.createTextNode(textContent))
 	svg.removeChild(text)
 	svg.appendChild(newText)
 }
 
-function getText(id, svgObject){
+function getText(svgObject, id){
 	let textId = id.replace('rect', 'text')
 	const text = svgObject.getElementById(textId)
 
 	return text
 }
+
+function makeDraggable(svgObject) {
+	let selectedElement = null
+	let text = null
+	let marginTextX = null
+	let marginTextY = null
+	svgObject.addEventListener('mousedown', startDrag)
+	svgObject.addEventListener('mousemove', drag)
+	svgObject.addEventListener('mouseup', endDrag)
+	svgObject.addEventListener('mouseleave', endDrag)
+
+	function startDrag(evt) {
+	  if (evt.target.classList.contains('draggable')) {
+	    selectedElement = evt.target;
+	    text = getText(svgObject, selectedElement.id)
+	    marginTextX = text.getAttribute("x") - selectedElement.getAttribute("x")
+	    marginTextY = text.getAttribute("y") - selectedElement.getAttribute("y")
+	  }
+	}
+
+	function drag(evt) {
+		if (selectedElement) {
+			evt.preventDefault();
+			let textDragX = evt.clientX + marginTextX
+			let textDragY = evt.clientY + marginTextY
+			let dragX = evt.clientX;
+			let dragY = evt.clientY;
+
+			selectedElement.setAttribute("x", dragX);
+			selectedElement.setAttribute("y", dragY);
+			text.setAttribute("x", textDragX);
+			text.setAttribute("y", textDragY);
+		}
+	}
+
+	function endDrag(evt) {
+		selectedElement = null
+	}
+}
+
+
+
+
+

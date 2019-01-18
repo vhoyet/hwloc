@@ -9,17 +9,31 @@
 	<object id="svg-object" type="image/svg+xml" data="foo.svg">
 	  Your browser does not support SVG
 	</object> 
+	<br>
+	<label><input type='checkbox' id='draggable' onclick='enableDrag()'></input> Draggable items </label>
 </body>
 <footer>
 
 	<script type="text/javascript">
-      	setTimeout(function() {
+		function enableDrag(){
+			let svgObject = document.getElementById('svg-object').contentDocument;
+      		const elements = svgObject.getElementsByTagName('rect')
+    		for (let element of elements) {
+    			element.classList.toggle("draggable")
+    		}
+  		}
+  		
+      	setTimeout(function() {			
+      		window.open("./../../foo.svg");
+      		document.getElementById("draggable").checked = false;
+
 	        let svgObject = document.getElementById('svg-object').contentDocument;
+	        console.log(document.getElementById('svg-object'))
 	        let svgElement = svgObject.getElementById('Machine_0_rect')
-	       	console.log(svgElement)
-	       	if(svgObject.getElementById('Machine_0_rect'))
-				start(svgObject)
-			else{
+
+	       	if(svgObject.getElementById('Machine_0_rect')){
+	       		start(svgObject)
+	       	}else{
 				const h1 = document.createElement('h1')
 				h1.innerHTML = "Your svg file doesn't have the good format to load javascript"
 				document.body.appendChild(h1)
