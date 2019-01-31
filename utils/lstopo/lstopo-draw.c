@@ -1036,6 +1036,8 @@ pci_device_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth
   unsigned gridsize = loutput->gridsize;
   unsigned fontsize = loutput->fontsize;
   unsigned overlaidoffset = 0;
+  float scale_width = atof(getenv("SCALE_WIDTH"));
+  float scale_height = atof(getenv("SCALE_HEIGHT"));
 
   if (lud->pci_collapsed > 1) {
     /* additional depths and height for overlaid boxes */
@@ -1052,8 +1054,8 @@ pci_device_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth
   if (loutput->drawing == LSTOPO_DRAWING_PREPARE) {
     /* compute children size and position, our size, and save it */
     prepare_text(loutput, level);
-    lud->width = gridsize + overlaidoffset;
-    lud->height = gridsize + overlaidoffset;
+    lud->width = ( gridsize + overlaidoffset ) * scale_width;
+    lud->height = ( gridsize + overlaidoffset ) * scale_height;
     if (lud->ntext > 0) {
       lud->width += lud->textwidth + gridsize;
       lud->height += fontsize + gridsize;
@@ -1153,12 +1155,14 @@ cache_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, uns
   struct lstopo_obj_userdata *lud = level->userdata;
   unsigned gridsize = loutput->gridsize;
   unsigned fontsize = loutput->fontsize;
+  float scale_width = atof(getenv("SCALE_WIDTH"));
+  float scale_height = atof(getenv("SCALE_HEIGHT"));
 
   if (loutput->drawing == LSTOPO_DRAWING_PREPARE) {
     /* compute children size and position, our size, and save it */
     prepare_text(loutput, level);
-    lud->width = gridsize;
-    lud->height = gridsize;
+    lud->width = gridsize * scale_width;
+    lud->height = gridsize * scale_height;
     if (lud->ntext > 0) {
       lud->width += lud->textwidth + gridsize;
       lud->height += fontsize + gridsize;
@@ -1179,6 +1183,7 @@ cache_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, uns
     /* totheight also contains children outside of this actual cache box,
      * recompute our height without outside children (just like above)
      */
+    
     myheight = gridsize;
     if (lud->ntext > 0)
       myheight += fontsize + gridsize;
@@ -1206,12 +1211,14 @@ normal_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, un
   unsigned gridsize = loutput->gridsize;
   unsigned fontsize = loutput->fontsize;
   unsigned linespacing = loutput->linespacing;
+  float scale_width = atof(getenv("SCALE_WIDTH"));
+  float scale_height = atof(getenv("SCALE_HEIGHT"));
 
   if (loutput->drawing == LSTOPO_DRAWING_PREPARE) {
     /* compute children size and position, our size, and save it */
     prepare_text(loutput, level);
-    lud->width = gridsize;
-    lud->height = gridsize;
+    lud->width = gridsize * scale_width;
+    lud->height = gridsize * scale_height;
     if (lud->ntext > 0) {
       lud->width += lud->textwidth + gridsize;
       lud->height += fontsize + (fontsize + linespacing) * (lud->ntext - 1) + gridsize;

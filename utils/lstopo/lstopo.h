@@ -6,12 +6,14 @@
  * See COPYING in top-level directory.
  */
 
+
 #ifndef UTILS_LSTOPO_H
 #define UTILS_LSTOPO_H
 
 #include <private/autogen/config.h>
 #include <hwloc.h>
 #include <misc.h>
+#include <stdlib.h>
 
 enum lstopo_drawing_e {
   LSTOPO_DRAWING_PREPARE,
@@ -183,6 +185,7 @@ typedef int output_method (struct lstopo_output *output, const char *filename);
 extern output_method output_console, output_synthetic, output_ascii, output_fig, output_png, output_pdf, output_ps, output_svg, output_cairosvg, output_x11, output_windows, output_xml;
 
 struct draw_methods {
+
   int (*declare_color) (struct lstopo_output *loutput, struct lstopo_color *lcolor);
   /* only called when loutput->draw_methods == LSTOPO_DRAWING_DRAW */
   void (*box) (struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth, unsigned x, unsigned width, unsigned y, unsigned height, hwloc_obj_t level, unsigned id_complement);

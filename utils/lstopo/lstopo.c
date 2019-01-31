@@ -625,6 +625,8 @@ parse_output_format(const char *name, char *callname __hwloc_attribute_unused)
 int
 main (int argc, char *argv[])
 {
+  setenv("SCALE_WIDTH", "1.00", 1);
+  setenv("SCALE_HEIGHT", "1.00", 1); 
   int err;
   hwloc_topology_t topology;
   const char *filename = NULL;
