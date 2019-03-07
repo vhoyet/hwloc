@@ -15,16 +15,31 @@
 
 	<script type="text/javascript">
 		function openFile(event) {
-		    
+		    let image = document.getElementById('img')
+		    image.data = null
 			var input = event.target;
 		  	var TextReader = new FileReader()
-		    TextReader.onload = function(){
+		    TextReader.onload = async function(){
 		    	var parser = new DOMParser()
 				let blob = new Blob([TextReader.result], {type: 'image/svg+xml'})
 				let url = URL.createObjectURL(blob)
-				let image = document.getElementById('img')
-				image.data = url;
-				begin()
+				image.data = await url
+				setTimeout(function(){
+					
+					document.getElementById('drag').style = ''
+		      		document.getElementById("draggable").checked = false
+
+		      		svgObject = document.getElementById('img').contentDocument
+			        let svgElement = svgObject.getElementById('Machine_0_rect')
+
+			       	if(svgObject.getElementById('Machine_0_rect')){
+			       		start(svgObject)
+			       	}else{
+						const h1 = document.createElement('h1')
+						h1.innerHTML = "Your svg file doesn't have the good format to load javascript"
+						document.body.appendChild(h1)
+					}
+				},200)	
 		    }
 		    TextReader.readAsText(input.files[0], "UTF-8")
 		}
@@ -36,25 +51,6 @@
     			element.classList.toggle("draggable")
     		}
   		}
-
-		function begin(){	
-			//set time out so that the svg has time to load
-			setTimeout(function(){
-				document.getElementById('drag').style = ''
-	      		document.getElementById("draggable").checked = false
-
-	      		svgObject = document.getElementById('img').contentDocument
-		        let svgElement = svgObject.getElementById('Machine_0_rect')
-
-		       	if(svgObject.getElementById('Machine_0_rect')){
-		       		start(svgObject)
-		       	}else{
-					const h1 = document.createElement('h1')
-					h1.innerHTML = "Your svg file doesn't have the good format to load javascript"
-					document.body.appendChild(h1)
-				}
-			},200)	
-      	}
 
       	function start(svgObject){
 			makeDraggable(svgObject)
@@ -87,13 +83,16 @@
 		}
 
 		function changeText(svgObject, element){
-			const text = getText(svgObject, element.id)
+			if(element.id == "")
+				return
+			const text = svgObject.getElementById(element.id.replace('rect', 'text'))
 
 			let textContent = element.getAttribute("saveText")
 
 			if(!textContent){
 				element.setAttribute("saveText", text.innerHTML)
-				textContent = element.getAttribute("width") > 90 ? "id : " + text.id : text.id.slice(-0,-5) + ".."
+				textContent = element.id
+				textContent = element.getAttribute("width") > 90 ? "id : " + textContent : textContent.slice(-0,-5) + ".."
 			}else{
 				element.removeAttribute("saveText")
 			}
@@ -105,13 +104,6 @@
 			newText.appendChild(svgObject.createTextNode(textContent))
 			svg.removeChild(text)
 			svg.appendChild(newText)
-		}
-
-		function getText(svgObject, id){
-			let textId = id.replace('rect', 'text')
-			const text = svgObject.getElementById(textId)
-
-			return text
 		}
 
 		function makeDraggable(svgObject) {
