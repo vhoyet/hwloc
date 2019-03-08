@@ -92,7 +92,7 @@
 			if(!textContent){
 				element.setAttribute("saveText", text.innerHTML)
 				textContent = element.id
-				textContent = element.getAttribute("width") > 90 ? "id : " + textContent : textContent.slice(-0,-5) + ".."
+				textContent = "id : " + textContent
 			}else{
 				element.removeAttribute("saveText")
 			}
