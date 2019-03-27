@@ -1,5 +1,5 @@
 /*
- * Copyright © 2010-2018 Inria.  All rights reserved.
+ * Copyright © 2010-2019 Inria.  All rights reserved.
  * Copyright © 2011-2012 Université Bordeaux
  * Copyright © 2011 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
@@ -239,7 +239,7 @@ hwloc_internal_distances__add(hwloc_topology_t topology,
     dist->indexes = malloc(nbobjs * sizeof(*dist->indexes));
     if (!dist->indexes)
       goto err_with_dist;
-    if (dist->type == HWLOC_OBJ_PU || dist->type == HWLOC_OBJ_NUMANODE) {
+    if (HWLOC_DIST_TYPE_USE_OS_INDEX(dist->type)) {
       for(i=0; i<nbobjs; i++)
 	dist->indexes[i] = objs[i]->os_index;
     } else {
@@ -319,7 +319,7 @@ int hwloc_internal_distances_add(hwloc_topology_t topology,
 
     if (topology->grouping_verbose) {
       unsigned i, j;
-      int gp = (objs[0]->type != HWLOC_OBJ_NUMANODE && objs[0]->type != HWLOC_OBJ_PU);
+      int gp = !HWLOC_DIST_TYPE_USE_OS_INDEX(objs[0]->type);
       fprintf(stderr, "Trying to group objects using distance matrix:\n");
       fprintf(stderr, "%s", gp ? "gp_index" : "os_index");
       for(j=0; j<nbobjs; j++)
@@ -480,12 +480,16 @@ hwloc_internal_distances_refresh_one(hwloc_topology_t topology,
     /* TODO use cpuset/nodeset to find pus/numas from the root?
      * faster than traversing the entire level?
      */
-    if (type == HWLOC_OBJ_PU)
-      obj = hwloc_get_pu_obj_by_os_index(topology, (unsigned) indexes[i]);
-    else if (type == HWLOC_OBJ_NUMANODE)
-      obj = hwloc_get_numanode_obj_by_os_index(topology, (unsigned) indexes[i]);
-    else
+    if (HWLOC_DIST_TYPE_USE_OS_INDEX(type)) {
+      if (type == HWLOC_OBJ_PU)
+	obj = hwloc_get_pu_obj_by_os_index(topology, (unsigned) indexes[i]);
+      else if (type == HWLOC_OBJ_NUMANODE)
+	obj = hwloc_get_numanode_obj_by_os_index(topology, (unsigned) indexes[i]);
+      else
+	abort();
+    } else {
       obj = hwloc_find_obj_by_type_and_gp_index(topology, type, indexes[i]);
+    }
     objs[i] = obj;
     if (!obj)
       disappeared++;
@@ -835,10 +839,14 @@ hwloc__groups_by_distances(struct hwloc_topology *topology,
 			   float *accuracies,
 			   int needcheck)
 {
-  HWLOC_VLA(unsigned, groupids, nbobjs);
+  unsigned *groupids;
   unsigned nbgroups = 0;
   unsigned i,j;
   int verbose = topology->grouping_verbose;
+  hwloc_obj_t *groupobjs;
+  unsigned * groupsizes;
+  uint64_t *groupvalues;
+  unsigned failed = 0;
 
   if (nbobjs <= 2)
       return;
@@ -846,6 +854,10 @@ hwloc__groups_by_distances(struct hwloc_topology *topology,
   if (!(kind & HWLOC_DISTANCES_KIND_MEANS_LATENCY))
     /* don't know use to use those for grouping */
     /* TODO hwloc__find_groups_by_max_distance() for bandwidth */
+    return;
+
+  groupids = malloc(nbobjs * sizeof(*groupids));
+  if (!groupids)
     return;
 
   for(i=0; i<nbaccuracies; i++) {
@@ -859,13 +871,13 @@ hwloc__groups_by_distances(struct hwloc_topology *topology,
       break;
   }
   if (!nbgroups)
-    return;
+    goto out_with_groupids;
 
-  {
-      HWLOC_VLA(hwloc_obj_t, groupobjs, nbgroups);
-      HWLOC_VLA(unsigned, groupsizes, nbgroups);
-      HWLOC_VLA(uint64_t, groupvalues, nbgroups*nbgroups);
-      unsigned failed = 0;
+  groupobjs = malloc(nbgroups * sizeof(*groupobjs));
+  groupsizes = malloc(nbgroups * sizeof(*groupsizes));
+  groupvalues = malloc(nbgroups * nbgroups * sizeof(*groupvalues));
+  if (!groupobjs || !groupsizes || !groupvalues)
+    goto out_with_groups;
 
       /* create new Group objects and record their size */
       memset(&(groupsizes[0]), 0, sizeof(groupsizes[0]) * nbgroups);
@@ -896,7 +908,7 @@ hwloc__groups_by_distances(struct hwloc_topology *topology,
 
       if (failed)
 	/* don't try to group above if we got a NULL group here, just keep this incomplete level */
-	return;
+	goto out_with_groups;
 
       /* factorize values */
       memset(&(groupvalues[0]), 0, sizeof(groupvalues[0]) * nbgroups * nbgroups);
@@ -928,5 +940,11 @@ hwloc__groups_by_distances(struct hwloc_topology *topology,
 #endif
 
       hwloc__groups_by_distances(topology, nbgroups, groupobjs, groupvalues, kind, nbaccuracies, accuracies, 0 /* no need to check generated matrix */);
-  }
+
+ out_with_groups:
+  free(groupobjs);
+  free(groupsizes);
+  free(groupvalues);
+ out_with_groupids:
+  free(groupids);
 }

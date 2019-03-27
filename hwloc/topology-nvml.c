@@ -1,5 +1,5 @@
 /*
- * Copyright © 2012-2017 Inria.  All rights reserved.
+ * Copyright © 2012-2019 Inria.  All rights reserved.
  * See COPYING in top-level directory.
  */
 
@@ -14,7 +14,7 @@
 #include <nvml.h>
 
 static int
-hwloc_nvml_discover(struct hwloc_backend *backend)
+hwloc_nvml_discover(struct hwloc_backend *backend, struct hwloc_disc_status *dstatus __hwloc_attribute_unused)
 {
   struct hwloc_topology *topology = backend->topology;
   enum hwloc_type_filter_e filter;
@@ -69,9 +69,7 @@ hwloc_nvml_discover(struct hwloc_backend *backend)
 
     parent = NULL;
     if (NVML_SUCCESS == nvmlDeviceGetPciInfo(device, &pci)) {
-      parent = hwloc_pcidisc_find_by_busid(topology, pci.domain, pci.bus, pci.device, 0);
-      if (!parent)
-	parent = hwloc_pcidisc_find_busid_parent(topology, pci.domain, pci.bus, pci.device, 0);
+      parent = hwloc_pci_find_parent_by_busid(topology, pci.domain, pci.bus, pci.device, 0);
 #if HAVE_DECL_NVMLDEVICEGETMAXPCIELINKGENERATION
       if (parent && parent->type == HWLOC_OBJ_PCI_DEVICE) {
 	unsigned maxwidth = 0, maxgen = 0;

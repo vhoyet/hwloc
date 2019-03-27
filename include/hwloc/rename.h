@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009-2011 Cisco Systems, Inc.  All rights reserved.
- * Copyright © 2010-2018 Inria.  All rights reserved.
+ * Copyright © 2010-2019 Inria.  All rights reserved.
  * See COPYING in top-level directory.
  */
 
@@ -524,6 +524,11 @@ extern "C" {
 #define hwloc_disc_component_type_t HWLOC_NAME(disc_component_type_t)
 #define hwloc_disc_component HWLOC_NAME(disc_component)
 
+#define hwloc_disc_status_flag_e HWLOC_NAME(disc_status_flag_e)
+#define HWLOC_DISC_STATUS_FLAG_PCI_DONE HWLOC_NAME_CAPS(DISC_STATUS_FLAG_PCI_DONE)
+#define HWLOC_DISC_STATUS_FLAG_GOT_ALLOWED_RESOURCES HWLOC_NAME_CAPS(DISC_STATUS_FLAG_GOT_ALLOWED_RESOURCES)
+#define hwloc_disc_status HWLOC_NAME(disc_status)
+
 #define hwloc_backend HWLOC_NAME(backend)
 
 #define hwloc_backend_alloc HWLOC_NAME(backend_alloc)
@@ -555,12 +560,11 @@ extern "C" {
 #define hwloc_pcidisc_find_cap HWLOC_NAME(pcidisc_find_cap)
 #define hwloc_pcidisc_find_linkspeed HWLOC_NAME(pcidisc_find_linkspeed)
 #define hwloc_pcidisc_check_bridge_type HWLOC_NAME(pcidisc_check_bridge_type)
-#define hwloc_pcidisc_setup_bridge_attr HWLOC_NAME(pcidisc_setup_bridge_attr)
+#define hwloc_pcidisc_find_bridge_buses HWLOC_NAME(pcidisc_find_bridge_buses)
 #define hwloc_pcidisc_tree_insert_by_busid HWLOC_NAME(pcidisc_tree_insert_by_busid)
 #define hwloc_pcidisc_tree_attach HWLOC_NAME(pcidisc_tree_attach)
 
-#define hwloc_pcidisc_find_by_busid HWLOC_NAME(pcidisc_find_by_busid)
-#define hwloc_pcidisc_find_busid_parent HWLOC_NAME(pcidisc_find_busid_parent)
+#define hwloc_pci_find_parent_by_busid HWLOC_NAME(pcidisc_find_busid_parent)
 
 /* hwloc/deprecated.h */
 
@@ -707,6 +711,7 @@ extern "C" {
 #define hwloc_pci_discovery_init HWLOC_NAME(pci_discovery_init)
 #define hwloc_pci_discovery_prepare HWLOC_NAME(pci_discovery_prepare)
 #define hwloc_pci_discovery_exit HWLOC_NAME(pci_discovery_exit)
+#define hwloc_pci_find_by_busid HWLOC_NAME(pcidisc_find_by_busid)
 #define hwloc_find_insert_io_parent_by_complete_cpuset HWLOC_NAME(hwloc_find_insert_io_parent_by_complete_cpuset)
 
 #define hwloc__add_info HWLOC_NAME(_add_info)

@@ -1,6 +1,6 @@
 /*
  * Copyright © 2012-2013 Blue Brain Project, BBP/EPFL. All rights reserved.
- * Copyright © 2012-2017 Inria.  All rights reserved.
+ * Copyright © 2012-2019 Inria.  All rights reserved.
  * See COPYING in top-level directory.
  */
 
@@ -22,7 +22,7 @@
 #define HWLOC_GL_SCREEN_MAX 10
 
 static int
-hwloc_gl_discover(struct hwloc_backend *backend)
+hwloc_gl_discover(struct hwloc_backend *backend, struct hwloc_disc_status *dstatus __hwloc_attribute_unused)
 {
   struct hwloc_topology *topology = backend->topology;
   enum hwloc_type_filter_e filter;
@@ -35,7 +35,7 @@ hwloc_gl_discover(struct hwloc_backend *backend)
 
   for (i = 0; i < HWLOC_GL_SERVER_MAX; ++i) {
     Display* display;
-    char displayName[10];
+    char displayName[12];
     int opcode, event, error;
     unsigned j;
 
@@ -119,9 +119,7 @@ hwloc_gl_discover(struct hwloc_backend *backend)
       if (productname)
 	hwloc_obj_add_info(osdev, "GPUModel", productname);
 
-      parent = hwloc_pcidisc_find_by_busid(topology, (unsigned)nv_ctrl_pci_domain, (unsigned)nv_ctrl_pci_bus, (unsigned)nv_ctrl_pci_device, (unsigned)nv_ctrl_pci_func);
-      if (!parent)
-	parent = hwloc_pcidisc_find_busid_parent(topology, (unsigned)nv_ctrl_pci_domain, (unsigned)nv_ctrl_pci_bus, (unsigned)nv_ctrl_pci_device, (unsigned)nv_ctrl_pci_func);
+      parent = hwloc_pci_find_parent_by_busid(topology, (unsigned)nv_ctrl_pci_domain, (unsigned)nv_ctrl_pci_bus, (unsigned)nv_ctrl_pci_device, (unsigned)nv_ctrl_pci_func);
       if (!parent)
 	parent = hwloc_get_root_obj(topology);
 

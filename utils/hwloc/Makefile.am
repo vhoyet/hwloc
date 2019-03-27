@@ -1,4 +1,4 @@
-# Copyright © 2009-2018 Inria.  All rights reserved.
+# Copyright © 2009-2019 Inria.  All rights reserved.
 # Copyright © 2009-2012, 2014, 2016 Université Bordeaux
 # Copyright © 2009-2014 Cisco Systems, Inc.  All rights reserved.
 #
@@ -20,7 +20,12 @@ EXTRA_DIST = \
         test-hwloc-distrib.output \
         test-hwloc-info.output
 
-noinst_HEADERS = misc.h
+noinst_HEADERS = misc.h common-ps.h
+
+# convenience library used by both hwloc-ps and lstopo
+noinst_LTLIBRARIES = libutils_common.la
+libutils_common_la_SOURCES = common-ps.c
+libutils_common_la_LIBADD = $(LDADD)
 
 bin_PROGRAMS = \
         hwloc-annotate \
@@ -56,6 +61,9 @@ hwloc_dump_hwdata_CPPFLAGS = $(AM_CPPFLAGS) -DRUNSTATEDIR=\"$(HWLOC_runstatedir)
 hwloc_calc_SOURCES = \
         hwloc-calc.h \
         hwloc-calc.c
+
+hwloc_ps_SOURCES = hwloc-ps.c
+hwloc_ps_LDADD = $(LDADD) libutils_common.la
 
 bin_SCRIPTS = hwloc-compress-dir
 if HWLOC_HAVE_LINUX

@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009 CNRS
- * Copyright © 2009-2018 Inria.  All rights reserved.
+ * Copyright © 2009-2019 Inria.  All rights reserved.
  * Copyright © 2009-2012 Université Bordeaux
  * Copyright © 2009-2011 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
@@ -1200,8 +1200,13 @@ hwloc__object_cpusets_compare_first(hwloc_obj_t obj1, hwloc_obj_t obj2)
 {
   if (obj1->complete_cpuset && obj2->complete_cpuset)
     return hwloc_bitmap_compare_first(obj1->complete_cpuset, obj2->complete_cpuset);
-  else
+  else if (obj1->cpuset && obj2->cpuset)
     return hwloc_bitmap_compare_first(obj1->cpuset, obj2->cpuset);
+  else if (obj1->complete_nodeset && obj2->complete_nodeset)
+    return hwloc_bitmap_compare_first(obj1->complete_nodeset, obj2->complete_nodeset);
+  else if (obj1->nodeset && obj2->nodeset)
+    return hwloc_bitmap_compare_first(obj1->nodeset, obj2->nodeset);
+  return 0;
 }
 
 /* format the obj info to print in error messages */
@@ -1725,6 +1730,7 @@ hwloc_obj_t
 hwloc_topology_insert_group_object(struct hwloc_topology *topology, hwloc_obj_t obj)
 {
   hwloc_obj_t res, root;
+  int cmp;
 
   if (!topology->is_loaded) {
     /* this could actually work, we would just need to disable connect_children/levels below */
@@ -1762,7 +1768,14 @@ hwloc_topology_insert_group_object(struct hwloc_topology *topology, hwloc_obj_t 
     return NULL;
   }
 
-  res = hwloc__insert_object_by_cpuset(topology, NULL, obj, NULL /* do not show errors on stdout */);
+  cmp = hwloc_obj_cmp_sets(obj, root);
+  if (cmp == HWLOC_OBJ_INCLUDED) {
+    res = hwloc__insert_object_by_cpuset(topology, NULL, obj, NULL /* do not show errors on stdout */);
+  } else {
+    /* just merge root */
+    res = root;
+  }
+
   if (!res)
     return NULL;
   if (res != obj)
@@ -2012,9 +2025,7 @@ int
 hwloc_obj_add_children_sets(hwloc_obj_t obj)
 {
   hwloc_obj_t child;
-  assert(obj->cpuset != NULL);
   for_each_child(child, obj) {
-    assert(child->cpuset != NULL);
     hwloc_obj_add_other_obj_sets(obj, child);
   }
   /* No need to look at Misc children, they contain no PU. */
@@ -2414,6 +2425,7 @@ hwloc_propagate_symmetric_subtree(hwloc_topology_t topology, hwloc_obj_t root)
 {
   hwloc_obj_t child;
   unsigned arity = root->arity;
+  hwloc_obj_t *array;
   int ok;
 
   /* assume we're not symmetric by default */
@@ -2445,8 +2457,9 @@ hwloc_propagate_symmetric_subtree(hwloc_topology_t topology, hwloc_obj_t root)
   /* now check that children subtrees are identical.
    * just walk down the first child in each tree and compare their depth and arities
    */
-{
-  HWLOC_VLA(hwloc_obj_t, array, arity);
+  array = malloc(arity * sizeof(*array));
+  if (!array)
+    return;
   memcpy(array, root->children, arity * sizeof(*array));
   while (1) {
     unsigned i;
@@ -2454,8 +2467,9 @@ hwloc_propagate_symmetric_subtree(hwloc_topology_t topology, hwloc_obj_t root)
     for(i=1; i<arity; i++)
       if (array[i]->depth != array[0]->depth
 	  || array[i]->arity != array[0]->arity) {
-      return;
-    }
+	free(array);
+	return;
+      }
     if (!array[0]->arity)
       /* no more children level, we're ok */
       break;
@@ -2463,7 +2477,7 @@ hwloc_propagate_symmetric_subtree(hwloc_topology_t topology, hwloc_obj_t root)
     for(i=0; i<arity; i++)
       array[i] = array[i]->first_child;
   }
-}
+  free(array);
 
   /* everything went fine, we're symmetric */
  good:
@@ -2950,6 +2964,15 @@ static int
 hwloc_discover(struct hwloc_topology *topology)
 {
   struct hwloc_backend *backend;
+  struct hwloc_disc_status dstatus;
+  const char *env;
+
+  dstatus.flags = 0; /* did nothing yet */
+
+  env = getenv("HWLOC_ALLOW");
+  if (env && !strcmp(env, "all"))
+    /* don't retrieve the sets of allowed resources */
+    dstatus.flags |= HWLOC_DISC_STATUS_FLAG_GOT_ALLOWED_RESOURCES;
 
   topology->modified = 0; /* no need to reconnect yet */
 
@@ -3002,7 +3025,7 @@ hwloc_discover(struct hwloc_topology *topology)
       goto next_cpubackend;
     if (!backend->discover)
       goto next_cpubackend;
-    backend->discover(backend);
+    backend->discover(backend, &dstatus);
     hwloc_debug_print_objects(0, topology->levels[0][0]);
 
 next_cpubackend:
@@ -3018,11 +3041,17 @@ next_cpubackend:
     return -1;
   }
 
-  if (topology->binding_hooks.get_allowed_resources && topology->is_thissystem) {
-    const char *env = getenv("HWLOC_THISSYSTEM_ALLOWED_RESOURCES");
-    if ((env && atoi(env))
-	|| (topology->flags & HWLOC_TOPOLOGY_FLAG_THISSYSTEM_ALLOWED_RESOURCES))
-      topology->binding_hooks.get_allowed_resources(topology);
+  if (/* check if getting the sets of locally allowed resources is possible */
+      topology->binding_hooks.get_allowed_resources
+      && topology->is_thissystem
+      /* check whether it has been done already */
+      && !(dstatus.flags & HWLOC_DISC_STATUS_FLAG_GOT_ALLOWED_RESOURCES)
+      /* check whether it was explicitly requested */
+      && ((topology->flags & HWLOC_TOPOLOGY_FLAG_THISSYSTEM_ALLOWED_RESOURCES) != 0
+	  || ((env = getenv("HWLOC_THISSYSTEM_ALLOWED_RESOURCES")) != NULL && atoi(env)))) {
+    /* OK, get the sets of locally allowed resources */
+    topology->binding_hooks.get_allowed_resources(topology);
+    dstatus.flags |= HWLOC_DISC_STATUS_FLAG_GOT_ALLOWED_RESOURCES;
   }
 
   /* If there's no NUMA node, add one with all the memory.
@@ -3113,7 +3142,7 @@ next_cpubackend:
       goto next_noncpubackend;
     if (!backend->discover)
       goto next_noncpubackend;
-    backend->discover(backend);
+    backend->discover(backend, &dstatus);
     hwloc_debug_print_objects(0, topology->levels[0][0]);
 
 next_noncpubackend:
@@ -3212,7 +3241,6 @@ hwloc_topology_setup_defaults(struct hwloc_topology *topology)
   /* Allowed stuff */
   topology->allowed_cpuset = NULL;
   topology->allowed_nodeset = NULL;
-  topology->got_allowed_resources = 0;
 
   /* NULLify other special levels */
   memset(&topology->slevels, 0, sizeof(topology->slevels));
@@ -3546,7 +3574,6 @@ int
 hwloc_topology_load (struct hwloc_topology *topology)
 {
   int err;
-  const char *env;
 
   if (topology->is_loaded) {
     errno = EBUSY;
@@ -3600,10 +3627,6 @@ hwloc_topology_load (struct hwloc_topology *topology)
 					  xmlpath_env, NULL, NULL);
     }
   }
-
-  env = getenv("HWLOC_ALLOW");
-  if (env && !strcmp(env, "all"))
-    topology->got_allowed_resources = 1;
 
   /* instantiate all possible other backends now */
   hwloc_disc_components_enable_others(topology);
@@ -3969,7 +3992,6 @@ hwloc_topology_allow(struct hwloc_topology *topology,
       errno = ENOSYS;
       goto error;
     }
-    topology->got_allowed_resources = 0; /* make sure we'll reread current resources */
     topology->binding_hooks.get_allowed_resources(topology);
     break;
   }
@@ -4554,12 +4576,42 @@ hwloc_topology_check(struct hwloc_topology *topology)
     assert(hwloc_get_depth_type(topology, j) != HWLOC_OBJ_MACHINE);
   }
 
-  /* check that we have a NUMA level */
-  assert(hwloc_get_type_depth(topology, HWLOC_OBJ_NUMANODE) == HWLOC_TYPE_DEPTH_NUMANODE);
-  assert(hwloc_get_depth_type(topology, HWLOC_TYPE_DEPTH_NUMANODE) == HWLOC_OBJ_NUMANODE);
-  /* check that normal levels are not NUMA */
-  for(j=0; j<depth; j++)
-    assert(hwloc_get_depth_type(topology, j) != HWLOC_OBJ_NUMANODE);
+  /* check normal levels */
+  for(j=0; j<depth; j++) {
+    int d;
+    type = hwloc_get_depth_type(topology, j);
+    assert(type != HWLOC_OBJ_NUMANODE);
+    assert(type != HWLOC_OBJ_PCI_DEVICE);
+    assert(type != HWLOC_OBJ_BRIDGE);
+    assert(type != HWLOC_OBJ_OS_DEVICE);
+    assert(type != HWLOC_OBJ_MISC);
+    d = hwloc_get_type_depth(topology, type);
+    assert(d == j || d == HWLOC_TYPE_DEPTH_MULTIPLE);
+  }
+
+  /* check type depths, even if there's no such level */
+  for(type=HWLOC_OBJ_TYPE_MIN; type<HWLOC_OBJ_TYPE_MAX; type++) {
+    int d;
+    d = hwloc_get_type_depth(topology, type);
+    if (type == HWLOC_OBJ_NUMANODE) {
+      assert(d == HWLOC_TYPE_DEPTH_NUMANODE);
+      assert(hwloc_get_depth_type(topology, d) == HWLOC_OBJ_NUMANODE);
+    } else if (type == HWLOC_OBJ_BRIDGE) {
+      assert(d == HWLOC_TYPE_DEPTH_BRIDGE);
+      assert(hwloc_get_depth_type(topology, d) == HWLOC_OBJ_BRIDGE);
+    } else if (type == HWLOC_OBJ_PCI_DEVICE) {
+      assert(d == HWLOC_TYPE_DEPTH_PCI_DEVICE);
+      assert(hwloc_get_depth_type(topology, d) == HWLOC_OBJ_PCI_DEVICE);
+    } else if (type == HWLOC_OBJ_OS_DEVICE) {
+      assert(d == HWLOC_TYPE_DEPTH_OS_DEVICE);
+      assert(hwloc_get_depth_type(topology, d) == HWLOC_OBJ_OS_DEVICE);
+    } else if (type == HWLOC_OBJ_MISC) {
+      assert(d == HWLOC_TYPE_DEPTH_MISC);
+      assert(hwloc_get_depth_type(topology, d) == HWLOC_OBJ_MISC);
+    } else {
+      assert(d >=0 || d == HWLOC_TYPE_DEPTH_UNKNOWN || d == HWLOC_TYPE_DEPTH_MULTIPLE);
+    }
+  }
 
   /* top-level specific checks */
   assert(hwloc_get_nbobjs_by_depth(topology, 0) == 1);

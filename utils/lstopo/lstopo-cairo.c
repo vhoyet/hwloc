@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009 CNRS
- * Copyright © 2009-2018 Inria.  All rights reserved.
+ * Copyright © 2009-2019 Inria.  All rights reserved.
  * Copyright © 2009-2010, 2014, 2017 Université Bordeaux
  * Copyright © 2009-2011 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
@@ -60,7 +60,7 @@ struct lstopo_cairo_output {
 
 /* Cairo methods */
 static void
-topo_cairo_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned width, unsigned y, unsigned height)
+topo_cairo_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned width, unsigned y, unsigned height, hwloc_obj_t obj __hwloc_attribute_unused, unsigned box_id __hwloc_attribute_unused)
 {
   struct lstopo_cairo_output *coutput = loutput->backend_data;
   cairo_t *c = coutput->context;
@@ -77,7 +77,7 @@ topo_cairo_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor,
 }
 
 static void
-topo_cairo_line(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x1, unsigned y1, unsigned x2, unsigned y2)
+topo_cairo_line(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x1, unsigned y1, unsigned x2, unsigned y2, hwloc_obj_t obj __hwloc_attribute_unused, unsigned line_id __hwloc_attribute_unused)
 {
   struct lstopo_cairo_output *coutput = loutput->backend_data;
   cairo_t *c = coutput->context;
@@ -91,7 +91,7 @@ topo_cairo_line(struct lstopo_output *loutput, const struct lstopo_color *lcolor
 }
 
 static void
-topo_cairo_text(struct lstopo_output *loutput, const struct lstopo_color *lcolor, int fontsize, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned y, const char *text)
+topo_cairo_text(struct lstopo_output *loutput, const struct lstopo_color *lcolor, int fontsize, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned y, const char *text, hwloc_obj_t obj __hwloc_attribute_unused, unsigned text_id __hwloc_attribute_unused)
 {
   struct lstopo_cairo_output *coutput = loutput->backend_data;
   cairo_t *c = coutput->context;
@@ -330,23 +330,7 @@ output_x11(struct lstopo_output *loutput, const char *dummy __hwloc_attribute_un
 
   XMapWindow(dpy, top);
 
-  printf("\n");
-  printf("Keyboard shortcuts:\n");
-  printf(" Zoom-in or out ...................... + -\n");
-  printf(" Try to fit scale to window .......... f F\n");
-  printf(" Reset scale to default .............. 1\n");
-  printf(" Scroll vertically ................... Up Down PageUp PageDown\n");
-  printf(" Scroll horizontally ................. Left Right Ctrl+PageUp/Down\n");
-  printf(" Scroll to the top-left corner ....... Home\n");
-  printf(" Scroll to the bottom-right corner ... End\n");
-  printf(" Exit ................................ q Q Esc\n");
-  printf("Configuration tweaks:\n");
-  printf(" Toggle color for disallowed objects . d\n");
-  printf(" Toggle color for binding objects .... b\n");
-  printf(" Show/Hide Attributes/Indexes/Text ... A/I/T\n");
-  printf(" Show Physical/Logical/Both indexes .. P/L/B\n");
-  printf(" Command-line options for tweaks ..... c\n");
-  printf("\n\n");
+  lstopo_show_interactive_help();
 
   /* ready */
   declare_colors(loutput);
@@ -489,56 +473,72 @@ output_x11(struct lstopo_output *loutput, const char *dummy __hwloc_attribute_un
 	  disp->scale = 1.0f;
 	  move_x11(disp);
 	  break;
-	case XK_A: {
+	case XK_h:
+	case XK_H:
+	  lstopo_show_interactive_help();
+	  break;
+	case XK_a: {
 	  int v = !loutput->show_attrs[0]; /* if show_attrs[] contains different values, assume it's all like the first type */
 	  for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
 	    loutput->show_attrs[i] = v;
+	  printf("%s object attributes\n", v ? "enabled" : "disabled");
 	  disp->needs_redraw = 1;
 	  move_x11(disp);
 	  break;
 	}
-	case XK_I: {
-	  int v = !loutput->show_indexes[0]; /* if show_indexes[] contains different values, assume it's all like the first type */
-	  for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
-	    loutput->show_indexes[i] = v;
-	  disp->needs_redraw = 1;
-	  move_x11(disp);
-	  break;
-	}
-	case XK_T: {
+	case XK_t: {
 	  int v = !loutput->show_text[0]; /* if show_text[] contains different values, assume it's all like the first type */
 	  for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
 	    loutput->show_text[i] = v;
+	  printf("%s object text\n", v ? "enabled" : "disabled");
 	  disp->needs_redraw = 1;
 	  move_x11(disp);
 	  break;
 	}
-	case XK_L:
-	  loutput->index_type = LSTOPO_INDEX_TYPE_LOGICAL;
-	  disp->needs_redraw = 1;
-	  move_x11(disp);
-	  break;
-	case XK_P:
-	  loutput->index_type = LSTOPO_INDEX_TYPE_PHYSICAL;
-	  disp->needs_redraw = 1;
-	  move_x11(disp);
-	  break;
-	case XK_B:
-	  loutput->index_type = LSTOPO_INDEX_TYPE_DEFAULT;
+	case XK_i:
+	  if (loutput->index_type == LSTOPO_INDEX_TYPE_DEFAULT) {
+	    loutput->index_type = LSTOPO_INDEX_TYPE_PHYSICAL;
+	    printf("switched to physical indexes\n");
+	  } else if (loutput->index_type == LSTOPO_INDEX_TYPE_PHYSICAL) {
+	    loutput->index_type = LSTOPO_INDEX_TYPE_LOGICAL;
+	    printf("switched to logical indexes\n");
+	  } else if (loutput->index_type == LSTOPO_INDEX_TYPE_LOGICAL) {
+	    loutput->index_type = LSTOPO_INDEX_TYPE_NONE;
+	    printf("switched to no indexes\n");
+	  } else if (loutput->index_type == LSTOPO_INDEX_TYPE_NONE) {
+	    loutput->index_type = LSTOPO_INDEX_TYPE_DEFAULT;
+	    printf("switched to default indexes\n");
+	  } else {
+	    abort();
+	  }
 	  disp->needs_redraw = 1;
 	  move_x11(disp);
 	  break;
 	case XK_b:
 	  loutput->show_binding ^= 1;
+	  printf("%s coloring of binding resources\n", loutput->show_binding ? "enabled" : "disabled");
 	  disp->needs_redraw = 1;
 	  move_x11(disp);
 	  break;
 	case XK_d:
 	  loutput->show_disallowed ^= 1;
+	  printf("%s coloring of disallowed resources\n", loutput->show_disallowed ? "enabled" : "disabled");
 	  disp->needs_redraw = 1;
 	  move_x11(disp);
 	  break;
 	case XK_c:
+	  loutput->collapse ^= 1;
+	  printf("%s collapsing of identical PCI devices\n", loutput->collapse ? "enabled" : "disabled");
+	  disp->needs_redraw = 1;
+	  move_x11(disp);
+	  break;
+	case XK_l:
+	  loutput->legend ^= 1;
+	  printf("%s legend\n", loutput->legend ? "enabled" : "disabled");
+	  disp->needs_redraw = 1;
+	  move_x11(disp);
+	  break;
+	case XK_E:
 	  lstopo_show_interactive_cli_options(loutput);
 	  break;
 	}
@@ -751,7 +751,7 @@ static struct draw_methods svg_draw_methods = {
 };
 
 int
-output_svg(struct lstopo_output *loutput, const char *filename)
+output_cairosvg(struct lstopo_output *loutput, const char *filename)
 {
   struct lstopo_cairo_output coutput;
   FILE *output;

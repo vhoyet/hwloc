@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009 CNRS
- * Copyright © 2009-2018 Inria.  All rights reserved.
+ * Copyright © 2009-2019 Inria.  All rights reserved.
  * Copyright © 2009-2011 Université Bordeaux
  * Copyright © 2009-2018 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
@@ -1600,7 +1600,7 @@ hwloc_convert_from_v1dist_floats(hwloc_topology_t topology, unsigned nbobjs, flo
 
 /* this canNOT be the first XML call */
 static int
-hwloc_look_xml(struct hwloc_backend *backend)
+hwloc_look_xml(struct hwloc_backend *backend, struct hwloc_disc_status *dstatus __hwloc_attribute_unused)
 {
   struct hwloc_topology *topology = backend->topology;
   struct hwloc_xml_backend_data_s *data = backend->private_data;
@@ -2121,14 +2121,20 @@ hwloc__xml_export_object_contents (hwloc__xml_export_state_t state, hwloc_topolo
     for(dist = topology->first_dist; dist; dist = dist->next) {
       struct hwloc__xml_export_state_s childstate;
       unsigned nbobjs = dist->nbobjs;
+      unsigned *logical_to_v2array;
       int depth;
 
       if (nbobjs != (unsigned) hwloc_get_nbobjs_by_type(topology, dist->type))
 	continue;
       if (!(dist->kind & HWLOC_DISTANCES_KIND_MEANS_LATENCY))
 	continue;
-     {
-      HWLOC_VLA(unsigned, logical_to_v2array, nbobjs);
+
+      logical_to_v2array = malloc(nbobjs * sizeof(*logical_to_v2array));
+      if (!logical_to_v2array) {
+	fprintf(stderr, "xml/export/v1: failed to allocated logical_to_v2array\n");
+	continue;
+      }
+
       for(i=0; i<nbobjs; i++)
 	logical_to_v2array[dist->objs[i]->logical_index] = i;
 
@@ -2179,7 +2185,7 @@ hwloc__xml_export_object_contents (hwloc__xml_export_state_t state, hwloc_topolo
 	}
       }
       childstate.end_object(&childstate, "distances");
-     }
+      free(logical_to_v2array);
     }
   }
 
@@ -2333,7 +2339,7 @@ hwloc__xml_v2export_distances(hwloc__xml_export_state_t parentstate, hwloc_topol
     state.new_prop(&state, "kind", tmp);
 
     state.new_prop(&state, "indexing",
-		   (dist->type == HWLOC_OBJ_NUMANODE || dist->type == HWLOC_OBJ_PU) ? "os" : "gp");
+		   HWLOC_DIST_TYPE_USE_OS_INDEX(dist->type) ? "os" : "gp");
     /* TODO don't hardwire 10 below. either snprintf the max to guess it, or just append until the end of the buffer */
     EXPORT_ARRAY(&state, unsigned long long, nbobjs, dist->indexes, "indexes", "%llu", 10);
     EXPORT_ARRAY(&state, unsigned long long, nbobjs*nbobjs, dist->values, "u64values", "%llu", 10);
@@ -2344,10 +2350,42 @@ hwloc__xml_v2export_distances(hwloc__xml_export_state_t parentstate, hwloc_topol
 void
 hwloc__xml_export_topology(hwloc__xml_export_state_t state, hwloc_topology_t topology, unsigned long flags)
 {
+  hwloc_obj_t root = hwloc_get_root_obj(topology);
+
   if (flags & HWLOC_TOPOLOGY_EXPORT_XML_FLAG_V1) {
-    hwloc__xml_v1export_object (state, topology, hwloc_get_root_obj(topology), flags);
+    if (root->memory_first_child) {
+      /* we don't use hwloc__xml_v1export_object_with_memory() because we want/can keep root above the numa node */
+      struct hwloc__xml_export_state_s rstate, mstate;
+      hwloc_obj_t child;
+      /* export the root */
+      state->new_child(state, &rstate, "object");
+      hwloc__xml_export_object_contents (&rstate, topology, root, flags);
+      /* export first memory child */
+      child = root->memory_first_child;
+      assert(child->type == HWLOC_OBJ_NUMANODE);
+      rstate.new_child(&rstate, &mstate, "object");
+      hwloc__xml_export_object_contents (&mstate, topology, child, flags);
+      /* then its normal/io/misc children */
+      for_each_child(child, root)
+	hwloc__xml_v1export_object (&mstate, topology, child, flags);
+      for_each_io_child(child, root)
+	hwloc__xml_v1export_object (&mstate, topology, child, flags);
+      for_each_misc_child(child, root)
+	hwloc__xml_v1export_object (&mstate, topology, child, flags);
+      /* close first memory child */
+      mstate.end_object(&mstate, "object");
+      /* now other memory children */
+      for_each_memory_child(child, root)
+	if (child->sibling_rank > 0)
+	  hwloc__xml_v1export_object (&rstate, topology, child, flags);
+      /* close the root */
+      rstate.end_object(&rstate, "object");
+    } else {
+      hwloc__xml_v1export_object(state, topology, root, flags);
+    }
+
   } else {
-    hwloc__xml_v2export_object (state, topology, hwloc_get_root_obj(topology), flags);
+    hwloc__xml_v2export_object (state, topology, root, flags);
     hwloc__xml_v2export_distances (state, topology);
   }
 }

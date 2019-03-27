@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009      CNRS
- * Copyright © 2009-2018 Inria.  All rights reserved.
+ * Copyright © 2009-2019 Inria.  All rights reserved.
  * Copyright © 2009-2012 Université Bordeaux
  * Copyright © 2009-2011 Cisco Systems, Inc.  All rights reserved.
  *
@@ -130,7 +130,10 @@ struct hwloc_topology {
     hwloc_obj_type_t type;
     /* add union hwloc_obj_attr_u if we ever support groups */
     unsigned nbobjs;
-    uint64_t *indexes; /* array of OS or GP indexes before we can convert them into objs. */
+    uint64_t *indexes; /* array of OS or GP indexes before we can convert them into objs.
+			* OS indexes for distances covering only PUs or only NUMAnodes.
+			*/
+#define HWLOC_DIST_TYPE_USE_OS_INDEX(_type) ((_type) == HWLOC_OBJ_PU || (_type == HWLOC_OBJ_NUMANODE))
     uint64_t *values; /* distance matrices, ordered according to the above indexes/objs array.
 		       * distance from i to j is stored in slot i*nbnodes+j.
 		       */
@@ -190,9 +193,6 @@ struct hwloc_topology {
     struct hwloc_disc_component *component;
   } *blacklisted_components;
 
-  /* avoid multiple calls to the get_allowed_resources hook during discovery. */
-  int got_allowed_resources;
-
   /* FIXME: keep until topo destroy and reuse for finding specific buses */
   struct hwloc_pci_locality_s {
     unsigned domain;
@@ -226,6 +226,11 @@ extern struct hwloc_obj * hwloc__attach_memory_object(struct hwloc_topology *top
 extern void hwloc_pci_discovery_init(struct hwloc_topology *topology);
 extern void hwloc_pci_discovery_prepare(struct hwloc_topology *topology);
 extern void hwloc_pci_discovery_exit(struct hwloc_topology *topology);
+
+/* Look for an object matching the given domain/bus/func,
+ * either exactly or return the smallest container bridge
+ */
+extern struct hwloc_obj * hwloc_pci_find_by_busid(struct hwloc_topology *topology, unsigned domain, unsigned bus, unsigned dev, unsigned func);
 
 /* Look for an object matching complete cpuset exactly, or insert one.
  * Return NULL on failure.

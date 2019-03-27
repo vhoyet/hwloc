@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009 CNRS
- * Copyright © 2009-2018 Inria.  All rights reserved.
+ * Copyright © 2009-2019 Inria.  All rights reserved.
  * Copyright © 2009-2010, 2012, 2015 Université Bordeaux
  * Copyright © 2011 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
@@ -28,7 +28,8 @@ enum lstopo_orient_e {
 enum lstopo_index_type_e {
   LSTOPO_INDEX_TYPE_DEFAULT,
   LSTOPO_INDEX_TYPE_PHYSICAL,
-  LSTOPO_INDEX_TYPE_LOGICAL
+  LSTOPO_INDEX_TYPE_LOGICAL,
+  LSTOPO_INDEX_TYPE_NONE /* only used during the interactive display */
 };
 
 FILE *open_output(const char *filename, int overwrite) __hwloc_attribute_malloc;
@@ -73,6 +74,7 @@ struct lstopo_output {
   /* draw config */
   unsigned plain_children_order;
   unsigned int gridsize, fontsize, linespacing;
+  float text_xscale;
   enum lstopo_orient_e force_orient[HWLOC_OBJ_TYPE_MAX]; /* orientation of children within an object of the given type */
   unsigned no_half_lines; /* set by ASCII backend because it cannot write between lines of the terminal */
   int show_text[HWLOC_OBJ_TYPE_MAX];
@@ -85,7 +87,6 @@ struct lstopo_output {
   void *backend_data;
   struct draw_methods *methods;
   enum lstopo_drawing_e drawing;
-  unsigned min_pu_textwidth;
   unsigned width, height; /* total output size */
 };
 
@@ -154,7 +155,7 @@ struct lstopo_obj_userdata {
     unsigned xrel;
     unsigned yrel;
     unsigned box;
-    struct lstopo_color boxcolor;
+    struct lstopo_color *boxcolor;
   } children;
   /* relative position of first memory child */
   struct lstopo_children_position above_children;
@@ -180,14 +181,14 @@ struct lstopo_obj_userdata {
 };
 
 typedef int output_method (struct lstopo_output *output, const char *filename);
-extern output_method output_console, output_synthetic, output_ascii, output_fig, output_png, output_pdf, output_ps, output_svg, output_x11, output_windows, output_xml;
+extern output_method output_console, output_synthetic, output_ascii, output_fig, output_png, output_pdf, output_ps, output_nativesvg, output_cairosvg, output_x11, output_windows, output_xml;
 
 struct draw_methods {
   int (*declare_color) (struct lstopo_output *loutput, struct lstopo_color *lcolor);
   /* only called when loutput->draw_methods == LSTOPO_DRAWING_DRAW */
-  void (*box) (struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth, unsigned x, unsigned width, unsigned y, unsigned height);
-  void (*line) (struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth, unsigned x1, unsigned y1, unsigned x2, unsigned y2);
-  void (*text) (struct lstopo_output *loutput, const struct lstopo_color *lcolor, int size, unsigned depth, unsigned x, unsigned y, const char *text);
+  void (*box) (struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth, unsigned x, unsigned width, unsigned y, unsigned height, hwloc_obj_t obj, unsigned box_id);
+  void (*line) (struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth, unsigned x1, unsigned y1, unsigned x2, unsigned y2, hwloc_obj_t obj, unsigned line_id);
+  void (*text) (struct lstopo_output *loutput, const struct lstopo_color *lcolor, int size, unsigned depth, unsigned x, unsigned y, const char *text, hwloc_obj_t obj, unsigned text_id);
   /* may be called when loutput->drawing == LSTOPO_DRAWING_PREPARE */
   void (*textsize) (struct lstopo_output *loutput, const char *text, unsigned textlength, unsigned fontsize, unsigned *width);
 };
@@ -220,25 +221,25 @@ static __hwloc_inline int lstopo_numa_binding(struct lstopo_output *loutput, hwl
   return loutput->pid_number != -1 && hwloc_bitmap_isset(loutput->membind_set, l->os_index);
 }
 
-static __hwloc_inline int lstopo_busid_snprintf(char *text, size_t textlen, hwloc_obj_t firstobj, int collapse, unsigned needdomain)
+static __hwloc_inline int lstopo_busid_snprintf(struct lstopo_output *loutput, char *text, size_t textlen, hwloc_obj_t firstobj, int collapse, unsigned needdomain)
 {
   hwloc_obj_t lastobj;
   char domain[6] = "";
   unsigned i;
 
-  assert(collapse >= 0); /* should be called on the first object of a collapsed range */
-
   if (needdomain)
     snprintf(domain, sizeof(domain), "%04x:", firstobj->attr->pcidev.domain);
 
   /* single busid */
-  if (collapse <= 1) {
+  if (!loutput->collapse || collapse <= 1) {
       return snprintf(text, textlen, "%s%02x:%02x.%01x",
 		      domain,
 		      firstobj->attr->pcidev.bus,
 		      firstobj->attr->pcidev.dev,
 		      firstobj->attr->pcidev.func);
   }
+
+  assert(collapse >= 0); /* should be called on the first object of a collapsed range */
 
   for(lastobj=firstobj, i=1; i<(unsigned)collapse; i++)
     lastobj = lastobj->next_cousin;
@@ -263,5 +264,6 @@ static __hwloc_inline int lstopo_busid_snprintf(char *text, size_t textlen, hwlo
 }
 
 extern void lstopo_show_interactive_cli_options(const struct lstopo_output *loutput);
+extern void lstopo_show_interactive_help(void);
 
 #endif /* UTILS_LSTOPO_H */

@@ -1,6 +1,6 @@
 /*
  * Copyright © 2011 Université Bordeaux
- * Copyright © 2012-2017 Inria.  All rights reserved.
+ * Copyright © 2012-2019 Inria.  All rights reserved.
  * See COPYING in top-level directory.
  */
 
@@ -17,7 +17,8 @@
 
 static unsigned hwloc_cuda_cores_per_MP(int major, int minor)
 {
-  /* FP32 cores per MP, based on CUDA C Programming Guide, Annex G */
+  /* FP32 cores per MP, based on CUDA C Programming Guide, Annex "Compute
+   * Capabilities" */
   switch (major) {
     case 1:
       switch (minor) {
@@ -52,7 +53,7 @@ static unsigned hwloc_cuda_cores_per_MP(int major, int minor)
 }
 
 static int
-hwloc_cuda_discover(struct hwloc_backend *backend)
+hwloc_cuda_discover(struct hwloc_backend *backend, struct hwloc_disc_status *dstatus __hwloc_attribute_unused)
 {
   struct hwloc_topology *topology = backend->topology;
   enum hwloc_type_filter_e filter;
@@ -109,9 +110,7 @@ hwloc_cuda_discover(struct hwloc_backend *backend)
 
     parent = NULL;
     if (hwloc_cudart_get_device_pci_ids(NULL /* topology unused */, i, &domain, &bus, &dev) == 0) {
-      parent = hwloc_pcidisc_find_by_busid(topology, domain, bus, dev, 0);
-      if (!parent)
-	parent = hwloc_pcidisc_find_busid_parent(topology, domain, bus, dev, 0);
+      parent = hwloc_pci_find_parent_by_busid(topology, domain, bus, dev, 0);
     }
     if (!parent)
       parent = hwloc_get_root_obj(topology);

@@ -1,5 +1,5 @@
 /*
- * Copyright © 2013-2017 Inria.  All rights reserved.
+ * Copyright © 2013-2019 Inria.  All rights reserved.
  * Copyright © 2016 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
  */
@@ -107,6 +107,24 @@ struct hwloc_disc_component {
  * @{
  */
 
+/** \brief Discovery status flags */
+enum hwloc_disc_status_flag_e {
+  /** \brief PCI discovery has been performed \hideinitializer */
+  HWLOC_DISC_STATUS_FLAG_PCI_DONE = (1UL<<0),
+  /** \brief The sets of allowed resources were already retrieved \hideinitializer */
+  HWLOC_DISC_STATUS_FLAG_GOT_ALLOWED_RESOURCES = (1UL<<1)
+};
+
+/** \brief Discovery status structure
+ *
+ * Used by the core and backends to inform about what has been/is being done
+ * during the discovery process.
+ */
+struct hwloc_disc_status {
+  /** \brief OR'ed set of hwloc_disc_status_flag_e */
+  unsigned long flags;
+};
+
 /** \brief Discovery backend structure
  *
  * A backend is the instantiation of a discovery component.
@@ -147,7 +165,7 @@ struct hwloc_backend {
    * or because of an actual discovery/gathering failure.
    * May be NULL.
    */
-  int (*discover)(struct hwloc_backend *backend);
+  int (*discover)(struct hwloc_backend *backend, struct hwloc_disc_status *status);
 
   /** \brief Callback used by the PCI backend to retrieve the locality of a PCI object from the OS/cpu backend.
    * May be NULL. */
@@ -480,7 +498,9 @@ HWLOC_DECLSPEC hwloc_obj_type_t hwloc_pcidisc_check_bridge_type(unsigned device_
  *
  * Returns -1 and destroys /p obj if bridge fields are invalid.
  */
-HWLOC_DECLSPEC int hwloc_pcidisc_setup_bridge_attr(hwloc_obj_t obj, const unsigned char *config);
+HWLOC_DECLSPEC int hwloc_pcidisc_find_bridge_buses(unsigned domain, unsigned bus, unsigned dev, unsigned func,
+						   unsigned *secondary_busp, unsigned *subordinate_busp,
+						   const unsigned char *config);
 
 /** \brief Insert a PCI object in the given PCI tree by looking at PCI bus IDs.
  *
@@ -504,31 +524,14 @@ HWLOC_DECLSPEC int hwloc_pcidisc_tree_attach(struct hwloc_topology *topology, st
  * @{
  */
 
-/** \brief Find the PCI object that matches the bus ID.
- *
- * To be used after a PCI backend added PCI devices with hwloc_pcidisc_tree_attach().
- *
- * If no exactly matching object is found, return the container bridge if any, or NULL.
- *
- * On failure, it may be possible to find the PCI locality (instead of the PCI device)
- * by calling hwloc_pcidisc_find_busid_parent().
- *
- * \note This is semantically identical to hwloc_get_pcidev_by_busid() which only works
- * after the topology is fully loaded.
- */
-HWLOC_DECLSPEC struct hwloc_obj * hwloc_pcidisc_find_by_busid(struct hwloc_topology *topology, unsigned domain, unsigned bus, unsigned dev, unsigned func);
-
 /** \brief Find the normal parent of a PCI bus ID.
  *
  * Look at PCI affinity to find out where the given PCI bus ID should be attached.
  *
- * This function should be used to attach an I/O device directly under a normal
- * (non-I/O) object, instead of below a PCI object.
- * It is usually used by backends when hwloc_pcidisc_find_by_busid() failed
- * to find the hwloc object corresponding to this bus ID, for instance because
- * PCI discovery is not supported on this platform.
+ * This function should be used to attach an I/O device under the corresponding
+ * PCI object (if any), or under a normal (non-I/O) object with same locality.
  */
-HWLOC_DECLSPEC struct hwloc_obj * hwloc_pcidisc_find_busid_parent(struct hwloc_topology *topology, unsigned domain, unsigned bus, unsigned dev, unsigned func);
+HWLOC_DECLSPEC struct hwloc_obj * hwloc_pci_find_parent_by_busid(struct hwloc_topology *topology, unsigned domain, unsigned bus, unsigned dev, unsigned func);
 
 /** @} */
 

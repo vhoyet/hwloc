@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009 CNRS
- * Copyright © 2009-2018 Inria.  All rights reserved.
+ * Copyright © 2009-2019 Inria.  All rights reserved.
  * Copyright © 2009-2010, 2012 Université Bordeaux
  * Copyright © 2011 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
@@ -39,7 +39,7 @@ static unsigned int the_fontsize, the_gridsize;
 static float the_scale;
 
 static void
-windows_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned width, unsigned y, unsigned height);
+windows_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned width, unsigned y, unsigned height, hwloc_obj_t obj __hwloc_attribute_unused, unsigned box_id __hwloc_attribute_unused);
 
 static LRESULT CALLBACK
 WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
@@ -71,50 +71,67 @@ WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 	the_scale = 1.0;
 	redraw = 1;
 	break;
-      case 'A': {
+      case 'a': {
 	int v = !loutput->show_attrs[0]; /* if show_attrs[] contains different values, assume it's all like the first type */
 	for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
 	  loutput->show_attrs[i] = v;
+	printf("%s object attributes\n", v ? "enabled" : "disabled");
 	redraw = 1;
 	break;
       }
-      case 'I': {
-	int v = !loutput->show_indexes[0]; /* if show_indexes[] contains different values, assume it's all like the first type */
-	for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
-	  loutput->show_indexes[i] = v;
-	redraw = 1;
-	break;
-      }
-      case 'T': {
+      case 't': {
 	int v = !loutput->show_text[0]; /* if show_text[] contains different values, assume it's all like the first type */
 	for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
 	  loutput->show_text[i] = v;
+	printf("%s object text\n", v ? "enabled" : "disabled");
 	redraw = 1;
 	break;
       }
-      case 'L':
-	loutput->index_type = LSTOPO_INDEX_TYPE_LOGICAL;
-	redraw = 1;
-	break;
-      case 'P':
-	loutput->index_type = LSTOPO_INDEX_TYPE_PHYSICAL;
-	redraw = 1;
-	break;
-      case 'B':
-	loutput->index_type = LSTOPO_INDEX_TYPE_DEFAULT;
+      case 'i':
+	if (loutput->index_type == LSTOPO_INDEX_TYPE_DEFAULT) {
+	  loutput->index_type = LSTOPO_INDEX_TYPE_PHYSICAL;
+	  printf("switched to physical indexes\n");
+	} else if (loutput->index_type == LSTOPO_INDEX_TYPE_PHYSICAL) {
+	  loutput->index_type = LSTOPO_INDEX_TYPE_LOGICAL;
+	  printf("switched to logical indexes\n");
+	} else if (loutput->index_type == LSTOPO_INDEX_TYPE_LOGICAL) {
+	  loutput->index_type = LSTOPO_INDEX_TYPE_NONE;
+	  printf("switched to no indexes\n");
+	} else if (loutput->index_type == LSTOPO_INDEX_TYPE_NONE) {
+	  loutput->index_type = LSTOPO_INDEX_TYPE_DEFAULT;
+	  printf("switched to default indexes\n");
+	} else {
+	  abort();
+	}
 	redraw = 1;
 	break;
       case 'd':
 	loutput->show_disallowed ^= 1;
+	printf("%s coloring of disallowed resources\n", loutput->show_disallowed ? "enabled" : "disabled");
 	redraw = 1;
 	break;
       case 'b':
 	loutput->show_binding ^= 1;
+	printf("%s coloring of binding resources\n", loutput->show_binding ? "enabled" : "disabled");
+	redraw = 1;
+	break;
+      case 'l':
+	loutput->legend ^= 1;
+	printf("%s legend\n", loutput->legend ? "enabled" : "disabled");
 	redraw = 1;
 	break;
       case 'c':
+	loutput->collapse ^= 1;
+	printf("%s collapsing of identical PCI devices\n", loutput->collapse ? "enabled" : "disabled");
+	redraw = 1;
+	break;
+      case 'E':
 	lstopo_show_interactive_cli_options(loutput);
 	fflush(stdout);
+	break;
+      case 'h':
+      case 'H':
+	lstopo_show_interactive_help();
 	break;
       case 'q':
       case 'Q':
@@ -130,7 +147,7 @@ WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
       BeginPaint(hwnd, &the_output.ps);
       font = CreateFont(loutput->fontsize, 0, 0, 0, 0, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH, NULL);
       SelectObject(the_output.ps.hdc, (HGDIOBJ) font);
-      windows_box(loutput, &white, 0, 0, win_width, 0, win_height);
+      windows_box(loutput, &white, 0, 0, win_width, 0, win_height, NULL, 0);
       loutput->drawing = LSTOPO_DRAWING_PREPARE;
       output_draw(loutput);
       the_width = loutput->width;
@@ -277,7 +294,7 @@ windows_declare_color(struct lstopo_output *loutput __hwloc_attribute_unused, st
 }
 
 static void
-windows_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned width, unsigned y, unsigned height)
+windows_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned width, unsigned y, unsigned height, hwloc_obj_t obj __hwloc_attribute_unused, unsigned box_id __hwloc_attribute_unused)
 {
   struct lstopo_windows_output *woutput = loutput->backend_data;
   PAINTSTRUCT *ps = &woutput->ps;
@@ -288,7 +305,7 @@ windows_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor, un
 }
 
 static void
-windows_line(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x1, unsigned y1, unsigned x2, unsigned y2)
+windows_line(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x1, unsigned y1, unsigned x2, unsigned y2, hwloc_obj_t obj __hwloc_attribute_unused, unsigned line_id __hwloc_attribute_unused)
 {
   struct lstopo_windows_output *woutput = loutput->backend_data;
   PAINTSTRUCT *ps = &woutput->ps;
@@ -299,7 +316,7 @@ windows_line(struct lstopo_output *loutput, const struct lstopo_color *lcolor, u
 }
 
 static void
-windows_text(struct lstopo_output *loutput, const struct lstopo_color *lcolor, int size __hwloc_attribute_unused, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned y, const char *text)
+windows_text(struct lstopo_output *loutput, const struct lstopo_color *lcolor, int size __hwloc_attribute_unused, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned y, const char *text, hwloc_obj_t obj __hwloc_attribute_unused, unsigned text_id __hwloc_attribute_unused)
 {
   struct lstopo_windows_output *woutput = loutput->backend_data;
   PAINTSTRUCT *ps = &woutput->ps;
@@ -397,24 +414,7 @@ output_windows (struct lstopo_output *loutput, const char *dummy __hwloc_attribu
   /* and display the window */
   ShowWindow(toplevel, SW_SHOWDEFAULT);
 
-  printf("\n");
-  printf("Keyboard shortcuts:\n");
-  printf(" Zoom-in or out ...................... + -\n");
-  printf(" Try to fit scale to window .......... f F\n");
-  printf(" Reset scale to default .............. 1\n");
-  printf(" Scroll vertically ................... Up Down PageUp PageDown\n");
-  printf(" Scroll horizontally ................. Left Right Ctrl+PageUp/Down\n");
-  printf(" Scroll to the top-left corner ....... Home\n");
-  printf(" Scroll to the bottom-right corner ... End\n");
-  printf(" Exit ................................ q Q Esc\n");
-  printf("Configuration tweaks:\n");
-  printf(" Toggle color for disallowed objects . d\n");
-  printf(" Toggle color for binding objects .... b\n");
-  printf(" Show/Hide Attributes/Indexes/Text ... A/I/T\n");
-  printf(" Show Physical/Logical/Both indexes .. P/L/B\n");
-  printf(" Command-line options for tweaks ..... c\n");
-  printf("\n\n");
-  fflush(stdout);
+  lstopo_show_interactive_help();
 
   /* ready */
   declare_colors(loutput);

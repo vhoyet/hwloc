@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009 CNRS
- * Copyright © 2009-2018 Inria.  All rights reserved.
+ * Copyright © 2009-2019 Inria.  All rights reserved.
  * Copyright © 2009-2012 Université Bordeaux
  * Copyright © 2009-2011 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
@@ -101,7 +101,7 @@ extern "C" {
 HWLOC_DECLSPEC unsigned hwloc_get_api_version(void);
 
 /** \brief Current component and plugin ABI version (see hwloc/plugins.h) */
-#define HWLOC_COMPONENT_ABI 5
+#define HWLOC_COMPONENT_ABI 6
 
 /** @} */
 
@@ -224,7 +224,7 @@ typedef enum {
 			  * See also \ref faq_groups.
 			  *
 			  * These objects are removed when they do not bring
-			  * any structure.
+			  * any structure (see ::HWLOC_TYPE_FILTER_KEEP_STRUCTURE).
 			  */
 
   HWLOC_OBJ_NUMANODE,	/**< \brief NUMA node.
@@ -233,7 +233,7 @@ typedef enum {
 			  * It is usually close to some cores (the corresponding objects
 			  * are descendants of the NUMA node object in the hwloc tree).
 			  *
-			  * There is always at one such object in the topology
+			  * There is always at least one such object in the topology
 			  * even if the machine is not NUMA.
 			  *
 			  * Memory objects are not listed in the main children list,
@@ -1786,7 +1786,7 @@ enum hwloc_topology_components_flag_e {
   /** \brief Blacklist the target component from being used.
    * \hideinitializer
    */
-  HWLOC_TOPOLOGY_COMPONENTS_FLAG_BLACKLIST = (1<<0)
+  HWLOC_TOPOLOGY_COMPONENTS_FLAG_BLACKLIST = (1UL<<0)
 };
 
 /** \brief Prevent a discovery component from being used for a topology.
@@ -1800,7 +1800,7 @@ enum hwloc_topology_components_flag_e {
  * For instance, CUDA-specific discovery may be expensive and unneeded
  * while generic I/O discovery could still be useful.
  */
-HWLOC_DECLSPEC int hwloc_topology_set_components(hwloc_topology_t __hwloc_restrict topology, unsigned flags, const char * __hwloc_restrict name);
+HWLOC_DECLSPEC int hwloc_topology_set_components(hwloc_topology_t __hwloc_restrict topology, unsigned long flags, const char * __hwloc_restrict name);
 
 /** @} */
 
@@ -2132,32 +2132,32 @@ enum hwloc_restrict_flags_e {
    * By default, only objects that contain no PU and no memory are removed.
    * \hideinitializer
    */
-  HWLOC_RESTRICT_FLAG_REMOVE_CPULESS = (1<<0),
+  HWLOC_RESTRICT_FLAG_REMOVE_CPULESS = (1UL<<0),
 
   /** \brief Restrict by nodeset instead of CPU set.
    * Only keep objects whose nodeset is included or partially included in the given set.
    * This flag may not be used with ::HWLOC_RESTRICT_FLAG_BYNODESET.
    */
-  HWLOC_RESTRICT_FLAG_BYNODESET =  (1<<3),
+  HWLOC_RESTRICT_FLAG_BYNODESET =  (1UL<<3),
 
   /** \brief Remove all objects that became Memory-less.
    * By default, only objects that contain no PU and no memory are removed.
    * This flag may only be used with ::HWLOC_RESTRICT_FLAG_BYNODESET.
    * \hideinitializer
    */
-  HWLOC_RESTRICT_FLAG_REMOVE_MEMLESS = (1<<4),
+  HWLOC_RESTRICT_FLAG_REMOVE_MEMLESS = (1UL<<4),
 
   /** \brief Move Misc objects to ancestors if their parents are removed during restriction.
    * If this flag is not set, Misc objects are removed when their parents are removed.
    * \hideinitializer
    */
-  HWLOC_RESTRICT_FLAG_ADAPT_MISC = (1<<1),
+  HWLOC_RESTRICT_FLAG_ADAPT_MISC = (1UL<<1),
 
   /** \brief Move I/O objects to ancestors if their parents are removed during restriction.
    * If this flag is not set, I/O devices and bridges are removed when their parents are removed.
    * \hideinitializer
    */
-  HWLOC_RESTRICT_FLAG_ADAPT_IO = (1<<2)
+  HWLOC_RESTRICT_FLAG_ADAPT_IO = (1UL<<2)
 };
 
 /** \brief Restrict the topology to the given CPU set or nodeset.
@@ -2192,7 +2192,7 @@ enum hwloc_allow_flags_e {
    *
    * \p cpuset and \p nođeset given to hwloc_topology_allow() must be \c NULL.
    * \hideinitializer */
-  HWLOC_ALLOW_FLAG_ALL = (1<<0),
+  HWLOC_ALLOW_FLAG_ALL = (1UL<<0),
 
   /** \brief Only allow objects that are available to the current process.
    *
@@ -2201,11 +2201,11 @@ enum hwloc_allow_flags_e {
    *
    * \p cpuset and \p nođeset given to hwloc_topology_allow() must be \c NULL.
    * \hideinitializer */
-  HWLOC_ALLOW_FLAG_LOCAL_RESTRICTIONS = (1<<1),
+  HWLOC_ALLOW_FLAG_LOCAL_RESTRICTIONS = (1UL<<1),
 
   /** \brief Allow a custom set of objects, given to hwloc_topology_allow() as \p cpuset and/or \p nodeset parameters.
    * \hideinitializer */
-  HWLOC_ALLOW_FLAG_CUSTOM = (1<<2)
+  HWLOC_ALLOW_FLAG_CUSTOM = (1UL<<2)
 };
 
 /** \brief Change the sets of allowed PUs and NUMA nodes in the topology.

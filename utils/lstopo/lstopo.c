@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009 CNRS
- * Copyright © 2009-2018 Inria.  All rights reserved.
+ * Copyright © 2009-2019 Inria.  All rights reserved.
  * Copyright © 2009-2012, 2015, 2017 Université Bordeaux
  * Copyright © 2009-2011 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
@@ -36,6 +36,7 @@
 #endif
 
 #include "lstopo.h"
+#include "common-ps.h"
 #include "misc.h"
 
 #ifdef __MINGW32__
@@ -109,214 +110,45 @@ static hwloc_obj_t insert_task(hwloc_topology_t topology, hwloc_cpuset_t cpuset,
   return obj;
 }
 
+static void foreach_process_cb(hwloc_topology_t topology,
+			       struct hwloc_ps_process *proc,
+			       void *cbdata __hwloc_attribute_unused)
+{
+  char name[100];
+  unsigned i;
+
+  snprintf(name, sizeof(name), "%ld", proc->pid);
+  if (*proc->name)
+    snprintf(name, sizeof(name), "%ld %s", proc->pid, proc->name);
+
+  if (proc->bound)
+    insert_task(topology, proc->cpuset, name);
+
+  if (proc->nthreads)
+    for(i=0; i<proc->nthreads; i++)
+      if (proc->threads[i].cpuset
+	  && !hwloc_bitmap_isequal(proc->threads[i].cpuset, proc->cpuset)) {
+	char task_name[150];
+	if (*proc->threads[i].name)
+	  snprintf(task_name, sizeof(task_name), "%s %li %s", name, proc->threads[i].tid, proc->threads[i].name);
+	else
+	  snprintf(task_name, sizeof(task_name), "%s %li", name, proc->threads[i].tid);
+
+	insert_task(topology, proc->threads[i].cpuset, task_name);
+      }
+}
+
 static void add_process_objects(hwloc_topology_t topology)
 {
-#ifdef HAVE_DIRENT_H
-  hwloc_obj_t root;
-  hwloc_bitmap_t cpuset;
-#ifdef HWLOC_LINUX_SYS
-  hwloc_bitmap_t task_cpuset;
-#endif /* HWLOC_LINUX_SYS */
-  DIR *dir;
-  struct dirent *dirent;
-  const struct hwloc_topology_support *support;
-
-  root = hwloc_get_root_obj(topology);
-
-  support = hwloc_topology_get_support(topology);
+  const struct hwloc_topology_support *support = hwloc_topology_get_support(topology);
+  hwloc_obj_t root = hwloc_get_root_obj(topology);
 
   if (!support->cpubind->get_proc_cpubind)
     return;
 
-  dir  = opendir("/proc");
-  if (!dir)
-    return;
-  cpuset = hwloc_bitmap_alloc();
-#ifdef HWLOC_LINUX_SYS
-  task_cpuset = hwloc_bitmap_alloc();
-#endif /* HWLOC_LINUX_SYS */
-
-  while ((dirent = readdir(dir))) {
-    long local_pid_number;
-    hwloc_pid_t local_pid;
-    char *end;
-    char name[80];
-    int proc_cpubind;
-
-    local_pid_number = strtol(dirent->d_name, &end, 10);
-    if (*end)
-      /* Not a number */
-      continue;
-
-    snprintf(name, sizeof(name), "%ld", local_pid_number);
-
-    if (hwloc_pid_from_number(&local_pid, local_pid_number, 0, 0 /* ignore failures */) < 0)
-      continue;
-
-    proc_cpubind = hwloc_get_proc_cpubind(topology, local_pid, cpuset, 0) != -1;
-
-#ifdef HWLOC_LINUX_SYS
-    {
-      char comm[16];
-      char *path;
-      size_t pathlen = 6 + strlen(dirent->d_name) + 1 + 7 + 1;
-
-      path = malloc(pathlen);
-
-      {
-        /* Get the process name */
-        char cmd[64];
-        int file;
-        ssize_t n;
-
-        snprintf(path, pathlen, "/proc/%s/cmdline", dirent->d_name);
-        file = open(path, O_RDONLY);
-        if (file < 0) {
-          /* Ignore errors */
-          free(path);
-          continue;
-        }
-        n = read(file, cmd, sizeof(cmd));
-        close(file);
-
-        if (n <= 0) {
-          /* Ignore kernel threads and errors */
-          free(path);
-          continue;
-        }
-
-        snprintf(path, pathlen, "/proc/%s/comm", dirent->d_name);
-        file = open(path, O_RDONLY);
-
-        if (file >= 0) {
-          n = read(file, comm, sizeof(comm) - 1);
-          close(file);
-          if (n > 0) {
-            comm[n] = 0;
-            if (n > 1 && comm[n-1] == '\n')
-              comm[n-1] = 0;
-          } else {
-            snprintf(comm, sizeof(comm), "(unknown)");
-          }
-        } else {
-          /* Old kernel, have to look at old file */
-          char stats[32];
-          char *parenl = NULL, *parenr;
-
-          snprintf(path, pathlen, "/proc/%s/stat", dirent->d_name);
-          file = open(path, O_RDONLY);
-
-          if (file < 0) {
-            /* Ignore errors */
-            free(path);
-            continue;
-          }
-
-          /* "pid (comm) ..." */
-          n = read(file, stats, sizeof(stats) - 1);
-          close(file);
-          if (n > 0) {
-            stats[n] = 0;
-            parenl = strchr(stats, '(');
-            parenr = strchr(stats, ')');
-            if (!parenr)
-              parenr = &stats[sizeof(stats)-1];
-            *parenr = 0;
-          }
-          if (!parenl) {
-            snprintf(comm, sizeof(comm), "(unknown)");
-          } else {
-            snprintf(comm, sizeof(comm), "%s", parenl+1);
-          }
-        }
-
-        snprintf(name, sizeof(name), "%ld %s", local_pid_number, comm);
-      }
-
-      {
-        /* Get threads */
-        DIR *task_dir;
-        struct dirent *task_dirent;
-
-        snprintf(path, pathlen, "/proc/%s/task", dirent->d_name);
-        task_dir = opendir(path);
-
-        if (task_dir) {
-          while ((task_dirent = readdir(task_dir))) {
-            long local_tid;
-            char *task_end;
-            const size_t tid_len = sizeof(local_tid)*3+1;
-            size_t task_pathlen = 6 + strlen(dirent->d_name) + 1 + 4 + 1
-                                    + strlen(task_dirent->d_name) + 1 + 4 + 1;
-            char *task_path;
-            int comm_file;
-            char task_comm[16] = "";
-            char task_name[sizeof(name) + 1 + tid_len + 1 + sizeof(task_comm) + 1];
-            ssize_t n;
-
-            local_tid = strtol(task_dirent->d_name, &task_end, 10);
-            if (*task_end)
-              /* Not a number, or the main task */
-              continue;
-
-            task_path = malloc(task_pathlen);
-            snprintf(task_path, task_pathlen, "/proc/%s/task/%s/comm",
-                     dirent->d_name, task_dirent->d_name);
-            comm_file = open(task_path, O_RDONLY);
-            free(task_path);
-
-            if (comm_file >= 0) {
-              n = read(comm_file, task_comm, sizeof(task_comm) - 1);
-              if (n < 0)
-                n = 0;
-              close(comm_file);
-              task_comm[n] = 0;
-              if (n > 1 && task_comm[n-1] == '\n')
-                task_comm[n-1] = 0;
-              if (!strcmp(comm, task_comm))
-                /* Same as process comm, do not show it again */
-                n = 0;
-            } else {
-              n = 0;
-            }
-
-            if (hwloc_linux_get_tid_cpubind(topology, local_tid, task_cpuset))
-              continue;
-
-            if (proc_cpubind && hwloc_bitmap_isequal(task_cpuset, cpuset))
-              continue;
-
-            if (n) {
-              snprintf(task_name, sizeof(task_name), "%s %li %s", name, local_tid, task_comm);
-            } else {
-              snprintf(task_name, sizeof(task_name), "%s %li", name, local_tid);
-            }
-
-            insert_task(topology, task_cpuset, task_name);
-          }
-          closedir(task_dir);
-        }
-      }
-
-      free(path);
-    }
-#endif /* HWLOC_LINUX_SYS */
-
-    if (!proc_cpubind)
-      continue;
-
-    if (hwloc_bitmap_isincluded(root->cpuset, cpuset))
-      continue;
-
-    insert_task(topology, cpuset, name);
-  }
-
-  hwloc_bitmap_free(cpuset);
-#ifdef HWLOC_LINUX_SYS
-  hwloc_bitmap_free(task_cpuset);
-#endif /* HWLOC_LINUX_SYS */
-  closedir(dir);
-#endif /* HAVE_DIRENT_H */
+  hwloc_ps_foreach_process(topology, root->cpuset,
+			   foreach_process_cb, NULL,
+			   HWLOC_PS_FLAG_THREADS | HWLOC_PS_FLAG_SHORTNAME, NULL);
 }
 
 static void
@@ -457,9 +289,12 @@ void usage(const char *name, FILE *where)
 		  ", png"
 #endif /* CAIRO_HAS_PNG_FUNCTIONS */
 #ifdef CAIRO_HAS_SVG_SURFACE
-		  ", svg"
+		  ", svg(cairo,native)"
 #endif /* CAIRO_HAS_SVG_SURFACE */
 #endif /* LSTOPO_HAVE_GRAPHICS */
+#if !(defined LSTOPO_HAVE_GRAPHICS) || !(defined CAIRO_HAS_SVG_SURFACE)
+		  ", svg(native)"
+#endif
 		  ", xml, synthetic"
 		  "\n");
   fprintf (where, "\nFormatting options:\n");
@@ -530,6 +365,33 @@ void usage(const char *name, FILE *where)
   fprintf (where, "  --version             Report version and exit\n");
 }
 
+void lstopo_show_interactive_help(void)
+{
+  printf("\n");
+  printf("Keyboard shortcuts:\n");
+  printf(" Zooming, scrolling and closing:\n");
+  printf("  Zoom-in or out ...................... + -\n");
+  printf("  Try to fit scale to window .......... f F\n");
+  printf("  Reset scale to default .............. 1\n");
+  printf("  Scroll vertically ................... Up Down PageUp PageDown\n");
+  printf("  Scroll horizontally ................. Left Right Ctrl+PageUp/Down\n");
+  printf("  Scroll to the top-left corner ....... Home\n");
+  printf("  Scroll to the bottom-right corner ... End\n");
+  printf("  Show this help ...................... h H\n");
+  printf("  Exit ................................ q Q Esc\n");
+  printf(" Configuration tweaks:\n");
+  printf("  Switch display mode for indexes ..... i\n");
+  printf("  Toggle displaying of object text .... t\n");
+  printf("  Toggle displaying of obj attributes . a\n");
+  printf("  Toggle color for disallowed objects . d\n");
+  printf("  Toggle color for binding objects .... b\n");
+  printf("  Toggle collapsing of PCI devices .... c\n");
+  printf("  Toggle displaying of the legend ..... l\n");
+  printf("  Export to file with current config .. E\n");
+  printf("\n\n");
+  fflush(stdout);
+}
+
 static void lstopo_show_interactive_cli_options_array(const int *array, const char *name)
 {
   int enabled = 0, disabled = 0, i;
@@ -554,25 +416,38 @@ static void lstopo_show_interactive_cli_options_array(const int *array, const ch
   }
 }
 
-void lstopo_show_interactive_cli_options(const struct lstopo_output *loutput)
+static void lstopo__show_interactive_cli_options(const struct lstopo_output *loutput)
 {
-  printf("Command-line options for the current configuration tweaks:\n");
-
   if (loutput->index_type == LSTOPO_INDEX_TYPE_PHYSICAL)
     printf(" -p");
   else if (loutput->index_type == LSTOPO_INDEX_TYPE_LOGICAL)
     printf(" -l");
+  else if (loutput->index_type == LSTOPO_INDEX_TYPE_NONE)
+    printf(" --no-index");
+  else
+    lstopo_show_interactive_cli_options_array(loutput->show_indexes, "index");
 
-  lstopo_show_interactive_cli_options_array(loutput->show_indexes, "index");
   lstopo_show_interactive_cli_options_array(loutput->show_attrs, "attrs");
   lstopo_show_interactive_cli_options_array(loutput->show_text, "text");
 
+  if (!loutput->collapse)
+    printf(" --no-collapse");
   if (!loutput->show_binding)
     printf(" --binding-color none");
   if (!loutput->show_disallowed)
     printf(" --disallowed-color none");
+  if (!loutput->legend)
+    printf(" --no-legend");
+}
 
-  printf("\n\n");
+void lstopo_show_interactive_cli_options(const struct lstopo_output *loutput)
+{
+  printf("\nCommand-line options for the current configuration tweaks:\n");
+  lstopo__show_interactive_cli_options(loutput);
+  printf("\n\nTo export to PDF:\n");
+  printf("  lstopo  <your options>");
+  lstopo__show_interactive_cli_options(loutput);
+  printf(" topology.pdf\n\n");
 }
 
 enum output_format {
@@ -585,6 +460,8 @@ enum output_format {
   LSTOPO_OUTPUT_PDF,
   LSTOPO_OUTPUT_PS,
   LSTOPO_OUTPUT_SVG,
+  LSTOPO_OUTPUT_CAIROSVG,
+  LSTOPO_OUTPUT_NATIVESVG,
   LSTOPO_OUTPUT_XML,
   LSTOPO_OUTPUT_ERROR
 };
@@ -611,6 +488,10 @@ parse_output_format(const char *name, char *callname __hwloc_attribute_unused)
     return LSTOPO_OUTPUT_PS;
   else if (!strcasecmp(name, "svg"))
     return LSTOPO_OUTPUT_SVG;
+  else if (!strcasecmp(name, "cairosvg") || !strcasecmp(name, "svg(cairo)"))
+    return LSTOPO_OUTPUT_CAIROSVG;
+  else if (!strcasecmp(name, "nativesvg") || !strcasecmp(name, "svg(native)"))
+    return LSTOPO_OUTPUT_NATIVESVG;
   else if (!strcasecmp(name, "xml"))
     return LSTOPO_OUTPUT_XML;
   else
@@ -642,6 +523,7 @@ main (int argc, char *argv[])
   unsigned long ms;
   int measure_load_time = !!getenv("HWLOC_DEBUG_LOAD_TIME");
 #endif
+  char *env;
   int top = 0;
   int opt;
   unsigned i;
@@ -688,6 +570,12 @@ main (int argc, char *argv[])
   loutput.fontsize = 10;
   loutput.gridsize = 7;
   loutput.linespacing = 4;
+
+  loutput.text_xscale = 1.0f;
+  env = getenv("LSTOPO_TEXT_XSCALE");
+  if (env)
+    loutput.text_xscale = (float) atof(env);
+
   for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
     loutput.force_orient[i] = LSTOPO_ORIENT_NONE;
   loutput.force_orient[HWLOC_OBJ_PU] = LSTOPO_ORIENT_HORIZ;
@@ -1271,10 +1159,17 @@ main (int argc, char *argv[])
 # endif /* CAIRO_HAS_PS_SURFACE */
 # ifdef CAIRO_HAS_SVG_SURFACE
   case LSTOPO_OUTPUT_SVG:
-    output_func = output_svg;
+  case LSTOPO_OUTPUT_CAIROSVG:
+    output_func = output_cairosvg;
     break;
 # endif /* CAIRO_HAS_SVG_SURFACE */
 #endif /* LSTOPO_HAVE_GRAPHICS */
+#if !(defined LSTOPO_HAVE_GRAPHICS) || !(defined CAIRO_HAS_SVG_SURFACE)
+  case LSTOPO_OUTPUT_SVG:
+#endif
+  case LSTOPO_OUTPUT_NATIVESVG:
+    output_func = output_nativesvg;
+    break;
   case LSTOPO_OUTPUT_XML:
     output_func = output_xml;
     break;
@@ -1290,8 +1185,7 @@ main (int argc, char *argv[])
   if (output_format != LSTOPO_OUTPUT_XML) {
     /* there might be some xml-imported userdata in objects, add lstopo-specific userdata in front of them */
     lstopo_populate_userdata(hwloc_get_root_obj(topology));
-    if (loutput.collapse)
-      lstopo_add_collapse_attributes(topology);
+    lstopo_add_collapse_attributes(topology);
   }
 
   err = output_func(&loutput, filename);

@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009 CNRS
- * Copyright © 2009-2018 Inria.  All rights reserved.
+ * Copyright © 2009-2019 Inria.  All rights reserved.
  * Copyright © 2009-2012 Université Bordeaux
  * Copyright © 2009-2011 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
@@ -31,7 +31,7 @@ output_console_obj (struct lstopo_output *loutput, hwloc_obj_t l, int collapse)
   enum lstopo_index_type_e index_type = loutput->index_type;
   int verbose_mode = loutput->verbose_mode;
   char pidxstr[16];
-  char lidxstr[16];
+  char lidxstr[32];
   char busidstr[32];
 
   if (collapse > 1 && l->type == HWLOC_OBJ_PCI_DEVICE) {
@@ -42,7 +42,7 @@ output_console_obj (struct lstopo_output *loutput, hwloc_obj_t l, int collapse)
     snprintf(lidxstr, sizeof(lidxstr), "L#%u", l->logical_index);
   }
   if (l->type == HWLOC_OBJ_PCI_DEVICE)
-    lstopo_busid_snprintf(busidstr, sizeof(busidstr), l, collapse, loutput->need_pci_domain);
+    lstopo_busid_snprintf(loutput, busidstr, sizeof(busidstr), l, collapse, loutput->need_pci_domain);
 
   if (loutput->show_cpuset < 2) {
     char type[64], *attr, phys[32] = "";
@@ -141,7 +141,7 @@ output_topology (struct lstopo_output *loutput, hwloc_obj_t l, hwloc_obj_t paren
   int verbose_mode = loutput->verbose_mode;
   hwloc_obj_t child;
   int group_identical = (verbose_mode <= 1) && !loutput->show_cpuset;
-  int collapse = ((struct lstopo_obj_userdata *) l->userdata)->pci_collapsed;
+  int collapse = loutput->collapse ? ((struct lstopo_obj_userdata *) l->userdata)->pci_collapsed : 0;
 
   if (l->type == HWLOC_OBJ_PCI_DEVICE && collapse == -1)
     return;

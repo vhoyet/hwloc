@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009 CNRS
- * Copyright © 2009-2018 Inria.  All rights reserved.
+ * Copyright © 2009-2019 Inria.  All rights reserved.
  * Copyright © 2009-2011, 2013 Université Bordeaux
  * Copyright © 2014-2018 Cisco Systems, Inc.  All rights reserved.
  * Copyright © 2015      Research Organization for Information Science
@@ -88,11 +88,11 @@ static pthread_mutex_t hwloc_pciaccess_mutex = PTHREAD_MUTEX_INITIALIZER;
 #endif
 
 static int
-hwloc_look_pci(struct hwloc_backend *backend)
+hwloc_look_pci(struct hwloc_backend *backend, struct hwloc_disc_status *dstatus)
 {
   struct hwloc_topology *topology = backend->topology;
   enum hwloc_type_filter_e pfilter, bfilter;
-  struct hwloc_obj *tree = NULL, *child;
+  struct hwloc_obj *tree = NULL;
   int ret;
   struct pci_device_iterator *iter;
   struct pci_device *pcidev;
@@ -103,17 +103,9 @@ hwloc_look_pci(struct hwloc_backend *backend)
       && pfilter == HWLOC_TYPE_FILTER_KEEP_NONE)
     return 0;
 
-  /* don't do anything if another backend attached PCI already
-   * (they are attached to root until later in the core discovery)
-   */
-  for_each_io_child(child, hwloc_get_root_obj(topology)) {
-    if (child->type == HWLOC_OBJ_PCI_DEVICE
-       || (child->type == HWLOC_OBJ_BRIDGE &&
-	   (child->attr->bridge.upstream_type == HWLOC_OBJ_BRIDGE_PCI
-	    || child->attr->bridge.downstream_type == HWLOC_OBJ_BRIDGE_PCI))) {
-      hwloc_debug("%s", "Topology already contains PCI objects, skipping PCI backend.\n");
-      return 0;
-    }
+  if (dstatus->flags & HWLOC_DISC_STATUS_FLAG_PCI_DONE) {
+    hwloc_debug("%s", "PCI discovery has already been performed, skipping PCI backend.\n");
+    return 0;
   }
 
   hwloc_debug("%s", "\nScanning PCI buses...\n");
@@ -143,6 +135,7 @@ hwloc_look_pci(struct hwloc_backend *backend)
     hwloc_obj_type_t type;
     struct hwloc_obj *obj;
     unsigned domain, bus, dev, func;
+    unsigned secondary_bus, subordinate_bus;
     unsigned device_class;
     unsigned short tmp16;
     unsigned offset;
@@ -151,6 +144,14 @@ hwloc_look_pci(struct hwloc_backend *backend)
     bus = pcidev->bus;
     dev = pcidev->dev;
     func = pcidev->func;
+
+    if (domain > 0xffff) {
+      static int warned = 0;
+      if (!warned)
+	fprintf(stderr, "Ignoring PCI device with non-16bit domain\n");
+      warned = 1;
+      continue;
+    }
 
     /* initialize the config space in case we fail to read it (missing permissions, etc). */
     memset(config_space_cache, 0xff, CONFIG_SPACE_CACHESIZE);
@@ -162,6 +163,12 @@ hwloc_look_pci(struct hwloc_backend *backend)
 
     /* bridge or pci dev? */
     type = hwloc_pcidisc_check_bridge_type(device_class, config_space_cache);
+    if (type == HWLOC_OBJ_BRIDGE) {
+      if (hwloc_pcidisc_find_bridge_buses(domain, bus, dev, func,
+					  &secondary_bus, &subordinate_bus,
+					  config_space_cache) < 0)
+	continue;
+    }
 
     /* filtered? */
     if (type == HWLOC_OBJ_PCI_DEVICE) {
@@ -242,6 +249,16 @@ hwloc_look_pci(struct hwloc_backend *backend)
     obj->attr->pcidev.class_id = device_class;
     obj->attr->pcidev.revision = config_space_cache[PCI_REVISION_ID];
 
+    /* bridge specific attributes */
+    if (type == HWLOC_OBJ_BRIDGE) {
+      struct hwloc_bridge_attr_s *battr = &obj->attr->bridge;
+      battr->upstream_type = HWLOC_OBJ_BRIDGE_PCI;
+      battr->downstream_type = HWLOC_OBJ_BRIDGE_PCI;
+      battr->downstream.pci.domain = domain;
+      battr->downstream.pci.secondary_bus = secondary_bus;
+      battr->downstream.pci.subordinate_bus = subordinate_bus;
+    }
+
     obj->attr->pcidev.linkspeed = 0; /* unknown */
     offset = hwloc_pcidisc_find_cap(config_space_cache, PCI_CAP_ID_EXP);
 
@@ -250,7 +267,7 @@ hwloc_look_pci(struct hwloc_backend *backend)
 #ifdef HWLOC_LINUX_SYS
     } else {
       /* if not available from config-space (extended part is root-only), look in Linux sysfs files added in 4.13 */
-      char path[64];
+      char path[128];
       char value[16];
       FILE *file;
       size_t bytes_read;
@@ -276,11 +293,6 @@ hwloc_look_pci(struct hwloc_backend *backend)
       }
       obj->attr->pcidev.linkspeed = speed*width/8;
 #endif
-    }
-
-    if (type == HWLOC_OBJ_BRIDGE) {
-      if (hwloc_pcidisc_setup_bridge_attr(obj, config_space_cache) < 0)
-	continue;
     }
 
     if (obj->type == HWLOC_OBJ_PCI_DEVICE) {
@@ -320,6 +332,7 @@ hwloc_look_pci(struct hwloc_backend *backend)
   HWLOC_PCIACCESS_UNLOCK();
 
   hwloc_pcidisc_tree_attach(topology, tree);
+  dstatus->flags |= HWLOC_DISC_STATUS_FLAG_PCI_DONE;
   return 0;
 }
 

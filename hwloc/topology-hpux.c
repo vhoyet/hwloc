@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009 CNRS
- * Copyright © 2009-2018 Inria.  All rights reserved.
+ * Copyright © 2009-2019 Inria.  All rights reserved.
  * Copyright © 2009-2010, 2013 Université Bordeaux
  * Copyright © 2011 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
@@ -175,12 +175,13 @@ hwloc_hpux_alloc_membind(hwloc_topology_t topology, size_t len, hwloc_const_node
 #endif /* MAP_MEM_FIRST_TOUCH */
 
 static int
-hwloc_look_hpux(struct hwloc_backend *backend)
+hwloc_look_hpux(struct hwloc_backend *backend, struct hwloc_disc_status *dstatus __hwloc_attribute_unused)
 {
   struct hwloc_topology *topology = backend->topology;
   int has_numa = sysconf(_SC_CCNUMA_SUPPORT) == 1;
   spu_t currentcpu;
   ldom_t currentnode;
+  hwloc_obj_t *nodes, obj;
   int i, nbnodes = 0;
 
   if (topology->levels[0][0]->cpuset)
@@ -195,7 +196,9 @@ hwloc_look_hpux(struct hwloc_backend *backend)
   }
   hwloc_debug("%d nodes\n", nbnodes);
 
-  hwloc_obj_t nodes[nbnodes], obj;
+  nodes = malloc(nbnodes * sizeof(*nodes));
+  if (!nodes)
+    has_numa = 0;
 
   if (has_numa) {
     i = 0;
@@ -262,6 +265,8 @@ hwloc_look_hpux(struct hwloc_backend *backend)
 
   hwloc_obj_add_info(topology->levels[0][0], "Backend", "HP-UX");
   hwloc_add_uname_info(topology, NULL);
+
+  free(nodes);
   return 0;
 }
 

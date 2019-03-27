@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright © 2009-2018 Inria.  All rights reserved.
+.\" Copyright © 2009-2019 Inria.  All rights reserved.
 .\" Copyright © 2009-2010 Université of Bordeaux
 .\" Copyright © 2009-2010 Cisco Systems, Inc.  All rights reserved.
 .\" See COPYING in top-level directory.
@@ -89,12 +89,14 @@ If the destination file already exists, overwrite it.
 \fB\-l\fR \fB\-\-logical\fR
 Display hwloc logical indexes of all objects, with prefix "L#".
 .
-By default, both logical and physical/OS indexes are displayed, but only for PUs and NUMA nodes.
+By default, both logical and physical/OS indexes are displayed for PUs and NUMA nodes,
+logical only for cores and packages, and no index for other types.
 .TP
 \fB\-p\fR \fB\-\-physical\fR
 Display OS/physical indexes of all objects, with prefix "P#".
 .
-By default, both logical and physical/OS indexes are displayed, but only for PUs and NUMA nodes.
+By default, both logical and physical/OS indexes are displayed for PUs and NUMA nodes,
+logical only for cores and packages, and no index for other types.
 .TP
 \fB\-c\fR \fB\-\-cpuset\fR
 Display the cpuset of each object.
@@ -251,7 +253,11 @@ Set size of text font.
 
 The default is 10.
 
-This option is ignored in the ASCII backend.
+Boxes are scaled according to the text size.
+The \fILSTOPO_TEXT_XSCALE\fR environment variable may be used
+to further scale the width of boxes (its default value is 1.0).
+
+The \fB\-\-fontsize\fR option is ignored in the ASCII backend.
 .TP
 \fB\-\-gridsize\fR <size>
 Set size of margin between elements.
@@ -405,6 +411,25 @@ the output will be colorized.
 Output a representation of the map that can be loaded in Xfig.
 .
 .TP
+.B svg
+Output a SVG representation of the map,
+using Cairo (by default, if supported)
+or a native SVG backend (fallback, always supported).
+See \fBcairosvg\fR and \fBnativesvg\fR below.
+.
+.TP
+\fBcairosvg\fR or \fBsvg(cairo)\fR
+If lstopo was compiled with the proper support,
+output a SVG representation of the map using Cairo.
+.
+.TP
+\fBnativesvg\fR or \fBsvg(native)\fR
+Output a SVG representation of the map using the native SVG backend.
+It may be less pretty than the Cairo output, but it is always supported,
+and SVG objects have attributes for identifying and manipulating them.
+See dynamic_SVG_example.html for an example.
+.
+.TP
 .B pdf
 If lstopo was compiled with the proper
 support, lstopo outputs a PDF representation of the map.
@@ -418,11 +443,6 @@ support, lstopo outputs a Postscript representation of the map.
 .B png
 If lstopo was compiled with the proper
 support, lstopo outputs a PNG representation of the map.
-.
-.TP
-.B svg
-If lstopo was compiled with the proper
-support, lstopo outputs an SVG representation of the map.
 .
 .TP
 .B synthetic
@@ -540,6 +560,9 @@ complete graphs, etc.) is currently ignored.
 .
 The layout of a level may be changed with \-\-vert, \-\-horiz,
 and \-\-rect.
+
+The position of memory children with respect to other children objects
+may be changed using \-\-children\-order.
 .
 .\" **************************
 .\"    Examples Section

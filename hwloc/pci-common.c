@@ -1,5 +1,5 @@
 /*
- * Copyright © 2009-2018 Inria.  All rights reserved.
+ * Copyright © 2009-2019 Inria.  All rights reserved.
  * See COPYING in top-level directory.
  */
 
@@ -164,9 +164,6 @@ hwloc_pci_discovery_exit(struct hwloc_topology *topology)
   cur = topology->first_pci_locality;
   while (cur) {
     struct hwloc_pci_locality_s *next = cur->next;
-    char *s;
-    hwloc_bitmap_asprintf(&s, cur->cpuset);
-    free(s);
     hwloc_bitmap_free(cur->cpuset);
     free(cur);
     cur = next;
@@ -636,10 +633,18 @@ hwloc_pcidisc_tree_attach(struct hwloc_topology *topology, struct hwloc_obj *tre
 }
 
 struct hwloc_obj *
-hwloc_pcidisc_find_busid_parent(struct hwloc_topology *topology,
-				unsigned domain, unsigned bus, unsigned dev, unsigned func)
+hwloc_pci_find_parent_by_busid(struct hwloc_topology *topology,
+			       unsigned domain, unsigned bus, unsigned dev, unsigned func)
 {
   struct hwloc_pcidev_attr_s busid;
+  hwloc_obj_t parent;
+
+  /* try to find that exact busid */
+  parent = hwloc_pci_find_by_busid(topology, domain, bus, dev, func);
+  if (parent)
+    return parent;
+
+  /* try to find the locality of that bus instead */
   busid.domain = domain;
   busid.bus = bus;
   busid.dev = dev;
@@ -649,8 +654,8 @@ hwloc_pcidisc_find_busid_parent(struct hwloc_topology *topology,
 
 /* return the smallest object that contains the desired busid */
 static struct hwloc_obj *
-hwloc__pcidisc_find_by_busid(hwloc_obj_t parent,
-			     unsigned domain, unsigned bus, unsigned dev, unsigned func)
+hwloc__pci_find_by_busid(hwloc_obj_t parent,
+			 unsigned domain, unsigned bus, unsigned dev, unsigned func)
 {
   hwloc_obj_t child;
 
@@ -675,7 +680,7 @@ hwloc__pcidisc_find_by_busid(hwloc_obj_t parent,
 	  && child->attr->bridge.downstream.pci.secondary_bus <= bus
 	  && child->attr->bridge.downstream.pci.subordinate_bus >= bus)
 	/* not the right bus id, but it's included in the bus below that bridge */
-	return hwloc__pcidisc_find_by_busid(child, domain, bus, dev, func);
+	return hwloc__pci_find_by_busid(child, domain, bus, dev, func);
 
     } else if (child->type == HWLOC_OBJ_BRIDGE
 	       && child->attr->bridge.upstream_type != HWLOC_OBJ_BRIDGE_PCI
@@ -685,7 +690,7 @@ hwloc__pcidisc_find_by_busid(hwloc_obj_t parent,
 	       && child->attr->bridge.downstream.pci.secondary_bus <= bus
 	       && child->attr->bridge.downstream.pci.subordinate_bus >= bus) {
       /* contains our bus, recurse */
-      return hwloc__pcidisc_find_by_busid(child, domain, bus, dev, func);
+      return hwloc__pci_find_by_busid(child, domain, bus, dev, func);
     }
   }
   /* didn't find anything, return parent */
@@ -693,8 +698,8 @@ hwloc__pcidisc_find_by_busid(hwloc_obj_t parent,
 }
 
 struct hwloc_obj *
-hwloc_pcidisc_find_by_busid(struct hwloc_topology *topology,
-			    unsigned domain, unsigned bus, unsigned dev, unsigned func)
+hwloc_pci_find_by_busid(struct hwloc_topology *topology,
+			unsigned domain, unsigned bus, unsigned dev, unsigned func)
 {
   struct hwloc_pci_locality_s *loc;
   hwloc_obj_t root = hwloc_get_root_obj(topology);
@@ -719,7 +724,7 @@ hwloc_pcidisc_find_by_busid(struct hwloc_topology *topology,
   hwloc_debug("  looking for bus %04x:%02x:%02x.%01x below %s P#%u\n",
 	      domain, bus, dev, func,
 	      hwloc_obj_type_string(parent->type), parent->os_index);
-  parent = hwloc__pcidisc_find_by_busid(parent, domain, bus, dev, func);
+  parent = hwloc__pci_find_by_busid(parent, domain, bus, dev, func);
   if (parent == root) {
     hwloc_debug("  found nothing better than root object, ignoring\n");
     return NULL;
@@ -823,30 +828,27 @@ hwloc_pcidisc_check_bridge_type(unsigned device_class, const unsigned char *conf
 #define HWLOC_PCI_SUBORDINATE_BUS 0x1a
 
 int
-hwloc_pcidisc_setup_bridge_attr(hwloc_obj_t obj,
+hwloc_pcidisc_find_bridge_buses(unsigned domain, unsigned bus, unsigned dev, unsigned func,
+				unsigned *secondary_busp, unsigned *subordinate_busp,
 				const unsigned char *config)
 {
-  struct hwloc_bridge_attr_s *battr = &obj->attr->bridge;
-  struct hwloc_pcidev_attr_s *pattr = &battr->upstream.pci;
+  unsigned secondary_bus, subordinate_bus;
 
-  if (config[HWLOC_PCI_PRIMARY_BUS] != pattr->bus) {
+  if (config[HWLOC_PCI_PRIMARY_BUS] != bus) {
     /* Sometimes the config space contains 00 instead of the actual primary bus number.
      * Always trust the bus ID because it was built by the system which has more information
      * to workaround such problems (e.g. ACPI information about PCI parent/children).
      */
     hwloc_debug("  %04x:%02x:%02x.%01x bridge with (ignored) invalid PCI_PRIMARY_BUS %02x\n",
-		pattr->domain, pattr->bus, pattr->dev, pattr->func, config[HWLOC_PCI_PRIMARY_BUS]);
+		domain, bus, dev, func, config[HWLOC_PCI_PRIMARY_BUS]);
   }
 
-  battr->upstream_type = HWLOC_OBJ_BRIDGE_PCI;
-  battr->downstream_type = HWLOC_OBJ_BRIDGE_PCI;
-  battr->downstream.pci.domain = pattr->domain;
-  battr->downstream.pci.secondary_bus = config[HWLOC_PCI_SECONDARY_BUS];
-  battr->downstream.pci.subordinate_bus = config[HWLOC_PCI_SUBORDINATE_BUS];
+  secondary_bus = config[HWLOC_PCI_SECONDARY_BUS];
+  subordinate_bus = config[HWLOC_PCI_SUBORDINATE_BUS];
 
-  if (battr->downstream.pci.secondary_bus <= pattr->bus
-      || battr->downstream.pci.subordinate_bus <= pattr->bus
-      || battr->downstream.pci.secondary_bus > battr->downstream.pci.subordinate_bus) {
+  if (secondary_bus <= bus
+      || subordinate_bus <= bus
+      || secondary_bus > subordinate_bus) {
     /* This should catch most cases of invalid bridge information
      * (e.g. 00 for secondary and subordinate).
      * Ideally we would also check that [secondary-subordinate] is included
@@ -854,12 +856,13 @@ hwloc_pcidisc_setup_bridge_attr(hwloc_obj_t obj,
      * because objects may be discovered out of order (especially in the fsroot case).
      */
     hwloc_debug("  %04x:%02x:%02x.%01x bridge has invalid secondary-subordinate buses [%02x-%02x]\n",
-		pattr->domain, pattr->bus, pattr->dev, pattr->func,
-		battr->downstream.pci.secondary_bus, battr->downstream.pci.subordinate_bus);
-    hwloc_free_unlinked_object(obj);
+		domain, bus, dev, func,
+		secondary_bus, subordinate_bus);
     return -1;
   }
 
+  *secondary_busp = secondary_bus;
+  *subordinate_busp = subordinate_bus;
   return 0;
 }
 
