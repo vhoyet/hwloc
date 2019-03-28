@@ -207,12 +207,6 @@ lstopo_add_factorize_attribute(hwloc_topology_t topology, hwloc_obj_t obj, struc
 
   for_each_child(child, obj)
     lstopo_add_factorize_attribute(topology, child, loutput);
-  for_each_memory_child(child, obj)
-    lstopo_add_factorize_attribute(topology, child, loutput);
-  for_each_io_child(child, obj)
-    lstopo_add_factorize_attribute(topology, child, loutput);
-  for_each_misc_child(child, obj)
-    lstopo_add_factorize_attribute(topology, child, loutput);
 }
 
 static int
