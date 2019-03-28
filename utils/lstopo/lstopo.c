@@ -827,8 +827,15 @@ main (int argc, char *argv[])
       else if (!strncmp (argv[0], "--factorize=", 12)){
     char *equal = strchr(argv[0], '=');
     loutput.factorize = atoi(equal + 1);
+    lstopo_update_factorize_bounds(&loutput);
+    char *comma = strchr(equal+1, ',');
+    if (comma) {
+      loutput.factorize_first = atoi(comma + 1);
+      char *comma2 = strchr(comma+1, ',');
+      if (comma2)
+	loutput.factorize_last = atoi(comma2 + 1);
       }
-      
+      }
       else if (!strcmp (argv[0], "--horiz"))
 	for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
 	  loutput.force_orient[i] = LSTOPO_ORIENT_HORIZ;
