@@ -1,5 +1,5 @@
 #
-# Copyright © 2018 Inria.  All rights reserved.
+# Copyright © 2018-2019 Inria.  All rights reserved.
 # See COPYING in top-level directory.
 #
 
@@ -24,6 +24,8 @@ _lstopo() {
 		   --no-useless-caches
 		   --no-icaches
 		   --merge
+		   --no-factorize
+		   --factorize
 		   --no-collapse
 		   --restrict
 		   --restrict-flags
@@ -116,6 +118,9 @@ _lstopo() {
 		;;
 	    --children-order)
 		COMPREPLY=( `compgen -W "plain memoryabove" -- "$cur"` )
+		;;
+	    --factorize)
+		COMPREPLY=( "<N>" "" )
 		;;
 	esac
     fi
