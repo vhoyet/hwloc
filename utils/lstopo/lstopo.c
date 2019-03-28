@@ -189,16 +189,15 @@ lstopo_add_collapse_attributes(hwloc_topology_t topology)
 }
 
 static void
-lstopo_add_factorize_attribute(hwloc_topology_t topology, hwloc_obj_t obj, struct lstopo_output loutput){
+lstopo_add_factorize_attribute(hwloc_topology_t topology, hwloc_obj_t obj, struct lstopo_output *loutput){
   hwloc_obj_t child;
 
-  if(obj->symmetric_subtree && obj->arity > (unsigned int) loutput.factorize){
+  if(obj->symmetric_subtree && obj->arity > (unsigned int) loutput->factorize){
     for_each_child(child, obj){
-      if(child->sibling_rank == 0
-        || ( child->sibling_rank == 1 && loutput.factorize != 2 && loutput.factorize != 3 )
-        || ( (child->sibling_rank == obj->arity - 1) && loutput.factorize != 2 ))
+      if(child->sibling_rank < loutput->factorize_first ||
+	 child->sibling_rank >= obj->arity - loutput->factorize_last)
         ((struct lstopo_obj_userdata *)child->userdata)->factorized = 0;
-      else if(child->sibling_rank == 2)
+      else if (child->sibling_rank == loutput->factorize_first)
         ((struct lstopo_obj_userdata *)child->userdata)->factorized = 1;
       else
         ((struct lstopo_obj_userdata *)child->userdata)->factorized = -1;
@@ -596,6 +595,7 @@ main (int argc, char *argv[])
   loutput.linespacing = 4;
 
   loutput.factorize = 4;
+  lstopo_update_factorize_bounds(&loutput);
 
   loutput.text_xscale = 1.0f;
   env = getenv("LSTOPO_TEXT_XSCALE");
@@ -1219,7 +1219,7 @@ main (int argc, char *argv[])
     /* there might be some xml-imported userdata in objects, add lstopo-specific userdata in front of them */
     lstopo_populate_userdata(hwloc_get_root_obj(topology));
     lstopo_add_collapse_attributes(topology);
-    lstopo_add_factorize_attribute(topology, hwloc_get_root_obj(topology), loutput);
+    lstopo_add_factorize_attribute(topology, hwloc_get_root_obj(topology), &loutput);
   }
 
   err = output_func(&loutput, filename);

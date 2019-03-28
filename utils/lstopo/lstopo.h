@@ -51,7 +51,9 @@ struct lstopo_output {
   int ignore_pus;
   int ignore_numanodes;
   int collapse;
-  int factorize;
+  unsigned factorize;
+  unsigned factorize_first;
+  unsigned factorize_last;
   int pid_number;
   hwloc_pid_t pid;
   int need_pci_domain;
@@ -263,6 +265,25 @@ static __hwloc_inline int lstopo_busid_snprintf(struct lstopo_output *loutput, c
 		  firstobj->attr->pcidev.func,
 		  lastobj->attr->pcidev.dev,
 		  lastobj->attr->pcidev.func);
+}
+
+static __hwloc_inline void lstopo_update_factorize_bounds(struct lstopo_output *loutput)
+{
+  switch (loutput->factorize) {
+  case 1:
+  case 2:
+    loutput->factorize_first = 1;
+    loutput->factorize_last = 0;
+    break;
+  case 3:
+    loutput->factorize_first = 1;
+    loutput->factorize_last = 1;
+    break;
+  default:
+    loutput->factorize_first = 2;
+    loutput->factorize_last = 1;
+    break;
+  }
 }
 
 extern void lstopo_show_interactive_cli_options(const struct lstopo_output *loutput);
