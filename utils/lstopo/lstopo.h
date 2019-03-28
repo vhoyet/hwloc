@@ -51,6 +51,7 @@ struct lstopo_output {
   int ignore_pus;
   int ignore_numanodes;
   int collapse;
+  int factorize;
   int pid_number;
   hwloc_pid_t pid;
   int need_pci_domain;
@@ -134,6 +135,7 @@ struct lstopo_obj_userdata {
 
   /* PCI collapsing */
   int pci_collapsed; /* 0 if no collapsing, -1 if collapsed with a previous one, >1 if collapsed with several next */
+  int factorized; /* 0 if no collapsing, -1 if collapsed with a previous one, >1 if collapsed with several next */
 
   /* custom style */
   struct lstopo_style style;

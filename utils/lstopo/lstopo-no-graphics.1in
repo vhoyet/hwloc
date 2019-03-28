@@ -150,6 +150,12 @@ Include objects disallowed by administrative limitations.
 \fB\-\-allow <all|local|0xff|nodeset=0xf0>\fR
 Include objects disallowed by administrative limitations (implies \fB\-\-disallowed\fR)
 and also change the set of allowed ones.
+.TP
+\fB\-\-no-factorize\fR
+Do not allow factorizing.
+.TP
+\fB\-\-factorize=<N>\fR
+Set the minimum object number to factorize.
 
 If \fBlocal\fR is given, only objects available to the current process are allowed
 (default behavior when loading from the native operating system backend).

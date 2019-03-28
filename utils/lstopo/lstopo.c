@@ -188,6 +188,33 @@ lstopo_add_collapse_attributes(hwloc_topology_t topology)
   }
 }
 
+static void
+lstopo_add_factorize_attribute(hwloc_topology_t topology, hwloc_obj_t obj, struct lstopo_output loutput){
+  hwloc_obj_t child;
+
+  if(obj->symmetric_subtree && obj->arity > (unsigned int) loutput.factorize){
+    for_each_child(child, obj){
+      if(child->sibling_rank == 0
+        || ( child->sibling_rank == 1 && loutput.factorize != 2 && loutput.factorize != 3 )
+        || ( (child->sibling_rank == obj->arity - 1) && loutput.factorize != 2 ))
+        ((struct lstopo_obj_userdata *)child->userdata)->factorized = 0;
+      else if(child->sibling_rank == 2)
+        ((struct lstopo_obj_userdata *)child->userdata)->factorized = 1;
+      else
+        ((struct lstopo_obj_userdata *)child->userdata)->factorized = -1;
+    }
+  }
+
+  for_each_child(child, obj)
+    lstopo_add_factorize_attribute(topology, child, loutput);
+  for_each_memory_child(child, obj)
+    lstopo_add_factorize_attribute(topology, child, loutput);
+  for_each_io_child(child, obj)
+    lstopo_add_factorize_attribute(topology, child, loutput);
+  for_each_misc_child(child, obj)
+    lstopo_add_factorize_attribute(topology, child, loutput);
+}
+
 static int
 lstopo_check_pci_domains(hwloc_topology_t topology)
 {
@@ -336,6 +363,9 @@ void usage(const char *name, FILE *where)
   fprintf (where, "  --pid <pid>           Detect topology as seen by process <pid>\n");
   fprintf (where, "  --disallowed          Include objects disallowed by administrative limitations\n");
   fprintf (where, "  --allow <all|local|...>   Change the set of objects marked as allowed\n");
+  fprintf (where, "  --no-factorize        Do not allow factorizing\n");
+  fprintf (where, "  --factorize=<N>       Set the minimum object number to factorize\n");
+
   fprintf (where, "Graphical output options:\n");
   fprintf (where, "  --children-order plain\n"
 		  "                        Display memory children below the parent like any other child\n");
@@ -571,11 +601,12 @@ main (int argc, char *argv[])
   loutput.gridsize = 7;
   loutput.linespacing = 4;
 
+  loutput.factorize = 4;
+
   loutput.text_xscale = 1.0f;
   env = getenv("LSTOPO_TEXT_XSCALE");
   if (env)
     loutput.text_xscale = (float) atof(env);
-
   for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
     loutput.force_orient[i] = LSTOPO_ORIENT_NONE;
   loutput.force_orient[HWLOC_OBJ_PU] = LSTOPO_ORIENT_HORIZ;
@@ -797,6 +828,13 @@ main (int argc, char *argv[])
 	loutput.export_synthetic_flags = (unsigned long) strtoull(argv[1], NULL, 0);
 	opt = 1;
       }
+      else if (!strcmp (argv[0], "--no-factorize"))
+    loutput.factorize = 0;   
+      else if (!strncmp (argv[0], "--factorize=", 12)){
+    char *equal = strchr(argv[0], '=');
+    loutput.factorize = atoi(equal + 1);
+      }
+      
       else if (!strcmp (argv[0], "--horiz"))
 	for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
 	  loutput.force_orient[i] = LSTOPO_ORIENT_HORIZ;
@@ -948,6 +986,7 @@ main (int argc, char *argv[])
 	  loutput.legend_append[loutput.legend_append_nr] = strdup(argv[1]);
 	  loutput.legend_append_nr++;
 	}
+
 	opt = 1;
       }
 
@@ -1186,6 +1225,7 @@ main (int argc, char *argv[])
     /* there might be some xml-imported userdata in objects, add lstopo-specific userdata in front of them */
     lstopo_populate_userdata(hwloc_get_root_obj(topology));
     lstopo_add_collapse_attributes(topology);
+    lstopo_add_factorize_attribute(topology, hwloc_get_root_obj(topology), loutput);
   }
 
   err = output_func(&loutput, filename);

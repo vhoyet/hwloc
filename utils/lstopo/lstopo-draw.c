@@ -198,7 +198,12 @@ static hwloc_obj_t next_child(struct lstopo_output *loutput, hwloc_obj_t parent,
   }
   if (!obj)
     return NULL;
-
+  if(loutput->factorize){
+    if(((struct lstopo_obj_userdata *)obj->userdata)->factorized < 0){
+      obj = obj->next_sibling;
+      goto again;
+    }
+  }
   if (obj->type == HWLOC_OBJ_PU && loutput->ignore_pus) {
     obj = obj->next_sibling;
     goto again;
@@ -519,6 +524,15 @@ place_children(struct lstopo_output *loutput, hwloc_obj_t parent,
   /* bridge children always vertical */
   if (parent->type == HWLOC_OBJ_BRIDGE)
     orient = LSTOPO_ORIENT_VERT;
+
+  if(parent->symmetric_subtree && parent->arity > (unsigned int) loutput->factorize && loutput->factorize){
+    for_each_child(child, parent){
+      if(((struct lstopo_obj_userdata *)child->userdata)->factorized == 1 || ((struct lstopo_obj_userdata *)child->userdata)->factorized == -1){
+        orient = LSTOPO_ORIENT_HORIZ;
+        break;
+      }
+    }
+  }
 
   /* recurse into children to prepare their sizes */
   for(i = 0, child = next_child(loutput, parent, LSTOPO_CHILD_KIND_ALL, NULL, &ncstate);
@@ -1045,6 +1059,43 @@ draw_text(struct lstopo_output *loutput, hwloc_obj_t obj, struct lstopo_color *l
 }
 
 static void
+factorize_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, unsigned x, unsigned y)
+{
+  struct lstopo_obj_userdata *lud = level->userdata;
+  unsigned gridsize = loutput->gridsize;
+  unsigned fontsize = loutput->fontsize;
+  unsigned linespacing = loutput->linespacing;
+
+  if (loutput->drawing == LSTOPO_DRAWING_PREPARE) {
+    /* compute children size and position, our size, and save it */
+    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize){
+      lud->width = gridsize*6;
+      lud->height = gridsize*3 + linespacing + fontsize;
+      int nb_hidden = level->parent->arity;
+      sprintf(lud->text[0].text,"%dx total", nb_hidden);
+      int n = (unsigned)strlen(lud->text[0].text);
+      int textwidth = get_textwidth(loutput, lud->text[0].text, n, fontsize);
+      lud->text[0].width = textwidth;
+      if ((unsigned int) textwidth > lud->width - 2 * gridsize)
+        lud->width = textwidth + 2 * gridsize;
+    }
+  }else{
+    struct draw_methods *methods = loutput->methods;
+    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize){
+      struct lstopo_style style;
+      unsigned totwidth = gridsize;
+      unsigned totheight = totwidth;
+      int space = ( lud->width - 3 * totwidth ) / 4;
+      lstopo_set_object_color(loutput, level, &style);
+      methods->box(loutput, style.bg, depth, x + space, totwidth, y + gridsize, totheight, level, 0);
+      methods->box(loutput, style.bg, depth, x + totwidth + 2 * space, totwidth, y + gridsize, totheight, level, 0);
+      methods->box(loutput, style.bg, depth, x + 2 * totwidth + 3 * space, totwidth, y + gridsize, totheight, level, 0);
+      methods->text(loutput, style.t, fontsize, depth, x + ( lud->width - lud->text[0].width ) / 2, y + 2 * gridsize, lud->text[0].text, level, 0);
+    }
+  }
+}
+
+static void
 pci_device_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, unsigned x, unsigned y)
 {
   struct lstopo_obj_userdata *lud = level->userdata;
@@ -1173,16 +1224,19 @@ cache_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, uns
 
   if (loutput->drawing == LSTOPO_DRAWING_PREPARE) {
     /* compute children size and position, our size, and save it */
-    prepare_text(loutput, level);
-    lud->width = gridsize;
-    lud->height = gridsize;
-    if (lud->ntext > 0) {
-      lud->width += lud->textwidth + gridsize;
-      lud->height += fontsize + gridsize;
-    }
-    place_children(loutput, level,
-		   0, lud->height /* the callee with add vertical space if needed */);
-
+    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize){
+      factorize_draw(loutput, level, depth, x, y);
+    } else {
+      prepare_text(loutput, level);
+      lud->width = gridsize;
+      lud->height = gridsize;
+      if (lud->ntext > 0) {
+        lud->width += lud->textwidth + gridsize;
+        lud->height += fontsize + gridsize;
+      }
+      place_children(loutput, level,
+  		   0, lud->height /* the callee with add vertical space if needed */);
+      }
   } else { /* LSTOPO_DRAWING_DRAW */
     struct draw_methods *methods = loutput->methods;
     struct lstopo_style style;
@@ -1206,6 +1260,11 @@ cache_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, uns
       lud->above_children.yrel = 0;
     }
 
+    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize){
+      factorize_draw(loutput, level, depth, x, y);
+      return;
+    }
+
     lstopo_set_object_color(loutput, level, &style);
     methods->box(loutput, style.bg, depth, x, totwidth, y + myoff, myheight, level, 0);
 
@@ -1226,17 +1285,20 @@ normal_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, un
 
   if (loutput->drawing == LSTOPO_DRAWING_PREPARE) {
     /* compute children size and position, our size, and save it */
-    if (level->type != HWLOC_OBJ_PU) /* PU already computed in output_compute_pu_min_textwidth() earlier */
-      prepare_text(loutput, level);
-    lud->width = gridsize;
-    lud->height = gridsize;
-    if (lud->ntext > 0) {
-      lud->width += lud->textwidth + gridsize;
-      lud->height += fontsize + (fontsize + linespacing) * (lud->ntext - 1) + gridsize;
+    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize){
+      factorize_draw(loutput, level, depth, x, y);
+    } else {
+      if (level->type != HWLOC_OBJ_PU) /* PU already computed in output_compute_pu_min_textwidth() earlier */
+        prepare_text(loutput, level);
+      lud->width = gridsize;
+      lud->height = gridsize;
+      if (lud->ntext > 0) {
+        lud->width += lud->textwidth + gridsize;
+        lud->height += fontsize + (fontsize + linespacing) * (lud->ntext - 1) + gridsize;
+      }
+      place_children(loutput, level,
+  		   gridsize, lud->height);
     }
-    place_children(loutput, level,
-		   gridsize, lud->height);
-
   } else { /* LSTOPO_DRAWING_DRAW */
     struct draw_methods *methods = loutput->methods;
     struct lstopo_style style;
@@ -1245,6 +1307,11 @@ normal_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, un
     /* restore our size that was computed during prepare */
     totwidth = lud->width;
     totheight = lud->height;
+
+    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize){
+      factorize_draw(loutput, level, depth, x, y);
+      return;
+    }
 
     lstopo_set_object_color(loutput, level, &style);
     methods->box(loutput, style.bg, depth, x, totwidth, y, totheight, level, 0);
