@@ -198,7 +198,7 @@ static hwloc_obj_t next_child(struct lstopo_output *loutput, hwloc_obj_t parent,
   }
   if (!obj)
     return NULL;
-  if(loutput->factorize){
+  if(loutput->factorize[obj->type]){
     if(((struct lstopo_obj_userdata *)obj->userdata)->factorized < 0){
       obj = obj->next_sibling;
       goto again;
@@ -524,10 +524,9 @@ place_children(struct lstopo_output *loutput, hwloc_obj_t parent,
   /* bridge children always vertical */
   if (parent->type == HWLOC_OBJ_BRIDGE)
     orient = LSTOPO_ORIENT_VERT;
-
-  if(parent->symmetric_subtree && parent->arity > (unsigned int) loutput->factorize && loutput->factorize){
+  if(parent->symmetric_subtree && parent->first_child && parent->arity > (unsigned int) loutput->factorize[parent->first_child->type] && loutput->factorize[parent->first_child->type]){
     for_each_child(child, parent){
-      if(((struct lstopo_obj_userdata *)child->userdata)->factorized == 1 || ((struct lstopo_obj_userdata *)child->userdata)->factorized == -1){
+      if(( ( (struct lstopo_obj_userdata *)child->userdata)->factorized == 1 || ((struct lstopo_obj_userdata *)child->userdata)->factorized == -1 ) && orient == LSTOPO_ORIENT_NONE ){
         orient = LSTOPO_ORIENT_HORIZ;
         break;
       }
@@ -1068,7 +1067,7 @@ factorize_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth,
 
   if (loutput->drawing == LSTOPO_DRAWING_PREPARE) {
     /* compute children size and position, our size, and save it */
-    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize){
+    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize[level->type]){
       lud->width = gridsize*6;
       lud->height = gridsize*3 + linespacing + fontsize;
       int nb_hidden = level->parent->arity;
@@ -1081,7 +1080,7 @@ factorize_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth,
     }
   }else{
     struct draw_methods *methods = loutput->methods;
-    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize){
+    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize[level->type]){
       struct lstopo_style style;
       unsigned totwidth = gridsize;
       unsigned totheight = totwidth;
@@ -1224,7 +1223,7 @@ cache_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, uns
 
   if (loutput->drawing == LSTOPO_DRAWING_PREPARE) {
     /* compute children size and position, our size, and save it */
-    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize){
+    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize[level->type]){
       factorize_draw(loutput, level, depth, x, y);
     } else {
       prepare_text(loutput, level);
@@ -1260,7 +1259,7 @@ cache_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, uns
       lud->above_children.yrel = 0;
     }
 
-    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize){
+    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize[level->type]){
       factorize_draw(loutput, level, depth, x, y);
       return;
     }
@@ -1285,7 +1284,7 @@ normal_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, un
 
   if (loutput->drawing == LSTOPO_DRAWING_PREPARE) {
     /* compute children size and position, our size, and save it */
-    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize){
+    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize[level->type]){
       factorize_draw(loutput, level, depth, x, y);
     } else {
       if (level->type != HWLOC_OBJ_PU) /* PU already computed in output_compute_pu_min_textwidth() earlier */
@@ -1308,7 +1307,7 @@ normal_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth, un
     totwidth = lud->width;
     totheight = lud->height;
 
-    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize){
+    if(((struct lstopo_obj_userdata *)level->userdata)->factorized == 1 && loutput->factorize[level->type]){
       factorize_draw(loutput, level, depth, x, y);
       return;
     }

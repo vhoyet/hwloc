@@ -191,18 +191,20 @@ lstopo_add_collapse_attributes(hwloc_topology_t topology)
 static void
 lstopo_add_factorize_attribute(hwloc_topology_t topology, hwloc_obj_t obj, struct lstopo_output *loutput){
   hwloc_obj_t child;
-
-  if(obj->symmetric_subtree && obj->arity > (unsigned int) loutput->factorize){
+  if(!obj->first_child)
+    return;
+  if(obj->symmetric_subtree && obj->arity > (unsigned int) loutput->factorize[obj->first_child->type]){
     for_each_child(child, obj){
-      if(child->sibling_rank < loutput->factorize_first ||
-	 child->sibling_rank >= obj->arity - loutput->factorize_last)
+      if(child->sibling_rank < loutput->factorize_first[child->type] ||
+	 child->sibling_rank >= obj->arity - loutput->factorize_last[child->type])
         ((struct lstopo_obj_userdata *)child->userdata)->factorized = 0;
-      else if (child->sibling_rank == loutput->factorize_first)
+      else if (child->sibling_rank == loutput->factorize_first[child->type])
         ((struct lstopo_obj_userdata *)child->userdata)->factorized = 1;
       else
         ((struct lstopo_obj_userdata *)child->userdata)->factorized = -1;
     }
   }
+
 
   for_each_child(child, obj)
     lstopo_add_factorize_attribute(topology, child, loutput);
@@ -245,6 +247,7 @@ lstopo_populate_userdata(hwloc_obj_t parent)
   save->common.buffer = NULL; /* so that it is ignored on XML export */
   save->common.next = parent->userdata;
   save->pci_collapsed = 0;
+  save->factorized = 0;
   parent->userdata = save;
 
   for_each_child(child, parent)
@@ -594,9 +597,6 @@ main (int argc, char *argv[])
   loutput.gridsize = 7;
   loutput.linespacing = 4;
 
-  loutput.factorize = 4;
-  lstopo_update_factorize_bounds(&loutput);
-
   loutput.text_xscale = 1.0f;
   env = getenv("LSTOPO_TEXT_XSCALE");
   if (env)
@@ -822,19 +822,66 @@ main (int argc, char *argv[])
 	loutput.export_synthetic_flags = (unsigned long) strtoull(argv[1], NULL, 0);
 	opt = 1;
       }
-      else if (!strcmp (argv[0], "--no-factorize"))
-    loutput.factorize = 0;   
-      else if (!strncmp (argv[0], "--factorize=", 12)){
-    char *equal = strchr(argv[0], '=');
-    loutput.factorize = atoi(equal + 1);
-    lstopo_update_factorize_bounds(&loutput);
-    char *comma = strchr(equal+1, ',');
-    if (comma) {
-      loutput.factorize_first = atoi(comma + 1);
-      char *comma2 = strchr(comma+1, ',');
-      if (comma2)
-	loutput.factorize_last = atoi(comma2 + 1);
+      else if (!strncmp (argv[0], "--no-factorize", 14)){    
+        char *end = argv[0]+14;
+        if (*end == '=') {
+          const char *tmp = end+1;
+          while (tmp) {
+            char *sep = strchr(tmp, ',');
+            hwloc_obj_type_t type;
+            if (sep)
+              *sep = '\0';
+            if (hwloc_type_sscanf(tmp, &type, NULL, 0) < 0)
+              if (!hwloc_strncasecmp(tmp, "cache", 5)) {
+                for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
+                  if (hwloc_obj_type_is_cache(i))
+                    loutput.factorize[i] = 0;
+              } else if (!hwloc_strncasecmp(tmp, "io", 2)) {
+                for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
+                  if (hwloc_obj_type_is_io(i))
+                    loutput.factorize[i] = 0;
+              } else
+          fprintf(stderr, "Unsupported type `%s' passed to %s, ignoring.\n", tmp, argv[0]);
+            else
+              loutput.factorize[type] = 0;
+            if (!sep)
+              break;
+            tmp = sep+1;
+          }
+        } 
       }
+      else if (!strncmp (argv[0], "--factorize", 11)){
+        char *end = argv[0]+11;
+        if (*end == '=') {
+          const char *tmp = end+1;
+          while (tmp) {
+            char *sep = strchr(tmp, ',');
+            hwloc_obj_type_t type;
+            if (sep)
+              *sep = '\0';
+            if(atoi(tmp) > 0 && atoi(tmp) < 100){
+              for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
+                loutput.factorize[i] = atoi(tmp);
+            }
+            if (hwloc_type_sscanf(tmp, &type, NULL, 0) < 0)
+              if (!hwloc_strncasecmp(tmp, "cache", 5)) {
+                for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
+                  if (hwloc_obj_type_is_cache(i))
+                    loutput.factorize[i] = 4;
+              } else if (!hwloc_strncasecmp(tmp, "io", 2)) {
+                for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
+                  if (hwloc_obj_type_is_io(i))
+                    loutput.factorize[i] = 4;
+              } else
+          fprintf(stderr, "Unsupported type `%s' passed to %s, ignoring.\n", tmp, argv[0]);
+            else
+              loutput.factorize[type] = 4;
+            if (!sep)
+              break;
+            tmp = sep+1;
+          }
+          lstopo_update_factorize_bounds(&loutput);
+        } 
       }
       else if (!strcmp (argv[0], "--horiz"))
 	for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
