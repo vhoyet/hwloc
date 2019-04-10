@@ -58,7 +58,25 @@ WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 	the_scale /= 1.2f;
 	redraw = 1;
 	break;
-      case 'f':
+      case 'f': {
+   if( !loutput->factorize_enabled && loutput->collapse ){
+      loutput->factorize_enabled ^= 1;
+      printf("factorize enabled\n");
+      disp->needs_redraw = 1;
+    }else if( loutput->factorize_enabled && loutput->collapse ){
+      loutput->factorize_enabled ^= 1;
+      loutput->collapse ^= 1;
+      printf("factorize and collapsing of identical PCI devices disabled\n");
+      disp->needs_redraw = 1;
+      break;
+    }else{
+      loutput->collapse ^= 1;
+      printf("%s collapsing of identical PCI devices\n", loutput->collapse ? "enabled" : "disabled");
+      disp->needs_redraw = 1;
+    }
+  redraw = 1;
+  break;
+    }
       case 'F': {
 	float wscale, hscale;
 	wscale = win_width / (float)the_width;
@@ -118,11 +136,6 @@ WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
       case 'l':
 	loutput->legend ^= 1;
 	printf("%s legend\n", loutput->legend ? "enabled" : "disabled");
-	redraw = 1;
-	break;
-      case 'c':
-	loutput->collapse ^= 1;
-	printf("%s collapsing of identical PCI devices\n", loutput->collapse ? "enabled" : "disabled");
 	redraw = 1;
 	break;
       case 'E':

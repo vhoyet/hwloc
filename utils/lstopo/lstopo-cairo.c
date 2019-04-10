@@ -151,10 +151,10 @@ struct lstopo_x11_output {
   Window top, win;
   Cursor hand;
   unsigned int orig_fontsize, orig_gridsize;
-  int screen_width, screen_height;		/** visible part size */
-  int last_screen_width, last_screen_height;	/** last visible part size */
-  int width, height;				/** total normal display size */
-  int x, y;					/** top left corner of the visible part */
+  int screen_width, screen_height;    /** visible part size */
+  int last_screen_width, last_screen_height;  /** last visible part size */
+  int width, height;        /** total normal display size */
+  int x, y;         /** top left corner of the visible part */
   float scale, last_scale;
   int needs_redraw;
 };
@@ -346,60 +346,60 @@ output_x11(struct lstopo_output *loutput, const char *dummy __hwloc_attribute_un
     if (!XEventsQueued(disp->dpy, QueuedAfterFlush)) {
       /* No pending event, flush moving windows before waiting for next event */
       if (disp->x != lastx || disp->y != lasty) {
-	XMoveWindow(disp->dpy, disp->win, -disp->x, -disp->y);
-	lastx = disp->x;
-	lasty = disp->y;
+  XMoveWindow(disp->dpy, disp->win, -disp->x, -disp->y);
+  lastx = disp->x;
+  lasty = disp->y;
       }
     }
     XNextEvent(disp->dpy, &e);
     switch (e.type) {
       case Expose:
-	if (e.xexpose.count < 1)
-	  topo_cairo_paint(coutput);
-	break;
+  if (e.xexpose.count < 1)
+    topo_cairo_paint(coutput);
+  break;
       case MotionNotify:
-	if (state) {
-	  disp->x -= e.xmotion.x_root - x;
-	  disp->y -= e.xmotion.y_root - y;
-	  x = e.xmotion.x_root;
-	  y = e.xmotion.y_root;
-	  move_x11(disp);
-	}
-	break;
+  if (state) {
+    disp->x -= e.xmotion.x_root - x;
+    disp->y -= e.xmotion.y_root - y;
+    x = e.xmotion.x_root;
+    y = e.xmotion.y_root;
+    move_x11(disp);
+  }
+  break;
       case ConfigureNotify: {
-	float wscale, hscale;
-	disp->screen_width = e.xconfigure.width;
-	disp->screen_height = e.xconfigure.height;
-	if (disp->screen_width != disp->last_screen_width
-	    || disp->screen_height != disp->last_screen_height) {
-	  wscale = disp->screen_width / (float)disp->width;
-	  hscale = disp->screen_height / (float)disp->height;
-	  disp->scale *= wscale > hscale ? hscale : wscale;
-	  if (disp->scale < 1.0f)
-	    disp->scale = 1.0f;
-	  move_x11(disp);
-	}
-	if (disp->x != lastx || disp->y != lasty)
-	  XMoveWindow(disp->dpy, disp->win, -disp->x, -disp->y);
-	break;
+  float wscale, hscale;
+  disp->screen_width = e.xconfigure.width;
+  disp->screen_height = e.xconfigure.height;
+  if (disp->screen_width != disp->last_screen_width
+      || disp->screen_height != disp->last_screen_height) {
+    wscale = disp->screen_width / (float)disp->width;
+    hscale = disp->screen_height / (float)disp->height;
+    disp->scale *= wscale > hscale ? hscale : wscale;
+    if (disp->scale < 1.0f)
+      disp->scale = 1.0f;
+    move_x11(disp);
+  }
+  if (disp->x != lastx || disp->y != lasty)
+    XMoveWindow(disp->dpy, disp->win, -disp->x, -disp->y);
+  break;
       }
       case ButtonPress:
-	  if (e.xbutton.button == Button1) {
-	  state = 1;
-	  x = e.xbutton.x_root;
-	  y = e.xbutton.y_root;
-	}
-	break;
+    if (e.xbutton.button == Button1) {
+    state = 1;
+    x = e.xbutton.x_root;
+    y = e.xbutton.y_root;
+  }
+  break;
       case ButtonRelease:
-	if (e.xbutton.button == Button1)
-	  state = 0;
-	break;
+  if (e.xbutton.button == Button1)
+    state = 0;
+  break;
       case MappingNotify:
-	XRefreshKeyboardMapping(&e.xmapping);
-	break;
+  XRefreshKeyboardMapping(&e.xmapping);
+  break;
       case KeyPress: {
-	KeySym keysym;
-	XLookupString(&e.xkey, NULL, 0, &keysym, NULL);
+  KeySym keysym;
+  XLookupString(&e.xkey, NULL, 0, &keysym, NULL);
         switch (keysym) {
           case XK_q:
           case XK_Q:
@@ -450,98 +450,112 @@ output_x11(struct lstopo_output *loutput, const char *dummy __hwloc_attribute_un
             disp->y = INT_MAX;
             move_x11(disp);
             break;
-	case XK_f:
-	case XK_F: {
-	  float wscale = disp->screen_width / (float)disp->width;
-	  float hscale = disp->screen_height / (float)disp->height;
-	  disp->scale *= wscale > hscale ? hscale : wscale;
-	  move_x11(disp);
-	  break;
-	}
-	case XK_plus:
-	case XK_KP_Add:
-	  disp->scale *= 1.2f;
-	  move_x11(disp);
-	  break;
-	case XK_minus:
-	case XK_KP_Subtract:
-	  disp->scale /= 1.2f;
-	  move_x11(disp);
-	  break;
-	case XK_1:
-	case XK_KP_1:
-	  disp->scale = 1.0f;
-	  move_x11(disp);
-	  break;
-	case XK_h:
-	case XK_H:
-	  lstopo_show_interactive_help();
-	  break;
-	case XK_a: {
-	  int v = !loutput->show_attrs[0]; /* if show_attrs[] contains different values, assume it's all like the first type */
-	  for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
-	    loutput->show_attrs[i] = v;
-	  printf("%s object attributes\n", v ? "enabled" : "disabled");
-	  disp->needs_redraw = 1;
-	  move_x11(disp);
-	  break;
-	}
-	case XK_t: {
-	  int v = !loutput->show_text[0]; /* if show_text[] contains different values, assume it's all like the first type */
-	  for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
-	    loutput->show_text[i] = v;
-	  printf("%s object text\n", v ? "enabled" : "disabled");
-	  disp->needs_redraw = 1;
-	  move_x11(disp);
-	  break;
-	}
-	case XK_i:
-	  if (loutput->index_type == LSTOPO_INDEX_TYPE_DEFAULT) {
-	    loutput->index_type = LSTOPO_INDEX_TYPE_PHYSICAL;
-	    printf("switched to physical indexes\n");
-	  } else if (loutput->index_type == LSTOPO_INDEX_TYPE_PHYSICAL) {
-	    loutput->index_type = LSTOPO_INDEX_TYPE_LOGICAL;
-	    printf("switched to logical indexes\n");
-	  } else if (loutput->index_type == LSTOPO_INDEX_TYPE_LOGICAL) {
-	    loutput->index_type = LSTOPO_INDEX_TYPE_NONE;
-	    printf("switched to no indexes\n");
-	  } else if (loutput->index_type == LSTOPO_INDEX_TYPE_NONE) {
-	    loutput->index_type = LSTOPO_INDEX_TYPE_DEFAULT;
-	    printf("switched to default indexes\n");
-	  } else {
-	    abort();
-	  }
-	  disp->needs_redraw = 1;
-	  move_x11(disp);
-	  break;
-	case XK_b:
-	  loutput->show_binding ^= 1;
-	  printf("%s coloring of binding resources\n", loutput->show_binding ? "enabled" : "disabled");
-	  disp->needs_redraw = 1;
-	  move_x11(disp);
-	  break;
-	case XK_d:
-	  loutput->show_disallowed ^= 1;
-	  printf("%s coloring of disallowed resources\n", loutput->show_disallowed ? "enabled" : "disabled");
-	  disp->needs_redraw = 1;
-	  move_x11(disp);
-	  break;
-	case XK_c:
-	  loutput->collapse ^= 1;
-	  printf("%s collapsing of identical PCI devices\n", loutput->collapse ? "enabled" : "disabled");
-	  disp->needs_redraw = 1;
-	  move_x11(disp);
-	  break;
-	case XK_l:
-	  loutput->legend ^= 1;
-	  printf("%s legend\n", loutput->legend ? "enabled" : "disabled");
-	  disp->needs_redraw = 1;
-	  move_x11(disp);
-	  break;
-	case XK_E:
-	  lstopo_show_interactive_cli_options(loutput);
-	  break;
-	}
+  case XK_f: {
+    if( !loutput->factorize_enabled && loutput->collapse ){
+      loutput->factorize_enabled ^= 1;
+      printf("factorize enabled\n");
+      disp->needs_redraw = 1;
+      move_x11(disp);
+    }else if( loutput->factorize_enabled && loutput->collapse ){
+      loutput->factorize_enabled ^= 1;
+      loutput->collapse ^= 1;
+      printf("factorize and collapsing of identical PCI devices disabled\n");
+      disp->needs_redraw = 1;
+      move_x11(disp);
+      break;
+    }else{
+      loutput->collapse ^= 1;
+      printf("%s collapsing of identical PCI devices\n", loutput->collapse ? "enabled" : "disabled");
+      disp->needs_redraw = 1;
+      move_x11(disp);
+    }
+    
+  }
+  case XK_F: {
+    float wscale = disp->screen_width / (float)disp->width;
+    float hscale = disp->screen_height / (float)disp->height;
+    disp->scale *= wscale > hscale ? hscale : wscale;
+    move_x11(disp);
+    break;
+  }
+  case XK_plus:
+  case XK_KP_Add:
+    disp->scale *= 1.2f;
+    move_x11(disp);
+    break;
+  case XK_minus:
+  case XK_KP_Subtract:
+    disp->scale /= 1.2f;
+    move_x11(disp);
+    break;
+  case XK_1:
+  case XK_KP_1:
+    disp->scale = 1.0f;
+    move_x11(disp);
+    break;
+  case XK_h:
+  case XK_H:
+    lstopo_show_interactive_help();
+    break;
+  case XK_a: {
+    int v = !loutput->show_attrs[0]; /* if show_attrs[] contains different values, assume it's all like the first type */
+    for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
+      loutput->show_attrs[i] = v;
+    printf("%s object attributes\n", v ? "enabled" : "disabled");
+    disp->needs_redraw = 1;
+    move_x11(disp);
+    break;
+  }
+  case XK_t: {
+    int v = !loutput->show_text[0]; /* if show_text[] contains different values, assume it's all like the first type */
+    for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
+      loutput->show_text[i] = v;
+    printf("%s object text\n", v ? "enabled" : "disabled");
+    disp->needs_redraw = 1;
+    move_x11(disp);
+    break;
+  }
+  case XK_i:
+    if (loutput->index_type == LSTOPO_INDEX_TYPE_DEFAULT) {
+      loutput->index_type = LSTOPO_INDEX_TYPE_PHYSICAL;
+      printf("switched to physical indexes\n");
+    } else if (loutput->index_type == LSTOPO_INDEX_TYPE_PHYSICAL) {
+      loutput->index_type = LSTOPO_INDEX_TYPE_LOGICAL;
+      printf("switched to logical indexes\n");
+    } else if (loutput->index_type == LSTOPO_INDEX_TYPE_LOGICAL) {
+      loutput->index_type = LSTOPO_INDEX_TYPE_NONE;
+      printf("switched to no indexes\n");
+    } else if (loutput->index_type == LSTOPO_INDEX_TYPE_NONE) {
+      loutput->index_type = LSTOPO_INDEX_TYPE_DEFAULT;
+      printf("switched to default indexes\n");
+    } else {
+      abort();
+    }
+    disp->needs_redraw = 1;
+    move_x11(disp);
+    break;
+  case XK_b:
+    loutput->show_binding ^= 1;
+    printf("%s coloring of binding resources\n", loutput->show_binding ? "enabled" : "disabled");
+    disp->needs_redraw = 1;
+    move_x11(disp);
+    break;
+  case XK_d:
+    loutput->show_disallowed ^= 1;
+    printf("%s coloring of disallowed resources\n", loutput->show_disallowed ? "enabled" : "disabled");
+    disp->needs_redraw = 1;
+    move_x11(disp);
+    break;
+  case XK_l:
+    loutput->legend ^= 1;
+    printf("%s legend\n", loutput->legend ? "enabled" : "disabled");
+    disp->needs_redraw = 1;
+    move_x11(disp);
+    break;
+  case XK_E:
+    lstopo_show_interactive_cli_options(loutput);
+    break;
+  }
       }
     }
   }

@@ -456,6 +456,8 @@ static void lstopo__show_interactive_cli_options(const struct lstopo_output *lou
   lstopo_show_interactive_cli_options_array(loutput->show_attrs, "attrs");
   lstopo_show_interactive_cli_options_array(loutput->show_text, "text");
 
+  if(!loutput->factorize_enabled)
+    printf(" --no-factorize");
   if (!loutput->collapse)
     printf(" --no-collapse");
   if (!loutput->show_binding)
@@ -596,6 +598,11 @@ main (int argc, char *argv[])
   loutput.fontsize = 10;
   loutput.gridsize = 7;
   loutput.linespacing = 4;
+  loutput.factorize_enabled = 1;
+  for(i=HWLOC_OBJ_TYPE_MIN; i<HWLOC_OBJ_TYPE_MAX; i++)
+    if (hwloc_obj_type_is_cache(i))
+      loutput.factorize[i] = 4;
+  lstopo_update_factorize_bounds(&loutput);
 
   loutput.text_xscale = 1.0f;
   env = getenv("LSTOPO_TEXT_XSCALE");

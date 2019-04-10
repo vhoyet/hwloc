@@ -52,6 +52,7 @@ struct lstopo_output {
   int ignore_numanodes;
   int collapse;
   unsigned factorize[HWLOC_OBJ_TYPE_MAX];
+  unsigned factorize_enabled;
   unsigned factorize_first[HWLOC_OBJ_TYPE_MAX];
   unsigned factorize_last[HWLOC_OBJ_TYPE_MAX];
   int pid_number;
