@@ -254,7 +254,7 @@ hwloc_look_hpux(struct hwloc_backend *backend, struct hwloc_disc_status *dstatus
     }
 
     /* Add cpu */
-    hwloc_insert_object_by_cpuset(topology, obj);
+    hwloc__insert_object_by_cpuset(topology, NULL, obj, "hpux:numanode");
 
     currentcpu = mpctl((topology->flags & HWLOC_TOPOLOGY_FLAG_INCLUDE_DISALLOWED) ?
       MPC_GETNEXTSPU_SYS : MPC_GETNEXTSPU, currentcpu, 0);
@@ -263,7 +263,7 @@ hwloc_look_hpux(struct hwloc_backend *backend, struct hwloc_disc_status *dstatus
   if (has_numa) {
     /* Add nodes */
     for (i = 0 ; i < nbnodes ; i++)
-      hwloc_insert_object_by_cpuset(topology, nodes[i]);
+      hwloc__insert_object_by_cpuset(topology, NULL, nodes[i], "hpux:nodes");
   }
 
   topology->support.discovery->pu = 1;
