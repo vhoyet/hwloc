@@ -617,7 +617,11 @@ union hwloc_obj_attr_u {
   } group;
   /** \brief PCI Device specific Object Attributes */
   struct hwloc_pcidev_attr_s {
+    #ifdef HAVE_32BITS_PCI_DOMAIN
+    unsigned int domain;
+    #else
     unsigned short domain;
+    #endif
     unsigned char bus, dev, func;
     unsigned short class_id;
     unsigned short vendor_id, device_id, subvendor_id, subdevice_id;

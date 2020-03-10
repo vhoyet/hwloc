@@ -89,6 +89,11 @@ AC_DEFUN([HWLOC_DEFINE_ARGS],[
                   AS_HELP_STRING([--disable-nvml],
                                  [Disable the NVML device discovery]))
 
+    # 32bits_pci_domain?
+    AC_ARG_ENABLE([32bits-pci-domain],
+                  AS_HELP_STRING([--enable-32bits-pci-domain],
+                                 [Enable the 32 bits pci domain]))
+
     # GL/Display
     AC_ARG_ENABLE([gl],
 		  AS_HELP_STRING([--disable-gl],
@@ -331,6 +336,11 @@ EOF
 
     AC_CHECK_HEADERS([time.h], [
       AC_CHECK_FUNCS([clock_gettime])
+    ])
+
+    AS_IF([test "x$enable_32bits_pci_domain" = "xyes"], [
+      AC_DEFINE([HAVE_32BITS_PCI_DOMAIN], 1,
+        [Define to 1 if --enable-32bits-pci-domain is called.])
     ])
 
     # Only generate this if we're building the utilities

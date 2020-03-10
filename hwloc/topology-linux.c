@@ -5575,7 +5575,6 @@ hwloc_linuxfs_find_osdev_parent(struct hwloc_backend *backend, int root_fd,
     if (strstr(path, "/usb"))
       return NULL;
   }
-
   tmp = strstr(path, "/pci");
   if (!tmp)
     goto nopci;
@@ -5593,7 +5592,7 @@ hwloc_linuxfs_find_osdev_parent(struct hwloc_backend *backend, int root_fd,
     pcibus = _pcibus;
     pcidev = _pcidev;
     pcifunc = _pcifunc;
-    tmp += 13;
+    tmp = strchr(tmp+3, ':')+8;
     goto nextpci;
   }
   if (sscanf(tmp+1, "%x:%x.%x", &_pcibus, &_pcidev, &_pcifunc) == 3) {
@@ -6482,9 +6481,10 @@ hwloc_linuxfs_pci_look_pcidevices(struct hwloc_backend *backend)
     size_t ret;
     int fd, err;
 
-    if (sscanf(dirent->d_name, "%04x:%02x:%02x.%01x", &domain, &bus, &dev, &func) != 4)
+    if (sscanf(dirent->d_name, "%x:%02x:%02x.%01x", &domain, &bus, &dev, &func) != 4)
       continue;
 
+    #ifndef HAVE_32BITS_PCI_DOMAIN
     if (domain > 0xffff) {
       static int warned = 0;
       if (!warned)
@@ -6492,6 +6492,7 @@ hwloc_linuxfs_pci_look_pcidevices(struct hwloc_backend *backend)
       warned = 1;
       continue;
     }
+    #endif
 
     /* initialize the config space in case we fail to read it (missing permissions, etc). */
     memset(config_space_cache, 0xff, CONFIG_SPACE_CACHESIZE);
