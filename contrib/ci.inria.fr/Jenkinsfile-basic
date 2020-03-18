@@ -58,6 +58,7 @@ pipeline {
 					dir('contrib/ci.inria.fr') {
 						stash includes: "job-1-check.sh", name: 'script-unix-check'
 						stash includes: "job-1-visualstudio.bat", name: 'script-msvc'
+            stash includes: "job-3-pci.sh", name: 'script-pci'
 					}
 					archiveArtifacts artifacts: tarballgz+","+tarballbz2+",doc/doxygen-doc/hwloc-a4.pdf", fingerprint: true, onlyIfSuccessful: true
 					deleteDir()
@@ -70,15 +71,30 @@ pipeline {
 					listOfNodeNames = []
 					if (env.NO_UNIX != 'true') {
 						labelToSelect = 'unix'
-						listOfNodeNames = jenkins.model.Jenkins.instance.nodes.collect {
+            
+						/*listOfNodeNames = jenkins.model.Jenkins.instance.nodes.collect {
 						  node -> node.getLabelString().contains(labelToSelect) ? node.name : null
 						}
 						listOfNodeNames.removeAll(Collections.singleton(null))
-            listOfNodeNames = filterAvailableNode(listOfNodeNames)
+            listOfNodeNames = filterAvailableNode(listOfNodeNames)*/
+            echo "------------- TESTING --------------------"
+            listOfNodeNames = nodesByLabel(labelToSelect)
+            println listOfNodeNames
 					}
 					if (env.NO_MSVC != 'true') {
 						listOfNodeNames.push('VisualStudio')
 					}
+          if (env.PCI == 'true') {
+            node(listOfNodeNames[0]) {
+              dir('check-pci') {
+                    unstash 'tarballgz'
+                    unstash 'script-pci'
+                    sh 'chmod 755 job-3-pci.sh && ./job-3-pci.sh '+tarballgz
+                    if (env.KEEP_WORKING_DIRECTORY != 'true')
+                      deleteDir()
+                  }
+            }
+          }
 					def p = listOfNodeNames.collectEntries {
 					[ (it): {
 						if (it != 'VisualStudio') {
