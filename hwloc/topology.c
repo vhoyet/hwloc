@@ -75,14 +75,47 @@ int hwloc_hide_errors(void)
   return hide;
 }
 
-static void hwloc_report_os_error(const char *msg, const char *reason)
+
+/* format the obj info to print in error messages */
+static void
+hwloc__report_error_format_obj(char *buf, size_t buflen, hwloc_obj_t obj)
 {
+	char typestr[64];
+	char *cpusetstr;
+	char *nodesetstr = NULL;
+
+	hwloc_obj_type_snprintf(typestr, sizeof(typestr), obj, 0);
+	hwloc_bitmap_asprintf(&cpusetstr, obj->cpuset);
+	if (obj->nodeset) /* may be missing during insert */
+	  hwloc_bitmap_asprintf(&nodesetstr, obj->nodeset);
+	if (obj->os_index != HWLOC_UNKNOWN_INDEX)
+	  snprintf(buf, buflen, "%s (P#%u cpuset %s%s%s)",
+		   typestr, obj->os_index, cpusetstr,
+		   nodesetstr ? " nodeset " : "",
+		   nodesetstr ? nodesetstr : "");
+	else
+	  snprintf(buf, buflen, "%s (cpuset %s%s%s)",
+		   typestr, cpusetstr,
+		   nodesetstr ? " nodeset " : "",
+		   nodesetstr ? nodesetstr : "");
+	free(cpusetstr);
+	free(nodesetstr);
+}
+
+static void report_insert_error(hwloc_obj_t obj1, hwloc_obj_t obj2, const char *msg, const char *reason)
+{
+
+  char obj1str[512];
+	char obj2str[512];
   static int reported = 0;
+  hwloc__report_error_format_obj(obj1str, sizeof(obj1str), obj1);
+	hwloc__report_error_format_obj(obj2str, sizeof(obj2str), obj2);
+
   if (!reported && !hwloc_hide_errors()) {
     fprintf(stderr, "****************************************************************************\n");
     fprintf(stderr, "* hwloc %s received invalid information from the operating system.\n", HWLOC_VERSION);
     fprintf(stderr, "*\n");
-    fprintf(stderr, "* %s\n", msg);
+    fprintf(stderr, "* %s, %s : %s\n", obj1str, obj2str, msg);
     fprintf(stderr, "* The erroneous information came from : %s\n", reason);
     fprintf(stderr, "*\n");
     fprintf(stderr, "* The following FAQ entry in the hwloc documentation may help:\n");
@@ -1228,32 +1261,6 @@ hwloc__object_cpusets_compare_first(hwloc_obj_t obj1, hwloc_obj_t obj2)
   return 0;
 }
 
-/* format the obj info to print in error messages */
-static void
-hwloc__report_error_format_obj(char *buf, size_t buflen, hwloc_obj_t obj)
-{
-	char typestr[64];
-	char *cpusetstr;
-	char *nodesetstr = NULL;
-
-	hwloc_obj_type_snprintf(typestr, sizeof(typestr), obj, 0);
-	hwloc_bitmap_asprintf(&cpusetstr, obj->cpuset);
-	if (obj->nodeset) /* may be missing during insert */
-	  hwloc_bitmap_asprintf(&nodesetstr, obj->nodeset);
-	if (obj->os_index != HWLOC_UNKNOWN_INDEX)
-	  snprintf(buf, buflen, "%s (P#%u cpuset %s%s%s)",
-		   typestr, obj->os_index, cpusetstr,
-		   nodesetstr ? " nodeset " : "",
-		   nodesetstr ? nodesetstr : "");
-	else
-	  snprintf(buf, buflen, "%s (cpuset %s%s%s)",
-		   typestr, cpusetstr,
-		   nodesetstr ? " nodeset " : "",
-		   nodesetstr ? nodesetstr : "");
-	free(cpusetstr);
-	free(nodesetstr);
-}
-
 /*
  * How to insert objects into the topology.
  *
@@ -1433,15 +1440,8 @@ hwloc___insert_object_by_cpuset(struct hwloc_topology *topology, hwloc_obj_t cur
 	return hwloc___insert_object_by_cpuset(topology, child, obj, reason);
 
       case HWLOC_OBJ_INTERSECTS:
-        if(reason) {
-	  char childstr[512];
-	  char objstr[512];
-	  char msg[1100];
-	  hwloc__report_error_format_obj(objstr, sizeof(objstr), obj);
-	  hwloc__report_error_format_obj(childstr, sizeof(childstr), child);
-	  snprintf(msg, sizeof(msg), "%s intersects with %s without inclusion!", objstr, childstr);
-	  hwloc_report_os_error(msg, reason);
-	}
+        if(reason)
+	  report_insert_error(obj, child, "intersection without inclusion", reason);
 	goto putback;
 
       case HWLOC_OBJ_DIFFERENT:
@@ -1614,15 +1614,8 @@ hwloc___attach_memory_object_by_nodeset(struct hwloc_topology *topology, hwloc_o
       if (obj->type == HWLOC_OBJ_NUMANODE) {
 	if (cur->type == HWLOC_OBJ_NUMANODE) {
 	  /* identical NUMA nodes? ignore the new one */
-	  if(reason) {
-	    char curstr[512];
-	    char objstr[512];
-	    char msg[1100];
-	    hwloc__report_error_format_obj(curstr, sizeof(curstr), cur);
-	    hwloc__report_error_format_obj(objstr, sizeof(objstr), obj);
-	    snprintf(msg, sizeof(msg), "%s and %s have identical nodesets!", objstr, curstr);
-	    hwloc_report_os_error(msg, reason);
-	  }
+	  if(reason) 
+	    report_insert_error(cur, obj, "NUMAnodes with identical nodesets", reason);
 	  return NULL;
 	}
 	assert(cur->type == HWLOC_OBJ_MEMCACHE);
