@@ -5,7 +5,6 @@
  * Copyright © 2009-2011 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
  */
-
 #include "private/autogen/config.h"
 #include "hwloc.h"
 #ifdef HWLOC_LINUX_SYS
