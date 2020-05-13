@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
       else if (!strcmp (argv[0], "--ignore")) {
 	hwloc_obj_type_t type;
 	if (argc < 2) {
-	  usage(callname, stdout);
+	  usage(callname, stderr);
 	  exit(EXIT_FAILURE);
 	}
 	if (hwloc_type_sscanf(argv[1], &type, NULL, 0) < 0)
@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
       }
       else if (!strcmp (argv[0], "--from")) {
 	if (argc < 2) {
-	  usage(callname, stdout);
+	  usage(callname, stderr);
 	  exit(EXIT_FAILURE);
 	}
 	from_type = argv[1];
@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
       }
       else if (!strcmp (argv[0], "--to")) {
 	if (argc < 2) {
-	  usage(callname, stdout);
+	  usage(callname, stderr);
 	  exit(EXIT_FAILURE);
 	}
 	to_type = argv[1];
@@ -140,7 +140,7 @@ int main(int argc, char *argv[])
       }
       else if (!strcmp (argv[0], "--at")) {
 	if (argc < 2) {
-	  usage(callname, stdout);
+	  usage(callname, stderr);
 	  exit(EXIT_FAILURE);
 	}
 	from_type = to_type = argv[1];
@@ -154,7 +154,7 @@ int main(int argc, char *argv[])
       }
       else if (!strcmp (argv[0], "--restrict")) {
 	if (argc < 2) {
-	  usage (callname, stdout);
+	  usage (callname, stderr);
 	  exit(EXIT_FAILURE);
 	}
         if(strncmp(argv[1], "nodeset=", 8)) {
@@ -169,7 +169,7 @@ int main(int argc, char *argv[])
       }
       else if (!strcmp (argv[0], "--restrict-flags")) {
 	if (argc < 2) {
-	  usage (callname, stdout);
+	  usage (callname, stderr);
 	  exit(EXIT_FAILURE);
         }
 	restrict_flags = hwloc_utils_parse_restrict_flags(argv[1]);
