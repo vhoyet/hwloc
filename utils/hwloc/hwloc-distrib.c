@@ -167,6 +167,16 @@ int main(int argc, char *argv[])
 	argv++;
 	goto next;
       }
+      else if (!strcmp (argv[0], "--restrict-flags")) {
+	if (argc < 2) {
+	  usage (callname, stdout);
+	  exit(EXIT_FAILURE);
+        }
+	restrict_flags = hwloc_utils_parse_restrict_flags(argv[1]);
+        argc--;
+	argv++;
+	goto next;
+      }
       else if (!strcmp (argv[0], "--version")) {
           printf("%s %s\n", callname, HWLOC_VERSION);
           exit(EXIT_SUCCESS);

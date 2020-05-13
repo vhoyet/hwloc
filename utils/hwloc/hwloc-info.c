@@ -494,6 +494,14 @@ main (int argc, char *argv[])
         }
 	opt = 1;
       }
+      else if (!strcmp (argv[0], "--restrict-flags")) {
+	if (argc < 2) {
+	  usage (callname, stderr);
+	  exit(EXIT_FAILURE);
+        }
+	restrict_flags = hwloc_utils_parse_restrict_flags(argv[1]);
+	opt = 1;
+      }
 
       else if (hwloc_utils_lookup_input_option(argv, argc, &opt,
 					       &input, &input_format,
