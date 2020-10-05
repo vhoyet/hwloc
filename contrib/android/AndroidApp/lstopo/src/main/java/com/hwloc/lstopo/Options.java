@@ -1,20 +1,16 @@
 package com.hwloc.lstopo;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
-import android.widget.Spinner;
+import android.widget.RadioGroup;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 // Create a window to choose the filter to download topology
 public class Options extends Activity {
@@ -23,7 +19,6 @@ public class Options extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.options);
-        final Context activity = this;
         final Button apply = findViewById(R.id.apply);
         final RadioButton logicalIndexes = findViewById(R.id.indexes_logical);
         final RadioButton physicalIndexes = findViewById(R.id.indexes_physical);
@@ -33,6 +28,13 @@ public class Options extends Activity {
         final CheckBox includeDisallowed = findViewById(R.id.include_disallowed);
         final CheckBox noLegend = findViewById(R.id.no_legend);
         final ArrayList<String> options = new ArrayList<>();
+
+        final RadioGroup indexes1 = findViewById(R.id.indexes_group1);
+        final RadioGroup indexes2 = findViewById(R.id.indexes_group2);
+        final RadioGroup ioObjects1 = findViewById(R.id.IO_objects_group1);
+        final RadioGroup ioObjects2 = findViewById(R.id.IO_objects_group2);
+        syncRadioGroup(indexes1, indexes2);
+        syncRadioGroup(ioObjects1, ioObjects2);
 
         // Set windows size
         DisplayMetrics dm = new DisplayMetrics();
@@ -66,6 +68,26 @@ public class Options extends Activity {
                 returnIntent.putStringArrayListExtra("options", options);
                 setResult(RESULT_OK, returnIntent);
                 finish();
+            }
+        });
+    }
+
+    private void syncRadioGroup(final RadioGroup radioGroup1, final RadioGroup radioGroup2) {
+        radioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton rButton = ((RadioButton) radioGroup.findViewById(i));
+                if (rButton != null && rButton.isChecked())
+                    radioGroup2.clearCheck();
+            }
+        });
+
+        radioGroup2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton rButton = ((RadioButton) radioGroup.findViewById(i));
+                if (rButton != null && rButton.isChecked())
+                    radioGroup1.clearCheck();
             }
         });
     }

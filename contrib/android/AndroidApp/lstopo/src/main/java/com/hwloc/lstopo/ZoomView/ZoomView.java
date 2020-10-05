@@ -454,4 +454,13 @@ public class ZoomView extends RelativeLayout {
         invalidate();
         // }
     }
+
+    public void resetZoom() {
+        smoothZoomTo(1.0f, getWidth() / 2.0f,
+                getHeight() / 2.0f);
+    }
+
+    public void setZoom(float zoom) {
+        this.zoom = zoom;
+    }
 }

@@ -141,9 +141,9 @@ JNIEXPORT int JNICALL Java_com_hwloc_lstopo_MainActivity_startWithInput(JNIEnv *
     }
 }
 
-void JNIprepare(int height, int width){
-    jmethodID prepare = (*tools.jni)->GetMethodID(tools.jni, tools.methods.lstopo_android, "setScale", "(II)V");
-    (*tools.jni)->CallVoidMethod(tools.jni, tools.lstopo, prepare, height, width);
+void JNIprepare(int height, int width, int fontsize){
+    jmethodID prepare = (*tools.jni)->GetMethodID(tools.jni, tools.methods.lstopo_android, "setScale", "(III)V");
+    (*tools.jni)->CallVoidMethod(tools.jni, tools.lstopo, prepare, height, width, fontsize);
 }
 
 void JNIbox(int r, int g, int b, int x, int y, int width, int height, int gp_index, char *info) {

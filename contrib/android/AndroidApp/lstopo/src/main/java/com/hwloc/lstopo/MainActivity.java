@@ -11,6 +11,8 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -54,6 +56,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.hwloc.lstopo.ZoomView.ZoomView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -87,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     // Frame the application draw on
     private RelativeLayout layout;
+    private ZoomView zoomView;
     // Graphic tools that draw the topology
     private Lstopo lstopo;
     private Toolbar toolbar;
@@ -124,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+        zoomView = findViewById(R.id.zoomview);
 
         this.configureToolBar();
         this.configureDrawerLayout();
@@ -207,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         menuItems.setCheckedItems(item);
         lstopo.clearDebugFile();
+        zoomView.resetZoom();
 
         switch (id){
             case R.id.activity_main_drawer_draw :
@@ -292,11 +298,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * */
     private void setMode(String mode){
         this.mode = mode;
-
         switch(mode){
             case "draw":
                 filters.setVisibility(GONE);
                 optionsButton.setVisibility(VISIBLE);
+
                 break;
             case "xml":
             case "txt":
@@ -436,6 +442,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
+    }
+
     /**
      * Get the list of downloadable topology from API
      * */
@@ -445,12 +458,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String tags = requestTag != null ? "tags/" + requestTag : "";
         final String url ="https://hwloc-xmls.herokuapp.com/" + tags;
 
+        if(!isNetworkAvailable()) {
+            Toast.makeText(MainActivity.this, "No internet connection.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
 
         final LinearLayout linearLayout = new LinearLayout(activity);
-        linearLayout.setMinimumWidth(size.x);
+        linearLayout.setMinimumWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         ScrollView scrollView = new ScrollView(activity);
         scrollView.setFillViewport(true);
@@ -509,6 +527,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         checkTimeOut.start();
         queue.add(jsonObjectRequest);
         linearLayout.setMinimumHeight(linearLayout.getHeight() + 100);
+        linearLayout.setMinimumWidth(lstopo.getScreen_width());
     }
 
     public void createSyntheticLayout() {
@@ -582,6 +601,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 tv.setY(i * 50);
                 tv.setText(title);
                 tv.setTextSize(20);
+                tv.setMaxWidth(lstopo.getScreen_width());
 
                 linearLayout.setMinimumHeight(linearLayout.getMinimumHeight() + 150);
                 linearLayout.addView(tv);
@@ -815,6 +835,3 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 }
 
 //TODO: Fix third xml on API
-//TODO: Rotation on tablet ?
-//TODO: y a des topos (genre une des premieres AMD où on ne peut pas zoomer assez pour voir le texte en tout petit dans les boites de lstopo)
-//TODO: retester si on peut reactiver le binding dans lstopo, juste pour mettre un commentaire adapté (genre "pas supporté sur androidX" ou "pas supporté sur l'emulateur").
