@@ -302,7 +302,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * */
     private void setMode(String mode){
         this.mode = mode;
-
         switch(mode){
             case "draw":
                 filters.setVisibility(GONE);
