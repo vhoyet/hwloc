@@ -155,7 +155,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         optionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(MainActivity.this, Options.class), 4);
+                Intent intent = new Intent(MainActivity.this, Options.class);
+                for(int i = 0; i < options.size(); i++) {
+                    intent.putExtra(Integer.toString(i),options.get(i));
+                }
+                startActivityForResult(intent, 4);
             }
         });
 
@@ -833,5 +837,3 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 }
-
-//TODO: Fix third xml on API

@@ -127,18 +127,24 @@ public class Lstopo extends AppCompatActivity {
 
         TextView tv = new TextView(activity);
         tv.setMinWidth(screen_width);
-
         if( id == -1 ){
-            tv.setTextIsSelectable(true);
-            ScrollView scrollView = new ScrollView(activity);
-            layout.addView(scrollView);
-            scrollView.addView(tv);
-            tv.setX(x);
-            tv.setY(y);
-            tv.setMaxWidth(screen_width);
+            if(text.length() > 100) {
+                tv.setTextIsSelectable(true);
+                ScrollView scrollView = new ScrollView(activity);
+                layout.addView(scrollView);
+                scrollView.addView(tv);
+                tv.setX(x);
+                tv.setY(y);
+                tv.setMaxWidth(screen_width);
+            } else {
+                layout.addView(tv);
+                tv.setX(x * xscale);
+                tv.setY(y * yscale);
+            }
         } else {
             tv.setClickable(false);
             LinearLayout viewGroup = layout.findViewById(id);
+
             viewGroup.addView(tv);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -146,10 +152,11 @@ public class Lstopo extends AppCompatActivity {
             );
             params.setMargins((int) (10 * xscale), (int) (2 * yscale), 0, 0);
             tv.setLayoutParams(params);
+
+
         }
 
         tv.setTextSize(this.fontsize);
-
         tv.setText(text);
     }
 
@@ -166,19 +173,26 @@ public class Lstopo extends AppCompatActivity {
         Point size = new Point();
         display.getSize(size);
         int toolbars_height = 0;
+
         // status bar height
         int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
             toolbars_height += activity.getResources().getDimensionPixelSize(resourceId);
         }
+
+        screen_height = size.y - dpToPx(toolbars_height);
+        screen_width = size.x;
+
         // navigation bar height
         resourceId = activity.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
         if (resourceId > 0) {
             toolbars_height += activity.getResources().getDimensionPixelSize(resourceId);
         }
 
-        screen_height = size.y - toolbars_height;
-        screen_width = size.x;
+
+
+
+
     }
 
     public void setScale(int hwloc_screen_height, int hwloc_screen_width, int fontsize){
@@ -191,6 +205,8 @@ public class Lstopo extends AppCompatActivity {
         this.fontsize = (int) pixelsToDp(fontsize * yscale);
         if(this.fontsize > 15)
             this.fontsize = 14;
+
+        layout.setMinimumHeight(screen_height);
     }
 
     public int getScreen_height() {
@@ -245,4 +261,9 @@ public class Lstopo extends AppCompatActivity {
         float dp = px / (metrics.densityDpi / 160f);
         return Math.round(dp);
     }
+
+    public int dpToPx(int dp){
+        return (int) (dp * ((float) activity.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
+
 }

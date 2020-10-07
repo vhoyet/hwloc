@@ -22,8 +22,10 @@ public class Options extends Activity {
         final Button apply = findViewById(R.id.apply);
         final RadioButton logicalIndexes = findViewById(R.id.indexes_logical);
         final RadioButton physicalIndexes = findViewById(R.id.indexes_physical);
+        final RadioButton defaultIndexes = findViewById(R.id.indexes_default);
         final RadioButton ioObjectsWhole = findViewById(R.id.IO_object_whole);
         final RadioButton ioObjectsNone = findViewById(R.id.IO_object_none);
+        final RadioButton ioObjectsDefault = findViewById(R.id.IO_object_default);
         final CheckBox noFactorize = findViewById(R.id.no_factorize);
         final CheckBox includeDisallowed = findViewById(R.id.include_disallowed);
         final CheckBox noLegend = findViewById(R.id.no_legend);
@@ -35,6 +37,39 @@ public class Options extends Activity {
         final RadioGroup ioObjects2 = findViewById(R.id.IO_objects_group2);
         syncRadioGroup(indexes1, indexes2);
         syncRadioGroup(ioObjects1, ioObjects2);
+
+        Intent intent = getIntent();
+        int i = 0;
+        while(intent.getStringExtra(Integer.toString(i)) != null) {
+            switch(intent.getStringExtra(Integer.toString(i))) {
+                case "-l":
+                    logicalIndexes.setChecked(true);
+                    break;
+                case "-p":
+                    physicalIndexes.setChecked(true);
+                    break;
+
+                case "--no-io":
+                    ioObjectsNone.setChecked(true);
+                    break;
+                case "--whole-io":
+                    ioObjectsWhole.setChecked(true);
+                    break;
+
+                case "--no-factorize":
+                    noFactorize.setChecked(true);
+                    break;
+
+                case "--disallowed":
+                    includeDisallowed.setChecked(true);
+                    break;
+
+                case "--no-legend":
+                    noLegend.setChecked(true);
+                    break;
+            }
+            i++;
+        }
 
         // Set windows size
         DisplayMetrics dm = new DisplayMetrics();
@@ -54,7 +89,7 @@ public class Options extends Activity {
                 if(ioObjectsNone.isChecked())
                     options.add("--no-io");
                 else if(ioObjectsWhole.isChecked())
-                    options.add("-whole-io");
+                    options.add("--whole-io");
 
                 if(noFactorize.isChecked())
                     options.add("--no-factorize");
@@ -70,6 +105,11 @@ public class Options extends Activity {
                 finish();
             }
         });
+
+        if(!logicalIndexes.isChecked() && !physicalIndexes.isChecked())
+            defaultIndexes.setChecked(true);
+        if(!ioObjectsNone.isChecked() && !ioObjectsWhole.isChecked())
+            ioObjectsDefault.setChecked(true);
     }
 
     private void syncRadioGroup(final RadioGroup radioGroup1, final RadioGroup radioGroup2) {
@@ -91,4 +131,5 @@ public class Options extends Activity {
             }
         });
     }
+
 }
