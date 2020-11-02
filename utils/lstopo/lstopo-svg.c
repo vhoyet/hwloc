@@ -36,8 +36,12 @@ native_svg_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor,
     snprintf(id, sizeof id, " id='anon_rect%s'", complement);
   }
 
-  fprintf(file,"\t<rect%s%s x='%u' y='%u' width='%u' height='%u' fill='rgb(%d,%d,%d)' stroke='rgb(0,0,0)' stroke-width='%u'/>\n",
-	  id, class, x, y, width, height, r, g, b, loutput->thickness);
+  if(obj && obj->type == HWLOC_OBJ_PU && obj->logical_index%2 == 0)
+    fprintf(file,"\t<rect%s%s x='%u' y='%u' width='%u' height='%u' fill='rgb(%d,%d,%d)' stroke='rgb(0,0,0)' stroke-width='%u'/>\n",
+          id, class, x, y, width, height, r, g, b, loutput->thickness * 2);
+  else
+    fprintf(file,"\t<rect%s%s x='%u' y='%u' width='%u' height='%u' fill='rgb(%d,%d,%d)' stroke='rgb(0,0,0)' stroke-width='%u'/>\n",
+      id, class, x, y, width, height, r, g, b, loutput->thickness);
 }
 
 
@@ -93,8 +97,12 @@ native_svg_text(struct lstopo_output *loutput, const struct lstopo_color *lcolor
     snprintf(id, sizeof id, " id='anon_text%s'", complement);
   }
 
-  fprintf(file,"\t<text%s%s font-family='Monospace' x='%u' y='%u' fill='rgb(%d,%d,%d)' font-size='%dpx'>%s</text>\n",
-	  id, class, x, y+size, r, g, b, size, text);
+  if((strstr(text, "PU") || strstr(text, "P#")) && obj->logical_index%2 == 0)
+    fprintf(file,"\t<text%s%s font-family='Monospace' font-weight='bold' x='%u' y='%u' fill='rgb(%d,%d,%d)' font-size='%dpx'>%s</text>\n",
+	    id, class, x, y+size, r, g, b, size, text);
+  else
+    fprintf(file,"\t<text%s%s font-family='Monospace' x='%u' y='%u' fill='rgb(%d,%d,%d)' font-size='%dpx'>%s</text>\n",
+	    id, class, x, y+size, r, g, b, size, text);
 }
 
 static struct draw_methods native_svg_draw_methods = {

@@ -54,7 +54,11 @@ fig_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsign
   y *= FIG_FACTOR;
   width *= FIG_FACTOR;
   height *= FIG_FACTOR;
-  fprintf(file, "2 2 0 %u 0 %d %u -1 20 0.0 0 0 -1 0 0 5\n\t", loutput->thickness, lcolor->private.fig.color, depth);
+
+  if(obj && obj->type == HWLOC_OBJ_PU && obj->logical_index%2 == 0)
+    fprintf(file, "2 2 0 %u 0 %d %u -1 20 0.0 0 0 -1 0 0 5\n\t", loutput->thickness * 2, lcolor->private.fig.color, depth);
+  else
+    fprintf(file, "2 2 0 %u 0 %d %u -1 20 0.0 0 0 -1 0 0 5\n\t", loutput->thickness, lcolor->private.fig.color, depth);
   fprintf(file, " %u %u", x, y);
   fprintf(file, " %u %u", x + width, y);
   fprintf(file, " %u %u", x + width, y + height);
@@ -97,7 +101,11 @@ fig_text(struct lstopo_output *loutput, const struct lstopo_color *lcolor, int s
   y += (size * FIG_FACTOR * 4) / 10;
 
   size = FIG_FONTSIZE_SCALE(size);
-  fprintf(file, "4 0 %d %u -1 0 %d 0.0 4 %d %d %u %u %s\\001\n", color, depth, size, size * FIG_FACTOR, FIG_TEXT_WIDTH(len, size) * FIG_FACTOR, x, y + size * 10, text);
+
+  if((strstr(text, "PU") || strstr(text, "P#")) && obj->logical_index%2 == 0)
+    fprintf(file, "4 0 %d %u -1 2 %d 0.0 4 %d %d %u %u %s\\001\n", color, depth, size, size * FIG_FACTOR, FIG_TEXT_WIDTH(len, size) * FIG_FACTOR, x, y + size * 10, text);
+  else
+    fprintf(file, "4 0 %d %u -1 0 %d 0.0 4 %d %d %u %u %s\\001\n", color, depth, size, size * FIG_FACTOR, FIG_TEXT_WIDTH(len, size) * FIG_FACTOR, x, y + size * 10, text);
 }
 
 static void

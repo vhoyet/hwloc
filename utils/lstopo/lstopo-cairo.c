@@ -73,7 +73,10 @@ topo_cairo_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor,
 
   cairo_rectangle(c, x, y, width, height);
   cairo_set_source_rgb(c, 0, 0, 0);
-  cairo_set_line_width(c, loutput->thickness);
+  if(obj && obj->type == HWLOC_OBJ_PU && obj->logical_index%2 == 0)
+    cairo_set_line_width(c, loutput->thickness * 2);
+  else
+    cairo_set_line_width(c, loutput->thickness);
   cairo_stroke(c);
 }
 
@@ -97,6 +100,11 @@ topo_cairo_text(struct lstopo_output *loutput, const struct lstopo_color *lcolor
   struct lstopo_cairo_output *coutput = loutput->backend_data;
   cairo_t *c = coutput->context;
   int r = lcolor->r, g = lcolor->g, b = lcolor->b;
+
+  if((strstr(text, "PU") || strstr(text, "P#")) && obj->logical_index%2 == 0)
+    cairo_select_font_face(c, "Purisa", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
+  else
+    cairo_select_font_face(c, "Purisa", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
 
   cairo_move_to(c, x, y + fontsize);
   cairo_set_source_rgb(c, (float)r / 255, (float) g / 255, (float) b / 255);
