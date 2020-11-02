@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private File txtFile;
     private File xmlFile;
     private File jpgFile;
+    private File debugFile;
     // Queue to send API get requests
     private RequestQueue queue;
     // Current menu mode
@@ -142,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         txtFile = getAbsoluteFile("/topology.txt");
         xmlFile = getAbsoluteFile("/topology.xml");
         jpgFile = getAbsoluteFile("/topology.jpg");
+        debugFile = getAbsoluteFile("/application_log.txt");
 
         filtersButton = findViewById(R.id.filters);
         filtersButton.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +219,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         menuItems.setCheckedItems(item);
-        lstopo.clearDebugFile();
         zoomView.resetZoom();
 
         switch (id){
@@ -225,6 +226,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if(topology.equals("phone") && !menuItems.isInputPhoneSelected())
                     menuItems.setPhoneInput();
 
+                lstopo.clearDebugFile();
                 layout.removeAllViews();
 
                 if(topology.equals("phone"))
@@ -238,6 +240,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     menuItems.setPhoneInput();
 
                 try {
+                    lstopo.clearDebugFile();
                     layout.removeAllViews();
                     //JNI can't overwrite file
                     txtFile.delete();
@@ -258,6 +261,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     menuItems.setPhoneInput();
 
                 try {
+                    lstopo.clearDebugFile();
                     layout.removeAllViews();
                     //JNI can't overwrite file
                     xmlFile.delete();
@@ -291,6 +295,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.activity_main_drawer_Synthetic_Topology:
                 createSyntheticLayout();
                 break;
+            case R.id.activity_main_drawer_debug:
+                final Uri data = FileProvider.getUriForFile(this, "com.hwloc.lstopo.fileprovider", debugFile);
+                this.grantUriPermission(this.getPackageName(), data, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                final Intent intent = new Intent(Intent.ACTION_VIEW)
+                        .setDataAndType(data, "text/plain")
+                        .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                this.startActivity(intent);
+            case R.id.activity_main_drawer_about:
+                Intent intentAbout = new Intent(MainActivity.this, About.class);
+                startActivityForResult(intentAbout, 5);
+                    break;
             default:
                 break;
         }
@@ -449,13 +464,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
-    }
-
     /**
      * Check network connection
      * */
@@ -545,62 +553,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         queue.add(jsonObjectRequest);
         linearLayout.setMinimumHeight(linearLayout.getHeight() + 100);
         linearLayout.setMinimumWidth(lstopo.getScreen_width());
-    }
-
-    public void createSyntheticLayout() {
-        setMode("synthetic");
-        layout.removeAllViews();
-        layout.setMinimumWidth(lstopo.getScreen_width());
-        layout.setMinimumHeight(lstopo.getScreen_height());
-
-        final EditText edit = new EditText(this);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                lstopo.getScreen_width() / 3,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-
-        edit.setX((float)(lstopo.getScreen_width() - params.width) / 2);
-        edit.setY((float) lstopo.getScreen_height() / 3);
-        //edit.setLayoutParams(params);
-
-        final Button startSynthetic = new Button(this);
-        startSynthetic.setText("Start synthetic");
-        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(
-                lstopo.getScreen_width() / 4,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-
-        startSynthetic.setX((float)(lstopo.getScreen_width() - params2.width) / 2);
-        startSynthetic.setY((float) lstopo.getScreen_height() / 3 + (float) lstopo.getScreen_height() / 10);
-
-        layout.addView(edit, params);
-        layout.addView(startSynthetic, params2);
-
-        GradientDrawable shape =  new GradientDrawable();
-        shape.setStroke(4, Color.BLACK);
-        shape.setCornerRadius(12);
-        shape.setColor(Color.WHITE);
-
-        edit.setBackground(shape);
-        edit.setTextSize(20);
-        edit.setHintTextColor(Color.LTGRAY);
-        edit.setHint("node:2 pu:3");
-        edit.setPadding(30, 0, 30, 0);
-        edit.setVisibility(VISIBLE);
-
-        startSynthetic.setVisibility(VISIBLE);
-        startSynthetic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                menuItems.setCheckedItems(menuItems.outputFormat.get(0));
-                layout.removeAllViews();
-                topology = edit.getText().toString();
-                setMode("draw");
-
-                if(topology.equals("") || startWithInput(lstopo, 1, "", topology, options) != 0 )
-                    Toast.makeText(MainActivity.this, "Synthetic topology not valid...", Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
     /**
