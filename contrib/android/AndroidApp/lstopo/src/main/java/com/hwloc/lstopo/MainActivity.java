@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private File txtFile;
     private File xmlFile;
     private File jpgFile;
+    private File debugFile;
     // Queue to send API get requests
     private RequestQueue queue;
     // Current menu mode
@@ -142,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         txtFile = getAbsoluteFile("/topology.txt");
         xmlFile = getAbsoluteFile("/topology.xml");
         jpgFile = getAbsoluteFile("/topology.jpg");
+        debugFile = getAbsoluteFile("/application_log.txt");
 
         filtersButton = findViewById(R.id.filters);
         filtersButton.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +219,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         menuItems.setCheckedItems(item);
-        lstopo.clearDebugFile();
         zoomView.resetZoom();
 
         switch (id){
@@ -225,6 +226,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if(topology.equals("phone") && !menuItems.isInputPhoneSelected())
                     menuItems.setPhoneInput();
 
+                lstopo.clearDebugFile();
                 layout.removeAllViews();
 
                 if(topology.equals("phone"))
@@ -238,6 +240,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     menuItems.setPhoneInput();
 
                 try {
+                    lstopo.clearDebugFile();
                     layout.removeAllViews();
                     //JNI can't overwrite file
                     txtFile.delete();
@@ -258,6 +261,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     menuItems.setPhoneInput();
 
                 try {
+                    lstopo.clearDebugFile();
                     layout.removeAllViews();
                     //JNI can't overwrite file
                     xmlFile.delete();
@@ -291,6 +295,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.activity_main_drawer_Synthetic_Topology:
                 createSyntheticLayout();
                 break;
+            case R.id.activity_main_drawer_debug:
+                final Uri data = FileProvider.getUriForFile(this, "com.hwloc.lstopo.fileprovider", debugFile);
+                this.grantUriPermission(this.getPackageName(), data, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                final Intent intent = new Intent(Intent.ACTION_VIEW)
+                        .setDataAndType(data, "text/plain")
+                        .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                this.startActivity(intent);
+            case R.id.activity_main_drawer_about:
+                Intent intentAbout = new Intent(MainActivity.this, About.class);
+                startActivityForResult(intentAbout, 5);
+                    break;
             default:
                 break;
         }

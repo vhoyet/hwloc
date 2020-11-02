@@ -195,6 +195,7 @@ void JNIDebug(char *text) {
     jclass class = (*tools.jni)->FindClass(tools.jni, "java/lang/String");
     jmethodID ctor = (*tools.jni)->GetMethodID(tools.jni, class, "<init>", "([BLjava/lang/String;)V");
     jstring str = (jstring) (*tools.jni)->NewObject(tools.jni, class, ctor, array, strEncode);
+    
 
     (*tools.jni)->CallVoidMethod(tools.jni, tools.lstopo, tools.methods.debug, str);
     (*tools.jni)->DeleteLocalRef(tools.jni, str);
