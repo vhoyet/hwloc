@@ -213,14 +213,6 @@ public class Lstopo extends AppCompatActivity {
         return this.screen_width;
     }
 
-    public int getScreen_height() {
-        return this.screen_height;
-    }
-
-    public int getScreen_width() {
-        return this.screen_width;
-    }
-
     public void setScreen_height(int screen_height) {
         this.screen_height = screen_height;
     }
