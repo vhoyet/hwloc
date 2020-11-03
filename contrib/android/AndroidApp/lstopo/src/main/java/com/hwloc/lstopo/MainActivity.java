@@ -302,10 +302,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .setDataAndType(data, "text/plain")
                         .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 this.startActivity(intent);
+                break;
             case R.id.activity_main_drawer_about:
                 Intent intentAbout = new Intent(MainActivity.this, About.class);
                 startActivityForResult(intentAbout, 5);
-                    break;
+                break;
             default:
                 break;
         }

@@ -38,11 +38,11 @@ public class About extends Activity {
 
         String versionName = BuildConfig.VERSION_NAME;
         TextView tvVersion = findViewById(R.id.version);
-        tvVersion.setText("version: " + versionName);
+        tvVersion.setText("Version: " + versionName);
         tvVersion.setTextSize(20);
 
         TextView tvWebsite = findViewById(R.id.open_mpi);
-        tvWebsite.setText("link to the website: ");
+        tvWebsite.setText("Project Website: ");
         tvWebsite.setTextSize(20);
 
         TextView tvWebsiteLink = findViewById(R.id.open_mpi_link);
@@ -58,7 +58,7 @@ public class About extends Activity {
         });
 
         TextView tvGithub = findViewById(R.id.github);
-        tvGithub.setText("link to the github: ");
+        tvGithub.setText("GitHub Repository: ");
         tvGithub.setTextSize(20);
 
         TextView tvGithubLink = findViewById(R.id.github_link);
@@ -81,7 +81,7 @@ public class About extends Activity {
         tvGithubLink.setLayoutParams(paramsDebug);
 
         TextView tvCi = findViewById(R.id.ci);
-        tvCi.setText("link to continuous integration: ");
+        tvCi.setText("CI with latest APKs: ");
         tvCi.setTextSize(20);
 
         TextView tvCiLink = findViewById(R.id.ci_link);
