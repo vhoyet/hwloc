@@ -7,6 +7,7 @@ import android.graphics.Point;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Environment;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,7 @@ public class Lstopo extends AppCompatActivity {
         this.activity = activity;
         layout = activity.findViewById(R.id.relative_layout);
         setScreenSize();
-        debugFile = getAbsoluteFile("/debug.txt");
+        debugFile = getAbsoluteFile("/application_log.txt");
         debugFile.delete();
     }
 
@@ -188,11 +189,6 @@ public class Lstopo extends AppCompatActivity {
         if (resourceId > 0) {
             toolbars_height += activity.getResources().getDimensionPixelSize(resourceId);
         }
-
-
-
-
-
     }
 
     public void setScale(int hwloc_screen_height, int hwloc_screen_width, int fontsize){
@@ -207,6 +203,14 @@ public class Lstopo extends AppCompatActivity {
             this.fontsize = 14;
 
         layout.setMinimumHeight(screen_height);
+    }
+
+    public int getScreen_height() {
+        return this.screen_height;
+    }
+
+    public int getScreen_width() {
+        return this.screen_width;
     }
 
     public int getScreen_height() {
