@@ -168,6 +168,7 @@ struct lstopo_obj_userdata {
   /* PCI collapsing */
   int pci_collapsed; /* 0 if no collapsing, -1 if collapsed with a previous one, >1 if collapsed with several next */
   int factorized; /* 0 if no factorizing, -1 if hidden, 1 if replaced with dots */
+  int parent_box_id;
 
   /* custom style */
   struct lstopo_style style;

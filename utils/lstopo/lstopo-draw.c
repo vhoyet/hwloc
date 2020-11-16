@@ -683,8 +683,11 @@ draw__children(struct lstopo_output *loutput, hwloc_obj_t parent,
   hwloc_obj_t child;
   int ncstate;
 
-  if (children->box)
+  if (children->box) {
+    ((struct lstopo_obj_userdata *)parent->userdata)->parent_box_id = 1;
     loutput->methods->box(loutput, children->boxcolor, depth, x, children->width, y, children->height, parent, 1);
+  }
+    
 
   for(child = next_child(loutput, parent, children->kinds, NULL, &ncstate);
       child;
@@ -1138,9 +1141,13 @@ pci_device_draw(struct lstopo_output *loutput, hwloc_obj_t level, unsigned depth
     lstopo_set_object_color(loutput, level, &style);
 
     if (loutput->pci_collapse_enabled && lud->pci_collapsed > 1) {
+      ((struct lstopo_obj_userdata *)level->userdata)->parent_box_id = 2;
       methods->box(loutput, style.bg, depth+2, x + overlaidoffset, totwidth - overlaidoffset, y + overlaidoffset, totheight - overlaidoffset, level, 2);
-      if (lud->pci_collapsed > 2)
+
+      if (lud->pci_collapsed > 2) {
+  ((struct lstopo_obj_userdata *)level->userdata)->parent_box_id = 1;
 	methods->box(loutput, style.bg, depth+1, x + overlaidoffset/2, totwidth - overlaidoffset, y + overlaidoffset/2, totheight - overlaidoffset, level, 1);
+      }
       methods->box(loutput, style.bg, depth, x, totwidth - overlaidoffset, y, totheight - overlaidoffset, level, 0);
     } else {
       methods->box(loutput, style.bg, depth, x, totwidth, y, totheight, level, 0);
