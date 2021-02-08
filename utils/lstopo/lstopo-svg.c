@@ -25,16 +25,21 @@ native_svg_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor,
   int r = lcolor->r, g = lcolor->g, b = lcolor->b;
   char parent_id[128] = "";
   char parent_complement[12] = "";
+  char gp_index[128] = "";
   char id[128] = "";
   char class[128] = "";
   char complement[12] = "";
   
 
-  if (obj && ((struct lstopo_obj_userdata *)obj->userdata)->parent_box_id)
+  if (obj && ( ((struct lstopo_obj_userdata *)obj->userdata)->parent_box_id == 1 || ((struct lstopo_obj_userdata *)obj->userdata)->parent_box_id == 2 ))
     snprintf(parent_complement, sizeof parent_complement, "_%u", ((struct lstopo_obj_userdata *)obj->userdata)->parent_box_id);
     
   if (box_id)
     snprintf(complement, sizeof complement, "_%u", box_id);
+
+  if(obj && obj->gp_index)
+    snprintf(gp_index, sizeof gp_index, " gp_index='%lu'", obj->gp_index);
+    
 
   if (obj) {
     char type[64];
@@ -52,8 +57,9 @@ native_svg_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor,
     snprintf(id, sizeof id, " id='anon_rect%s'", complement);
   }
 
-  fprintf(file,"\t<rect%s%s x='%u' y='%u' width='%u' height='%u' fill='rgb(%d,%d,%d)' stroke='rgb(0,0,0)' stroke-width='%u'/>\n",
-	  id, class, x, y, width, height, r, g, b, loutput->thickness);
+  fprintf(file, "\t<rect%s%s%s%s x='%u' y='%u' width='%u' height='%u' fill='rgb(%d,%d,%d)' stroke='rgb(0,0,0)' stroke-width='%u'/>\n",
+	  id, class, parent_id, gp_index, x, y, width, height, r, g, b, loutput->thickness);
+
 }
 
 

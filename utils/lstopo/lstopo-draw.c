@@ -683,15 +683,14 @@ draw__children(struct lstopo_output *loutput, hwloc_obj_t parent,
   hwloc_obj_t child;
   int ncstate;
 
-  if (children->box) {
-    ((struct lstopo_obj_userdata *)parent->userdata)->parent_box_id = 1;
+  if (children->box)
     loutput->methods->box(loutput, children->boxcolor, depth, x, children->width, y, children->height, parent, 1);
-  }
     
 
   for(child = next_child(loutput, parent, children->kinds, NULL, &ncstate);
       child;
       child = next_child(loutput, parent, children->kinds, child, &ncstate)) {
+      ((struct lstopo_obj_userdata *)child->userdata)->parent_box_id = 1;
       struct lstopo_obj_userdata *clud = child->userdata;
       get_type_fun(child->type)(loutput, child, depth-1, x + clud->xrel, y + clud->yrel);
     }
