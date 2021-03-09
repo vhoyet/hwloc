@@ -55,6 +55,10 @@ Otherwise, show all threads inside each process where at least one
 thread is bound.
 This is currently only supported on Linux.
 .TP
+\fB\-\-single\-ancestor\fR
+when the object is bound to different objects,
+report their common ancestor (even if it may be larger than the actual binding)
+.TP
 \fB\-e\fR \fB\-\-get\-last\-cpu\-location\fR
 Report  the last processors where the process/thread ran.
 Note that the result may already be outdated when reported
