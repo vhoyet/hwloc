@@ -475,6 +475,8 @@ _hwloc_ps(){
 		   --disallowed --whole-system
 		   --json-server
 		   --json-port
+       --single-ancestor
+       --short-name
 		   -v --verbose
 		   -h --help
 		  )
