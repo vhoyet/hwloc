@@ -5,13 +5,11 @@
   "main": "client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "grunt": "grunt",
-    "server": "node server.js"
+    "start": "node hwloc.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
-    "open": ">=6.0.0"
+    "express": "^4.16.4"
   }
 }
