@@ -1,0 +1,89 @@
+\hypertarget{a00232}{}\section{Components and Plugins\+: helpers for P\+CI discovery}
+\label{a00232}\index{Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{a00232_ga706f71cfea09d547d2cbafa642d6e03b}{hwloc\+\_\+pcidisc\+\_\+find\+\_\+cap} (const unsigned char $\ast$config, unsigned cap)
+\item 
+int \hyperlink{a00232_ga51d1ebcbf9729987c9d17df3aa57d209}{hwloc\+\_\+pcidisc\+\_\+find\+\_\+linkspeed} (const unsigned char $\ast$config, unsigned offset, float $\ast$linkspeed)
+\item 
+\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} \hyperlink{a00232_ga6c55fb80c3d0c8c8e61078b3f38adde8}{hwloc\+\_\+pcidisc\+\_\+check\+\_\+bridge\+\_\+type} (unsigned device\+\_\+class, const unsigned char $\ast$config)
+\item 
+int \hyperlink{a00232_ga95acf6822a49447c11067d0b843965ba}{hwloc\+\_\+pcidisc\+\_\+find\+\_\+bridge\+\_\+buses} (unsigned domain, unsigned bus, unsigned dev, unsigned func, unsigned $\ast$secondary\+\_\+busp, unsigned $\ast$subordinate\+\_\+busp, const unsigned char $\ast$config)
+\item 
+void \hyperlink{a00232_gab76ddc4f55db8101ef0d44317965128c}{hwloc\+\_\+pcidisc\+\_\+tree\+\_\+insert\+\_\+by\+\_\+busid} (struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$$\ast$treep, struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$obj)
+\item 
+int \hyperlink{a00232_gabda1d6c1799e50b9226f8a4da9bd29ea}{hwloc\+\_\+pcidisc\+\_\+tree\+\_\+attach} (struct hwloc\+\_\+topology $\ast$topology, struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$tree)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyNote}{Note}
+These structures and functions may change when \hyperlink{a00182_gaac5bc1f46f55e10ef0141a68ce70e21f}{H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+A\+BI} is modified. 
+\end{DoxyNote}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00232_ga6c55fb80c3d0c8c8e61078b3f38adde8}\label{a00232_ga6c55fb80c3d0c8c8e61078b3f38adde8}} 
+\index{Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}!hwloc\+\_\+pcidisc\+\_\+check\+\_\+bridge\+\_\+type@{hwloc\+\_\+pcidisc\+\_\+check\+\_\+bridge\+\_\+type}}
+\index{hwloc\+\_\+pcidisc\+\_\+check\+\_\+bridge\+\_\+type@{hwloc\+\_\+pcidisc\+\_\+check\+\_\+bridge\+\_\+type}!Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+pcidisc\+\_\+check\+\_\+bridge\+\_\+type()}{hwloc\_pcidisc\_check\_bridge\_type()}}
+{\footnotesize\ttfamily \hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} hwloc\+\_\+pcidisc\+\_\+check\+\_\+bridge\+\_\+type (\begin{DoxyParamCaption}\item[{unsigned}]{device\+\_\+class,  }\item[{const unsigned char $\ast$}]{config }\end{DoxyParamCaption})}
+
+
+
+Return the hwloc object type (P\+CI device or Bridge) for the given class and configuration space. 
+
+This function requires 16 bytes of common configuration header at the beginning of config. \mbox{\Hypertarget{a00232_ga95acf6822a49447c11067d0b843965ba}\label{a00232_ga95acf6822a49447c11067d0b843965ba}} 
+\index{Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}!hwloc\+\_\+pcidisc\+\_\+find\+\_\+bridge\+\_\+buses@{hwloc\+\_\+pcidisc\+\_\+find\+\_\+bridge\+\_\+buses}}
+\index{hwloc\+\_\+pcidisc\+\_\+find\+\_\+bridge\+\_\+buses@{hwloc\+\_\+pcidisc\+\_\+find\+\_\+bridge\+\_\+buses}!Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+pcidisc\+\_\+find\+\_\+bridge\+\_\+buses()}{hwloc\_pcidisc\_find\_bridge\_buses()}}
+{\footnotesize\ttfamily int hwloc\+\_\+pcidisc\+\_\+find\+\_\+bridge\+\_\+buses (\begin{DoxyParamCaption}\item[{unsigned}]{domain,  }\item[{unsigned}]{bus,  }\item[{unsigned}]{dev,  }\item[{unsigned}]{func,  }\item[{unsigned $\ast$}]{secondary\+\_\+busp,  }\item[{unsigned $\ast$}]{subordinate\+\_\+busp,  }\item[{const unsigned char $\ast$}]{config }\end{DoxyParamCaption})}
+
+
+
+Fills the attributes of the given P\+CI bridge using the given P\+CI config space. 
+
+This function requires 32 bytes of common configuration header at the beginning of config.
+
+Returns -\/1 and destroys /p obj if bridge fields are invalid. \mbox{\Hypertarget{a00232_ga706f71cfea09d547d2cbafa642d6e03b}\label{a00232_ga706f71cfea09d547d2cbafa642d6e03b}} 
+\index{Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}!hwloc\+\_\+pcidisc\+\_\+find\+\_\+cap@{hwloc\+\_\+pcidisc\+\_\+find\+\_\+cap}}
+\index{hwloc\+\_\+pcidisc\+\_\+find\+\_\+cap@{hwloc\+\_\+pcidisc\+\_\+find\+\_\+cap}!Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+pcidisc\+\_\+find\+\_\+cap()}{hwloc\_pcidisc\_find\_cap()}}
+{\footnotesize\ttfamily unsigned hwloc\+\_\+pcidisc\+\_\+find\+\_\+cap (\begin{DoxyParamCaption}\item[{const unsigned char $\ast$}]{config,  }\item[{unsigned}]{cap }\end{DoxyParamCaption})}
+
+
+
+Return the offset of the given capability in the P\+CI config space buffer. 
+
+This function requires a 256-\/bytes config space. Unknown/unavailable bytes should be set to 0xff. \mbox{\Hypertarget{a00232_ga51d1ebcbf9729987c9d17df3aa57d209}\label{a00232_ga51d1ebcbf9729987c9d17df3aa57d209}} 
+\index{Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}!hwloc\+\_\+pcidisc\+\_\+find\+\_\+linkspeed@{hwloc\+\_\+pcidisc\+\_\+find\+\_\+linkspeed}}
+\index{hwloc\+\_\+pcidisc\+\_\+find\+\_\+linkspeed@{hwloc\+\_\+pcidisc\+\_\+find\+\_\+linkspeed}!Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+pcidisc\+\_\+find\+\_\+linkspeed()}{hwloc\_pcidisc\_find\_linkspeed()}}
+{\footnotesize\ttfamily int hwloc\+\_\+pcidisc\+\_\+find\+\_\+linkspeed (\begin{DoxyParamCaption}\item[{const unsigned char $\ast$}]{config,  }\item[{unsigned}]{offset,  }\item[{float $\ast$}]{linkspeed }\end{DoxyParamCaption})}
+
+
+
+Fill linkspeed by reading the P\+CI config space where P\+C\+I\+\_\+\+C\+A\+P\+\_\+\+I\+D\+\_\+\+E\+XP is at position offset. 
+
+Needs 20 bytes of E\+XP capability block starting at offset in the config space for registers up to link status. \mbox{\Hypertarget{a00232_gabda1d6c1799e50b9226f8a4da9bd29ea}\label{a00232_gabda1d6c1799e50b9226f8a4da9bd29ea}} 
+\index{Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}!hwloc\+\_\+pcidisc\+\_\+tree\+\_\+attach@{hwloc\+\_\+pcidisc\+\_\+tree\+\_\+attach}}
+\index{hwloc\+\_\+pcidisc\+\_\+tree\+\_\+attach@{hwloc\+\_\+pcidisc\+\_\+tree\+\_\+attach}!Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+pcidisc\+\_\+tree\+\_\+attach()}{hwloc\_pcidisc\_tree\_attach()}}
+{\footnotesize\ttfamily int hwloc\+\_\+pcidisc\+\_\+tree\+\_\+attach (\begin{DoxyParamCaption}\item[{struct hwloc\+\_\+topology $\ast$}]{topology,  }\item[{struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$}]{tree }\end{DoxyParamCaption})}
+
+
+
+Add some hostbridges on top of the given tree of P\+CI objects and attach them to the topology. 
+
+Other backends may lookup P\+CI objects or localities (for instance to attach OS devices) by using hwloc\+\_\+pcidisc\+\_\+find\+\_\+by\+\_\+busid() or hwloc\+\_\+pcidisc\+\_\+find\+\_\+busid\+\_\+parent(). \mbox{\Hypertarget{a00232_gab76ddc4f55db8101ef0d44317965128c}\label{a00232_gab76ddc4f55db8101ef0d44317965128c}} 
+\index{Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}!hwloc\+\_\+pcidisc\+\_\+tree\+\_\+insert\+\_\+by\+\_\+busid@{hwloc\+\_\+pcidisc\+\_\+tree\+\_\+insert\+\_\+by\+\_\+busid}}
+\index{hwloc\+\_\+pcidisc\+\_\+tree\+\_\+insert\+\_\+by\+\_\+busid@{hwloc\+\_\+pcidisc\+\_\+tree\+\_\+insert\+\_\+by\+\_\+busid}!Components and Plugins\+: helpers for P\+C\+I discovery@{Components and Plugins\+: helpers for P\+C\+I discovery}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+pcidisc\+\_\+tree\+\_\+insert\+\_\+by\+\_\+busid()}{hwloc\_pcidisc\_tree\_insert\_by\_busid()}}
+{\footnotesize\ttfamily void hwloc\+\_\+pcidisc\+\_\+tree\+\_\+insert\+\_\+by\+\_\+busid (\begin{DoxyParamCaption}\item[{struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$$\ast$}]{treep,  }\item[{struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$}]{obj }\end{DoxyParamCaption})}
+
+
+
+Insert a P\+CI object in the given P\+CI tree by looking at P\+CI bus I\+Ds. 
+
+If {\ttfamily treep} points to {\ttfamily N\+U\+LL}, the new object is inserted there. 

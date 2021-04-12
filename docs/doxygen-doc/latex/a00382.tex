@@ -1,0 +1,110 @@
+
+
+The behavior of the hwloc library and tools may be tuned thanks to the following environment variables.
+
+
+\begin{DoxyDescription}
+\item[H\+W\+L\+O\+C\+\_\+\+X\+M\+L\+F\+I\+LE=/path/to/file.xml ]enforces the discovery from the given X\+ML file as if \hyperlink{a00192_ga879439b7ee99407ee911b3ac64e9a25e}{hwloc\+\_\+topology\+\_\+set\+\_\+xml()} had been called. This file may have been generated earlier with lstopo file.\+xml. For convenience, this backend provides empty binding hooks which just return success. To have hwloc still actually call O\+S-\/specific hooks, H\+W\+L\+O\+C\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM should be set 1 in the environment too, to assert that the loaded file is really the underlying system. See also \hyperlink{a00388}{Importing and exporting topologies from/to X\+ML files}. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+S\+Y\+N\+T\+H\+E\+T\+IC=synthetic\+\_\+description ]enforces the discovery through a synthetic description string as if \hyperlink{a00192_ga4fab186bb6181a00bcf585825fddd38d}{hwloc\+\_\+topology\+\_\+set\+\_\+synthetic()} had been called. For convenience, this backend provides empty binding hooks which just return success. See also \hyperlink{a00389}{Synthetic topologies}. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+X\+M\+L\+\_\+\+V\+E\+R\+B\+O\+SE=1 ]
+\item[H\+W\+L\+O\+C\+\_\+\+S\+Y\+N\+T\+H\+E\+T\+I\+C\+\_\+\+V\+E\+R\+B\+O\+SE=1 ]enables verbose messages in the X\+ML or synthetic topology backends. hwloc X\+ML backends (see \hyperlink{a00388}{Importing and exporting topologies from/to X\+ML files}) can emit some error messages to the error output stream. Enabling these verbose messages within hwloc can be useful for understanding failures to parse input X\+ML topologies. Similarly, enabling verbose messages in the synthetic topology backend can help understand why the description string is invalid. See also \hyperlink{a00389}{Synthetic topologies}. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM=1 ]enforces the return value of \hyperlink{a00193_ga68ffdcfd9175cdf40709801092f18017}{hwloc\+\_\+topology\+\_\+is\+\_\+thissystem()}, as if \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea6ecb6abc6a0bb75e81564f8bca85783b}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+I\+S\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM} was set with \hyperlink{a00193_gaaeed4df656979e5f16befea9d29b814b}{hwloc\+\_\+topology\+\_\+set\+\_\+flags()}. It means that it makes hwloc assume that the selected backend provides the topology for the system on which we are running, even if it is not the O\+S-\/specific backend but the X\+ML backend for instance. This means making the binding functions actually call the O\+S-\/specific system calls and really do binding, while the X\+ML backend would otherwise provide empty hooks just returning success. This can be used for efficiency reasons to first detect the topology once, save it to a X\+ML file, and quickly reload it later through the X\+ML backend, but still having binding functions actually do bind. This also enables support for the variable H\+W\+L\+O\+C\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+E\+M\+\_\+\+A\+L\+L\+O\+W\+E\+D\+\_\+\+R\+E\+S\+O\+U\+R\+C\+ES. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+E\+M\+\_\+\+A\+L\+L\+O\+W\+E\+D\+\_\+\+R\+E\+S\+O\+U\+R\+C\+ES=1 ]Get the set of allowed resources from the native operating system even if the topology was loaded from X\+ML or synthetic description, as if \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea1b66bbd66e900e5c837f71defb32ad89}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+E\+M\+\_\+\+A\+L\+L\+O\+W\+E\+D\+\_\+\+R\+E\+S\+O\+U\+R\+C\+ES} was set with \hyperlink{a00193_gaaeed4df656979e5f16befea9d29b814b}{hwloc\+\_\+topology\+\_\+set\+\_\+flags()}. This variable requires the topology to match the current system (see the variable H\+W\+L\+O\+C\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM). This is useful when the topology is not loaded directly from the local machine (e.\+g. for performance reason) and it comes with all resources, but the running process is restricted to only a part of the machine (for instance because of Linux Cgroup/\+Cpuset). 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+OW=all ]Totally ignore administrative restrictions such as Linux Cgroups and consider all resources (P\+Us and N\+U\+MA nodes) as allowed. This is different from setting H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+I\+S\+A\+L\+L\+O\+W\+ED which gathers all resources but marks the unavailable ones as disallowed. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+H\+I\+D\+E\+\_\+\+E\+R\+R\+O\+RS=0 ]enables or disables verbose reporting of errors. The hwloc library may issue warnings to the standard error stream when it detects a problem during topology discovery, for instance if the operating system (or user) gives contradictory topology information. Setting this environment variable to 1 removes the actual displaying of these error messages. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+U\+S\+E\+\_\+\+N\+U\+M\+A\+\_\+\+D\+I\+S\+T\+A\+N\+C\+ES=7 ]enables or disables the use of N\+U\+MA distances. N\+U\+MA distances and memory target/initiator information may be used to improve the locality of N\+U\+MA nodes, especially C\+P\+U-\/less nodes. Bits in the value of this environment variable enable different features\+: Bit 0 enables the gathering of N\+U\+MA distances from the operating system. Bit 1 further enables the use of N\+U\+MA distances to improve the locality of C\+P\+U-\/less nodes. Bit 2 enables the use of target/initiator information. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+G\+R\+O\+U\+P\+I\+NG=1 ]enables or disables objects grouping based on distances. By default, hwloc uses distance matrices between objects (either read from the OS or given by the user) to find groups of close objects. These groups are described by adding intermediate Group objects in the topology. Setting this environment variable to 0 will disable this grouping. This variable supersedes the obsolete H\+W\+L\+O\+C\+\_\+\+I\+G\+N\+O\+R\+E\+\_\+\+D\+I\+S\+T\+A\+N\+C\+ES variable. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+G\+R\+O\+U\+P\+I\+N\+G\+\_\+\+A\+C\+C\+U\+R\+A\+CY=0.\+05 ]relaxes distance comparison during grouping. By default, objects may be grouped if their distances form a minimal distance graph. When setting this variable to 0.\+02, and when \hyperlink{a00210_gga22428b6bab271411e3834e6b4ca22e37a5233ccf631c3bc53dd5c3e7a5d5c9b77}{H\+W\+L\+O\+C\+\_\+\+D\+I\+S\+T\+A\+N\+C\+E\+S\+\_\+\+A\+D\+D\+\_\+\+F\+L\+A\+G\+\_\+\+G\+R\+O\+U\+P\+\_\+\+I\+N\+A\+C\+C\+U\+R\+A\+TE} is given, these distances do not have to be strictly equal anymore, they may just be equal with a 2\% error. If set to {\ttfamily try} instead of a numerical value, hwloc will try to group with perfect accuracy (0, the default), then with 0.\+01, 0.\+02, 0.\+05 and finally 0.\+1. Numbers given in this environment variable should always use a dot as a decimal mark (for instance 0.\+01 instead of 0,01).
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+G\+R\+O\+U\+P\+I\+N\+G\+\_\+\+V\+E\+R\+B\+O\+SE=0 ]enables or disables some verbose messages during grouping. If this variable is set to 1, some debug messages will be displayed during distance-\/based grouping of objects even if debug was not specific at configure time. This is useful when trying to find an interesting distance grouping accuracy.
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+C\+P\+U\+K\+I\+N\+D\+S\+\_\+\+R\+A\+N\+K\+I\+NG=default ]change the ranking policy for C\+PU kinds. By default, the O\+S-\/provided efficiency is used for ranking. If not available, the frequency is used on A\+RM processors, or core type and frequency on other architectures. ~\newline
+ This environment variable may be set to {\ttfamily coretype+frequency}, {\ttfamily coretype}, {\ttfamily frequency}, {\ttfamily frequency\+\_\+base}, {\ttfamily frequency\+\_\+max}, {\ttfamily forced\+\_\+efficiency}, {\ttfamily no\+\_\+forced\+\_\+efficiency}, {\ttfamily default}, or {\ttfamily none}. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+P\+C\+I\+\_\+\+L\+O\+C\+A\+L\+I\+TY=$<$domain/bus$>$ $<$cpuset$>$;... ]
+\item[H\+W\+L\+O\+C\+\_\+\+P\+C\+I\+\_\+\+L\+O\+C\+A\+L\+I\+TY=/path/to/pci/locality/file ]changes the locality of I/O devices behing the specified P\+CI buses. If no I/O locality information is available or if the B\+I\+OS reports incorrect information, it is possible to move a I/O device tree (OS and/or P\+CI devices with optional bridges) near a custom set of processors. ~\newline
+ Localities are given either inside the environment variable itself, or in the pointed file. They may be separated either by semi-\/colons or by line-\/breaks. ~\newline
+ Each locality contains a domain/bus specification (in hexadecimal numbers as usual) followed by a whitespace and a cpuset\+: 
+\begin{DoxyItemize}
+\item {\ttfamily 0001 $<$cpuset$>$} specifies the locality of all buses in P\+CI domain 0000. 
+\item {\ttfamily 0000\+:0f $<$cpuset$>$} specifies only P\+CI bus 0f in domain 0000. 
+\item {\ttfamily 0002\+:04-\/0a $<$cpuset$>$} specifies a range of buses (from 04 to 0a) within domain 0002. 
+\end{DoxyItemize}Domain/bus specifications should usually match entire hierarchies of buses behind a bridge (including primary, secondary and subordinate buses). For instance, if hostbridge 0000\+:00 is above other bridges/switches with buses 0000\+:01 to 0000\+:09, the variable should be H\+W\+L\+O\+C\+\_\+\+P\+C\+I\+\_\+\+L\+O\+C\+A\+L\+I\+TY=\char`\"{}0000\+:00-\/09 $<$cpuset$>$\char`\"{}. It supersedes the old H\+W\+L\+O\+C\+\_\+\+P\+C\+I\+\_\+0000\+\_\+00\+\_\+\+L\+O\+C\+A\+L\+C\+P\+US=$<$cpuset$>$ which only works when hostbridges exist in the topology. ~\newline
+ If the variable is defined to empty or invalid, no forced P\+CI locality is applied but hwloc\textquotesingle{}s internal automatic locality quirks are disabled, which means the exact P\+CI locality reported by the platform is used. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+X86\+\_\+\+T\+O\+P\+O\+E\+X\+T\+\_\+\+N\+U\+M\+A\+N\+O\+D\+ES=0 ]use A\+MD topoext C\+P\+U\+ID leaf in the x86 backend to detect N\+U\+MA nodes. When using the x86 backend, setting this variable to 1 enables the building of N\+U\+MA nodes from A\+MD processor C\+P\+U\+ID instructions. However this strategy does not always reflect B\+I\+OS configuration such as N\+U\+MA interleaving. And node indexes may be different from those of the operating system. Hence this should only be used when OS backends are wrong and the user is sure that C\+P\+U\+ID returns correct N\+U\+MA information. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+K\+E\+E\+P\+\_\+\+N\+V\+I\+D\+I\+A\+\_\+\+G\+P\+U\+\_\+\+N\+U\+M\+A\+\_\+\+N\+O\+D\+ES=0 ]show or hide N\+U\+MA nodes that correspond to N\+V\+I\+D\+IA G\+PU memory. By default they are ignored to avoid interleaved memory being allocated on G\+PU by mistake. Setting this environment variable to 1 exposes these N\+U\+MA nodes. They may be recognized by the {\itshape G\+P\+U\+Memory} subtype. They also have a {\itshape P\+C\+I\+Bus\+ID} info attribute to identify the corresponding G\+PU. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+K\+N\+L\+\_\+\+M\+S\+C\+A\+C\+H\+E\+\_\+\+L3=0 ]Expose the K\+NL M\+C\+D\+R\+AM in cache mode as a Memory-\/side Cache instead of a L3. hwloc releases prior to 2.\+1 exposed the M\+C\+D\+R\+AM cache as a C\+P\+U-\/side L3 cache. Now that Memory-\/side caches are supported by hwloc, it is still exposed as a L3 by default to avoid breaking existing applications. Setting this environment variable to 1 will expose it as a proper Memory-\/side cache. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+G\+L\+O\+B\+A\+L\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+TS=0 ]Allow components to annotate the topology even if they are usually excluded by global components by default. Setting this variable to 1 and also setting {\ttfamily H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+TS=xml,pci,stop} enables the addition of P\+CI vendor and model info attributes to a X\+ML topology that was generated without those names (if pciaccess was missing). 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+F\+S\+R\+O\+OT=/path/to/linux/filesystem-\/root/ ]switches to reading the topology from the specified Linux filesystem root instead of the main file-\/system root. This directory may have been saved previously from another machine with {\ttfamily hwloc-\/gather-\/topology}. ~\newline
+ One should likely also set {\ttfamily H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+TS=linux,stop} so that non-\/\+Linux backends are disabled (the {\ttfamily -\/i} option of command-\/line tools takes care of both). ~\newline
+ Not using the main file-\/system root causes \hyperlink{a00193_ga68ffdcfd9175cdf40709801092f18017}{hwloc\+\_\+topology\+\_\+is\+\_\+thissystem()} to return 0. For convenience, this backend provides empty binding hooks which just return success. To have hwloc still actually call O\+S-\/specific hooks, H\+W\+L\+O\+C\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM should be set 1 in the environment too, to assert that the loaded file is really the underlying system. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+C\+P\+U\+I\+D\+\_\+\+P\+A\+TH=/path/to/cpuid/ ]forces the x86 backend to read dumped C\+P\+U\+I\+Ds from the given directory instead of executing actual x86 C\+P\+U\+ID instructions. This directory may have been saved previously from another machine with {\ttfamily hwloc-\/gather-\/cpuid}. ~\newline
+ One should likely also set {\ttfamily H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+TS=x86,stop} so that non-\/x86 backends are disabled (the {\ttfamily -\/i} option of command-\/line tools takes care of both). ~\newline
+ It causes \hyperlink{a00193_ga68ffdcfd9175cdf40709801092f18017}{hwloc\+\_\+topology\+\_\+is\+\_\+thissystem()} to return 0. For convenience, this backend provides empty binding hooks which just return success. To have hwloc still actually call O\+S-\/specific hooks, H\+W\+L\+O\+C\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM should be set 1 in the environment too, to assert that the loaded C\+P\+U\+ID dump is really the underlying system. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+D\+U\+M\+P\+E\+D\+\_\+\+H\+W\+D\+A\+T\+A\+\_\+\+D\+IR=/path/to/dumped/files/ ]loads files dumped by {\ttfamily hwloc-\/dump-\/hwdata} (on Linux) from the given directory. The default dump/load directory is configured during build based on -\/-\/runstatedir, -\/-\/localstatedir, and -\/-\/prefix options. It usually points to {\ttfamily /var/run/hwloc/} in Linux distribution packages, but it may also point to {\ttfamily \$prefix/var/run/hwloc/} when manually installing and only specifying -\/-\/prefix. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+TS=list,of,components ]forces a list of components to enable or disable. Enable or disable the given comma-\/separated list of components (if they do not conflict with each other). Component names prefixed with {\ttfamily -\/} are disabled (a single phase may also be disabled).
+
+Once the end of the list is reached, hwloc falls back to enabling the remaining components (sorted by priority) that do not conflict with the already enabled ones, and unless explicitly disabled in the list. If {\ttfamily stop} is met, the enabling loop immediately stops, no more component is enabled.
+
+If {\ttfamily xml} or {\ttfamily synthetic} components are selected, the corresponding X\+ML filename or synthetic description string should be pass in {\ttfamily H\+W\+L\+O\+C\+\_\+\+X\+M\+L\+F\+I\+LE} or {\ttfamily H\+W\+L\+O\+C\+\_\+\+S\+Y\+N\+T\+H\+E\+T\+IC} respectively.
+
+Since this variable is the low-\/level and more generic way to select components, it takes precedence over environment variables for selecting components.
+
+If the variable is set to an empty string (or set to a single comma), no specific component is loaded first, all components are loaded in priority order.
+
+See \hyperlink{a00392_plugins_select}{Selecting which components to use} for details. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+S\+\_\+\+V\+E\+R\+B\+O\+SE=1 ]displays verbose information about components. Display messages when components are registered or enabled. This is the recommended way to list the available components with their priority (all of them are {\itshape registered} at startup). 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+P\+L\+U\+G\+I\+N\+S\+\_\+\+P\+A\+TH=/path/to/hwloc/plugins/\+:... ]changes the default search directory for plugins. By default, {\ttfamily \$libdir/hwloc} is used. The variable may contain several colon-\/separated directories. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+P\+L\+U\+G\+I\+N\+S\+\_\+\+V\+E\+R\+B\+O\+SE=1 ]displays verbose information about plugins. List which directories are scanned, which files are loaded, and which components are successfully loaded. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+P\+L\+U\+G\+I\+N\+S\+\_\+\+B\+L\+A\+C\+K\+L\+I\+ST=filename1,filename2,... ]prevents plugins from being loaded if their filename (without path) is listed. Plugin filenames may be found in verbose messages outputted when H\+W\+L\+O\+C\+\_\+\+P\+L\+U\+G\+I\+N\+S\+\_\+\+V\+E\+R\+B\+O\+SE=1. 
+
+
+\item[H\+W\+L\+O\+C\+\_\+\+D\+E\+B\+U\+G\+\_\+\+V\+E\+R\+B\+O\+SE=0 ]disables all verbose messages that are enabled by default when {\ttfamily --enable-\/debug} is passed to configure. When set to more than 1, even more verbose messages are displayed. The default is 1. 
+
+
+\end{DoxyDescription}

@@ -1,0 +1,29 @@
+\hypertarget{a00233}{}\section{Components and Plugins\+: finding P\+CI objects during other discoveries}
+\label{a00233}\index{Components and Plugins\+: finding P\+C\+I objects during other discoveries@{Components and Plugins\+: finding P\+C\+I objects during other discoveries}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$ \hyperlink{a00233_ga7964833550947636ab8975909de3fa98}{hwloc\+\_\+pci\+\_\+find\+\_\+parent\+\_\+by\+\_\+busid} (struct hwloc\+\_\+topology $\ast$topology, unsigned domain, unsigned bus, unsigned dev, unsigned func)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyNote}{Note}
+These structures and functions may change when \hyperlink{a00182_gaac5bc1f46f55e10ef0141a68ce70e21f}{H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+A\+BI} is modified. 
+\end{DoxyNote}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00233_ga7964833550947636ab8975909de3fa98}\label{a00233_ga7964833550947636ab8975909de3fa98}} 
+\index{Components and Plugins\+: finding P\+C\+I objects during other discoveries@{Components and Plugins\+: finding P\+C\+I objects during other discoveries}!hwloc\+\_\+pci\+\_\+find\+\_\+parent\+\_\+by\+\_\+busid@{hwloc\+\_\+pci\+\_\+find\+\_\+parent\+\_\+by\+\_\+busid}}
+\index{hwloc\+\_\+pci\+\_\+find\+\_\+parent\+\_\+by\+\_\+busid@{hwloc\+\_\+pci\+\_\+find\+\_\+parent\+\_\+by\+\_\+busid}!Components and Plugins\+: finding P\+C\+I objects during other discoveries@{Components and Plugins\+: finding P\+C\+I objects during other discoveries}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+pci\+\_\+find\+\_\+parent\+\_\+by\+\_\+busid()}{hwloc\_pci\_find\_parent\_by\_busid()}}
+{\footnotesize\ttfamily struct \hyperlink{a00238}{hwloc\+\_\+obj}$\ast$ hwloc\+\_\+pci\+\_\+find\+\_\+parent\+\_\+by\+\_\+busid (\begin{DoxyParamCaption}\item[{struct hwloc\+\_\+topology $\ast$}]{topology,  }\item[{unsigned}]{domain,  }\item[{unsigned}]{bus,  }\item[{unsigned}]{dev,  }\item[{unsigned}]{func }\end{DoxyParamCaption})}
+
+
+
+Find the normal parent of a P\+CI bus ID. 
+
+Look at P\+CI affinity to find out where the given P\+CI bus ID should be attached.
+
+This function should be used to attach an I/O device under the corresponding P\+CI object (if any), or under a normal (non-\/\+I/O) object with same locality. 

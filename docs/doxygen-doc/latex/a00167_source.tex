@@ -1,0 +1,93 @@
+\hypertarget{a00167_source}{}\section{openfabrics-\/verbs.h}
+\label{a00167_source}\index{openfabrics-\/verbs.\+h@{openfabrics-\/verbs.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright © 2009 CNRS}
+00003 \textcolor{comment}{ * Copyright © 2009-2020 Inria.  All rights reserved.}
+00004 \textcolor{comment}{ * Copyright © 2009-2010 Université Bordeaux}
+00005 \textcolor{comment}{ * Copyright © 2009-2011 Cisco Systems, Inc.  All rights reserved.}
+00006 \textcolor{comment}{ * See COPYING in top-level directory.}
+00007 \textcolor{comment}{ */}
+00008 
+00019 \textcolor{preprocessor}{#ifndef HWLOC\_OPENFABRICS\_VERBS\_H}
+00020 \textcolor{preprocessor}{#define HWLOC\_OPENFABRICS\_VERBS\_H}
+00021 
+00022 \textcolor{preprocessor}{#include "hwloc.h"}
+00023 \textcolor{preprocessor}{#include "hwloc/autogen/config.h"}
+00024 \textcolor{preprocessor}{#ifdef HWLOC\_LINUX\_SYS}
+00025 \textcolor{preprocessor}{#include "hwloc/linux.h"}
+00026 \textcolor{preprocessor}{#endif}
+00027 
+00028 \textcolor{preprocessor}{#include <infiniband/verbs.h>}
+00029 
+00030 
+00031 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00032 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00033 \textcolor{preprocessor}{#endif}
+00034 
+00035 
+00061 \textcolor{keyword}{static} \_\_hwloc\_inline \textcolor{keywordtype}{int}
+\Hypertarget{a00167_source_l00062}\hyperlink{a00224_ga3ea0d838c1e7f1671b35687aae2da6ae}{00062} \hyperlink{a00224_ga3ea0d838c1e7f1671b35687aae2da6ae}{hwloc\_ibv\_get\_device\_cpuset}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology 
+      \_\_hwloc\_attribute\_unused,
+00063                             \textcolor{keyword}{struct} ibv\_device *ibdev, \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\_cpuset\_t} \textcolor{keyword}{set})
+00064 \{
+00065 \textcolor{preprocessor}{#ifdef HWLOC\_LINUX\_SYS}
+00066   \textcolor{comment}{/* If we're on Linux, use the verbs-provided sysfs mechanism to}
+00067 \textcolor{comment}{     get the local cpus */}
+00068 \textcolor{preprocessor}{#define HWLOC\_OPENFABRICS\_VERBS\_SYSFS\_PATH\_MAX 128}
+00069   \textcolor{keywordtype}{char} path[HWLOC\_OPENFABRICS\_VERBS\_SYSFS\_PATH\_MAX];
+00070 
+00071   \textcolor{keywordflow}{if} (!\hyperlink{a00193_ga68ffdcfd9175cdf40709801092f18017}{hwloc\_topology\_is\_thissystem}(topology)) \{
+00072     errno = EINVAL;
+00073     \textcolor{keywordflow}{return} -1;
+00074   \}
+00075 
+00076   sprintf(path, \textcolor{stringliteral}{"/sys/class/infiniband/%s/device/local\_cpus"},
+00077           ibv\_get\_device\_name(ibdev));
+00078   \textcolor{keywordflow}{if} (\hyperlink{a00214_gaf72d83e273803226ce772973e37b85de}{hwloc\_linux\_read\_path\_as\_cpumask}(path, \textcolor{keyword}{set}) < 0
+00079       || \hyperlink{a00205_ga5b64be28f5a7176ed8ad0d6a90bdf108}{hwloc\_bitmap\_iszero}(\textcolor{keyword}{set}))
+00080     \hyperlink{a00205_ga72a29824798b48784b8217471ec8f14c}{hwloc\_bitmap\_copy}(\textcolor{keyword}{set}, \hyperlink{a00202_gaee30e03391c1ed7dfd617fb5c7bbb033}{hwloc\_topology\_get\_complete\_cpuset}
+      (topology));
+00081 \textcolor{preprocessor}{#else}
+00082   \textcolor{comment}{/* Non-Linux systems simply get a full cpuset */}
+00083   \hyperlink{a00205_ga72a29824798b48784b8217471ec8f14c}{hwloc\_bitmap\_copy}(\textcolor{keyword}{set}, \hyperlink{a00202_gaee30e03391c1ed7dfd617fb5c7bbb033}{hwloc\_topology\_get\_complete\_cpuset}
+      (topology));
+00084 \textcolor{preprocessor}{#endif}
+00085   \textcolor{keywordflow}{return} 0;
+00086 \}
+00087 
+00104 \textcolor{keyword}{static} \_\_hwloc\_inline \hyperlink{a00238}{hwloc\_obj\_t}
+\Hypertarget{a00167_source_l00105}\hyperlink{a00224_ga31d794567f4420bbdc8baa7bf8bf6138}{00105} \hyperlink{a00224_ga31d794567f4420bbdc8baa7bf8bf6138}{hwloc\_ibv\_get\_device\_osdev\_by\_name}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00106                                    \textcolor{keyword}{const} \textcolor{keywordtype}{char} *ibname)
+00107 \{
+00108         \hyperlink{a00238}{hwloc\_obj\_t} osdev = NULL;
+00109         \textcolor{keywordflow}{while} ((osdev = \hyperlink{a00204_ga8b4584c8949e2c5f1c97ba7fe92b8145}{hwloc\_get\_next\_osdev}(topology, osdev)) != NULL) \{
+00110                 \textcolor{keywordflow}{if} (\hyperlink{a00184_gga64f5d539df299c97ae80ce53fc4b56c0a52157d03694fdae82dddd57ca8c973b6}{HWLOC\_OBJ\_OSDEV\_OPENFABRICS} == osdev->
+      \hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->\hyperlink{a00242_a22904c25fe44b323bab5c9bc52660fca}{osdev}.\hyperlink{a00282_a31e019e27e54ac6138d04be639bb96f9}{type}
+00111                     && osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name} && !strcmp(ibname, osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}))
+00112                         \textcolor{keywordflow}{return} osdev;
+00113         \}
+00114         \textcolor{keywordflow}{return} NULL;
+00115 \}
+00116 
+00131 \textcolor{keyword}{static} \_\_hwloc\_inline \hyperlink{a00238}{hwloc\_obj\_t}
+\Hypertarget{a00167_source_l00132}\hyperlink{a00224_ga7324cdfd5db6ed2669c051ef7e1b64e1}{00132} \hyperlink{a00224_ga7324cdfd5db6ed2669c051ef7e1b64e1}{hwloc\_ibv\_get\_device\_osdev}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00133                            \textcolor{keyword}{struct} ibv\_device *ibdev)
+00134 \{
+00135         \textcolor{keywordflow}{if} (!\hyperlink{a00193_ga68ffdcfd9175cdf40709801092f18017}{hwloc\_topology\_is\_thissystem}(topology)) \{
+00136                 errno = EINVAL;
+00137                 \textcolor{keywordflow}{return} NULL;
+00138         \}
+00139         \textcolor{keywordflow}{return} \hyperlink{a00224_ga31d794567f4420bbdc8baa7bf8bf6138}{hwloc\_ibv\_get\_device\_osdev\_by\_name}(topology, 
+      ibv\_get\_device\_name(ibdev));
+00140 \}
+00141 
+00145 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00146 \} \textcolor{comment}{/* extern "C" */}
+00147 \textcolor{preprocessor}{#endif}
+00148 
+00149 
+00150 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* HWLOC\_OPENFABRICS\_VERBS\_H */}\textcolor{preprocessor}{}
+\end{DoxyCode}

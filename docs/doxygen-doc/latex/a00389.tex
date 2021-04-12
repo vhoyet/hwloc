@@ -1,0 +1,73 @@
+
+
+hwloc may load fake or remote topologies so as to consult them without having the underlying hardware available. Aside from loading X\+ML topologies, hwloc also enables the building of {\itshape synthetic} topologies that are described by a single string listing the arity of each levels.
+
+For instance, lstopo may create a topology made of 2 packages, containing a single N\+U\+MA node and a L2 cache above two single-\/threaded cores\+:
+
+\begin{DoxyVerb}$ lstopo -i "pack:2 node:1 l2:1 core:2 pu:1" -
+Machine (2048MB)
+  Package L#0
+    NUMANode L#0 (P#0 1024MB)
+    L2 L#0 (4096KB)
+      Core L#0 + PU L#0 (P#0)
+      Core L#1 + PU L#1 (P#1)
+  Package L#1
+    NUMANode L#1 (P#1 1024MB)
+    L2 L#1 (4096KB)
+      Core L#2 + PU L#2 (P#2)
+      Core L#3 + PU L#3 (P#3)
+\end{DoxyVerb}
+
+
+Replacing {\ttfamily -\/} with {\ttfamily file.\+xml} in this command line will export this topology to X\+ML as usual.
+
+\begin{DoxyNote}{Note}
+Synthetic topologies offer a very basic way to export a topology and reimport it on another machine. It is a lot less precise than X\+ML but may still be enough when only the hierarchy of resources matters.
+\end{DoxyNote}
+ \hypertarget{a00389_synthetic_string}{}\section{Synthetic description string}\label{a00389_synthetic_string}
+Each item in the description string gives the type of the level and the number of such children under each object of the previous level. That is why the above topology contains 4 cores (2 cores times 2 nodes).
+
+These type names must be written as {\ttfamily numanode}, {\ttfamily package}, {\ttfamily core}, {\ttfamily l2u}, {\ttfamily l1i}, {\ttfamily pu}, {\ttfamily group} (hwloc\+\_\+obj\+\_\+type\+\_\+sscanf() is used for parsing the type names). They do not need to be written case-\/sensitively, nor entirely (as long as there is no ambiguity, 2 characters such as {\ttfamily ma} select a Machine level). Note that I/O and Misc objects are not available.
+
+Instead of specifying the type of each level, it is possible to just specify the arities and let hwloc choose all types according to usual topologies. The following examples are therefore equivalent\+: \begin{DoxyVerb}$ lstopo -i "2 3 4 5 6"
+$ lstopo -i "Package:2 NUMANode:3 L2Cache:4 Core:5 PU:6"
+\end{DoxyVerb}
+
+
+N\+U\+MA nodes are handled in a special way since they are not part of the main C\+PU hierarchy but rather attached below it as memory children. Thus, {\ttfamily N\+U\+M\+A\+Node\+:3} actually means {\ttfamily Group\+:3} where one N\+U\+MA node is attached below each group. These groups are merged back into the parent when possible (typically when a single N\+U\+MA node is requested below each parent).
+
+It is also possible the explicitly attach N\+U\+MA nodes to specific levels. For instance, a topology similar to a Intel Xeon Phi processor (with 2 N\+U\+MA nodes per 16-\/core group) may be created with\+: \begin{DoxyVerb}$ lstopo -i "package:1 group:4 [numa] [numa] core:16 pu:4"
+\end{DoxyVerb}
+
+
+The root object does not appear in the synthetic description string since it is always a Machine object. Therefore the Machine type is disallowed in the description as well.
+
+A N\+U\+MA level (with a single N\+U\+MA node) is automatically added if needed.
+
+Each item may be followed parentheses containing a list of space-\/separated attributes. For instance\+: 
+\begin{DoxyItemize}
+\item {\ttfamily L2i\+Cache\+:2(size=32kB)} specifies 2 children of 32kB level-\/2 instruction caches. The size may be specified in bytes (without any unit suffix) or as TB, GB, MB or kB.  
+\item {\ttfamily N\+U\+M\+A\+Node\+:3(memory=16\+MB)} specifies 3 N\+U\+MA nodes with 16\+MB each. The size may be specified in bytes (without any unit suffix) or as TB, GB, MB or kB.  
+\item {\ttfamily PU\+:2(indexes=0,2,1,3)} specifies 2 PU children and the full list of OS indexes among the entire set of 4 PU objects.  
+\item {\ttfamily PU\+:2(indexes=numa\+:core)} specifies 2 PU children whose OS indexes are interleaved by N\+U\+MA node first and then by package.  
+\item Attributes in parentheses at the very beginning of the description apply to the root object.  
+\end{DoxyItemize}
+
+ \hypertarget{a00389_synthetic_use}{}\section{Loading a synthetic topology}\label{a00389_synthetic_use}
+Aside from lstopo, the hwloc programming interface offers the same ability by passing the synthetic description string to \hyperlink{a00192_ga4fab186bb6181a00bcf585825fddd38d}{hwloc\+\_\+topology\+\_\+set\+\_\+synthetic()} before \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()}.
+
+Synthetic topologies are created by the {\ttfamily synthetic} component. This component may be enabled by force by setting the H\+W\+L\+O\+C\+\_\+\+S\+Y\+N\+T\+H\+E\+T\+IC environment variable to something such as {\ttfamily node\+:2 core\+:3 pu\+:4}.
+
+Loading a synthetic topology disables binding support since the topology usually does not match the underlying hardware. Binding may be reenabled as usual by setting H\+W\+L\+O\+C\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM=1 in the environment or by setting the \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea6ecb6abc6a0bb75e81564f8bca85783b}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+I\+S\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM} topology flag.
+
+ \hypertarget{a00389_synthetic_export}{}\section{Exporting a topology as a synthetic string}\label{a00389_synthetic_export}
+The function \hyperlink{a00207_ga24b7864a1c588309c4749f621f03b4c7}{hwloc\+\_\+topology\+\_\+export\+\_\+synthetic()} may export a topology as a synthetic string. It offers a convenient way to quickly describe the contents of a machine. The lstopo tool may also perform such an export by forcing the output format.
+
+\begin{DoxyVerb}$ lstopo --of synthetic --no-io
+Package:1 L3Cache:1 L2Cache:2 L1dCache:1 L1iCache:1 Core:1 PU:2
+\end{DoxyVerb}
+
+
+The exported string may be passed back to hwloc for recreating another similar topology (see also \hyperlink{a00394_faq_version_synthetic}{Are synthetic strings compatible between hwloc releases?}). The entire tree will be similar, but some attributes such as the processor model will be missing.
+
+Such an export is only possible if the topology is totally symmetric. It means that the {\ttfamily symmetric\+\_\+subtree} field of the root object is set. Also memory children should be attached in a symmetric way (e.\+g. the same number of memory children below each Package object, etc.). However, I/O devices and Misc objects are ignored when looking at symmetry and exporting the string. 

@@ -1,0 +1,146 @@
+\hypertarget{a00134_source}{}\section{memattrs.\+h}
+\label{a00134_source}\index{memattrs.\+h@{memattrs.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright © 2019-2020 Inria.  All rights reserved.}
+00003 \textcolor{comment}{ * See COPYING in top-level directory.}
+00004 \textcolor{comment}{ */}
+00005 
+00010 \textcolor{preprocessor}{#ifndef HWLOC\_MEMATTR\_H}
+00011 \textcolor{preprocessor}{#define HWLOC\_MEMATTR\_H}
+00012 
+00013 \textcolor{preprocessor}{#include "hwloc.h"}
+00014 
+00015 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00016 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00017 \textcolor{preprocessor}{#elif 0}
+00018 \}
+00019 \textcolor{preprocessor}{#endif}
+00020 
+\Hypertarget{a00134_source_l00067}\hyperlink{a00211_gab4bde745db676fc2ea4b47011cd9a80e}{00067} \textcolor{keyword}{enum} \hyperlink{a00211_gab4bde745db676fc2ea4b47011cd9a80e}{hwloc\_memattr\_id\_e} \{
+\Hypertarget{a00134_source_l00077}\hyperlink{a00211_ggab4bde745db676fc2ea4b47011cd9a80eaa1cfa3ff3d56ff00ecabf7da4f5642cc}{00077}   \hyperlink{a00211_ggab4bde745db676fc2ea4b47011cd9a80eaa1cfa3ff3d56ff00ecabf7da4f5642cc}{HWLOC\_MEMATTR\_ID\_CAPACITY} = 0,
+00078 
+\Hypertarget{a00134_source_l00091}\hyperlink{a00211_ggab4bde745db676fc2ea4b47011cd9a80ea9334e3a4c30a67f491c6523255134efe}{00091}   \hyperlink{a00211_ggab4bde745db676fc2ea4b47011cd9a80ea9334e3a4c30a67f491c6523255134efe}{HWLOC\_MEMATTR\_ID\_LOCALITY} = 1,
+00092 
+\Hypertarget{a00134_source_l00099}\hyperlink{a00211_ggab4bde745db676fc2ea4b47011cd9a80ea25fe3c7376ae6f9b584bacdb039f8c0f}{00099}   \hyperlink{a00211_ggab4bde745db676fc2ea4b47011cd9a80ea25fe3c7376ae6f9b584bacdb039f8c0f}{HWLOC\_MEMATTR\_ID\_BANDWIDTH} = 2,
+00100 
+\Hypertarget{a00134_source_l00107}\hyperlink{a00211_ggab4bde745db676fc2ea4b47011cd9a80ead1796413759b8b87b61ad195a9349b19}{00107}   \hyperlink{a00211_ggab4bde745db676fc2ea4b47011cd9a80ead1796413759b8b87b61ad195a9349b19}{HWLOC\_MEMATTR\_ID\_LATENCY} = 3
+00108 
+00109   \textcolor{comment}{/* TODO read vs write, persistence? */}
+00110 \};
+00111 
+\Hypertarget{a00134_source_l00115}\hyperlink{a00211_gacc82003a8610be554615995f0996c888}{00115} \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\_memattr\_id\_t};
+00116 
+00119 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00120 \hyperlink{a00211_ga79f44f8e1cfd2f97a19171417a75a137}{hwloc\_memattr\_get\_by\_name}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00121                           \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name,
+00122                           \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\_memattr\_id\_t} *\textcolor{keywordtype}{id});
+00123 
+00124 
+\Hypertarget{a00134_source_l00126}\hyperlink{a00211_ga33099ba58f607fc70925da3777688586}{00126} \textcolor{keyword}{enum} \hyperlink{a00211_ga33099ba58f607fc70925da3777688586}{hwloc\_location\_type\_e} \{
+\Hypertarget{a00134_source_l00128}\hyperlink{a00211_gga33099ba58f607fc70925da3777688586a7135318a86361ad75fd1648e6bf6d174}{00128}   \hyperlink{a00211_gga33099ba58f607fc70925da3777688586a7135318a86361ad75fd1648e6bf6d174}{HWLOC\_LOCATION\_TYPE\_CPUSET} = 1,
+\Hypertarget{a00134_source_l00130}\hyperlink{a00211_gga33099ba58f607fc70925da3777688586af637c39b23d48cff15ddb008644aaa84}{00130}   \hyperlink{a00211_gga33099ba58f607fc70925da3777688586af637c39b23d48cff15ddb008644aaa84}{HWLOC\_LOCATION\_TYPE\_OBJECT} = 0
+00131 \};
+00132 
+\Hypertarget{a00134_source_l00134}\hyperlink{a00314}{00134} \textcolor{keyword}{struct }\hyperlink{a00314}{hwloc\_location} \{
+\Hypertarget{a00134_source_l00136}\hyperlink{a00314_aeb9c0ab74a7d3506a76d0b82600a28a7}{00136}   \textcolor{keyword}{enum} \hyperlink{a00211_ga33099ba58f607fc70925da3777688586}{hwloc\_location\_type\_e} \hyperlink{a00314_aeb9c0ab74a7d3506a76d0b82600a28a7}{type};
+\Hypertarget{a00134_source_l00138}\hyperlink{a00318}{00138}   \textcolor{keyword}{union }\hyperlink{a00318}{hwloc\_location\_u} \{
+\Hypertarget{a00134_source_l00140}\hyperlink{a00318_a033bad8f6b891992f0c18b85a88c5561}{00140}     \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\_cpuset\_t} \hyperlink{a00318_a033bad8f6b891992f0c18b85a88c5561}{cpuset};
+\Hypertarget{a00134_source_l00142}\hyperlink{a00318_acf2ebf75869f0a53a884ac2ab3374122}{00142}     \hyperlink{a00238}{hwloc\_obj\_t} \hyperlink{a00318_acf2ebf75869f0a53a884ac2ab3374122}{object};
+00143   \} \hyperlink{a00314_a20cc864865c1133a833dabecff7626db}{location};
+00144 \};
+00145 
+00146 
+\Hypertarget{a00134_source_l00148}\hyperlink{a00211_gab9c963ca37255da71b00d94e1b106f9d}{00148} \textcolor{keyword}{enum} \hyperlink{a00211_gab9c963ca37255da71b00d94e1b106f9d}{hwloc\_local\_numanode\_flag\_e} \{
+\Hypertarget{a00134_source_l00154}\hyperlink{a00211_ggab9c963ca37255da71b00d94e1b106f9da200c6c133bb2125ba36d77ce9ca268cc}{00154}   \hyperlink{a00211_ggab9c963ca37255da71b00d94e1b106f9da200c6c133bb2125ba36d77ce9ca268cc}{HWLOC\_LOCAL\_NUMANODE\_FLAG\_LARGER\_LOCALITY} = (1UL<<0),
+00155 
+\Hypertarget{a00134_source_l00161}\hyperlink{a00211_ggab9c963ca37255da71b00d94e1b106f9daac9c5e3a2cfb1b193e4acfceaf3bad57}{00161}   \hyperlink{a00211_ggab9c963ca37255da71b00d94e1b106f9daac9c5e3a2cfb1b193e4acfceaf3bad57}{HWLOC\_LOCAL\_NUMANODE\_FLAG\_SMALLER\_LOCALITY} = (1UL<<1),
+00162 
+\Hypertarget{a00134_source_l00167}\hyperlink{a00211_ggab9c963ca37255da71b00d94e1b106f9dab5778b34c961a5d56f98f1549edeaed0}{00167}   \hyperlink{a00211_ggab9c963ca37255da71b00d94e1b106f9dab5778b34c961a5d56f98f1549edeaed0}{HWLOC\_LOCAL\_NUMANODE\_FLAG\_ALL} = (1UL<<2)
+00168 \};
+00169 
+00199 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00200 \hyperlink{a00211_ga569e80c5be7ef27649b0ef5aa52ffcdc}{hwloc\_get\_local\_numanode\_objs}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00201                               \textcolor{keyword}{struct} \hyperlink{a00314}{hwloc\_location} *\hyperlink{a00314_a20cc864865c1133a833dabecff7626db}{location},
+00202                               \textcolor{keywordtype}{unsigned} *nr,
+00203                               \hyperlink{a00238}{hwloc\_obj\_t} *nodes,
+00204                               \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags);
+00205 
+00206 
+00207 
+00222 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00223 \hyperlink{a00211_ga297e4a9adc2272446a4c7449dacef0df}{hwloc\_memattr\_get\_value}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00224                         \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\_memattr\_id\_t} attribute,
+00225                         \hyperlink{a00238}{hwloc\_obj\_t} target\_node,
+00226                         \textcolor{keyword}{struct} \hyperlink{a00314}{hwloc\_location} *initiator,
+00227                         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags,
+00228                         hwloc\_uint64\_t *value);
+00229 
+00255 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00256 \hyperlink{a00211_ga884d1f2ad745c2fa69c1583c82d28f10}{hwloc\_memattr\_get\_best\_target}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00257                               \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\_memattr\_id\_t} attribute,
+00258                               \textcolor{keyword}{struct} \hyperlink{a00314}{hwloc\_location} *initiator,
+00259                               \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags,
+00260                               \hyperlink{a00238}{hwloc\_obj\_t} *best\_target, hwloc\_uint64\_t *value);
+00261 
+00284 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00285 \hyperlink{a00211_ga9a453879892893cf8a3fcd431ade84cd}{hwloc\_memattr\_get\_best\_initiator}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00286                                  \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\_memattr\_id\_t} attribute,
+00287                                  \hyperlink{a00238}{hwloc\_obj\_t} target,
+00288                                  \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags,
+00289                                  \textcolor{keyword}{struct} \hyperlink{a00314}{hwloc\_location} *best\_initiator, hwloc\_uint64\_t *value
+      );
+00290 
+00300 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00301 \hyperlink{a00212_ga5300e9be1abdea2e00c18492148aecd0}{hwloc\_memattr\_get\_name}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00302                        \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\_memattr\_id\_t} attribute,
+00303                        \textcolor{keyword}{const} \textcolor{keywordtype}{char} **name);
+00304 
+00309 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00310 \hyperlink{a00212_ga4c62b626085adeaffb233e5f2a03a5eb}{hwloc\_memattr\_get\_flags}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00311                         \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\_memattr\_id\_t} attribute,
+00312                         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} *flags);
+00313 
+\Hypertarget{a00134_source_l00317}\hyperlink{a00212_ga78aceb4cac4d614c0f5e82dbfeb779e5}{00317} \textcolor{keyword}{enum} \hyperlink{a00212_ga78aceb4cac4d614c0f5e82dbfeb779e5}{hwloc\_memattr\_flag\_e} \{
+\Hypertarget{a00134_source_l00321}\hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5af29e65444a6ed00f5cc246df06f65815}{00321}   \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5af29e65444a6ed00f5cc246df06f65815}{HWLOC\_MEMATTR\_FLAG\_HIGHER\_FIRST} = (1UL<<0),
+\Hypertarget{a00134_source_l00325}\hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9601b5b0e1e68635e7e9901f28bd93bf}{00325}   \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9601b5b0e1e68635e7e9901f28bd93bf}{HWLOC\_MEMATTR\_FLAG\_LOWER\_FIRST} = (1UL<<1),
+\Hypertarget{a00134_source_l00329}\hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}{00329}   \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}{HWLOC\_MEMATTR\_FLAG\_NEED\_INITIATOR} = (1UL<<2)
+00330 \};
+00331 
+00338 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00339 \hyperlink{a00212_ga770657d1e44b09e93e09f623936c1e5f}{hwloc\_memattr\_register}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00340                        \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name,
+00341                        \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags,
+00342                        \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\_memattr\_id\_t} *\textcolor{keywordtype}{id});
+00343 
+00362 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00363 \hyperlink{a00212_ga960529c08b25cf15825e0f72ecceb504}{hwloc\_memattr\_set\_value}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00364                         \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\_memattr\_id\_t} attribute,
+00365                         \hyperlink{a00238}{hwloc\_obj\_t} target\_node,
+00366                         \textcolor{keyword}{struct} \hyperlink{a00314}{hwloc\_location} *initiator,
+00367                         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags,
+00368                         hwloc\_uint64\_t value);
+00369 
+00406 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00407 \hyperlink{a00212_ga3177cc0ab47e4dd1fa69ca1df4c7cb1a}{hwloc\_memattr\_get\_targets}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00408                           \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\_memattr\_id\_t} attribute,
+00409                           \textcolor{keyword}{struct} \hyperlink{a00314}{hwloc\_location} *initiator,
+00410                           \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags,
+00411                           \textcolor{keywordtype}{unsigned} *nrp, \hyperlink{a00238}{hwloc\_obj\_t} *targets, hwloc\_uint64\_t *values);
+00412 
+00442 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00443 \hyperlink{a00212_ga049aaa860dcbbf0792f0fd4251a99ec0}{hwloc\_memattr\_get\_initiators}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00444                              \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\_memattr\_id\_t} attribute,
+00445                              \hyperlink{a00238}{hwloc\_obj\_t} target\_node,
+00446                              \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags,
+00447                              \textcolor{keywordtype}{unsigned} *nr, \textcolor{keyword}{struct} \hyperlink{a00314}{hwloc\_location} *initiators, hwloc\_uint64\_t 
+      *values);
+00450 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00451 \} \textcolor{comment}{/* extern "C" */}
+00452 \textcolor{preprocessor}{#endif}
+00453 
+00454 
+00455 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* HWLOC\_MEMATTR\_H */}\textcolor{preprocessor}{}
+\end{DoxyCode}

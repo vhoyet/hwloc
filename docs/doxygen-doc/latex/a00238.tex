@@ -1,0 +1,472 @@
+\hypertarget{a00238}{}\section{hwloc\+\_\+obj Struct Reference}
+\label{a00238}\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+
+
+{\ttfamily \#include $<$hwloc.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} \hyperlink{a00238_acc4f0803f244867e68fe0036800be5de}{type}
+\item 
+char $\ast$ \hyperlink{a00238_a5d4f97e76723a9ec8d38046f19e00d33}{subtype}
+\item 
+unsigned \hyperlink{a00238_a61a7a80a68eaccbaaa28269e678c81a9}{os\+\_\+index}
+\item 
+char $\ast$ \hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}
+\item 
+hwloc\+\_\+uint64\+\_\+t \hyperlink{a00238_a75603fc36c9284ba48ce814b772a58b6}{total\+\_\+memory}
+\item 
+union \hyperlink{a00242}{hwloc\+\_\+obj\+\_\+attr\+\_\+u} $\ast$ \hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}
+\item 
+int \hyperlink{a00238_a4876fd165b4fff35521f07ebd85355ed}{depth}
+\item 
+unsigned \hyperlink{a00238_a0d07fb7b8935e137c94d75a3eb492ae9}{logical\+\_\+index}
+\item 
+struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$ \hyperlink{a00238_a85a788017457129589318b6c39451acf}{next\+\_\+cousin}
+\item 
+struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$ \hyperlink{a00238_ac715989f55ff5a0eb6be2969ee477ec0}{prev\+\_\+cousin}
+\item 
+struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$ \hyperlink{a00238_adc494f6aed939992be1c55cca5822900}{parent}
+\item 
+unsigned \hyperlink{a00238_aaa6043eee6f55869933c1d974efd9acd}{sibling\+\_\+rank}
+\item 
+struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$ \hyperlink{a00238_a7f2343ed476fe4942e6fffd4cade1b40}{next\+\_\+sibling}
+\item 
+struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$ \hyperlink{a00238_a7b89e8c189876c0158a9282aaaf17f50}{prev\+\_\+sibling}
+\item 
+int \hyperlink{a00238_a0f41a1d67dc6b661906f2217563637f3}{symmetric\+\_\+subtree}
+\item 
+\hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t} \hyperlink{a00238_a67925e0f2c47f50408fbdb9bddd0790f}{cpuset}
+\item 
+\hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t} \hyperlink{a00238_a91788a9da687beb7224cc1fd7b75208c}{complete\+\_\+cpuset}
+\item 
+\hyperlink{a00183_ga37e35730fa7e775b5bb0afe893d6d508}{hwloc\+\_\+nodeset\+\_\+t} \hyperlink{a00238_a08f0d0e16c619a6e653526cbee4ffea3}{nodeset}
+\item 
+\hyperlink{a00183_ga37e35730fa7e775b5bb0afe893d6d508}{hwloc\+\_\+nodeset\+\_\+t} \hyperlink{a00238_ac38c4012127525ef74c5615c526f4c2e}{complete\+\_\+nodeset}
+\item 
+struct \hyperlink{a00286}{hwloc\+\_\+info\+\_\+s} $\ast$ \hyperlink{a00238_a8604654c38b7a720efae5025d3a96ee6}{infos}
+\item 
+unsigned \hyperlink{a00238_a9843acc28cfbba903b63ea14b137ff70}{infos\+\_\+count}
+\item 
+void $\ast$ \hyperlink{a00238_a76fd3ac94401cf32dfccc3a3a8de68a5}{userdata}
+\item 
+hwloc\+\_\+uint64\+\_\+t \hyperlink{a00238_a957984a355fa61c85f46605c336e7551}{gp\+\_\+index}
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ List and array of normal children below this object (except Memory, I/O and Misc children).}\par
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{a00238_aac3f6da35c9b57599909a44ce2b716c1}{arity}
+\item 
+struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$$\ast$ \hyperlink{a00238_a04d05403da37bfe17cd63b7c7dd07b1f}{children}
+\item 
+struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$ \hyperlink{a00238_af51d08a0a79dba517c06c5afedc8d2dc}{first\+\_\+child}
+\item 
+struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$ \hyperlink{a00238_a84bd65634dbc55f4158b74443a9bd04f}{last\+\_\+child}
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ List of Memory children below this object.}\par
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{a00238_a6f834ea4dd26553cdea601d2fae6d3b7}{memory\+\_\+arity}
+\item 
+struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$ \hyperlink{a00238_ac0e8200dba25b90d5954bd4ec61f97d3}{memory\+\_\+first\+\_\+child}
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ List of I/O children below this object.}\par
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{a00238_a7b3b29f0be377c7d2d52262019fc7d11}{io\+\_\+arity}
+\item 
+struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$ \hyperlink{a00238_a8d14c88e1ebc4ae67cc69f9e928558b3}{io\+\_\+first\+\_\+child}
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ List of Misc children below this object.}\par
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{a00238_a2bb7862ce722d7ceda23cfa153da165a}{misc\+\_\+arity}
+\item 
+struct \hyperlink{a00238}{hwloc\+\_\+obj} $\ast$ \hyperlink{a00238_a57812a313fe9b1a9500489f47c3011cc}{misc\+\_\+first\+\_\+child}
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Structure of a topology object. 
+
+Applications must not modify any field except {\ttfamily \hyperlink{a00238_a76fd3ac94401cf32dfccc3a3a8de68a5}{hwloc\+\_\+obj.\+userdata}}. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{a00238_aac3f6da35c9b57599909a44ce2b716c1}\label{a00238_aac3f6da35c9b57599909a44ce2b716c1}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!arity@{arity}}
+\index{arity@{arity}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{arity}{arity}}
+{\footnotesize\ttfamily unsigned hwloc\+\_\+obj\+::arity}
+
+
+
+Number of normal children. Memory, Misc and I/O children are not listed here but rather in their dedicated children list. 
+
+\mbox{\Hypertarget{a00238_accd40e29f71f19e88db62ea3df02adc8}\label{a00238_accd40e29f71f19e88db62ea3df02adc8}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!attr@{attr}}
+\index{attr@{attr}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{attr}{attr}}
+{\footnotesize\ttfamily union \hyperlink{a00242}{hwloc\+\_\+obj\+\_\+attr\+\_\+u}$\ast$ hwloc\+\_\+obj\+::attr}
+
+
+
+Object type-\/specific Attributes, may be {\ttfamily N\+U\+LL} if no attribute value was found. 
+
+\mbox{\Hypertarget{a00238_a04d05403da37bfe17cd63b7c7dd07b1f}\label{a00238_a04d05403da37bfe17cd63b7c7dd07b1f}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!children@{children}}
+\index{children@{children}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{children}{children}}
+{\footnotesize\ttfamily struct \hyperlink{a00238}{hwloc\+\_\+obj}$\ast$$\ast$ hwloc\+\_\+obj\+::children}
+
+
+
+Normal children, {\ttfamily children}\mbox{[}0 .. arity -\/1\mbox{]}. 
+
+\mbox{\Hypertarget{a00238_a91788a9da687beb7224cc1fd7b75208c}\label{a00238_a91788a9da687beb7224cc1fd7b75208c}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!complete\+\_\+cpuset@{complete\+\_\+cpuset}}
+\index{complete\+\_\+cpuset@{complete\+\_\+cpuset}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{complete\+\_\+cpuset}{complete\_cpuset}}
+{\footnotesize\ttfamily \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t} hwloc\+\_\+obj\+::complete\+\_\+cpuset}
+
+
+
+The complete C\+PU set of processors of this object,. 
+
+This may include not only the same as the cpuset field, but also some C\+P\+Us for which topology information is unknown or incomplete, some offlines C\+P\+Us, and the C\+P\+Us that are ignored when the \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea10907044bbb306fd0dc76acf046d9258}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+I\+S\+A\+L\+L\+O\+W\+ED} flag is not set. Thus no corresponding PU object may be found in the topology, because the precise position is undefined. It is however known that it would be somewhere under this object.
+
+\begin{DoxyNote}{Note}
+Its value must not be changed, \hyperlink{a00205_gae679434c1a5f41d3560a8a7e2c1b0dee}{hwloc\+\_\+bitmap\+\_\+dup()} must be used instead. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00238_ac38c4012127525ef74c5615c526f4c2e}\label{a00238_ac38c4012127525ef74c5615c526f4c2e}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!complete\+\_\+nodeset@{complete\+\_\+nodeset}}
+\index{complete\+\_\+nodeset@{complete\+\_\+nodeset}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{complete\+\_\+nodeset}{complete\_nodeset}}
+{\footnotesize\ttfamily \hyperlink{a00183_ga37e35730fa7e775b5bb0afe893d6d508}{hwloc\+\_\+nodeset\+\_\+t} hwloc\+\_\+obj\+::complete\+\_\+nodeset}
+
+
+
+The complete N\+U\+MA node set of this object,. 
+
+This may include not only the same as the nodeset field, but also some N\+U\+MA nodes for which topology information is unknown or incomplete, some offlines nodes, and the nodes that are ignored when the \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea10907044bbb306fd0dc76acf046d9258}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+I\+S\+A\+L\+L\+O\+W\+ED} flag is not set. Thus no corresponding N\+U\+MA node object may be found in the topology, because the precise position is undefined. It is however known that it would be somewhere under this object.
+
+If there are no N\+U\+MA nodes in the machine, all the memory is close to this object, so only the first bit is set in {\ttfamily complete\+\_\+nodeset}.
+
+\begin{DoxyNote}{Note}
+Its value must not be changed, \hyperlink{a00205_gae679434c1a5f41d3560a8a7e2c1b0dee}{hwloc\+\_\+bitmap\+\_\+dup()} must be used instead. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00238_a67925e0f2c47f50408fbdb9bddd0790f}\label{a00238_a67925e0f2c47f50408fbdb9bddd0790f}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!cpuset@{cpuset}}
+\index{cpuset@{cpuset}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{cpuset}{cpuset}}
+{\footnotesize\ttfamily \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t} hwloc\+\_\+obj\+::cpuset}
+
+
+
+C\+P\+Us covered by this object. 
+
+This is the set of C\+P\+Us for which there are PU objects in the topology under this object, i.\+e. which are known to be physically contained in this object and known how (the children path between this object and the PU objects).
+
+If the \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea10907044bbb306fd0dc76acf046d9258}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+I\+S\+A\+L\+L\+O\+W\+ED} configuration flag is set, some of these C\+P\+Us may not be allowed for binding, see \hyperlink{a00202_ga517d5d68ec9f24583d8933aab713be8e}{hwloc\+\_\+topology\+\_\+get\+\_\+allowed\+\_\+cpuset()}.
+
+\begin{DoxyNote}{Note}
+All objects have non-\/\+N\+U\+LL C\+PU and node sets except Misc and I/O objects.
+
+Its value must not be changed, \hyperlink{a00205_gae679434c1a5f41d3560a8a7e2c1b0dee}{hwloc\+\_\+bitmap\+\_\+dup()} must be used instead. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00238_a4876fd165b4fff35521f07ebd85355ed}\label{a00238_a4876fd165b4fff35521f07ebd85355ed}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!depth@{depth}}
+\index{depth@{depth}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{depth}{depth}}
+{\footnotesize\ttfamily int hwloc\+\_\+obj\+::depth}
+
+
+
+Vertical index in the hierarchy. 
+
+For normal objects, this is the depth of the horizontal level that contains this object and its cousins of the same type. If the topology is symmetric, this is equal to the parent depth plus one, and also equal to the number of parent/child links from the root object to here.
+
+For special objects (N\+U\+MA nodes, I/O and Misc) that are not in the main tree, this is a special negative value that corresponds to their dedicated level, see \hyperlink{a00187_ga8bec782e21be313750da70cf7428b374}{hwloc\+\_\+get\+\_\+type\+\_\+depth()} and \hyperlink{a00187_gaf4e663cf42bbe20756b849c6293ef575}{hwloc\+\_\+get\+\_\+type\+\_\+depth\+\_\+e}. Those special values can be passed to hwloc functions such \hyperlink{a00187_ga1d5ceafe8130fe6e8657bf0bc666ba50}{hwloc\+\_\+get\+\_\+nbobjs\+\_\+by\+\_\+depth()} as usual. \mbox{\Hypertarget{a00238_af51d08a0a79dba517c06c5afedc8d2dc}\label{a00238_af51d08a0a79dba517c06c5afedc8d2dc}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!first\+\_\+child@{first\+\_\+child}}
+\index{first\+\_\+child@{first\+\_\+child}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{first\+\_\+child}{first\_child}}
+{\footnotesize\ttfamily struct \hyperlink{a00238}{hwloc\+\_\+obj}$\ast$ hwloc\+\_\+obj\+::first\+\_\+child}
+
+
+
+First normal child. 
+
+\mbox{\Hypertarget{a00238_a957984a355fa61c85f46605c336e7551}\label{a00238_a957984a355fa61c85f46605c336e7551}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!gp\+\_\+index@{gp\+\_\+index}}
+\index{gp\+\_\+index@{gp\+\_\+index}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{gp\+\_\+index}{gp\_index}}
+{\footnotesize\ttfamily hwloc\+\_\+uint64\+\_\+t hwloc\+\_\+obj\+::gp\+\_\+index}
+
+
+
+Global persistent index. Generated by hwloc, unique across the topology (contrary to os\+\_\+index) and persistent across topology changes (contrary to logical\+\_\+index). Mostly used internally, but could also be used by application to identify objects. 
+
+\mbox{\Hypertarget{a00238_a8604654c38b7a720efae5025d3a96ee6}\label{a00238_a8604654c38b7a720efae5025d3a96ee6}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!infos@{infos}}
+\index{infos@{infos}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{infos}{infos}}
+{\footnotesize\ttfamily struct \hyperlink{a00286}{hwloc\+\_\+info\+\_\+s}$\ast$ hwloc\+\_\+obj\+::infos}
+
+
+
+Array of stringified info type=name. 
+
+\mbox{\Hypertarget{a00238_a9843acc28cfbba903b63ea14b137ff70}\label{a00238_a9843acc28cfbba903b63ea14b137ff70}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!infos\+\_\+count@{infos\+\_\+count}}
+\index{infos\+\_\+count@{infos\+\_\+count}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{infos\+\_\+count}{infos\_count}}
+{\footnotesize\ttfamily unsigned hwloc\+\_\+obj\+::infos\+\_\+count}
+
+
+
+Size of infos array. 
+
+\mbox{\Hypertarget{a00238_a7b3b29f0be377c7d2d52262019fc7d11}\label{a00238_a7b3b29f0be377c7d2d52262019fc7d11}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!io\+\_\+arity@{io\+\_\+arity}}
+\index{io\+\_\+arity@{io\+\_\+arity}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{io\+\_\+arity}{io\_arity}}
+{\footnotesize\ttfamily unsigned hwloc\+\_\+obj\+::io\+\_\+arity}
+
+
+
+Number of I/O children. These children are listed in {\ttfamily io\+\_\+first\+\_\+child}. 
+
+\mbox{\Hypertarget{a00238_a8d14c88e1ebc4ae67cc69f9e928558b3}\label{a00238_a8d14c88e1ebc4ae67cc69f9e928558b3}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!io\+\_\+first\+\_\+child@{io\+\_\+first\+\_\+child}}
+\index{io\+\_\+first\+\_\+child@{io\+\_\+first\+\_\+child}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{io\+\_\+first\+\_\+child}{io\_first\_child}}
+{\footnotesize\ttfamily struct \hyperlink{a00238}{hwloc\+\_\+obj}$\ast$ hwloc\+\_\+obj\+::io\+\_\+first\+\_\+child}
+
+
+
+First I/O child. Bridges, P\+CI and OS devices are listed here ({\ttfamily io\+\_\+arity} and {\ttfamily io\+\_\+first\+\_\+child}) instead of in the normal children list. See also \hyperlink{a00198_gac8a954ed37a4376097234c828068cbef}{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+io()}. 
+
+\mbox{\Hypertarget{a00238_a84bd65634dbc55f4158b74443a9bd04f}\label{a00238_a84bd65634dbc55f4158b74443a9bd04f}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!last\+\_\+child@{last\+\_\+child}}
+\index{last\+\_\+child@{last\+\_\+child}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{last\+\_\+child}{last\_child}}
+{\footnotesize\ttfamily struct \hyperlink{a00238}{hwloc\+\_\+obj}$\ast$ hwloc\+\_\+obj\+::last\+\_\+child}
+
+
+
+Last normal child. 
+
+\mbox{\Hypertarget{a00238_a0d07fb7b8935e137c94d75a3eb492ae9}\label{a00238_a0d07fb7b8935e137c94d75a3eb492ae9}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!logical\+\_\+index@{logical\+\_\+index}}
+\index{logical\+\_\+index@{logical\+\_\+index}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{logical\+\_\+index}{logical\_index}}
+{\footnotesize\ttfamily unsigned hwloc\+\_\+obj\+::logical\+\_\+index}
+
+
+
+Horizontal index in the whole list of similar objects, hence guaranteed unique across the entire machine. Could be a \char`\"{}cousin\+\_\+rank\char`\"{} since it\textquotesingle{}s the rank within the \char`\"{}cousin\char`\"{} list below Note that this index may change when restricting the topology or when inserting a group. 
+
+\mbox{\Hypertarget{a00238_a6f834ea4dd26553cdea601d2fae6d3b7}\label{a00238_a6f834ea4dd26553cdea601d2fae6d3b7}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!memory\+\_\+arity@{memory\+\_\+arity}}
+\index{memory\+\_\+arity@{memory\+\_\+arity}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{memory\+\_\+arity}{memory\_arity}}
+{\footnotesize\ttfamily unsigned hwloc\+\_\+obj\+::memory\+\_\+arity}
+
+
+
+Number of Memory children. These children are listed in {\ttfamily memory\+\_\+first\+\_\+child}. 
+
+\mbox{\Hypertarget{a00238_ac0e8200dba25b90d5954bd4ec61f97d3}\label{a00238_ac0e8200dba25b90d5954bd4ec61f97d3}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!memory\+\_\+first\+\_\+child@{memory\+\_\+first\+\_\+child}}
+\index{memory\+\_\+first\+\_\+child@{memory\+\_\+first\+\_\+child}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{memory\+\_\+first\+\_\+child}{memory\_first\_child}}
+{\footnotesize\ttfamily struct \hyperlink{a00238}{hwloc\+\_\+obj}$\ast$ hwloc\+\_\+obj\+::memory\+\_\+first\+\_\+child}
+
+
+
+First Memory child. N\+U\+MA nodes and Memory-\/side caches are listed here ({\ttfamily memory\+\_\+arity} and {\ttfamily memory\+\_\+first\+\_\+child}) instead of in the normal children list. See also \hyperlink{a00198_ga1d074390c8a3dc3088d84f73fb73f966}{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+memory()}. 
+
+A memory hierarchy starts from a normal C\+P\+U-\/side object (e.\+g. Package) and ends with N\+U\+MA nodes as leaves. There might exist some memory-\/side caches between them in the middle of the memory subtree. \mbox{\Hypertarget{a00238_a2bb7862ce722d7ceda23cfa153da165a}\label{a00238_a2bb7862ce722d7ceda23cfa153da165a}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!misc\+\_\+arity@{misc\+\_\+arity}}
+\index{misc\+\_\+arity@{misc\+\_\+arity}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{misc\+\_\+arity}{misc\_arity}}
+{\footnotesize\ttfamily unsigned hwloc\+\_\+obj\+::misc\+\_\+arity}
+
+
+
+Number of Misc children. These children are listed in {\ttfamily misc\+\_\+first\+\_\+child}. 
+
+\mbox{\Hypertarget{a00238_a57812a313fe9b1a9500489f47c3011cc}\label{a00238_a57812a313fe9b1a9500489f47c3011cc}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!misc\+\_\+first\+\_\+child@{misc\+\_\+first\+\_\+child}}
+\index{misc\+\_\+first\+\_\+child@{misc\+\_\+first\+\_\+child}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{misc\+\_\+first\+\_\+child}{misc\_first\_child}}
+{\footnotesize\ttfamily struct \hyperlink{a00238}{hwloc\+\_\+obj}$\ast$ hwloc\+\_\+obj\+::misc\+\_\+first\+\_\+child}
+
+
+
+First Misc child. Misc objects are listed here ({\ttfamily misc\+\_\+arity} and {\ttfamily misc\+\_\+first\+\_\+child}) instead of in the normal children list. 
+
+\mbox{\Hypertarget{a00238_abb709ec38f2970677e4e57d1d30be96d}\label{a00238_abb709ec38f2970677e4e57d1d30be96d}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!name@{name}}
+\index{name@{name}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily char$\ast$ hwloc\+\_\+obj\+::name}
+
+
+
+Object-\/specific name if any. Mostly used for identifying OS devices and Misc objects where a name string is more useful than numerical indexes. 
+
+\mbox{\Hypertarget{a00238_a85a788017457129589318b6c39451acf}\label{a00238_a85a788017457129589318b6c39451acf}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!next\+\_\+cousin@{next\+\_\+cousin}}
+\index{next\+\_\+cousin@{next\+\_\+cousin}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{next\+\_\+cousin}{next\_cousin}}
+{\footnotesize\ttfamily struct \hyperlink{a00238}{hwloc\+\_\+obj}$\ast$ hwloc\+\_\+obj\+::next\+\_\+cousin}
+
+
+
+Next object of same type and depth. 
+
+\mbox{\Hypertarget{a00238_a7f2343ed476fe4942e6fffd4cade1b40}\label{a00238_a7f2343ed476fe4942e6fffd4cade1b40}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!next\+\_\+sibling@{next\+\_\+sibling}}
+\index{next\+\_\+sibling@{next\+\_\+sibling}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{next\+\_\+sibling}{next\_sibling}}
+{\footnotesize\ttfamily struct \hyperlink{a00238}{hwloc\+\_\+obj}$\ast$ hwloc\+\_\+obj\+::next\+\_\+sibling}
+
+
+
+Next object below the same parent (inside the same list of children). 
+
+\mbox{\Hypertarget{a00238_a08f0d0e16c619a6e653526cbee4ffea3}\label{a00238_a08f0d0e16c619a6e653526cbee4ffea3}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!nodeset@{nodeset}}
+\index{nodeset@{nodeset}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{nodeset}{nodeset}}
+{\footnotesize\ttfamily \hyperlink{a00183_ga37e35730fa7e775b5bb0afe893d6d508}{hwloc\+\_\+nodeset\+\_\+t} hwloc\+\_\+obj\+::nodeset}
+
+
+
+N\+U\+MA nodes covered by this object or containing this object. 
+
+This is the set of N\+U\+MA nodes for which there are N\+U\+MA node objects in the topology under or above this object, i.\+e. which are known to be physically contained in this object or containing it and known how (the children path between this object and the N\+U\+MA node objects).
+
+In the end, these nodes are those that are close to the current object. Function \hyperlink{a00211_ga569e80c5be7ef27649b0ef5aa52ffcdc}{hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs()} may be used to list those N\+U\+MA nodes more precisely.
+
+If the \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea10907044bbb306fd0dc76acf046d9258}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+I\+S\+A\+L\+L\+O\+W\+ED} configuration flag is set, some of these nodes may not be allowed for allocation, see \hyperlink{a00202_ga21a4d7237a11e76b912ed4524ab78cbd}{hwloc\+\_\+topology\+\_\+get\+\_\+allowed\+\_\+nodeset()}.
+
+If there are no N\+U\+MA nodes in the machine, all the memory is close to this object, so only the first bit may be set in {\ttfamily nodeset}.
+
+\begin{DoxyNote}{Note}
+All objects have non-\/\+N\+U\+LL C\+PU and node sets except Misc and I/O objects.
+
+Its value must not be changed, \hyperlink{a00205_gae679434c1a5f41d3560a8a7e2c1b0dee}{hwloc\+\_\+bitmap\+\_\+dup()} must be used instead. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00238_a61a7a80a68eaccbaaa28269e678c81a9}\label{a00238_a61a7a80a68eaccbaaa28269e678c81a9}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!os\+\_\+index@{os\+\_\+index}}
+\index{os\+\_\+index@{os\+\_\+index}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{os\+\_\+index}{os\_index}}
+{\footnotesize\ttfamily unsigned hwloc\+\_\+obj\+::os\+\_\+index}
+
+
+
+O\+S-\/provided physical index number. It is not guaranteed unique across the entire machine, except for P\+Us and N\+U\+MA nodes. Set to H\+W\+L\+O\+C\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+I\+N\+D\+EX if unknown or irrelevant for this object. 
+
+\mbox{\Hypertarget{a00238_adc494f6aed939992be1c55cca5822900}\label{a00238_adc494f6aed939992be1c55cca5822900}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!parent@{parent}}
+\index{parent@{parent}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily struct \hyperlink{a00238}{hwloc\+\_\+obj}$\ast$ hwloc\+\_\+obj\+::parent}
+
+
+
+Parent, {\ttfamily N\+U\+LL} if root (Machine object) 
+
+\mbox{\Hypertarget{a00238_ac715989f55ff5a0eb6be2969ee477ec0}\label{a00238_ac715989f55ff5a0eb6be2969ee477ec0}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!prev\+\_\+cousin@{prev\+\_\+cousin}}
+\index{prev\+\_\+cousin@{prev\+\_\+cousin}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{prev\+\_\+cousin}{prev\_cousin}}
+{\footnotesize\ttfamily struct \hyperlink{a00238}{hwloc\+\_\+obj}$\ast$ hwloc\+\_\+obj\+::prev\+\_\+cousin}
+
+
+
+Previous object of same type and depth. 
+
+\mbox{\Hypertarget{a00238_a7b89e8c189876c0158a9282aaaf17f50}\label{a00238_a7b89e8c189876c0158a9282aaaf17f50}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!prev\+\_\+sibling@{prev\+\_\+sibling}}
+\index{prev\+\_\+sibling@{prev\+\_\+sibling}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{prev\+\_\+sibling}{prev\_sibling}}
+{\footnotesize\ttfamily struct \hyperlink{a00238}{hwloc\+\_\+obj}$\ast$ hwloc\+\_\+obj\+::prev\+\_\+sibling}
+
+
+
+Previous object below the same parent (inside the same list of children). 
+
+\mbox{\Hypertarget{a00238_aaa6043eee6f55869933c1d974efd9acd}\label{a00238_aaa6043eee6f55869933c1d974efd9acd}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!sibling\+\_\+rank@{sibling\+\_\+rank}}
+\index{sibling\+\_\+rank@{sibling\+\_\+rank}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{sibling\+\_\+rank}{sibling\_rank}}
+{\footnotesize\ttfamily unsigned hwloc\+\_\+obj\+::sibling\+\_\+rank}
+
+
+
+Index in parent\textquotesingle{}s {\ttfamily children}\mbox{[}\mbox{]} array. Or the index in parent\textquotesingle{}s Memory, I/O or Misc children list. 
+
+\mbox{\Hypertarget{a00238_a5d4f97e76723a9ec8d38046f19e00d33}\label{a00238_a5d4f97e76723a9ec8d38046f19e00d33}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!subtype@{subtype}}
+\index{subtype@{subtype}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{subtype}{subtype}}
+{\footnotesize\ttfamily char$\ast$ hwloc\+\_\+obj\+::subtype}
+
+
+
+Subtype string to better describe the type field. 
+
+\mbox{\Hypertarget{a00238_a0f41a1d67dc6b661906f2217563637f3}\label{a00238_a0f41a1d67dc6b661906f2217563637f3}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!symmetric\+\_\+subtree@{symmetric\+\_\+subtree}}
+\index{symmetric\+\_\+subtree@{symmetric\+\_\+subtree}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{symmetric\+\_\+subtree}{symmetric\_subtree}}
+{\footnotesize\ttfamily int hwloc\+\_\+obj\+::symmetric\+\_\+subtree}
+
+
+
+Set if the subtree of normal objects below this object is symmetric, which means all normal children and their children have identical subtrees. 
+
+Memory, I/O and Misc children are ignored.
+
+If set in the topology root object, lstopo may export the topology as a synthetic string. \mbox{\Hypertarget{a00238_a75603fc36c9284ba48ce814b772a58b6}\label{a00238_a75603fc36c9284ba48ce814b772a58b6}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!total\+\_\+memory@{total\+\_\+memory}}
+\index{total\+\_\+memory@{total\+\_\+memory}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{total\+\_\+memory}{total\_memory}}
+{\footnotesize\ttfamily hwloc\+\_\+uint64\+\_\+t hwloc\+\_\+obj\+::total\+\_\+memory}
+
+
+
+Total memory (in bytes) in N\+U\+MA nodes below this object. 
+
+\mbox{\Hypertarget{a00238_acc4f0803f244867e68fe0036800be5de}\label{a00238_acc4f0803f244867e68fe0036800be5de}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!type@{type}}
+\index{type@{type}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} hwloc\+\_\+obj\+::type}
+
+
+
+Type of object. 
+
+\mbox{\Hypertarget{a00238_a76fd3ac94401cf32dfccc3a3a8de68a5}\label{a00238_a76fd3ac94401cf32dfccc3a3a8de68a5}} 
+\index{hwloc\+\_\+obj@{hwloc\+\_\+obj}!userdata@{userdata}}
+\index{userdata@{userdata}!hwloc\+\_\+obj@{hwloc\+\_\+obj}}
+\subsubsection{\texorpdfstring{userdata}{userdata}}
+{\footnotesize\ttfamily void$\ast$ hwloc\+\_\+obj\+::userdata}
+
+
+
+Application-\/given private data pointer, initialized to {\ttfamily N\+U\+LL}, use it as you wish. See \hyperlink{a00206_ga9d6ff0f7a8dd45be9aa8575ef31978cc}{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback()} in \hyperlink{a00128_source}{hwloc/export.\+h} if you wish to export this field to X\+ML. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+hwloc.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,110 @@
+\hypertarget{a00374}{}\section{hwloc\+\_\+backend Struct Reference}
+\label{a00374}\index{hwloc\+\_\+backend@{hwloc\+\_\+backend}}
+
+
+{\ttfamily \#include $<$plugins.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{a00374_aeca769840a6ff03e96462a9533adbccd}{phases}
+\item 
+unsigned long \hyperlink{a00374_aaa8eafe495aadd81c2e3c4ec527c10ba}{flags}
+\item 
+int \hyperlink{a00374_ab8806f6db077f1bb2e9d63ec99223f7a}{is\+\_\+thissystem}
+\item 
+void $\ast$ \hyperlink{a00374_a2ea5bd36b7f06efdb65b98b32af16c68}{private\+\_\+data}
+\item 
+void($\ast$ \hyperlink{a00374_a36c4fa86350525b46340c67b802c69c7}{disable} )(struct \hyperlink{a00374}{hwloc\+\_\+backend} $\ast$backend)
+\item 
+int($\ast$ \hyperlink{a00374_accff2cd8404be43c3b44cec05e6f609b}{discover} )(struct \hyperlink{a00374}{hwloc\+\_\+backend} $\ast$backend, struct \hyperlink{a00370}{hwloc\+\_\+disc\+\_\+status} $\ast$status)
+\item 
+int($\ast$ \hyperlink{a00374_aaac253491264c20930f44817270bc502}{get\+\_\+pci\+\_\+busid\+\_\+cpuset} )(struct \hyperlink{a00374}{hwloc\+\_\+backend} $\ast$backend, struct hwloc\+\_\+pcidev\+\_\+attr\+\_\+s $\ast$busid, \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} cpuset)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Discovery backend structure. 
+
+A backend is the instantiation of a discovery component. When a component gets enabled for a topology, its instantiate() callback creates a backend.
+
+\hyperlink{a00228_gadb068565ab6043cbe4d16bfcce067a61}{hwloc\+\_\+backend\+\_\+alloc()} initializes all fields to default values that the component may change (except \char`\"{}component\char`\"{} and \char`\"{}next\char`\"{}) before enabling the backend with \hyperlink{a00228_ga4715779d7191833e9b1a7490989a7497}{hwloc\+\_\+backend\+\_\+enable()}.
+
+Most backends assume that the topology is\+\_\+thissystem flag is set because they talk to the underlying operating system. However they may still be used in topologies without the is\+\_\+thissystem flag for debugging reasons. In practice, they are usually auto-\/disabled in such cases (excluded by xml or synthetic backends, or by environment variables when changing the Linux fsroot or the x86 cpuid path). 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{a00374_a36c4fa86350525b46340c67b802c69c7}\label{a00374_a36c4fa86350525b46340c67b802c69c7}} 
+\index{hwloc\+\_\+backend@{hwloc\+\_\+backend}!disable@{disable}}
+\index{disable@{disable}!hwloc\+\_\+backend@{hwloc\+\_\+backend}}
+\subsubsection{\texorpdfstring{disable}{disable}}
+{\footnotesize\ttfamily void($\ast$ hwloc\+\_\+backend\+::disable) (struct \hyperlink{a00374}{hwloc\+\_\+backend} $\ast$backend)}
+
+
+
+Callback for freeing the private\+\_\+data. May be N\+U\+LL. 
+
+\mbox{\Hypertarget{a00374_accff2cd8404be43c3b44cec05e6f609b}\label{a00374_accff2cd8404be43c3b44cec05e6f609b}} 
+\index{hwloc\+\_\+backend@{hwloc\+\_\+backend}!discover@{discover}}
+\index{discover@{discover}!hwloc\+\_\+backend@{hwloc\+\_\+backend}}
+\subsubsection{\texorpdfstring{discover}{discover}}
+{\footnotesize\ttfamily int($\ast$ hwloc\+\_\+backend\+::discover) (struct \hyperlink{a00374}{hwloc\+\_\+backend} $\ast$backend, struct \hyperlink{a00370}{hwloc\+\_\+disc\+\_\+status} $\ast$status)}
+
+
+
+Main discovery callback. returns -\/1 on error, either because it couldn\textquotesingle{}t add its objects ot the existing topology, or because of an actual discovery/gathering failure. May be N\+U\+LL. 
+
+\mbox{\Hypertarget{a00374_aaa8eafe495aadd81c2e3c4ec527c10ba}\label{a00374_aaa8eafe495aadd81c2e3c4ec527c10ba}} 
+\index{hwloc\+\_\+backend@{hwloc\+\_\+backend}!flags@{flags}}
+\index{flags@{flags}!hwloc\+\_\+backend@{hwloc\+\_\+backend}}
+\subsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily unsigned long hwloc\+\_\+backend\+::flags}
+
+
+
+Backend flags, currently always 0. 
+
+\mbox{\Hypertarget{a00374_aaac253491264c20930f44817270bc502}\label{a00374_aaac253491264c20930f44817270bc502}} 
+\index{hwloc\+\_\+backend@{hwloc\+\_\+backend}!get\+\_\+pci\+\_\+busid\+\_\+cpuset@{get\+\_\+pci\+\_\+busid\+\_\+cpuset}}
+\index{get\+\_\+pci\+\_\+busid\+\_\+cpuset@{get\+\_\+pci\+\_\+busid\+\_\+cpuset}!hwloc\+\_\+backend@{hwloc\+\_\+backend}}
+\subsubsection{\texorpdfstring{get\+\_\+pci\+\_\+busid\+\_\+cpuset}{get\_pci\_busid\_cpuset}}
+{\footnotesize\ttfamily int($\ast$ hwloc\+\_\+backend\+::get\+\_\+pci\+\_\+busid\+\_\+cpuset) (struct \hyperlink{a00374}{hwloc\+\_\+backend} $\ast$backend, struct hwloc\+\_\+pcidev\+\_\+attr\+\_\+s $\ast$busid, \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} cpuset)}
+
+
+
+Callback to retrieve the locality of a P\+CI object. Called by the P\+CI core when attaching P\+CI hierarchy to C\+PU objects. May be N\+U\+LL. 
+
+\mbox{\Hypertarget{a00374_ab8806f6db077f1bb2e9d63ec99223f7a}\label{a00374_ab8806f6db077f1bb2e9d63ec99223f7a}} 
+\index{hwloc\+\_\+backend@{hwloc\+\_\+backend}!is\+\_\+thissystem@{is\+\_\+thissystem}}
+\index{is\+\_\+thissystem@{is\+\_\+thissystem}!hwloc\+\_\+backend@{hwloc\+\_\+backend}}
+\subsubsection{\texorpdfstring{is\+\_\+thissystem}{is\_thissystem}}
+{\footnotesize\ttfamily int hwloc\+\_\+backend\+::is\+\_\+thissystem}
+
+
+
+Backend-\/specific \textquotesingle{}is\+\_\+thissystem\textquotesingle{} property. Set to 0 if the backend disables the thissystem flag for this topology (e.\+g. loading from xml or synthetic string, or using a different fsroot on Linux, or a x86 C\+P\+U\+ID dump). Set to -\/1 if the backend doesn\textquotesingle{}t care (default). 
+
+\mbox{\Hypertarget{a00374_aeca769840a6ff03e96462a9533adbccd}\label{a00374_aeca769840a6ff03e96462a9533adbccd}} 
+\index{hwloc\+\_\+backend@{hwloc\+\_\+backend}!phases@{phases}}
+\index{phases@{phases}!hwloc\+\_\+backend@{hwloc\+\_\+backend}}
+\subsubsection{\texorpdfstring{phases}{phases}}
+{\footnotesize\ttfamily unsigned hwloc\+\_\+backend\+::phases}
+
+
+
+Discovery phases performed by this component, possibly without some of them if excluded by other components. OR\textquotesingle{}ed set of \hyperlink{a00228_ga3beef9f01f1c08c5700aec066fcec025}{hwloc\+\_\+disc\+\_\+phase\+\_\+t}. 
+
+\mbox{\Hypertarget{a00374_a2ea5bd36b7f06efdb65b98b32af16c68}\label{a00374_a2ea5bd36b7f06efdb65b98b32af16c68}} 
+\index{hwloc\+\_\+backend@{hwloc\+\_\+backend}!private\+\_\+data@{private\+\_\+data}}
+\index{private\+\_\+data@{private\+\_\+data}!hwloc\+\_\+backend@{hwloc\+\_\+backend}}
+\subsubsection{\texorpdfstring{private\+\_\+data}{private\_data}}
+{\footnotesize\ttfamily void$\ast$ hwloc\+\_\+backend\+::private\+\_\+data}
+
+
+
+Backend private data, or N\+U\+LL if none. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+plugins.\+h\end{DoxyCompactItemize}

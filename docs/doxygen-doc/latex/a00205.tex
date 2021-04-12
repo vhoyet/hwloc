@@ -1,0 +1,844 @@
+\hypertarget{a00205}{}\section{The bitmap A\+PI}
+\label{a00205}\index{The bitmap A\+PI@{The bitmap A\+PI}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00205_ga3f6861045a8029ade373510ffa727d2a}{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin}(id,  bitmap)
+\item 
+\#define \hyperlink{a00205_gafcf3246db406218d4e155735b3fa6528}{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+end}()
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct hwloc\+\_\+bitmap\+\_\+s $\ast$ \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}
+\item 
+typedef const struct hwloc\+\_\+bitmap\+\_\+s $\ast$ \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} \hyperlink{a00205_gadece3d1eb5199fc2fb99bc7dcf1ccc05}{hwloc\+\_\+bitmap\+\_\+alloc} (void)
+\item 
+\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} \hyperlink{a00205_ga02853b4a224970587b9d7a0e20d857c0}{hwloc\+\_\+bitmap\+\_\+alloc\+\_\+full} (void)
+\item 
+void \hyperlink{a00205_ga156130d85b3a0674d6e0e6770fe68fbe}{hwloc\+\_\+bitmap\+\_\+free} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} \hyperlink{a00205_gae679434c1a5f41d3560a8a7e2c1b0dee}{hwloc\+\_\+bitmap\+\_\+dup} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga72a29824798b48784b8217471ec8f14c}{hwloc\+\_\+bitmap\+\_\+copy} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} dst, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} src)
+\item 
+int \hyperlink{a00205_ga9511644657030a021dce9941e3cda583}{hwloc\+\_\+bitmap\+\_\+snprintf} (char $\ast$restrict buf, size\+\_\+t buflen, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga0fece972134fdecf2da9bc7a11dd827e}{hwloc\+\_\+bitmap\+\_\+asprintf} (char $\ast$$\ast$strp, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga064a85c643a364b60acbfa0f3663fc18}{hwloc\+\_\+bitmap\+\_\+sscanf} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, const char $\ast$restrict string)
+\item 
+int \hyperlink{a00205_ga3d06e6447edeb61e56a9ad83f31f0a37}{hwloc\+\_\+bitmap\+\_\+list\+\_\+snprintf} (char $\ast$restrict buf, size\+\_\+t buflen, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga39c0f1b02053de66d205c9f8260b3665}{hwloc\+\_\+bitmap\+\_\+list\+\_\+asprintf} (char $\ast$$\ast$strp, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_gaf9314311d482c621e17c6a53a9fe993e}{hwloc\+\_\+bitmap\+\_\+list\+\_\+sscanf} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, const char $\ast$restrict string)
+\item 
+int \hyperlink{a00205_ga5beb68a987fe48e5c5edef06ab260e14}{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+snprintf} (char $\ast$restrict buf, size\+\_\+t buflen, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga391312513f17c985d871f18367c59512}{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+asprintf} (char $\ast$$\ast$strp, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga4f23db5041240e03e348752f8bd6ec2d}{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+sscanf} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, const char $\ast$restrict string)
+\item 
+void \hyperlink{a00205_gaa97c5217613c8cae9862287170ea2132}{hwloc\+\_\+bitmap\+\_\+zero} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+void \hyperlink{a00205_ga07b2de8786b3cdb22f21d9dd42588275}{hwloc\+\_\+bitmap\+\_\+fill} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga10be0840cdeb7ce26d862819dd303baa}{hwloc\+\_\+bitmap\+\_\+only} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, unsigned id)
+\item 
+int \hyperlink{a00205_ga06d505f8a1c0a536614f65f503ee6d93}{hwloc\+\_\+bitmap\+\_\+allbut} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, unsigned id)
+\item 
+int \hyperlink{a00205_gad59b0ebeb29c1bfabbb2a379e55c1159}{hwloc\+\_\+bitmap\+\_\+from\+\_\+ulong} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, unsigned long mask)
+\item 
+int \hyperlink{a00205_ga4947c46d47bcfcd3faf3f59569be3e37}{hwloc\+\_\+bitmap\+\_\+from\+\_\+ith\+\_\+ulong} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, unsigned i, unsigned long mask)
+\item 
+int \hyperlink{a00205_gabcfef22f6fc4d4b33f068dd91a1c38f5}{hwloc\+\_\+bitmap\+\_\+from\+\_\+ulongs} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, unsigned nr, const unsigned long $\ast$masks)
+\item 
+int \hyperlink{a00205_ga062dbff93baeff3b425a7260c5463646}{hwloc\+\_\+bitmap\+\_\+set} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, unsigned id)
+\item 
+int \hyperlink{a00205_ga9c9a8433732fb9f24899e7aa4c014d7e}{hwloc\+\_\+bitmap\+\_\+set\+\_\+range} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, unsigned begin, int end)
+\item 
+int \hyperlink{a00205_ga3daeed965c35c6d2fd4820a318219985}{hwloc\+\_\+bitmap\+\_\+set\+\_\+ith\+\_\+ulong} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, unsigned i, unsigned long mask)
+\item 
+int \hyperlink{a00205_gaf20bb350b6844d08931a064a73f86743}{hwloc\+\_\+bitmap\+\_\+clr} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, unsigned id)
+\item 
+int \hyperlink{a00205_ga833776709df94d727f8c22304b3388cf}{hwloc\+\_\+bitmap\+\_\+clr\+\_\+range} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap, unsigned begin, int end)
+\item 
+int \hyperlink{a00205_gaa611a77c092e679246afdf9a60d5db8b}{hwloc\+\_\+bitmap\+\_\+singlify} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+unsigned long \hyperlink{a00205_gab6a6bae22a33ec6adfc169a953c13e6c}{hwloc\+\_\+bitmap\+\_\+to\+\_\+ulong} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+unsigned long \hyperlink{a00205_gac92e6404f648d6b99d2c626b05b2ffa4}{hwloc\+\_\+bitmap\+\_\+to\+\_\+ith\+\_\+ulong} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap, unsigned i)
+\item 
+int \hyperlink{a00205_gacd215a2348732de25d94a4ecd76d528c}{hwloc\+\_\+bitmap\+\_\+to\+\_\+ulongs} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap, unsigned nr, unsigned long $\ast$masks)
+\item 
+int \hyperlink{a00205_gac0744734d761d65c977aece565364908}{hwloc\+\_\+bitmap\+\_\+nr\+\_\+ulongs} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga11340dd487f110bb84f0a6e4ae90bd06}{hwloc\+\_\+bitmap\+\_\+isset} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap, unsigned id)
+\item 
+int \hyperlink{a00205_ga5b64be28f5a7176ed8ad0d6a90bdf108}{hwloc\+\_\+bitmap\+\_\+iszero} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga5fdcb8c19c336511c37076d649e74af4}{hwloc\+\_\+bitmap\+\_\+isfull} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga3ec1ced43afadf8c0a7197320bc016ed}{hwloc\+\_\+bitmap\+\_\+first} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_gaab7240b4b644693b775dad17b44ffd68}{hwloc\+\_\+bitmap\+\_\+next} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap, int prev)
+\item 
+int \hyperlink{a00205_ga3d9b08b060a59bbab5a4ea6d0a1ed7a6}{hwloc\+\_\+bitmap\+\_\+last} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga0200466842c0e1f5da75e84dde460b10}{hwloc\+\_\+bitmap\+\_\+weight} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_gae408841487b288e148a478ba0465c99e}{hwloc\+\_\+bitmap\+\_\+first\+\_\+unset} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga9653af34d1460ef106b7df25af4cdca8}{hwloc\+\_\+bitmap\+\_\+next\+\_\+unset} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap, int prev)
+\item 
+int \hyperlink{a00205_ga45d49aeb45c7da631b1480a93dc3fc92}{hwloc\+\_\+bitmap\+\_\+last\+\_\+unset} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_ga120b8aefb9ce7ef349929656359b1859}{hwloc\+\_\+bitmap\+\_\+or} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} res, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap1, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap2)
+\item 
+int \hyperlink{a00205_ga674533016ffed922a28b4f0b49b82cd4}{hwloc\+\_\+bitmap\+\_\+and} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} res, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap1, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap2)
+\item 
+int \hyperlink{a00205_ga7ca5c72db65406b85aca032c8a990f9e}{hwloc\+\_\+bitmap\+\_\+andnot} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} res, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap1, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap2)
+\item 
+int \hyperlink{a00205_ga205508218e09cb9befd0687f16409f09}{hwloc\+\_\+bitmap\+\_\+xor} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} res, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap1, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap2)
+\item 
+int \hyperlink{a00205_ga84cfdb4f8ab8c1f7e097728e613a2a3f}{hwloc\+\_\+bitmap\+\_\+not} (\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} res, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap)
+\item 
+int \hyperlink{a00205_gaefa070f9232857ba5a57297ea9a08ea2}{hwloc\+\_\+bitmap\+\_\+intersects} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap1, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap2)
+\item 
+int \hyperlink{a00205_ga0526e03db81956fb02acc8260b66d6a4}{hwloc\+\_\+bitmap\+\_\+isincluded} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} sub\+\_\+bitmap, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} super\+\_\+bitmap)
+\item 
+int \hyperlink{a00205_ga32376b1405e57472b73c3aa53bb39663}{hwloc\+\_\+bitmap\+\_\+isequal} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap1, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap2)
+\item 
+int \hyperlink{a00205_gaa39cda1510ab721b5c012c76ead72365}{hwloc\+\_\+bitmap\+\_\+compare\+\_\+first} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap1, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap2)
+\item 
+int \hyperlink{a00205_ga14cdbc0ef0a705e84999bd48a2e649f3}{hwloc\+\_\+bitmap\+\_\+compare} (\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap1, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} bitmap2)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} type represents a set of integers (positive or null). A bitmap may be of infinite size (all bits are set after some point). A bitmap may even be full if all bits are set.
+
+Bitmaps are used by hwloc for sets of OS processors (which may actually be hardware threads) as by \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t} (a typedef for \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}), or sets of N\+U\+MA memory nodes as \hyperlink{a00183_ga37e35730fa7e775b5bb0afe893d6d508}{hwloc\+\_\+nodeset\+\_\+t} (also a typedef for \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}). Those are used for cpuset and nodeset fields in the \hyperlink{a00238}{hwloc\+\_\+obj} structure, see \hyperlink{a00183}{Object Sets (hwloc\+\_\+cpuset\+\_\+t and hwloc\+\_\+nodeset\+\_\+t)}.
+
+{\itshape Both C\+PU and node sets are always indexed by OS physical number.} However users should usually not build C\+PU and node sets manually (e.\+g. with \hyperlink{a00205_ga062dbff93baeff3b425a7260c5463646}{hwloc\+\_\+bitmap\+\_\+set()}). One should rather use existing object sets and combine them with \hyperlink{a00205_ga120b8aefb9ce7ef349929656359b1859}{hwloc\+\_\+bitmap\+\_\+or()}, etc. For instance, binding the current thread on a pair of cores may be performed with\+: 
+\begin{DoxyCode}
+\hyperlink{a00238}{hwloc\_obj\_t} core1 = ... , core2 = ... ;
+\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\_bitmap\_t} \textcolor{keyword}{set} = \hyperlink{a00205_gadece3d1eb5199fc2fb99bc7dcf1ccc05}{hwloc\_bitmap\_alloc}();
+\hyperlink{a00205_ga120b8aefb9ce7ef349929656359b1859}{hwloc\_bitmap\_or}(\textcolor{keyword}{set}, core1->\hyperlink{a00238_a67925e0f2c47f50408fbdb9bddd0790f}{cpuset}, core2->cpuset);
+\hyperlink{a00190_ga80bc07473a8edf840cae17bd7ec21d48}{hwloc\_set\_cpubind}(topology, \textcolor{keyword}{set}, \hyperlink{a00190_gga217dc8d373f8958cc93c154ebce1c71caf1b6bbad00d7b1017b918e3719f4d421}{HWLOC\_CPUBIND\_THREAD});
+\hyperlink{a00205_ga156130d85b3a0674d6e0e6770fe68fbe}{hwloc\_bitmap\_free}(\textcolor{keyword}{set});
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+Most functions below return an int that may be negative in case of error. The usual error case would be an internal failure to realloc/extend the storage of the bitmap ({\ttfamily errno} would be set to {\ttfamily E\+N\+O\+M\+EM}).
+
+Several examples of using the bitmap A\+PI are available under the doc/examples/ directory in the source tree. Regression tests such as tests/hwloc/hwloc\+\_\+bitmap$\ast$.c also make intensive use of this A\+PI. 
+\end{DoxyNote}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{a00205_ga3f6861045a8029ade373510ffa727d2a}\label{a00205_ga3f6861045a8029ade373510ffa727d2a}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin@{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin}}
+\index{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin@{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin}{hwloc\_bitmap\_foreach\_begin}}
+{\footnotesize\ttfamily \#define hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin(\begin{DoxyParamCaption}\item[{}]{id,  }\item[{}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Loop macro iterating on bitmap {\ttfamily bitmap}. 
+
+The loop must start with \hyperlink{a00205_ga3f6861045a8029ade373510ffa727d2a}{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin()} and end with \hyperlink{a00205_gafcf3246db406218d4e155735b3fa6528}{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+end()} followed by a terminating \textquotesingle{};\textquotesingle{}.
+
+{\ttfamily index} is the loop variable; it should be an unsigned int. The first iteration will set {\ttfamily index} to the lowest index in the bitmap. Successive iterations will iterate through, in order, all remaining indexes set in the bitmap. To be specific\+: each iteration will return a value for {\ttfamily index} such that hwloc\+\_\+bitmap\+\_\+isset(bitmap, index) is true.
+
+The assert prevents the loop from being infinite if the bitmap is infinitely set. \mbox{\Hypertarget{a00205_gafcf3246db406218d4e155735b3fa6528}\label{a00205_gafcf3246db406218d4e155735b3fa6528}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+foreach\+\_\+end@{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+end}}
+\index{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+end@{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+end}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+end}{hwloc\_bitmap\_foreach\_end}}
+{\footnotesize\ttfamily \#define hwloc\+\_\+bitmap\+\_\+foreach\+\_\+end(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+End of loop macro iterating on a bitmap. 
+
+Needs a terminating \textquotesingle{};\textquotesingle{}.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{a00205_ga3f6861045a8029ade373510ffa727d2a}{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin()} 
+\end{DoxySeeAlso}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}\label{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+t@{hwloc\+\_\+bitmap\+\_\+t}}
+\index{hwloc\+\_\+bitmap\+\_\+t@{hwloc\+\_\+bitmap\+\_\+t}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+t}{hwloc\_bitmap\_t}}
+{\footnotesize\ttfamily typedef struct hwloc\+\_\+bitmap\+\_\+s$\ast$ \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}
+
+
+
+Set of bits represented as an opaque pointer to an internal bitmap. 
+
+\mbox{\Hypertarget{a00205_gae991a108af01d408be2776c5b2c467b2}\label{a00205_gae991a108af01d408be2776c5b2c467b2}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+const\+\_\+bitmap\+\_\+t@{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}
+\index{hwloc\+\_\+const\+\_\+bitmap\+\_\+t@{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}{hwloc\_const\_bitmap\_t}}
+{\footnotesize\ttfamily typedef const struct hwloc\+\_\+bitmap\+\_\+s$\ast$ \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}
+
+
+
+a non-\/modifiable \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00205_ga06d505f8a1c0a536614f65f503ee6d93}\label{a00205_ga06d505f8a1c0a536614f65f503ee6d93}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+allbut@{hwloc\+\_\+bitmap\+\_\+allbut}}
+\index{hwloc\+\_\+bitmap\+\_\+allbut@{hwloc\+\_\+bitmap\+\_\+allbut}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+allbut()}{hwloc\_bitmap\_allbut()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+allbut (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+
+
+Fill the bitmap {\ttfamily and} clear the index {\ttfamily id}. 
+
+\mbox{\Hypertarget{a00205_gadece3d1eb5199fc2fb99bc7dcf1ccc05}\label{a00205_gadece3d1eb5199fc2fb99bc7dcf1ccc05}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+alloc@{hwloc\+\_\+bitmap\+\_\+alloc}}
+\index{hwloc\+\_\+bitmap\+\_\+alloc@{hwloc\+\_\+bitmap\+\_\+alloc}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+alloc()}{hwloc\_bitmap\_alloc()}}
+{\footnotesize\ttfamily \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} hwloc\+\_\+bitmap\+\_\+alloc (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Allocate a new empty bitmap. 
+
+\begin{DoxyReturn}{Returns}
+A valid bitmap or {\ttfamily N\+U\+LL}.
+\end{DoxyReturn}
+The bitmap should be freed by a corresponding call to \hyperlink{a00205_ga156130d85b3a0674d6e0e6770fe68fbe}{hwloc\+\_\+bitmap\+\_\+free()}. \mbox{\Hypertarget{a00205_ga02853b4a224970587b9d7a0e20d857c0}\label{a00205_ga02853b4a224970587b9d7a0e20d857c0}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+alloc\+\_\+full@{hwloc\+\_\+bitmap\+\_\+alloc\+\_\+full}}
+\index{hwloc\+\_\+bitmap\+\_\+alloc\+\_\+full@{hwloc\+\_\+bitmap\+\_\+alloc\+\_\+full}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+alloc\+\_\+full()}{hwloc\_bitmap\_alloc\_full()}}
+{\footnotesize\ttfamily \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} hwloc\+\_\+bitmap\+\_\+alloc\+\_\+full (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Allocate a new full bitmap. 
+
+\mbox{\Hypertarget{a00205_ga674533016ffed922a28b4f0b49b82cd4}\label{a00205_ga674533016ffed922a28b4f0b49b82cd4}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+and@{hwloc\+\_\+bitmap\+\_\+and}}
+\index{hwloc\+\_\+bitmap\+\_\+and@{hwloc\+\_\+bitmap\+\_\+and}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+and()}{hwloc\_bitmap\_and()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+and (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{res,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap1,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap2 }\end{DoxyParamCaption})}
+
+
+
+And bitmaps {\ttfamily bitmap1} and {\ttfamily bitmap2} and store the result in bitmap {\ttfamily res}. 
+
+{\ttfamily res} can be the same as {\ttfamily bitmap1} or {\ttfamily bitmap2} \mbox{\Hypertarget{a00205_ga7ca5c72db65406b85aca032c8a990f9e}\label{a00205_ga7ca5c72db65406b85aca032c8a990f9e}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+andnot@{hwloc\+\_\+bitmap\+\_\+andnot}}
+\index{hwloc\+\_\+bitmap\+\_\+andnot@{hwloc\+\_\+bitmap\+\_\+andnot}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+andnot()}{hwloc\_bitmap\_andnot()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+andnot (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{res,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap1,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap2 }\end{DoxyParamCaption})}
+
+
+
+And bitmap {\ttfamily bitmap1} and the negation of {\ttfamily bitmap2} and store the result in bitmap {\ttfamily res}. 
+
+{\ttfamily res} can be the same as {\ttfamily bitmap1} or {\ttfamily bitmap2} \mbox{\Hypertarget{a00205_ga0fece972134fdecf2da9bc7a11dd827e}\label{a00205_ga0fece972134fdecf2da9bc7a11dd827e}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+asprintf@{hwloc\+\_\+bitmap\+\_\+asprintf}}
+\index{hwloc\+\_\+bitmap\+\_\+asprintf@{hwloc\+\_\+bitmap\+\_\+asprintf}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+asprintf()}{hwloc\_bitmap\_asprintf()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+asprintf (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{strp,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Stringify a bitmap into a newly allocated string. 
+
+\begin{DoxyReturn}{Returns}
+-\/1 on error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_gaf20bb350b6844d08931a064a73f86743}\label{a00205_gaf20bb350b6844d08931a064a73f86743}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+clr@{hwloc\+\_\+bitmap\+\_\+clr}}
+\index{hwloc\+\_\+bitmap\+\_\+clr@{hwloc\+\_\+bitmap\+\_\+clr}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+clr()}{hwloc\_bitmap\_clr()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+clr (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+
+
+Remove index {\ttfamily id} from bitmap {\ttfamily bitmap}. 
+
+\mbox{\Hypertarget{a00205_ga833776709df94d727f8c22304b3388cf}\label{a00205_ga833776709df94d727f8c22304b3388cf}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+clr\+\_\+range@{hwloc\+\_\+bitmap\+\_\+clr\+\_\+range}}
+\index{hwloc\+\_\+bitmap\+\_\+clr\+\_\+range@{hwloc\+\_\+bitmap\+\_\+clr\+\_\+range}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+clr\+\_\+range()}{hwloc\_bitmap\_clr\_range()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+clr\+\_\+range (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned}]{begin,  }\item[{int}]{end }\end{DoxyParamCaption})}
+
+
+
+Remove indexes from {\ttfamily begin} to {\ttfamily end} in bitmap {\ttfamily bitmap}. 
+
+If {\ttfamily end} is {\ttfamily -\/1}, the range is infinite. \mbox{\Hypertarget{a00205_ga14cdbc0ef0a705e84999bd48a2e649f3}\label{a00205_ga14cdbc0ef0a705e84999bd48a2e649f3}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+compare@{hwloc\+\_\+bitmap\+\_\+compare}}
+\index{hwloc\+\_\+bitmap\+\_\+compare@{hwloc\+\_\+bitmap\+\_\+compare}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+compare()}{hwloc\_bitmap\_compare()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+compare (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap1,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap2 }\end{DoxyParamCaption})}
+
+
+
+Compare bitmaps {\ttfamily bitmap1} and {\ttfamily bitmap2} in lexicographic order. 
+
+Lexicographic comparison of bitmaps, starting for their highest indexes. Compare last indexes first, then second, etc. The empty bitmap is considered lower than anything.
+
+\begin{DoxyReturn}{Returns}
+-\/1 if {\ttfamily bitmap1} is considered smaller than {\ttfamily bitmap2}. 
+
+1 if {\ttfamily bitmap1} is considered larger than {\ttfamily bitmap2}. 
+
+0 if bitmaps are equal (contrary to \hyperlink{a00205_gaa39cda1510ab721b5c012c76ead72365}{hwloc\+\_\+bitmap\+\_\+compare\+\_\+first()}).
+\end{DoxyReturn}
+For instance comparing binary bitmaps 0011 and 0110 returns -\/1 (hence 0011 is considered smaller than 0110). Comparing 00101 and 01010 returns -\/1 too.
+
+\begin{DoxyNote}{Note}
+This is different from the non-\/existing hwloc\+\_\+bitmap\+\_\+compare\+\_\+last() which would only compare the highest index of each bitmap. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00205_gaa39cda1510ab721b5c012c76ead72365}\label{a00205_gaa39cda1510ab721b5c012c76ead72365}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+compare\+\_\+first@{hwloc\+\_\+bitmap\+\_\+compare\+\_\+first}}
+\index{hwloc\+\_\+bitmap\+\_\+compare\+\_\+first@{hwloc\+\_\+bitmap\+\_\+compare\+\_\+first}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+compare\+\_\+first()}{hwloc\_bitmap\_compare\_first()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+compare\+\_\+first (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap1,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap2 }\end{DoxyParamCaption})}
+
+
+
+Compare bitmaps {\ttfamily bitmap1} and {\ttfamily bitmap2} using their lowest index. 
+
+A bitmap is considered smaller if its least significant bit is smaller. The empty bitmap is considered higher than anything (because its least significant bit does not exist).
+
+\begin{DoxyReturn}{Returns}
+-\/1 if {\ttfamily bitmap1} is considered smaller than {\ttfamily bitmap2}. 
+
+1 if {\ttfamily bitmap1} is considered larger than {\ttfamily bitmap2}.
+\end{DoxyReturn}
+For instance comparing binary bitmaps 0011 and 0110 returns -\/1 (hence 0011 is considered smaller than 0110) because least significant bit of 0011 (0001) is smaller than least significant bit of 0110 (0010). Comparing 01001 and 00110 would also return -\/1 for the same reason.
+
+\begin{DoxyReturn}{Returns}
+0 if bitmaps are considered equal, even if they are not strictly equal. They just need to have the same least significant bit. For instance, comparing binary bitmaps 0010 and 0110 returns 0 because they have the same least significant bit. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga72a29824798b48784b8217471ec8f14c}\label{a00205_ga72a29824798b48784b8217471ec8f14c}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+copy@{hwloc\+\_\+bitmap\+\_\+copy}}
+\index{hwloc\+\_\+bitmap\+\_\+copy@{hwloc\+\_\+bitmap\+\_\+copy}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+copy()}{hwloc\_bitmap\_copy()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+copy (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{dst,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{src }\end{DoxyParamCaption})}
+
+
+
+Copy the contents of bitmap {\ttfamily src} into the already allocated bitmap {\ttfamily dst}. 
+
+\mbox{\Hypertarget{a00205_gae679434c1a5f41d3560a8a7e2c1b0dee}\label{a00205_gae679434c1a5f41d3560a8a7e2c1b0dee}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+dup@{hwloc\+\_\+bitmap\+\_\+dup}}
+\index{hwloc\+\_\+bitmap\+\_\+dup@{hwloc\+\_\+bitmap\+\_\+dup}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+dup()}{hwloc\_bitmap\_dup()}}
+{\footnotesize\ttfamily \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} hwloc\+\_\+bitmap\+\_\+dup (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Duplicate bitmap {\ttfamily bitmap} by allocating a new bitmap and copying {\ttfamily bitmap} contents. 
+
+If {\ttfamily bitmap} is {\ttfamily N\+U\+LL}, {\ttfamily N\+U\+LL} is returned. \mbox{\Hypertarget{a00205_ga07b2de8786b3cdb22f21d9dd42588275}\label{a00205_ga07b2de8786b3cdb22f21d9dd42588275}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+fill@{hwloc\+\_\+bitmap\+\_\+fill}}
+\index{hwloc\+\_\+bitmap\+\_\+fill@{hwloc\+\_\+bitmap\+\_\+fill}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+fill()}{hwloc\_bitmap\_fill()}}
+{\footnotesize\ttfamily void hwloc\+\_\+bitmap\+\_\+fill (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Fill bitmap {\ttfamily bitmap} with all possible indexes (even if those objects don\textquotesingle{}t exist or are otherwise unavailable) 
+
+\mbox{\Hypertarget{a00205_ga3ec1ced43afadf8c0a7197320bc016ed}\label{a00205_ga3ec1ced43afadf8c0a7197320bc016ed}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+first@{hwloc\+\_\+bitmap\+\_\+first}}
+\index{hwloc\+\_\+bitmap\+\_\+first@{hwloc\+\_\+bitmap\+\_\+first}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+first()}{hwloc\_bitmap\_first()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+first (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Compute the first index (least significant bit) in bitmap {\ttfamily bitmap}. 
+
+\begin{DoxyReturn}{Returns}
+-\/1 if no index is set in {\ttfamily bitmap}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_gae408841487b288e148a478ba0465c99e}\label{a00205_gae408841487b288e148a478ba0465c99e}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+first\+\_\+unset@{hwloc\+\_\+bitmap\+\_\+first\+\_\+unset}}
+\index{hwloc\+\_\+bitmap\+\_\+first\+\_\+unset@{hwloc\+\_\+bitmap\+\_\+first\+\_\+unset}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+first\+\_\+unset()}{hwloc\_bitmap\_first\_unset()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+first\+\_\+unset (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Compute the first unset index (least significant bit) in bitmap {\ttfamily bitmap}. 
+
+\begin{DoxyReturn}{Returns}
+-\/1 if no index is unset in {\ttfamily bitmap}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga156130d85b3a0674d6e0e6770fe68fbe}\label{a00205_ga156130d85b3a0674d6e0e6770fe68fbe}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+free@{hwloc\+\_\+bitmap\+\_\+free}}
+\index{hwloc\+\_\+bitmap\+\_\+free@{hwloc\+\_\+bitmap\+\_\+free}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+free()}{hwloc\_bitmap\_free()}}
+{\footnotesize\ttfamily void hwloc\+\_\+bitmap\+\_\+free (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Free bitmap {\ttfamily bitmap}. 
+
+If {\ttfamily bitmap} is {\ttfamily N\+U\+LL}, no operation is performed. \mbox{\Hypertarget{a00205_ga4947c46d47bcfcd3faf3f59569be3e37}\label{a00205_ga4947c46d47bcfcd3faf3f59569be3e37}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+from\+\_\+ith\+\_\+ulong@{hwloc\+\_\+bitmap\+\_\+from\+\_\+ith\+\_\+ulong}}
+\index{hwloc\+\_\+bitmap\+\_\+from\+\_\+ith\+\_\+ulong@{hwloc\+\_\+bitmap\+\_\+from\+\_\+ith\+\_\+ulong}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+from\+\_\+ith\+\_\+ulong()}{hwloc\_bitmap\_from\_ith\_ulong()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+from\+\_\+ith\+\_\+ulong (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned}]{i,  }\item[{unsigned long}]{mask }\end{DoxyParamCaption})}
+
+
+
+Setup bitmap {\ttfamily bitmap} from unsigned long {\ttfamily mask} used as {\ttfamily i} -\/th subset. 
+
+\mbox{\Hypertarget{a00205_gad59b0ebeb29c1bfabbb2a379e55c1159}\label{a00205_gad59b0ebeb29c1bfabbb2a379e55c1159}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+from\+\_\+ulong@{hwloc\+\_\+bitmap\+\_\+from\+\_\+ulong}}
+\index{hwloc\+\_\+bitmap\+\_\+from\+\_\+ulong@{hwloc\+\_\+bitmap\+\_\+from\+\_\+ulong}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+from\+\_\+ulong()}{hwloc\_bitmap\_from\_ulong()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+from\+\_\+ulong (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned long}]{mask }\end{DoxyParamCaption})}
+
+
+
+Setup bitmap {\ttfamily bitmap} from unsigned long {\ttfamily mask}. 
+
+\mbox{\Hypertarget{a00205_gabcfef22f6fc4d4b33f068dd91a1c38f5}\label{a00205_gabcfef22f6fc4d4b33f068dd91a1c38f5}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+from\+\_\+ulongs@{hwloc\+\_\+bitmap\+\_\+from\+\_\+ulongs}}
+\index{hwloc\+\_\+bitmap\+\_\+from\+\_\+ulongs@{hwloc\+\_\+bitmap\+\_\+from\+\_\+ulongs}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+from\+\_\+ulongs()}{hwloc\_bitmap\_from\_ulongs()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+from\+\_\+ulongs (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned}]{nr,  }\item[{const unsigned long $\ast$}]{masks }\end{DoxyParamCaption})}
+
+
+
+Setup bitmap {\ttfamily bitmap} from unsigned longs {\ttfamily masks} used as first {\ttfamily nr} subsets. 
+
+\mbox{\Hypertarget{a00205_gaefa070f9232857ba5a57297ea9a08ea2}\label{a00205_gaefa070f9232857ba5a57297ea9a08ea2}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+intersects@{hwloc\+\_\+bitmap\+\_\+intersects}}
+\index{hwloc\+\_\+bitmap\+\_\+intersects@{hwloc\+\_\+bitmap\+\_\+intersects}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+intersects()}{hwloc\_bitmap\_intersects()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+intersects (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap1,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap2 }\end{DoxyParamCaption})}
+
+
+
+Test whether bitmaps {\ttfamily bitmap1} and {\ttfamily bitmap2} intersects. 
+
+\begin{DoxyReturn}{Returns}
+1 if bitmaps intersect, 0 otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga32376b1405e57472b73c3aa53bb39663}\label{a00205_ga32376b1405e57472b73c3aa53bb39663}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+isequal@{hwloc\+\_\+bitmap\+\_\+isequal}}
+\index{hwloc\+\_\+bitmap\+\_\+isequal@{hwloc\+\_\+bitmap\+\_\+isequal}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+isequal()}{hwloc\_bitmap\_isequal()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+isequal (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap1,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap2 }\end{DoxyParamCaption})}
+
+
+
+Test whether bitmap {\ttfamily bitmap1} is equal to bitmap {\ttfamily bitmap2}. 
+
+\begin{DoxyReturn}{Returns}
+1 if bitmaps are equal, 0 otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga5fdcb8c19c336511c37076d649e74af4}\label{a00205_ga5fdcb8c19c336511c37076d649e74af4}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+isfull@{hwloc\+\_\+bitmap\+\_\+isfull}}
+\index{hwloc\+\_\+bitmap\+\_\+isfull@{hwloc\+\_\+bitmap\+\_\+isfull}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+isfull()}{hwloc\_bitmap\_isfull()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+isfull (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Test whether bitmap {\ttfamily bitmap} is completely full. 
+
+\begin{DoxyReturn}{Returns}
+1 if bitmap is full, 0 otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+A full bitmap is always infinitely set. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00205_ga0526e03db81956fb02acc8260b66d6a4}\label{a00205_ga0526e03db81956fb02acc8260b66d6a4}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+isincluded@{hwloc\+\_\+bitmap\+\_\+isincluded}}
+\index{hwloc\+\_\+bitmap\+\_\+isincluded@{hwloc\+\_\+bitmap\+\_\+isincluded}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+isincluded()}{hwloc\_bitmap\_isincluded()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+isincluded (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{sub\+\_\+bitmap,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{super\+\_\+bitmap }\end{DoxyParamCaption})}
+
+
+
+Test whether bitmap {\ttfamily sub\+\_\+bitmap} is part of bitmap {\ttfamily super\+\_\+bitmap}. 
+
+\begin{DoxyReturn}{Returns}
+1 if {\ttfamily sub\+\_\+bitmap} is included in {\ttfamily super\+\_\+bitmap}, 0 otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The empty bitmap is considered included in any other bitmap. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00205_ga11340dd487f110bb84f0a6e4ae90bd06}\label{a00205_ga11340dd487f110bb84f0a6e4ae90bd06}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+isset@{hwloc\+\_\+bitmap\+\_\+isset}}
+\index{hwloc\+\_\+bitmap\+\_\+isset@{hwloc\+\_\+bitmap\+\_\+isset}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+isset()}{hwloc\_bitmap\_isset()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+isset (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+
+
+Test whether index {\ttfamily id} is part of bitmap {\ttfamily bitmap}. 
+
+\begin{DoxyReturn}{Returns}
+1 if the bit at index {\ttfamily id} is set in bitmap {\ttfamily bitmap}, 0 otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga5b64be28f5a7176ed8ad0d6a90bdf108}\label{a00205_ga5b64be28f5a7176ed8ad0d6a90bdf108}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+iszero@{hwloc\+\_\+bitmap\+\_\+iszero}}
+\index{hwloc\+\_\+bitmap\+\_\+iszero@{hwloc\+\_\+bitmap\+\_\+iszero}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+iszero()}{hwloc\_bitmap\_iszero()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+iszero (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Test whether bitmap {\ttfamily bitmap} is empty. 
+
+\begin{DoxyReturn}{Returns}
+1 if bitmap is empty, 0 otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga3d9b08b060a59bbab5a4ea6d0a1ed7a6}\label{a00205_ga3d9b08b060a59bbab5a4ea6d0a1ed7a6}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+last@{hwloc\+\_\+bitmap\+\_\+last}}
+\index{hwloc\+\_\+bitmap\+\_\+last@{hwloc\+\_\+bitmap\+\_\+last}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+last()}{hwloc\_bitmap\_last()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+last (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Compute the last index (most significant bit) in bitmap {\ttfamily bitmap}. 
+
+\begin{DoxyReturn}{Returns}
+-\/1 if no index is set in {\ttfamily bitmap}, or if {\ttfamily bitmap} is infinitely set. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga45d49aeb45c7da631b1480a93dc3fc92}\label{a00205_ga45d49aeb45c7da631b1480a93dc3fc92}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+last\+\_\+unset@{hwloc\+\_\+bitmap\+\_\+last\+\_\+unset}}
+\index{hwloc\+\_\+bitmap\+\_\+last\+\_\+unset@{hwloc\+\_\+bitmap\+\_\+last\+\_\+unset}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+last\+\_\+unset()}{hwloc\_bitmap\_last\_unset()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+last\+\_\+unset (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Compute the last unset index (most significant bit) in bitmap {\ttfamily bitmap}. 
+
+\begin{DoxyReturn}{Returns}
+-\/1 if no index is unset in {\ttfamily bitmap}, or if {\ttfamily bitmap} is infinitely set. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga39c0f1b02053de66d205c9f8260b3665}\label{a00205_ga39c0f1b02053de66d205c9f8260b3665}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+list\+\_\+asprintf@{hwloc\+\_\+bitmap\+\_\+list\+\_\+asprintf}}
+\index{hwloc\+\_\+bitmap\+\_\+list\+\_\+asprintf@{hwloc\+\_\+bitmap\+\_\+list\+\_\+asprintf}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+list\+\_\+asprintf()}{hwloc\_bitmap\_list\_asprintf()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+list\+\_\+asprintf (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{strp,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Stringify a bitmap into a newly allocated list string. 
+
+\begin{DoxyReturn}{Returns}
+-\/1 on error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga3d06e6447edeb61e56a9ad83f31f0a37}\label{a00205_ga3d06e6447edeb61e56a9ad83f31f0a37}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+list\+\_\+snprintf@{hwloc\+\_\+bitmap\+\_\+list\+\_\+snprintf}}
+\index{hwloc\+\_\+bitmap\+\_\+list\+\_\+snprintf@{hwloc\+\_\+bitmap\+\_\+list\+\_\+snprintf}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+list\+\_\+snprintf()}{hwloc\_bitmap\_list\_snprintf()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+list\+\_\+snprintf (\begin{DoxyParamCaption}\item[{char $\ast$restrict}]{buf,  }\item[{size\+\_\+t}]{buflen,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Stringify a bitmap in the list format. 
+
+Lists are comma-\/separated indexes or ranges. Ranges are dash separated indexes. The last range may not have an ending indexes if the bitmap is infinitely set.
+
+Up to {\ttfamily buflen} characters may be written in buffer {\ttfamily buf}.
+
+If {\ttfamily buflen} is 0, {\ttfamily buf} may safely be {\ttfamily N\+U\+LL}.
+
+\begin{DoxyReturn}{Returns}
+the number of character that were actually written if not truncating, or that would have been written (not including the ending \textbackslash{}0). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_gaf9314311d482c621e17c6a53a9fe993e}\label{a00205_gaf9314311d482c621e17c6a53a9fe993e}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+list\+\_\+sscanf@{hwloc\+\_\+bitmap\+\_\+list\+\_\+sscanf}}
+\index{hwloc\+\_\+bitmap\+\_\+list\+\_\+sscanf@{hwloc\+\_\+bitmap\+\_\+list\+\_\+sscanf}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+list\+\_\+sscanf()}{hwloc\_bitmap\_list\_sscanf()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+list\+\_\+sscanf (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{const char $\ast$restrict}]{string }\end{DoxyParamCaption})}
+
+
+
+Parse a list string and stores it in bitmap {\ttfamily bitmap}. 
+
+\mbox{\Hypertarget{a00205_gaab7240b4b644693b775dad17b44ffd68}\label{a00205_gaab7240b4b644693b775dad17b44ffd68}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+next@{hwloc\+\_\+bitmap\+\_\+next}}
+\index{hwloc\+\_\+bitmap\+\_\+next@{hwloc\+\_\+bitmap\+\_\+next}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+next()}{hwloc\_bitmap\_next()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+next (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{int}]{prev }\end{DoxyParamCaption})}
+
+
+
+Compute the next index in bitmap {\ttfamily bitmap} which is after index {\ttfamily prev}. 
+
+If {\ttfamily prev} is -\/1, the first index is returned.
+
+\begin{DoxyReturn}{Returns}
+-\/1 if no index with higher index is set in {\ttfamily bitmap}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga9653af34d1460ef106b7df25af4cdca8}\label{a00205_ga9653af34d1460ef106b7df25af4cdca8}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+next\+\_\+unset@{hwloc\+\_\+bitmap\+\_\+next\+\_\+unset}}
+\index{hwloc\+\_\+bitmap\+\_\+next\+\_\+unset@{hwloc\+\_\+bitmap\+\_\+next\+\_\+unset}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+next\+\_\+unset()}{hwloc\_bitmap\_next\_unset()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+next\+\_\+unset (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{int}]{prev }\end{DoxyParamCaption})}
+
+
+
+Compute the next unset index in bitmap {\ttfamily bitmap} which is after index {\ttfamily prev}. 
+
+If {\ttfamily prev} is -\/1, the first unset index is returned.
+
+\begin{DoxyReturn}{Returns}
+-\/1 if no index with higher index is unset in {\ttfamily bitmap}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga84cfdb4f8ab8c1f7e097728e613a2a3f}\label{a00205_ga84cfdb4f8ab8c1f7e097728e613a2a3f}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+not@{hwloc\+\_\+bitmap\+\_\+not}}
+\index{hwloc\+\_\+bitmap\+\_\+not@{hwloc\+\_\+bitmap\+\_\+not}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+not()}{hwloc\_bitmap\_not()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+not (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{res,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Negate bitmap {\ttfamily bitmap} and store the result in bitmap {\ttfamily res}. 
+
+{\ttfamily res} can be the same as {\ttfamily bitmap} \mbox{\Hypertarget{a00205_gac0744734d761d65c977aece565364908}\label{a00205_gac0744734d761d65c977aece565364908}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+nr\+\_\+ulongs@{hwloc\+\_\+bitmap\+\_\+nr\+\_\+ulongs}}
+\index{hwloc\+\_\+bitmap\+\_\+nr\+\_\+ulongs@{hwloc\+\_\+bitmap\+\_\+nr\+\_\+ulongs}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+nr\+\_\+ulongs()}{hwloc\_bitmap\_nr\_ulongs()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+nr\+\_\+ulongs (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Return the number of unsigned longs required for storing bitmap {\ttfamily bitmap} entirely. 
+
+This is the number of contiguous unsigned longs from the very first bit of the bitmap (even if unset) up to the last set bit. This is useful for knowing the {\ttfamily nr} parameter to pass to \hyperlink{a00205_gacd215a2348732de25d94a4ecd76d528c}{hwloc\+\_\+bitmap\+\_\+to\+\_\+ulongs()} (or which calls to \hyperlink{a00205_gac92e6404f648d6b99d2c626b05b2ffa4}{hwloc\+\_\+bitmap\+\_\+to\+\_\+ith\+\_\+ulong()} are needed) to entirely convert a bitmap into multiple unsigned longs.
+
+When called on the output of \hyperlink{a00202_ga79212faa07b70dd26588941b17d9fa82}{hwloc\+\_\+topology\+\_\+get\+\_\+topology\+\_\+cpuset()}, the returned number is large enough for all cpusets of the topology.
+
+\begin{DoxyReturn}{Returns}
+-\/1 if {\ttfamily bitmap} is infinite. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga10be0840cdeb7ce26d862819dd303baa}\label{a00205_ga10be0840cdeb7ce26d862819dd303baa}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+only@{hwloc\+\_\+bitmap\+\_\+only}}
+\index{hwloc\+\_\+bitmap\+\_\+only@{hwloc\+\_\+bitmap\+\_\+only}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+only()}{hwloc\_bitmap\_only()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+only (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+
+
+Empty the bitmap {\ttfamily bitmap} and add bit {\ttfamily id}. 
+
+\mbox{\Hypertarget{a00205_ga120b8aefb9ce7ef349929656359b1859}\label{a00205_ga120b8aefb9ce7ef349929656359b1859}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+or@{hwloc\+\_\+bitmap\+\_\+or}}
+\index{hwloc\+\_\+bitmap\+\_\+or@{hwloc\+\_\+bitmap\+\_\+or}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+or()}{hwloc\_bitmap\_or()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+or (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{res,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap1,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap2 }\end{DoxyParamCaption})}
+
+
+
+Or bitmaps {\ttfamily bitmap1} and {\ttfamily bitmap2} and store the result in bitmap {\ttfamily res}. 
+
+{\ttfamily res} can be the same as {\ttfamily bitmap1} or {\ttfamily bitmap2} \mbox{\Hypertarget{a00205_ga062dbff93baeff3b425a7260c5463646}\label{a00205_ga062dbff93baeff3b425a7260c5463646}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+set@{hwloc\+\_\+bitmap\+\_\+set}}
+\index{hwloc\+\_\+bitmap\+\_\+set@{hwloc\+\_\+bitmap\+\_\+set}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+set()}{hwloc\_bitmap\_set()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+set (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+
+
+Add index {\ttfamily id} in bitmap {\ttfamily bitmap}. 
+
+\mbox{\Hypertarget{a00205_ga3daeed965c35c6d2fd4820a318219985}\label{a00205_ga3daeed965c35c6d2fd4820a318219985}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+set\+\_\+ith\+\_\+ulong@{hwloc\+\_\+bitmap\+\_\+set\+\_\+ith\+\_\+ulong}}
+\index{hwloc\+\_\+bitmap\+\_\+set\+\_\+ith\+\_\+ulong@{hwloc\+\_\+bitmap\+\_\+set\+\_\+ith\+\_\+ulong}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+set\+\_\+ith\+\_\+ulong()}{hwloc\_bitmap\_set\_ith\_ulong()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+set\+\_\+ith\+\_\+ulong (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned}]{i,  }\item[{unsigned long}]{mask }\end{DoxyParamCaption})}
+
+
+
+Replace {\ttfamily i} -\/th subset of bitmap {\ttfamily bitmap} with unsigned long {\ttfamily mask}. 
+
+\mbox{\Hypertarget{a00205_ga9c9a8433732fb9f24899e7aa4c014d7e}\label{a00205_ga9c9a8433732fb9f24899e7aa4c014d7e}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+set\+\_\+range@{hwloc\+\_\+bitmap\+\_\+set\+\_\+range}}
+\index{hwloc\+\_\+bitmap\+\_\+set\+\_\+range@{hwloc\+\_\+bitmap\+\_\+set\+\_\+range}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+set\+\_\+range()}{hwloc\_bitmap\_set\_range()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+set\+\_\+range (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned}]{begin,  }\item[{int}]{end }\end{DoxyParamCaption})}
+
+
+
+Add indexes from {\ttfamily begin} to {\ttfamily end} in bitmap {\ttfamily bitmap}. 
+
+If {\ttfamily end} is {\ttfamily -\/1}, the range is infinite. \mbox{\Hypertarget{a00205_gaa611a77c092e679246afdf9a60d5db8b}\label{a00205_gaa611a77c092e679246afdf9a60d5db8b}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+singlify@{hwloc\+\_\+bitmap\+\_\+singlify}}
+\index{hwloc\+\_\+bitmap\+\_\+singlify@{hwloc\+\_\+bitmap\+\_\+singlify}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+singlify()}{hwloc\_bitmap\_singlify()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+singlify (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Keep a single index among those set in bitmap {\ttfamily bitmap}. 
+
+May be useful before binding so that the process does not have a chance of migrating between multiple processors in the original mask. Instead of running the task on any PU inside the given C\+PU set, the operating system scheduler will be forced to run it on a single of these P\+Us. It avoids a migration overhead and cache-\/line ping-\/pongs between P\+Us.
+
+\begin{DoxyNote}{Note}
+This function is N\+OT meant to distribute multiple processes within a single C\+PU set. It always return the same single bit when called multiple times on the same input set. \hyperlink{a00201_ga7b0c28f797c2ff17fa2f244ebbd55b33}{hwloc\+\_\+distrib()} may be used for generating C\+PU sets to distribute multiple tasks below a single multi-\/\+PU object.
+
+This function cannot be applied to an object set directly. It should be applied to a copy (which may be obtained with \hyperlink{a00205_gae679434c1a5f41d3560a8a7e2c1b0dee}{hwloc\+\_\+bitmap\+\_\+dup()}). 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00205_ga9511644657030a021dce9941e3cda583}\label{a00205_ga9511644657030a021dce9941e3cda583}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+snprintf@{hwloc\+\_\+bitmap\+\_\+snprintf}}
+\index{hwloc\+\_\+bitmap\+\_\+snprintf@{hwloc\+\_\+bitmap\+\_\+snprintf}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+snprintf()}{hwloc\_bitmap\_snprintf()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+snprintf (\begin{DoxyParamCaption}\item[{char $\ast$restrict}]{buf,  }\item[{size\+\_\+t}]{buflen,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Stringify a bitmap. 
+
+Up to {\ttfamily buflen} characters may be written in buffer {\ttfamily buf}.
+
+If {\ttfamily buflen} is 0, {\ttfamily buf} may safely be {\ttfamily N\+U\+LL}.
+
+\begin{DoxyReturn}{Returns}
+the number of character that were actually written if not truncating, or that would have been written (not including the ending \textbackslash{}0). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga064a85c643a364b60acbfa0f3663fc18}\label{a00205_ga064a85c643a364b60acbfa0f3663fc18}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+sscanf@{hwloc\+\_\+bitmap\+\_\+sscanf}}
+\index{hwloc\+\_\+bitmap\+\_\+sscanf@{hwloc\+\_\+bitmap\+\_\+sscanf}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+sscanf()}{hwloc\_bitmap\_sscanf()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+sscanf (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{const char $\ast$restrict}]{string }\end{DoxyParamCaption})}
+
+
+
+Parse a bitmap string and stores it in bitmap {\ttfamily bitmap}. 
+
+\mbox{\Hypertarget{a00205_ga391312513f17c985d871f18367c59512}\label{a00205_ga391312513f17c985d871f18367c59512}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+taskset\+\_\+asprintf@{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+asprintf}}
+\index{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+asprintf@{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+asprintf}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+asprintf()}{hwloc\_bitmap\_taskset\_asprintf()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+taskset\+\_\+asprintf (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{strp,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Stringify a bitmap into a newly allocated taskset-\/specific string. 
+
+\begin{DoxyReturn}{Returns}
+-\/1 on error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga5beb68a987fe48e5c5edef06ab260e14}\label{a00205_ga5beb68a987fe48e5c5edef06ab260e14}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+taskset\+\_\+snprintf@{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+snprintf}}
+\index{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+snprintf@{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+snprintf}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+snprintf()}{hwloc\_bitmap\_taskset\_snprintf()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+taskset\+\_\+snprintf (\begin{DoxyParamCaption}\item[{char $\ast$restrict}]{buf,  }\item[{size\+\_\+t}]{buflen,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Stringify a bitmap in the taskset-\/specific format. 
+
+The taskset command manipulates bitmap strings that contain a single (possible very long) hexadecimal number starting with 0x.
+
+Up to {\ttfamily buflen} characters may be written in buffer {\ttfamily buf}.
+
+If {\ttfamily buflen} is 0, {\ttfamily buf} may safely be {\ttfamily N\+U\+LL}.
+
+\begin{DoxyReturn}{Returns}
+the number of character that were actually written if not truncating, or that would have been written (not including the ending \textbackslash{}0). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga4f23db5041240e03e348752f8bd6ec2d}\label{a00205_ga4f23db5041240e03e348752f8bd6ec2d}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+taskset\+\_\+sscanf@{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+sscanf}}
+\index{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+sscanf@{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+sscanf}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+taskset\+\_\+sscanf()}{hwloc\_bitmap\_taskset\_sscanf()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+taskset\+\_\+sscanf (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{const char $\ast$restrict}]{string }\end{DoxyParamCaption})}
+
+
+
+Parse a taskset-\/specific bitmap string and stores it in bitmap {\ttfamily bitmap}. 
+
+\mbox{\Hypertarget{a00205_gac92e6404f648d6b99d2c626b05b2ffa4}\label{a00205_gac92e6404f648d6b99d2c626b05b2ffa4}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+to\+\_\+ith\+\_\+ulong@{hwloc\+\_\+bitmap\+\_\+to\+\_\+ith\+\_\+ulong}}
+\index{hwloc\+\_\+bitmap\+\_\+to\+\_\+ith\+\_\+ulong@{hwloc\+\_\+bitmap\+\_\+to\+\_\+ith\+\_\+ulong}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+to\+\_\+ith\+\_\+ulong()}{hwloc\_bitmap\_to\_ith\_ulong()}}
+{\footnotesize\ttfamily unsigned long hwloc\+\_\+bitmap\+\_\+to\+\_\+ith\+\_\+ulong (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned}]{i }\end{DoxyParamCaption})}
+
+
+
+Convert the {\ttfamily i} -\/th subset of bitmap {\ttfamily bitmap} into unsigned long mask. 
+
+\mbox{\Hypertarget{a00205_gab6a6bae22a33ec6adfc169a953c13e6c}\label{a00205_gab6a6bae22a33ec6adfc169a953c13e6c}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+to\+\_\+ulong@{hwloc\+\_\+bitmap\+\_\+to\+\_\+ulong}}
+\index{hwloc\+\_\+bitmap\+\_\+to\+\_\+ulong@{hwloc\+\_\+bitmap\+\_\+to\+\_\+ulong}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+to\+\_\+ulong()}{hwloc\_bitmap\_to\_ulong()}}
+{\footnotesize\ttfamily unsigned long hwloc\+\_\+bitmap\+\_\+to\+\_\+ulong (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Convert the beginning part of bitmap {\ttfamily bitmap} into unsigned long {\ttfamily mask}. 
+
+\mbox{\Hypertarget{a00205_gacd215a2348732de25d94a4ecd76d528c}\label{a00205_gacd215a2348732de25d94a4ecd76d528c}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+to\+\_\+ulongs@{hwloc\+\_\+bitmap\+\_\+to\+\_\+ulongs}}
+\index{hwloc\+\_\+bitmap\+\_\+to\+\_\+ulongs@{hwloc\+\_\+bitmap\+\_\+to\+\_\+ulongs}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+to\+\_\+ulongs()}{hwloc\_bitmap\_to\_ulongs()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+to\+\_\+ulongs (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap,  }\item[{unsigned}]{nr,  }\item[{unsigned long $\ast$}]{masks }\end{DoxyParamCaption})}
+
+
+
+Convert the first {\ttfamily nr} subsets of bitmap {\ttfamily bitmap} into the array of {\ttfamily nr} unsigned long {\ttfamily masks}. 
+
+{\ttfamily nr} may be determined earlier with \hyperlink{a00205_gac0744734d761d65c977aece565364908}{hwloc\+\_\+bitmap\+\_\+nr\+\_\+ulongs()}.
+
+\begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga0200466842c0e1f5da75e84dde460b10}\label{a00205_ga0200466842c0e1f5da75e84dde460b10}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+weight@{hwloc\+\_\+bitmap\+\_\+weight}}
+\index{hwloc\+\_\+bitmap\+\_\+weight@{hwloc\+\_\+bitmap\+\_\+weight}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+weight()}{hwloc\_bitmap\_weight()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+weight (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Compute the \char`\"{}weight\char`\"{} of bitmap {\ttfamily bitmap} (i.\+e., number of indexes that are in the bitmap). 
+
+\begin{DoxyReturn}{Returns}
+the number of indexes that are in the bitmap.
+
+-\/1 if {\ttfamily bitmap} is infinitely set. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00205_ga205508218e09cb9befd0687f16409f09}\label{a00205_ga205508218e09cb9befd0687f16409f09}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+xor@{hwloc\+\_\+bitmap\+\_\+xor}}
+\index{hwloc\+\_\+bitmap\+\_\+xor@{hwloc\+\_\+bitmap\+\_\+xor}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+xor()}{hwloc\_bitmap\_xor()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+xor (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{res,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap1,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{bitmap2 }\end{DoxyParamCaption})}
+
+
+
+Xor bitmaps {\ttfamily bitmap1} and {\ttfamily bitmap2} and store the result in bitmap {\ttfamily res}. 
+
+{\ttfamily res} can be the same as {\ttfamily bitmap1} or {\ttfamily bitmap2} \mbox{\Hypertarget{a00205_gaa97c5217613c8cae9862287170ea2132}\label{a00205_gaa97c5217613c8cae9862287170ea2132}} 
+\index{The bitmap A\+PI@{The bitmap A\+PI}!hwloc\+\_\+bitmap\+\_\+zero@{hwloc\+\_\+bitmap\+\_\+zero}}
+\index{hwloc\+\_\+bitmap\+\_\+zero@{hwloc\+\_\+bitmap\+\_\+zero}!The bitmap A\+PI@{The bitmap A\+PI}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+zero()}{hwloc\_bitmap\_zero()}}
+{\footnotesize\ttfamily void hwloc\+\_\+bitmap\+\_\+zero (\begin{DoxyParamCaption}\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Empty the bitmap {\ttfamily bitmap}. 
+

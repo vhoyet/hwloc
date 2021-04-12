@@ -1,0 +1,170 @@
+\hypertarget{a00195}{}\section{Finding Objects inside a C\+PU set}
+\label{a00195}\index{Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00195_ga547325a4193dbc215d07c23097519d79}{hwloc\+\_\+get\+\_\+first\+\_\+largest\+\_\+obj\+\_\+inside\+\_\+cpuset} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t} set)
+\item 
+int \hyperlink{a00195_ga34ca563fa3a6a4e05268f36a87668511}{hwloc\+\_\+get\+\_\+largest\+\_\+objs\+\_\+inside\+\_\+cpuset} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t} set, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} $\ast$restrict objs, int max)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00195_ga63e3784e7c60fbae5073428cb98ac787}{hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t} set, int depth, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} prev)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00195_gafe859176cf9233f215fea0e87cef47e7}{hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t} set, \hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} prev)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00195_gaec86f1f88832836e3f9338e246ea5862}{hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t} set, int depth, unsigned idx)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00195_ga2edf924e5a0cca9cb22f65cc77c6ddb5}{hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t} set, \hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type, unsigned idx)
+\item 
+static unsigned \hyperlink{a00195_gaa43c64512ddb33fd181990c4261cec7d}{hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t} set, int depth)
+\item 
+static int \hyperlink{a00195_ga133c40415de008518608f8bff52a5ab9}{hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t} set, \hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type)
+\item 
+static int \hyperlink{a00195_ga4c3a20d61e9beb06c667b21688c772c5}{hwloc\+\_\+get\+\_\+obj\+\_\+index\+\_\+inside\+\_\+cpuset} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t} set, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00195_ga547325a4193dbc215d07c23097519d79}\label{a00195_ga547325a4193dbc215d07c23097519d79}} 
+\index{Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}!hwloc\+\_\+get\+\_\+first\+\_\+largest\+\_\+obj\+\_\+inside\+\_\+cpuset@{hwloc\+\_\+get\+\_\+first\+\_\+largest\+\_\+obj\+\_\+inside\+\_\+cpuset}}
+\index{hwloc\+\_\+get\+\_\+first\+\_\+largest\+\_\+obj\+\_\+inside\+\_\+cpuset@{hwloc\+\_\+get\+\_\+first\+\_\+largest\+\_\+obj\+\_\+inside\+\_\+cpuset}!Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+first\+\_\+largest\+\_\+obj\+\_\+inside\+\_\+cpuset()}{hwloc\_get\_first\_largest\_obj\_inside\_cpuset()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+first\+\_\+largest\+\_\+obj\+\_\+inside\+\_\+cpuset (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t}}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the first largest object included in the given cpuset {\ttfamily set}. 
+
+\begin{DoxyReturn}{Returns}
+the first object that is included in {\ttfamily set} and whose parent is not.
+\end{DoxyReturn}
+This is convenient for iterating over all largest objects within a C\+PU set by doing a loop getting the first largest object and clearing its C\+PU set from the remaining C\+PU set. \mbox{\Hypertarget{a00195_ga34ca563fa3a6a4e05268f36a87668511}\label{a00195_ga34ca563fa3a6a4e05268f36a87668511}} 
+\index{Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}!hwloc\+\_\+get\+\_\+largest\+\_\+objs\+\_\+inside\+\_\+cpuset@{hwloc\+\_\+get\+\_\+largest\+\_\+objs\+\_\+inside\+\_\+cpuset}}
+\index{hwloc\+\_\+get\+\_\+largest\+\_\+objs\+\_\+inside\+\_\+cpuset@{hwloc\+\_\+get\+\_\+largest\+\_\+objs\+\_\+inside\+\_\+cpuset}!Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+largest\+\_\+objs\+\_\+inside\+\_\+cpuset()}{hwloc\_get\_largest\_objs\_inside\_cpuset()}}
+{\footnotesize\ttfamily int hwloc\+\_\+get\+\_\+largest\+\_\+objs\+\_\+inside\+\_\+cpuset (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t}}]{set,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} $\ast$restrict}]{objs,  }\item[{int}]{max }\end{DoxyParamCaption})}
+
+
+
+Get the set of largest objects covering exactly a given cpuset {\ttfamily set}. 
+
+\begin{DoxyReturn}{Returns}
+the number of objects returned in {\ttfamily objs}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00195_gaa43c64512ddb33fd181990c4261cec7d}\label{a00195_gaa43c64512ddb33fd181990c4261cec7d}} 
+\index{Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}!hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth@{hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth}}
+\index{hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth@{hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth}!Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth()}{hwloc\_get\_nbobjs\_inside\_cpuset\_by\_depth()}}
+{\footnotesize\ttfamily static unsigned hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t}}]{set,  }\item[{int}]{depth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Return the number of objects at depth {\ttfamily depth} included in C\+PU set {\ttfamily set}. 
+
+\begin{DoxyNote}{Note}
+Objects with empty C\+PU sets are ignored (otherwise they would be considered included in any given set).
+
+This function cannot work if objects at the given depth do not have C\+PU sets (I/O or Misc objects). 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00195_ga133c40415de008518608f8bff52a5ab9}\label{a00195_ga133c40415de008518608f8bff52a5ab9}} 
+\index{Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}!hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type@{hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type}}
+\index{hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type@{hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type}!Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type()}{hwloc\_get\_nbobjs\_inside\_cpuset\_by\_type()}}
+{\footnotesize\ttfamily static int hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t}}]{set,  }\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Return the number of objects of type {\ttfamily type} included in C\+PU set {\ttfamily set}. 
+
+If no object for that type exists inside C\+PU set {\ttfamily set}, 0 is returned. If there are several levels with objects of that type inside C\+PU set {\ttfamily set}, -\/1 is returned.
+
+\begin{DoxyNote}{Note}
+Objects with empty C\+PU sets are ignored (otherwise they would be considered included in any given set).
+
+This function cannot work if objects of the given type do not have C\+PU sets (I/O objects). 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00195_ga63e3784e7c60fbae5073428cb98ac787}\label{a00195_ga63e3784e7c60fbae5073428cb98ac787}} 
+\index{Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}!hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth@{hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth}}
+\index{hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth@{hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth}!Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth()}{hwloc\_get\_next\_obj\_inside\_cpuset\_by\_depth()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t}}]{set,  }\item[{int}]{depth,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{prev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Return the next object at depth {\ttfamily depth} included in C\+PU set {\ttfamily set}. 
+
+If {\ttfamily prev} is {\ttfamily N\+U\+LL}, return the first object at depth {\ttfamily depth} included in {\ttfamily set}. The next invokation should pass the previous return value in {\ttfamily prev} so as to obtain the next object in {\ttfamily set}.
+
+\begin{DoxyNote}{Note}
+Objects with empty C\+PU sets are ignored (otherwise they would be considered included in any given set).
+
+This function cannot work if objects at the given depth do not have C\+PU sets (I/O or Misc objects). 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00195_gafe859176cf9233f215fea0e87cef47e7}\label{a00195_gafe859176cf9233f215fea0e87cef47e7}} 
+\index{Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}!hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type@{hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type}}
+\index{hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type@{hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type}!Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type()}{hwloc\_get\_next\_obj\_inside\_cpuset\_by\_type()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t}}]{set,  }\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{prev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Return the next object of type {\ttfamily type} included in C\+PU set {\ttfamily set}. 
+
+If there are multiple or no depth for given type, return {\ttfamily N\+U\+LL} and let the caller fallback to \hyperlink{a00195_ga63e3784e7c60fbae5073428cb98ac787}{hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth()}.
+
+\begin{DoxyNote}{Note}
+Objects with empty C\+PU sets are ignored (otherwise they would be considered included in any given set).
+
+This function cannot work if objects of the given type do not have C\+PU sets (I/O or Misc objects). 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00195_ga4c3a20d61e9beb06c667b21688c772c5}\label{a00195_ga4c3a20d61e9beb06c667b21688c772c5}} 
+\index{Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}!hwloc\+\_\+get\+\_\+obj\+\_\+index\+\_\+inside\+\_\+cpuset@{hwloc\+\_\+get\+\_\+obj\+\_\+index\+\_\+inside\+\_\+cpuset}}
+\index{hwloc\+\_\+get\+\_\+obj\+\_\+index\+\_\+inside\+\_\+cpuset@{hwloc\+\_\+get\+\_\+obj\+\_\+index\+\_\+inside\+\_\+cpuset}!Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+obj\+\_\+index\+\_\+inside\+\_\+cpuset()}{hwloc\_get\_obj\_index\_inside\_cpuset()}}
+{\footnotesize\ttfamily static int hwloc\+\_\+get\+\_\+obj\+\_\+index\+\_\+inside\+\_\+cpuset (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t}}]{set,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Return the logical index among the objects included in C\+PU set {\ttfamily set}. 
+
+Consult all objects in the same level as {\ttfamily obj} and inside C\+PU set {\ttfamily set} in the logical order, and return the index of {\ttfamily obj} within them. If {\ttfamily set} covers the entire topology, this is the logical index of {\ttfamily obj}. Otherwise, this is similar to a logical index within the part of the topology defined by C\+PU set {\ttfamily set}.
+
+\begin{DoxyNote}{Note}
+Objects with empty C\+PU sets are ignored (otherwise they would be considered included in any given set).
+
+This function cannot work if obj does not have C\+PU sets (I/O objects). 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00195_gaec86f1f88832836e3f9338e246ea5862}\label{a00195_gaec86f1f88832836e3f9338e246ea5862}} 
+\index{Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}!hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth@{hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth}}
+\index{hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth@{hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth}!Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth()}{hwloc\_get\_obj\_inside\_cpuset\_by\_depth()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t}}]{set,  }\item[{int}]{depth,  }\item[{unsigned}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Return the (logically) {\ttfamily idx} -\/th object at depth {\ttfamily depth} included in C\+PU set {\ttfamily set}. 
+
+\begin{DoxyNote}{Note}
+Objects with empty C\+PU sets are ignored (otherwise they would be considered included in any given set).
+
+This function cannot work if objects at the given depth do not have C\+PU sets (I/O or Misc objects). 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00195_ga2edf924e5a0cca9cb22f65cc77c6ddb5}\label{a00195_ga2edf924e5a0cca9cb22f65cc77c6ddb5}} 
+\index{Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}!hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type@{hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type}}
+\index{hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type@{hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type}!Finding Objects inside a C\+P\+U set@{Finding Objects inside a C\+P\+U set}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type()}{hwloc\_get\_obj\_inside\_cpuset\_by\_type()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t}}]{set,  }\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type,  }\item[{unsigned}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Return the {\ttfamily idx} -\/th object of type {\ttfamily type} included in C\+PU set {\ttfamily set}. 
+
+If there are multiple or no depth for given type, return {\ttfamily N\+U\+LL} and let the caller fallback to \hyperlink{a00195_gaec86f1f88832836e3f9338e246ea5862}{hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth()}.
+
+\begin{DoxyNote}{Note}
+Objects with empty C\+PU sets are ignored (otherwise they would be considered included in any given set).
+
+This function cannot work if objects of the given type do not have C\+PU sets (I/O or Misc objects). 
+\end{DoxyNote}

@@ -1,0 +1,84 @@
+\hypertarget{a00197}{}\section{Looking at Ancestor and Child Objects}
+\label{a00197}\index{Looking at Ancestor and Child Objects@{Looking at Ancestor and Child Objects}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00197_ga9f8c93fde236e9642a96957af01a11cb}{hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+depth} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, int depth, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00197_ga70f0c7583291da707c15ae4daa850f41}{hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+type} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00197_gab1fa883021928b5c476911c4102e9be3}{hwloc\+\_\+get\+\_\+common\+\_\+ancestor\+\_\+obj} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj1, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj2)
+\item 
+static int \hyperlink{a00197_ga408cf74f5bf9ed497911a320c7f8cc56}{hwloc\+\_\+obj\+\_\+is\+\_\+in\+\_\+subtree} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} subtree\+\_\+root)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00197_ga12d8565a3436c565e791ed02a0353621}{hwloc\+\_\+get\+\_\+next\+\_\+child} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} parent, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} prev)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Be sure to see the figure in \hyperlink{a00380}{Terms and Definitions} that shows a complete topology tree, including depths, child/sibling/cousin relationships, and an example of an asymmetric topology where one package has fewer caches than its peers. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00197_ga9f8c93fde236e9642a96957af01a11cb}\label{a00197_ga9f8c93fde236e9642a96957af01a11cb}} 
+\index{Looking at Ancestor and Child Objects@{Looking at Ancestor and Child Objects}!hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+depth@{hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+depth}}
+\index{hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+depth@{hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+depth}!Looking at Ancestor and Child Objects@{Looking at Ancestor and Child Objects}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+depth()}{hwloc\_get\_ancestor\_obj\_by\_depth()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+depth (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{int}]{depth,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns the ancestor object of {\ttfamily obj} at depth {\ttfamily depth}. 
+
+\begin{DoxyNote}{Note}
+{\ttfamily depth} should not be the depth of PU or N\+U\+MA objects since they are ancestors of no objects (except Misc or I/O). This function rather expects an intermediate level depth, such as the depth of Packages, Cores, or Caches. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00197_ga70f0c7583291da707c15ae4daa850f41}\label{a00197_ga70f0c7583291da707c15ae4daa850f41}} 
+\index{Looking at Ancestor and Child Objects@{Looking at Ancestor and Child Objects}!hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+type@{hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+type}}
+\index{hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+type@{hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+type}!Looking at Ancestor and Child Objects@{Looking at Ancestor and Child Objects}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+type()}{hwloc\_get\_ancestor\_obj\_by\_type()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+type (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns the ancestor object of {\ttfamily obj} with type {\ttfamily type}. 
+
+\begin{DoxyNote}{Note}
+{\ttfamily type} should not be \hyperlink{a00184_ggacd37bb612667dc437d66bfb175a8dc55abca6887e80cb291353b0a0c1da83f661}{H\+W\+L\+O\+C\+\_\+\+O\+B\+J\+\_\+\+PU} or \hyperlink{a00184_ggacd37bb612667dc437d66bfb175a8dc55a9d917a3e5497950c6d8948b8e183db5a}{H\+W\+L\+O\+C\+\_\+\+O\+B\+J\+\_\+\+N\+U\+M\+A\+N\+O\+DE} since these objects are ancestors of no objects (except Misc or I/O). This function rather expects an intermediate object type, such as \hyperlink{a00184_ggacd37bb612667dc437d66bfb175a8dc55ab16ab8c0dbffc234921d86f3dfb63129}{H\+W\+L\+O\+C\+\_\+\+O\+B\+J\+\_\+\+P\+A\+C\+K\+A\+GE}, \hyperlink{a00184_ggacd37bb612667dc437d66bfb175a8dc55ac793958f330bca371aa1535de8aff45f}{H\+W\+L\+O\+C\+\_\+\+O\+B\+J\+\_\+\+C\+O\+RE}, etc. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00197_gab1fa883021928b5c476911c4102e9be3}\label{a00197_gab1fa883021928b5c476911c4102e9be3}} 
+\index{Looking at Ancestor and Child Objects@{Looking at Ancestor and Child Objects}!hwloc\+\_\+get\+\_\+common\+\_\+ancestor\+\_\+obj@{hwloc\+\_\+get\+\_\+common\+\_\+ancestor\+\_\+obj}}
+\index{hwloc\+\_\+get\+\_\+common\+\_\+ancestor\+\_\+obj@{hwloc\+\_\+get\+\_\+common\+\_\+ancestor\+\_\+obj}!Looking at Ancestor and Child Objects@{Looking at Ancestor and Child Objects}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+common\+\_\+ancestor\+\_\+obj()}{hwloc\_get\_common\_ancestor\_obj()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+common\+\_\+ancestor\+\_\+obj (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj1,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns the common parent object to objects {\ttfamily obj1} and {\ttfamily obj2}. 
+
+\mbox{\Hypertarget{a00197_ga12d8565a3436c565e791ed02a0353621}\label{a00197_ga12d8565a3436c565e791ed02a0353621}} 
+\index{Looking at Ancestor and Child Objects@{Looking at Ancestor and Child Objects}!hwloc\+\_\+get\+\_\+next\+\_\+child@{hwloc\+\_\+get\+\_\+next\+\_\+child}}
+\index{hwloc\+\_\+get\+\_\+next\+\_\+child@{hwloc\+\_\+get\+\_\+next\+\_\+child}!Looking at Ancestor and Child Objects@{Looking at Ancestor and Child Objects}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+next\+\_\+child()}{hwloc\_get\_next\_child()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+next\+\_\+child (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{parent,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{prev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Return the next child. 
+
+Return the next child among the normal children list, then among the memory children list, then among the I/O children list, then among the Misc children list.
+
+If {\ttfamily prev} is {\ttfamily N\+U\+LL}, return the first child.
+
+Return {\ttfamily N\+U\+LL} when there is no next child. \mbox{\Hypertarget{a00197_ga408cf74f5bf9ed497911a320c7f8cc56}\label{a00197_ga408cf74f5bf9ed497911a320c7f8cc56}} 
+\index{Looking at Ancestor and Child Objects@{Looking at Ancestor and Child Objects}!hwloc\+\_\+obj\+\_\+is\+\_\+in\+\_\+subtree@{hwloc\+\_\+obj\+\_\+is\+\_\+in\+\_\+subtree}}
+\index{hwloc\+\_\+obj\+\_\+is\+\_\+in\+\_\+subtree@{hwloc\+\_\+obj\+\_\+is\+\_\+in\+\_\+subtree}!Looking at Ancestor and Child Objects@{Looking at Ancestor and Child Objects}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+is\+\_\+in\+\_\+subtree()}{hwloc\_obj\_is\_in\_subtree()}}
+{\footnotesize\ttfamily static int hwloc\+\_\+obj\+\_\+is\+\_\+in\+\_\+subtree (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{subtree\+\_\+root }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns true if {\ttfamily obj} is inside the subtree beginning with ancestor object {\ttfamily subtree\+\_\+root}. 
+
+\begin{DoxyNote}{Note}
+This function cannot work if {\ttfamily obj} and {\ttfamily subtree\+\_\+root} objects do not have C\+PU sets (I/O or Misc objects). 
+\end{DoxyNote}

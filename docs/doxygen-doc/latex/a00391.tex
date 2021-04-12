@@ -1,0 +1,46 @@
+
+
+Like most libraries that mainly fill data structures, hwloc is not thread safe but rather reentrant\+: all state is held in a \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} instance without mutex protection. That means, for example, that two threads can safely operate on and modify two different \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} instances, but they should not simultaneously invoke functions that modify the {\itshape same} instance. Similarly, one thread should not modify a \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} instance while another thread is reading or traversing it. However, two threads can safely read or traverse the same \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} instance concurrently.
+
+When running in multiprocessor environments, be aware that proper thread synchronization and/or memory coherency protection is needed to pass hwloc data (such as \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} pointers) from one processor to another (e.\+g., a mutex, semaphore, or a memory barrier). Note that this is not a hwloc-\/specific requirement, but it is worth mentioning.
+
+For reference, \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} modification operations include (but may not be limited to)\+:
+
+
+\begin{DoxyDescription}
+\item[Creation and destruction ]{\ttfamily \hyperlink{a00186_ga03fd4a16d8b9ee1ffc32b25fd2f6bdfa}{hwloc\+\_\+topology\+\_\+init()}, \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()}, \hyperlink{a00186_ga9f34a640b6fd28d23699d4d084667b15}{hwloc\+\_\+topology\+\_\+destroy()}} (see \hyperlink{a00186}{Topology Creation and Destruction}) imply major modifications of the structure, including freeing some objects. No other thread cannot access the topology or any of its objects at the same time.
+
+Also references to objects inside the topology are not valid anymore after these functions return. 
+
+
+\item[Runtime topology modifications ]{\ttfamily \hyperlink{a00194_gad980782ade737900c5cf208946768c30}{hwloc\+\_\+topology\+\_\+insert\+\_\+misc\+\_\+object()}}, {\ttfamily \hyperlink{a00194_ga4cea4741165faf5323931a9ed8786ef7}{hwloc\+\_\+topology\+\_\+alloc\+\_\+group\+\_\+object()}}, and {\ttfamily \hyperlink{a00194_ga1fc6012b3e1c249b83f48cb7bcacaa5b}{hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object()}} (see \hyperlink{a00194}{Modifying a loaded Topology}) may modify the topology significantly by adding objects inside the tree, changing the topology depth, etc.
+
+{\ttfamily \hyperlink{a00210_gac5a71d96cd86efe31d6f8d282aae3d97}{hwloc\+\_\+distances\+\_\+add()}} and {\ttfamily \hyperlink{a00210_gac188d9b64d9560255ce5f6d0a20f9c0a}{hwloc\+\_\+distances\+\_\+remove()}} (see \hyperlink{a00210}{Add or remove distances between objects}) modify the list of distance structures in the topology, and the former may even insert new Group objects.
+
+{\ttfamily \hyperlink{a00212_ga770657d1e44b09e93e09f623936c1e5f}{hwloc\+\_\+memattr\+\_\+register()}} and {\ttfamily \hyperlink{a00212_ga960529c08b25cf15825e0f72ecceb504}{hwloc\+\_\+memattr\+\_\+set\+\_\+value()}} (see \hyperlink{a00212}{Managing memory attributes}) modify the memory attributes of the topology.
+
+{\ttfamily \hyperlink{a00194_ga6db81ed13ac0a9d70cc80372ab537815}{hwloc\+\_\+topology\+\_\+restrict()}} modifies the topology even more dramatically by removing some objects.
+
+{\ttfamily \hyperlink{a00194_ga698ecd640d2b76742bba3829a145cd9a}{hwloc\+\_\+topology\+\_\+refresh()}} updates some internal cached structures. (see below).
+
+Although references to former objects {\itshape may} still be valid after insertion or restriction, it is strongly advised to not rely on any such guarantee and always re-\/consult the topology to reacquire new instances of objects. 
+
+
+\item[Consulting distances ]{\ttfamily \hyperlink{a00208_ga613e6b2a5d0f06626ee8d0c12fa46691}{hwloc\+\_\+distances\+\_\+get()}} and its variants are thread-\/safe except if the topology was recently modified (because distances may involve objects that were removed).
+
+Whenever the topology is modified (see above), {\ttfamily \hyperlink{a00194_ga698ecd640d2b76742bba3829a145cd9a}{hwloc\+\_\+topology\+\_\+refresh()}} should be called in the same thread-\/safe context to force the refresh of internal distances structures. A call to {\ttfamily \hyperlink{a00208_ga613e6b2a5d0f06626ee8d0c12fa46691}{hwloc\+\_\+distances\+\_\+get()}} may also refresh distances-\/related structures.
+
+Once this refresh has been performed, multiple {\ttfamily \hyperlink{a00208_ga613e6b2a5d0f06626ee8d0c12fa46691}{hwloc\+\_\+distances\+\_\+get()}} may then be performed concurrently by multiple threads. 
+
+
+\item[Consulting memory attributes ]Functions consulting memory attributes in \hyperlink{a00134_source}{hwloc/memattrs.\+h} are thread-\/safe except if the topology was recently modified (because memory attributes may involve objects that were removed).
+
+Whenever the topology is modified (see above), {\ttfamily \hyperlink{a00194_ga698ecd640d2b76742bba3829a145cd9a}{hwloc\+\_\+topology\+\_\+refresh()}} should be called in the same thread-\/safe context to force the refresh of internal memory attribute structures. A call to {\ttfamily \hyperlink{a00211_ga297e4a9adc2272446a4c7449dacef0df}{hwloc\+\_\+memattr\+\_\+get\+\_\+value()}} or {\ttfamily \hyperlink{a00212_ga3177cc0ab47e4dd1fa69ca1df4c7cb1a}{hwloc\+\_\+memattr\+\_\+get\+\_\+targets()}} may also refresh internal structures for a given memory attribute.
+
+Once this refresh has been performed, multiple functions consulting memory attributes may then be performed concurrently by multiple threads. 
+
+
+\item[Locating topologies  ]{\ttfamily hwloc\+\_\+topology\+\_\+set\+\_\+$\ast$} (see \hyperlink{a00193}{Topology Detection Configuration and Query}) do not modify the topology directly, but they do modify internal structures describing the behavior of the upcoming invocation of {\ttfamily \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()}}. Hence, all of these functions should not be used concurrently. 
+
+
+\end{DoxyDescription}

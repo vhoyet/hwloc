@@ -1,0 +1,41 @@
+
+
+Besides the hierarchy of objects and individual object attributes (see \hyperlink{a00386}{Object attributes}), hwloc may also expose finer information about the hardware organization.
+
+ \hypertarget{a00387_topoattrs_distances}{}\section{Distances}\label{a00387_topoattrs_distances}
+A machine with 4 C\+P\+Us may have identical links between every pairs of C\+P\+Us, or those C\+P\+Us could also only be connected through a ring. In the ring case, accessing the memory of nearby C\+P\+Us is slower than local memory, but it is also faster than accessing the memory of C\+PU on the opposite side of the ring. These deep details cannot be exposed in the hwloc hierarchy, that is why hwloc also exposes distances.
+
+Distances are matrices of values between sets of objects, usually latencies or bandwidths. By default, hwloc tries to get a matrix of relative latencies between N\+U\+MA nodes when exposed by the hardware.
+
+In the aforementioned ring case, the matrix could report 10 for latency between a N\+U\+MA node and itself, 20 for nearby nodes, and 30 for nodes that are opposites on the ring. Those are theoretical values exposed by hardware vendors (in the System Locality Distance Information Table (S\+L\+IT) in the A\+C\+PI) rather than physical latencies. They are mostly meant for comparing node relative distances.
+
+Distances structures currently created by hwloc are\+: 
+\begin{DoxyDescription}
+\item[N\+U\+M\+A\+Latency (Linux, Solaris, Free\+B\+SD) ]This is the matrix of theoretical latencies described above.  
+\end{DoxyDescription}
+
+Users may also specify their own matrices between any set of objects, even if these objects are of different types (e.\+g. bandwidths between G\+P\+Us and C\+P\+Us).
+
+The entire A\+PI is located in \hyperlink{a00131_source}{hwloc/distances.\+h}. See also \hyperlink{a00208}{Retrieve distances between objects}, as well as \hyperlink{a00209}{Helpers for consulting distance matrices} and \hyperlink{a00210}{Add or remove distances between objects}.
+
+ \hypertarget{a00387_topoattrs_memattrs}{}\section{Memory Attributes}\label{a00387_topoattrs_memattrs}
+Machines with heterogeneous memory, for instance high-\/bandwidth memory (H\+BM), normal memory (D\+DR), and/or high-\/capacity slow memory (such as non-\/volatile memory D\+I\+M\+Ms, N\+V\+D\+I\+M\+Ms) require applications to allocate buffers in the appropriate target memory depending on performance and capacity needs. Those target nodes may be exposed in the hwloc hierarchy as different memory children but there is a need for performance information to select the appropriate one.
+
+hwloc memory attributes are designed to expose memory information such as latency, bandwidth, etc. Users may also specify their own attributes and values.
+
+The memory attributes A\+PI is located in \hyperlink{a00134_source}{hwloc/memattrs.\+h}, see \hyperlink{a00211}{Comparing memory node attributes for finding where to allocate on} and \hyperlink{a00212}{Managing memory attributes} for details.
+
+ \hypertarget{a00387_topoattrs_cpukinds}{}\section{C\+P\+U Kinds}\label{a00387_topoattrs_cpukinds}
+Hybrid C\+P\+Us may contain different kinds of cores. The C\+PU kinds A\+PI in \hyperlink{a00137_source}{hwloc/cpukinds.\+h} provides a way to list the sets of P\+Us in each kind and get some optional information about their hardware characteristics and efficiency.
+
+If the operating system provides efficiency information (e.\+g. Windows 10), it is used to rank hwloc C\+PU kinds by efficiency. Otherwise, hwloc implements several heuristics based on frequencies and core types (see H\+W\+L\+O\+C\+\_\+\+C\+P\+U\+K\+I\+N\+D\+S\+\_\+\+R\+A\+N\+K\+I\+NG in \hyperlink{a00382}{Environment Variables}).
+
+Attributes include\+: 
+\begin{DoxyDescription}
+\item[Frequency\+Max\+M\+Hz (Linux) ]The maximal operating frequency of the core, as reported by {\ttfamily cpufreq} drivers on Linux.  
+\item[Frequency\+Base\+M\+Hz (Linux) ]The base operating frequency of the core, as reported by some {\ttfamily cpufreq} drivers on Linux (e.\+g. {\ttfamily intel\+\_\+pstate}).  
+\item[Core\+Type (x86, Linux) ]A string describing the kind of core, currently {\ttfamily Intel\+Atom} or {\ttfamily Intel\+Core}, as reported by the x86 C\+P\+U\+ID instruction and future Linux kernels on some Intel processors.  
+\item[Linux\+C\+P\+U\+Type (Linux) ]The Linux-\/specific C\+PU type found in sysfs, such as {\ttfamily intel\+\_\+atom\+\_\+0}, as reported by future Linux kernels on some Intel processors.  
+\end{DoxyDescription}
+
+See \hyperlink{a00213}{Kinds of C\+PU cores} for details. 

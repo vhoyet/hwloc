@@ -1,0 +1,194 @@
+\hypertarget{a00149_source}{}\section{opencl.\+h}
+\label{a00149_source}\index{opencl.\+h@{opencl.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright © 2012-2021 Inria.  All rights reserved.}
+00003 \textcolor{comment}{ * Copyright © 2013, 2018 Université Bordeaux.  All right reserved.}
+00004 \textcolor{comment}{ * See COPYING in top-level directory.}
+00005 \textcolor{comment}{ */}
+00006 
+00014 \textcolor{preprocessor}{#ifndef HWLOC\_OPENCL\_H}
+00015 \textcolor{preprocessor}{#define HWLOC\_OPENCL\_H}
+00016 
+00017 \textcolor{preprocessor}{#include "hwloc.h"}
+00018 \textcolor{preprocessor}{#include "hwloc/autogen/config.h"}
+00019 \textcolor{preprocessor}{#include "hwloc/helper.h"}
+00020 \textcolor{preprocessor}{#ifdef HWLOC\_LINUX\_SYS}
+00021 \textcolor{preprocessor}{#include "hwloc/linux.h"}
+00022 \textcolor{preprocessor}{#endif}
+00023 
+00024 \textcolor{preprocessor}{#ifdef \_\_APPLE\_\_}
+00025 \textcolor{preprocessor}{#include <OpenCL/cl.h>}
+00026 \textcolor{preprocessor}{#else}
+00027 \textcolor{preprocessor}{#include <CL/cl.h>}
+00028 \textcolor{preprocessor}{#endif}
+00029 
+00030 \textcolor{preprocessor}{#include <stdio.h>}
+00031 
+00032 
+00033 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00034 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00035 \textcolor{preprocessor}{#endif}
+00036 
+00037 
+00038 \textcolor{comment}{/* OpenCL extensions aren't always shipped with default headers, and}
+00039 \textcolor{comment}{ * they don't always reflect what the installed implementations support.}
+00040 \textcolor{comment}{ * Try everything and let the implementation return errors when non supported.}
+00041 \textcolor{comment}{ */}
+00042 \textcolor{comment}{/* Copyright (c) 2008-2018 The Khronos Group Inc. */}
+00043 
+00044 \textcolor{comment}{/* needs "cl\_amd\_device\_attribute\_query" device extension, but not strictly required for clGetDeviceInfo() 
+      */}
+00045 \textcolor{preprocessor}{#define HWLOC\_CL\_DEVICE\_TOPOLOGY\_AMD 0x4037}
+\Hypertarget{a00149_source_l00046}\hyperlink{a00322}{00046} \textcolor{keyword}{typedef} \textcolor{keyword}{union }\{
+\Hypertarget{a00149_source_l00047}\hyperlink{a00322_a8ec4ea89b862bb271845b48063f332b4}{00047}     \textcolor{keyword}{struct }\{ cl\_uint \hyperlink{a00322_a8ec4ea89b862bb271845b48063f332b4}{type}; cl\_uint data[5]; \} raw;
+\Hypertarget{a00149_source_l00048}\hyperlink{a00322_ac8650d7eea96eef290481fee980d1d47}{00048}     \textcolor{keyword}{struct }\{ cl\_uint type; cl\_char unused[17]; cl\_char bus; cl\_char device; cl\_char \textcolor{keyword}{function}; \} pcie;
+00049 \} \hyperlink{a00322}{hwloc\_cl\_device\_topology\_amd};
+00050 \textcolor{preprocessor}{#define HWLOC\_CL\_DEVICE\_TOPOLOGY\_TYPE\_PCIE\_AMD 1}
+00051 
+00052 \textcolor{comment}{/* needs "cl\_nv\_device\_attribute\_query" device extension, but not strictly required for clGetDeviceInfo() 
+      */}
+00053 \textcolor{preprocessor}{#define HWLOC\_CL\_DEVICE\_PCI\_BUS\_ID\_NV 0x4008}
+00054 \textcolor{preprocessor}{#define HWLOC\_CL\_DEVICE\_PCI\_SLOT\_ID\_NV 0x4009}
+00055 \textcolor{preprocessor}{#define HWLOC\_CL\_DEVICE\_PCI\_DOMAIN\_ID\_NV 0x400A}
+00056 
+00057 
+00073 \textcolor{keyword}{static} \_\_hwloc\_inline \textcolor{keywordtype}{int}
+\Hypertarget{a00149_source_l00074}\hyperlink{a00218_gab89e4d20f8a353299351b41849e35ac9}{00074} \hyperlink{a00218_gab89e4d20f8a353299351b41849e35ac9}{hwloc\_opencl\_get\_device\_pci\_busid}(cl\_device\_id device,
+00075                                \textcolor{keywordtype}{unsigned} *domain, \textcolor{keywordtype}{unsigned} *bus, \textcolor{keywordtype}{unsigned} *dev, \textcolor{keywordtype}{unsigned} *func)
+00076 \{
+00077         \hyperlink{a00322}{hwloc\_cl\_device\_topology\_amd} amdtopo;
+00078         cl\_uint nvbus, nvslot, nvdomain;
+00079         cl\_int clret;
+00080 
+00081         clret = clGetDeviceInfo(device, HWLOC\_CL\_DEVICE\_TOPOLOGY\_AMD, \textcolor{keyword}{sizeof}(amdtopo), &amdtopo, NULL);
+00082         \textcolor{keywordflow}{if} (CL\_SUCCESS == clret
+00083             && HWLOC\_CL\_DEVICE\_TOPOLOGY\_TYPE\_PCIE\_AMD == amdtopo.\hyperlink{a00322_ab3b58c076f09a6f66c3bef0288add64a}{raw}.\hyperlink{a00322_a8ec4ea89b862bb271845b48063f332b4}{type}) \{
+00084                 *domain = 0; \textcolor{comment}{/* can't do anything better */}
+00085                 \textcolor{comment}{/* cl\_device\_topology\_amd stores bus ID in cl\_char, dont convert those signed char directly
+       to unsigned int */}
+00086                 *bus = (unsigned) (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}) amdtopo.\hyperlink{a00322_abd362258740a00880a5598deb5a3e598}{pcie}.\hyperlink{a00322_a4a23e3cc034b7ab105cab0e863dcab69}{bus};
+00087                 *dev = (unsigned) (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}) amdtopo.\hyperlink{a00322_abd362258740a00880a5598deb5a3e598}{pcie}.\hyperlink{a00322_a017033a953d71455b067007cabb92e9c}{device};
+00088                 *func = (unsigned) (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}) amdtopo.\hyperlink{a00322_abd362258740a00880a5598deb5a3e598}{pcie}.\hyperlink{a00322_a77a67ac73cff98d330ef7258b240bac3}{function};
+00089                 \textcolor{keywordflow}{return} 0;
+00090         \}
+00091 
+00092         clret = clGetDeviceInfo(device, HWLOC\_CL\_DEVICE\_PCI\_BUS\_ID\_NV, \textcolor{keyword}{sizeof}(nvbus), &nvbus, NULL);
+00093         \textcolor{keywordflow}{if} (CL\_SUCCESS == clret) \{
+00094                 clret = clGetDeviceInfo(device, HWLOC\_CL\_DEVICE\_PCI\_SLOT\_ID\_NV, \textcolor{keyword}{sizeof}(nvslot), &nvslot, 
+      NULL);
+00095                 \textcolor{keywordflow}{if} (CL\_SUCCESS == clret) \{
+00096                         clret = clGetDeviceInfo(device, HWLOC\_CL\_DEVICE\_PCI\_DOMAIN\_ID\_NV, \textcolor{keyword}{sizeof}(nvdomain),
+       &nvdomain, NULL);
+00097                         \textcolor{keywordflow}{if} (CL\_SUCCESS == clret) \{ \textcolor{comment}{/* available since CUDA 10.2 */}
+00098                                 *domain = nvdomain;
+00099                         \} \textcolor{keywordflow}{else} \{
+00100                                 *domain = 0;
+00101                         \}
+00102                         *bus = nvbus & 0xff;
+00103                         \textcolor{comment}{/* non-documented but used in many other projects */}
+00104                         *dev = nvslot >> 3;
+00105                         *func = nvslot & 0x7;
+00106                         \textcolor{keywordflow}{return} 0;
+00107                 \}
+00108         \}
+00109 
+00110         \textcolor{keywordflow}{return} -1;
+00111 \}
+00112 
+00130 \textcolor{keyword}{static} \_\_hwloc\_inline \textcolor{keywordtype}{int}
+\Hypertarget{a00149_source_l00131}\hyperlink{a00218_gacc32737d4648d16b0d292438f210ec90}{00131} \hyperlink{a00218_gacc32737d4648d16b0d292438f210ec90}{hwloc\_opencl\_get\_device\_cpuset}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology 
+      \_\_hwloc\_attribute\_unused,
+00132                                cl\_device\_id device \_\_hwloc\_attribute\_unused,
+00133                                \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\_cpuset\_t} \textcolor{keyword}{set})
+00134 \{
+00135 \textcolor{preprocessor}{#if (defined HWLOC\_LINUX\_SYS)}
+00136         \textcolor{comment}{/* If we're on Linux, try AMD/NVIDIA extensions + the sysfs mechanism to get the local cpus */}
+00137 \textcolor{preprocessor}{#define HWLOC\_OPENCL\_DEVICE\_SYSFS\_PATH\_MAX 128}
+00138         \textcolor{keywordtype}{char} path[HWLOC\_OPENCL\_DEVICE\_SYSFS\_PATH\_MAX];
+00139         \textcolor{keywordtype}{unsigned} pcidomain, pcibus, pcidev, pcifunc;
+00140 
+00141         \textcolor{keywordflow}{if} (!\hyperlink{a00193_ga68ffdcfd9175cdf40709801092f18017}{hwloc\_topology\_is\_thissystem}(topology)) \{
+00142                 errno = EINVAL;
+00143                 \textcolor{keywordflow}{return} -1;
+00144         \}
+00145 
+00146         \textcolor{keywordflow}{if} (\hyperlink{a00218_gab89e4d20f8a353299351b41849e35ac9}{hwloc\_opencl\_get\_device\_pci\_busid}(device, &pcidomain, &pcibus,
+       &pcidev, &pcifunc) < 0) \{
+00147                 \hyperlink{a00205_ga72a29824798b48784b8217471ec8f14c}{hwloc\_bitmap\_copy}(\textcolor{keyword}{set}, 
+      \hyperlink{a00202_gaee30e03391c1ed7dfd617fb5c7bbb033}{hwloc\_topology\_get\_complete\_cpuset}(topology));
+00148                 \textcolor{keywordflow}{return} 0;
+00149         \}
+00150 
+00151         sprintf(path, \textcolor{stringliteral}{"/sys/bus/pci/devices/%04x:%02x:%02x.%01x/local\_cpus"}, pcidomain, pcibus, pcidev, 
+      pcifunc);
+00152         \textcolor{keywordflow}{if} (\hyperlink{a00214_gaf72d83e273803226ce772973e37b85de}{hwloc\_linux\_read\_path\_as\_cpumask}(path, \textcolor{keyword}{set}) < 0
+00153             || \hyperlink{a00205_ga5b64be28f5a7176ed8ad0d6a90bdf108}{hwloc\_bitmap\_iszero}(\textcolor{keyword}{set}))
+00154                 \hyperlink{a00205_ga72a29824798b48784b8217471ec8f14c}{hwloc\_bitmap\_copy}(\textcolor{keyword}{set}, 
+      \hyperlink{a00202_gaee30e03391c1ed7dfd617fb5c7bbb033}{hwloc\_topology\_get\_complete\_cpuset}(topology));
+00155 \textcolor{preprocessor}{#else}
+00156         \textcolor{comment}{/* Non-Linux systems simply get a full cpuset */}
+00157         \hyperlink{a00205_ga72a29824798b48784b8217471ec8f14c}{hwloc\_bitmap\_copy}(\textcolor{keyword}{set}, 
+      \hyperlink{a00202_gaee30e03391c1ed7dfd617fb5c7bbb033}{hwloc\_topology\_get\_complete\_cpuset}(topology));
+00158 \textcolor{preprocessor}{#endif}
+00159   \textcolor{keywordflow}{return} 0;
+00160 \}
+00161 
+00177 \textcolor{keyword}{static} \_\_hwloc\_inline \hyperlink{a00238}{hwloc\_obj\_t}
+\Hypertarget{a00149_source_l00178}\hyperlink{a00218_gae39352d124cb330eb37b84b418ed6cc5}{00178} \hyperlink{a00218_gae39352d124cb330eb37b84b418ed6cc5}{hwloc\_opencl\_get\_device\_osdev\_by\_index}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00179                                        \textcolor{keywordtype}{unsigned} platform\_index, \textcolor{keywordtype}{unsigned} device\_index)
+00180 \{
+00181         \textcolor{keywordtype}{unsigned} x = (unsigned) -1, y = (\textcolor{keywordtype}{unsigned}) -1;
+00182         \hyperlink{a00238}{hwloc\_obj\_t} osdev = NULL;
+00183         \textcolor{keywordflow}{while} ((osdev = \hyperlink{a00204_ga8b4584c8949e2c5f1c97ba7fe92b8145}{hwloc\_get\_next\_osdev}(topology, osdev)) != NULL) \{
+00184                 \textcolor{keywordflow}{if} (\hyperlink{a00184_gga64f5d539df299c97ae80ce53fc4b56c0a46f8927e1c3e137eaa86cc8f6861fb83}{HWLOC\_OBJ\_OSDEV\_COPROC} == osdev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->
+      \hyperlink{a00242_a22904c25fe44b323bab5c9bc52660fca}{osdev}.\hyperlink{a00282_a31e019e27e54ac6138d04be639bb96f9}{type}
+00185                     && osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}
+00186                     && sscanf(osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}, \textcolor{stringliteral}{"opencl%ud%u"}, &x, &y) == 2
+00187                     && platform\_index == x && device\_index == y)
+00188                         \textcolor{keywordflow}{return} osdev;
+00189         \}
+00190         \textcolor{keywordflow}{return} NULL;
+00191 \}
+00192 
+00213 \textcolor{keyword}{static} \_\_hwloc\_inline \hyperlink{a00238}{hwloc\_obj\_t}
+\Hypertarget{a00149_source_l00214}\hyperlink{a00218_gadabfa6516aa12e5d8f79b9b4dd9f3cf8}{00214} \hyperlink{a00218_gadabfa6516aa12e5d8f79b9b4dd9f3cf8}{hwloc\_opencl\_get\_device\_osdev}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology 
+      \_\_hwloc\_attribute\_unused,
+00215                               cl\_device\_id device \_\_hwloc\_attribute\_unused)
+00216 \{
+00217         \hyperlink{a00238}{hwloc\_obj\_t} osdev;
+00218         \textcolor{keywordtype}{unsigned} pcidomain, pcibus, pcidevice, pcifunc;
+00219 
+00220         \textcolor{keywordflow}{if} (\hyperlink{a00218_gab89e4d20f8a353299351b41849e35ac9}{hwloc\_opencl\_get\_device\_pci\_busid}(device, &pcidomain, &pcibus,
+       &pcidevice, &pcifunc) < 0) \{
+00221                 errno = EINVAL;
+00222                 \textcolor{keywordflow}{return} NULL;
+00223         \}
+00224 
+00225         osdev = NULL;
+00226         \textcolor{keywordflow}{while} ((osdev = \hyperlink{a00204_ga8b4584c8949e2c5f1c97ba7fe92b8145}{hwloc\_get\_next\_osdev}(topology, osdev)) != NULL) \{
+00227                 \hyperlink{a00238}{hwloc\_obj\_t} pcidev = osdev->\hyperlink{a00238_adc494f6aed939992be1c55cca5822900}{parent};
+00228                 \textcolor{keywordflow}{if} (strncmp(osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}, \textcolor{stringliteral}{"opencl"}, 6))
+00229                         \textcolor{keywordflow}{continue};
+00230                 \textcolor{keywordflow}{if} (pcidev
+00231                     && pcidev->\hyperlink{a00238_acc4f0803f244867e68fe0036800be5de}{type} == \hyperlink{a00184_ggacd37bb612667dc437d66bfb175a8dc55a5d8117a54df1fbd3606ab19e42cb0ea9}{HWLOC\_OBJ\_PCI\_DEVICE}
+00232                     && pcidev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->\hyperlink{a00242_a4203d713ce0f5beaa6ee0e9bdac70828}{pcidev}.\hyperlink{a00262_a8fba44988deb98613c1505a4019a34dc}{domain} == pcidomain
+00233                     && pcidev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->\hyperlink{a00242_a4203d713ce0f5beaa6ee0e9bdac70828}{pcidev}.\hyperlink{a00262_aae99e035e8d1387d7b8768aaa8eceb0a}{bus} == pcibus
+00234                     && pcidev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->\hyperlink{a00242_a4203d713ce0f5beaa6ee0e9bdac70828}{pcidev}.\hyperlink{a00262_a3d70c84a12f7e93d14c8d47bf4fd9dc5}{dev} == pcidevice
+00235                     && pcidev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->\hyperlink{a00242_a4203d713ce0f5beaa6ee0e9bdac70828}{pcidev}.\hyperlink{a00262_a695f32df53f4ef728670bfcf31b74e0f}{func} == pcifunc)
+00236                         \textcolor{keywordflow}{return} osdev;
+00237                 \textcolor{comment}{/* if PCI are filtered out, we need a info attr to match on */}
+00238         \}
+00239 
+00240         \textcolor{keywordflow}{return} NULL;
+00241 \}
+00242 
+00246 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00247 \} \textcolor{comment}{/* extern "C" */}
+00248 \textcolor{preprocessor}{#endif}
+00249 
+00250 
+00251 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* HWLOC\_OPENCL\_H */}\textcolor{preprocessor}{}
+\end{DoxyCode}

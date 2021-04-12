@@ -1,0 +1,155 @@
+\hypertarget{a00212}{}\section{Managing memory attributes}
+\label{a00212}\index{Managing memory attributes@{Managing memory attributes}}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{a00212_ga78aceb4cac4d614c0f5e82dbfeb779e5}{hwloc\+\_\+memattr\+\_\+flag\+\_\+e} \{ \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5af29e65444a6ed00f5cc246df06f65815}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+H\+I\+G\+H\+E\+R\+\_\+\+F\+I\+R\+ST} = (1\+UL$<$$<$0), 
+\hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9601b5b0e1e68635e7e9901f28bd93bf}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+W\+E\+R\+\_\+\+F\+I\+R\+ST} = (1\+UL$<$$<$1), 
+\hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR} = (1\+UL$<$$<$2)
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{a00212_ga5300e9be1abdea2e00c18492148aecd0}{hwloc\+\_\+memattr\+\_\+get\+\_\+name} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t} attribute, const char $\ast$$\ast$name)
+\item 
+int \hyperlink{a00212_ga4c62b626085adeaffb233e5f2a03a5eb}{hwloc\+\_\+memattr\+\_\+get\+\_\+flags} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t} attribute, unsigned long $\ast$flags)
+\item 
+int \hyperlink{a00212_ga770657d1e44b09e93e09f623936c1e5f}{hwloc\+\_\+memattr\+\_\+register} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, const char $\ast$name, unsigned long flags, \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t} $\ast$id)
+\item 
+int \hyperlink{a00212_ga960529c08b25cf15825e0f72ecceb504}{hwloc\+\_\+memattr\+\_\+set\+\_\+value} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t} attribute, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} target\+\_\+node, struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$initiator, unsigned long flags, hwloc\+\_\+uint64\+\_\+t value)
+\item 
+int \hyperlink{a00212_ga3177cc0ab47e4dd1fa69ca1df4c7cb1a}{hwloc\+\_\+memattr\+\_\+get\+\_\+targets} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t} attribute, struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$initiator, unsigned long flags, unsigned $\ast$nrp, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} $\ast$targets, hwloc\+\_\+uint64\+\_\+t $\ast$values)
+\item 
+int \hyperlink{a00212_ga049aaa860dcbbf0792f0fd4251a99ec0}{hwloc\+\_\+memattr\+\_\+get\+\_\+initiators} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t} attribute, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} target\+\_\+node, unsigned long flags, unsigned $\ast$nr, struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$initiators, hwloc\+\_\+uint64\+\_\+t $\ast$values)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{a00212_ga78aceb4cac4d614c0f5e82dbfeb779e5}\label{a00212_ga78aceb4cac4d614c0f5e82dbfeb779e5}} 
+\index{Managing memory attributes@{Managing memory attributes}!hwloc\+\_\+memattr\+\_\+flag\+\_\+e@{hwloc\+\_\+memattr\+\_\+flag\+\_\+e}}
+\index{hwloc\+\_\+memattr\+\_\+flag\+\_\+e@{hwloc\+\_\+memattr\+\_\+flag\+\_\+e}!Managing memory attributes@{Managing memory attributes}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+flag\+\_\+e}{hwloc\_memattr\_flag\_e}}
+{\footnotesize\ttfamily enum \hyperlink{a00212_ga78aceb4cac4d614c0f5e82dbfeb779e5}{hwloc\+\_\+memattr\+\_\+flag\+\_\+e}}
+
+
+
+Memory attribute flags. Given to \hyperlink{a00212_ga770657d1e44b09e93e09f623936c1e5f}{hwloc\+\_\+memattr\+\_\+register()} and returned by \hyperlink{a00212_ga4c62b626085adeaffb233e5f2a03a5eb}{hwloc\+\_\+memattr\+\_\+get\+\_\+flags()}. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+H\+I\+G\+H\+E\+R\+\_\+\+F\+I\+R\+ST@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+H\+I\+G\+H\+E\+R\+\_\+\+F\+I\+R\+ST}!Managing memory attributes@{Managing memory attributes}}\index{Managing memory attributes@{Managing memory attributes}!H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+H\+I\+G\+H\+E\+R\+\_\+\+F\+I\+R\+ST@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+H\+I\+G\+H\+E\+R\+\_\+\+F\+I\+R\+ST}}}\mbox{\Hypertarget{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5af29e65444a6ed00f5cc246df06f65815}\label{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5af29e65444a6ed00f5cc246df06f65815}} 
+H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+H\+I\+G\+H\+E\+R\+\_\+\+F\+I\+R\+ST&The best nodes for this memory attribute are those with the higher values. For instance Bandwidth. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+W\+E\+R\+\_\+\+F\+I\+R\+ST@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+W\+E\+R\+\_\+\+F\+I\+R\+ST}!Managing memory attributes@{Managing memory attributes}}\index{Managing memory attributes@{Managing memory attributes}!H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+W\+E\+R\+\_\+\+F\+I\+R\+ST@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+W\+E\+R\+\_\+\+F\+I\+R\+ST}}}\mbox{\Hypertarget{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9601b5b0e1e68635e7e9901f28bd93bf}\label{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9601b5b0e1e68635e7e9901f28bd93bf}} 
+H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+W\+E\+R\+\_\+\+F\+I\+R\+ST&The best nodes for this memory attribute are those with the lower values. For instance Latency. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR}!Managing memory attributes@{Managing memory attributes}}\index{Managing memory attributes@{Managing memory attributes}!H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR}}}\mbox{\Hypertarget{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}\label{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}} 
+H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR&The value returned for this memory attribute depends on the given initiator. For instance Bandwidth and Latency, but not Capacity. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00212_ga4c62b626085adeaffb233e5f2a03a5eb}\label{a00212_ga4c62b626085adeaffb233e5f2a03a5eb}} 
+\index{Managing memory attributes@{Managing memory attributes}!hwloc\+\_\+memattr\+\_\+get\+\_\+flags@{hwloc\+\_\+memattr\+\_\+get\+\_\+flags}}
+\index{hwloc\+\_\+memattr\+\_\+get\+\_\+flags@{hwloc\+\_\+memattr\+\_\+get\+\_\+flags}!Managing memory attributes@{Managing memory attributes}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+get\+\_\+flags()}{hwloc\_memattr\_get\_flags()}}
+{\footnotesize\ttfamily int hwloc\+\_\+memattr\+\_\+get\+\_\+flags (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t}}]{attribute,  }\item[{unsigned long $\ast$}]{flags }\end{DoxyParamCaption})}
+
+
+
+Return the flags of the given attribute. 
+
+Flags are a OR\textquotesingle{}ed set of \hyperlink{a00212_ga78aceb4cac4d614c0f5e82dbfeb779e5}{hwloc\+\_\+memattr\+\_\+flag\+\_\+e}. \mbox{\Hypertarget{a00212_ga049aaa860dcbbf0792f0fd4251a99ec0}\label{a00212_ga049aaa860dcbbf0792f0fd4251a99ec0}} 
+\index{Managing memory attributes@{Managing memory attributes}!hwloc\+\_\+memattr\+\_\+get\+\_\+initiators@{hwloc\+\_\+memattr\+\_\+get\+\_\+initiators}}
+\index{hwloc\+\_\+memattr\+\_\+get\+\_\+initiators@{hwloc\+\_\+memattr\+\_\+get\+\_\+initiators}!Managing memory attributes@{Managing memory attributes}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+get\+\_\+initiators()}{hwloc\_memattr\_get\_initiators()}}
+{\footnotesize\ttfamily int hwloc\+\_\+memattr\+\_\+get\+\_\+initiators (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t}}]{attribute,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{target\+\_\+node,  }\item[{unsigned long}]{flags,  }\item[{unsigned $\ast$}]{nr,  }\item[{struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$}]{initiators,  }\item[{hwloc\+\_\+uint64\+\_\+t $\ast$}]{values }\end{DoxyParamCaption})}
+
+
+
+Return the initiators that have values for a given attribute for a specific target N\+U\+MA node. 
+
+Return initiators for the given attribute and target node in the {\ttfamily initiators} array. If {\ttfamily values} is not {\ttfamily N\+U\+LL}, the corresponding attribute values are stored in the array it points to.
+
+On input, {\ttfamily nr} points to the number of initiators that may be stored in the array {\ttfamily initiators} (and {\ttfamily values}). On output, {\ttfamily nr} points to the number of initiators (and values) that were actually found, even if some of them couldn\textquotesingle{}t be stored in the array. Initiators that couldn\textquotesingle{}t be stored are ignored, but the function still returns success ({\ttfamily 0}). The caller may find out by comparing the value pointed by {\ttfamily nr} before and after the function call.
+
+The returned initiators should not be modified or freed, they belong to the topology.
+
+{\ttfamily flags} must be {\ttfamily 0} for now.
+
+If the attribute does not relate to a specific initiator (it does not have the flag \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR}), no initiator is returned.
+
+\begin{DoxyNote}{Note}
+This function is meant for tools and debugging (listing internal information) rather than for application queries. Applications should rather select useful N\+U\+MA nodes with \hyperlink{a00211_ga569e80c5be7ef27649b0ef5aa52ffcdc}{hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs()} and then look at their attribute values for some relevant initiators. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00212_ga5300e9be1abdea2e00c18492148aecd0}\label{a00212_ga5300e9be1abdea2e00c18492148aecd0}} 
+\index{Managing memory attributes@{Managing memory attributes}!hwloc\+\_\+memattr\+\_\+get\+\_\+name@{hwloc\+\_\+memattr\+\_\+get\+\_\+name}}
+\index{hwloc\+\_\+memattr\+\_\+get\+\_\+name@{hwloc\+\_\+memattr\+\_\+get\+\_\+name}!Managing memory attributes@{Managing memory attributes}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+get\+\_\+name()}{hwloc\_memattr\_get\_name()}}
+{\footnotesize\ttfamily int hwloc\+\_\+memattr\+\_\+get\+\_\+name (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t}}]{attribute,  }\item[{const char $\ast$$\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Return the name of a memory attribute. 
+
+\mbox{\Hypertarget{a00212_ga3177cc0ab47e4dd1fa69ca1df4c7cb1a}\label{a00212_ga3177cc0ab47e4dd1fa69ca1df4c7cb1a}} 
+\index{Managing memory attributes@{Managing memory attributes}!hwloc\+\_\+memattr\+\_\+get\+\_\+targets@{hwloc\+\_\+memattr\+\_\+get\+\_\+targets}}
+\index{hwloc\+\_\+memattr\+\_\+get\+\_\+targets@{hwloc\+\_\+memattr\+\_\+get\+\_\+targets}!Managing memory attributes@{Managing memory attributes}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+get\+\_\+targets()}{hwloc\_memattr\_get\_targets()}}
+{\footnotesize\ttfamily int hwloc\+\_\+memattr\+\_\+get\+\_\+targets (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t}}]{attribute,  }\item[{struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$}]{initiator,  }\item[{unsigned long}]{flags,  }\item[{unsigned $\ast$}]{nrp,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} $\ast$}]{targets,  }\item[{hwloc\+\_\+uint64\+\_\+t $\ast$}]{values }\end{DoxyParamCaption})}
+
+
+
+Return the target N\+U\+MA nodes that have some values for a given attribute. 
+
+Return targets for the given attribute in the {\ttfamily targets} array (for the given initiator if any). If {\ttfamily values} is not {\ttfamily N\+U\+LL}, the corresponding attribute values are stored in the array it points to.
+
+On input, {\ttfamily nr} points to the number of targets that may be stored in the array {\ttfamily targets} (and {\ttfamily values}). On output, {\ttfamily nr} points to the number of targets (and values) that were actually found, even if some of them couldn\textquotesingle{}t be stored in the array. Targets that couldn\textquotesingle{}t be stored are ignored, but the function still returns success ({\ttfamily 0}). The caller may find out by comparing the value pointed by {\ttfamily nr} before and after the function call.
+
+The returned targets should not be modified or freed, they belong to the topology.
+
+Argument {\ttfamily initiator} is ignored if the attribute does not relate to a specific initiator (it does not have the flag \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR}). Otherwise {\ttfamily initiator} may be non {\ttfamily N\+U\+LL} to report only targets that have a value for that initiator.
+
+{\ttfamily flags} must be {\ttfamily 0} for now.
+
+\begin{DoxyNote}{Note}
+This function is meant for tools and debugging (listing internal information) rather than for application queries. Applications should rather select useful N\+U\+MA nodes with \hyperlink{a00211_ga569e80c5be7ef27649b0ef5aa52ffcdc}{hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs()} and then look at their attribute values.
+
+The initiator {\ttfamily initiator} should be of type \hyperlink{a00211_gga33099ba58f607fc70925da3777688586a7135318a86361ad75fd1648e6bf6d174}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+P\+U\+S\+ET} when refering to accesses performed by C\+PU cores. \hyperlink{a00211_gga33099ba58f607fc70925da3777688586af637c39b23d48cff15ddb008644aaa84}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+O\+B\+J\+E\+CT} is currently unused internally by hwloc, but users may for instance use it to provide custom information about host memory accesses performed by G\+P\+Us. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00212_ga770657d1e44b09e93e09f623936c1e5f}\label{a00212_ga770657d1e44b09e93e09f623936c1e5f}} 
+\index{Managing memory attributes@{Managing memory attributes}!hwloc\+\_\+memattr\+\_\+register@{hwloc\+\_\+memattr\+\_\+register}}
+\index{hwloc\+\_\+memattr\+\_\+register@{hwloc\+\_\+memattr\+\_\+register}!Managing memory attributes@{Managing memory attributes}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+register()}{hwloc\_memattr\_register()}}
+{\footnotesize\ttfamily int hwloc\+\_\+memattr\+\_\+register (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{const char $\ast$}]{name,  }\item[{unsigned long}]{flags,  }\item[{\hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t} $\ast$}]{id }\end{DoxyParamCaption})}
+
+
+
+Register a new memory attribute. 
+
+Add a specific memory attribute that is not defined in \hyperlink{a00211_gab4bde745db676fc2ea4b47011cd9a80e}{hwloc\+\_\+memattr\+\_\+id\+\_\+e}. Flags are a OR\textquotesingle{}ed set of \hyperlink{a00212_ga78aceb4cac4d614c0f5e82dbfeb779e5}{hwloc\+\_\+memattr\+\_\+flag\+\_\+e}. It must contain at least one of \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5af29e65444a6ed00f5cc246df06f65815}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+H\+I\+G\+H\+E\+R\+\_\+\+F\+I\+R\+ST} or \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9601b5b0e1e68635e7e9901f28bd93bf}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+W\+E\+R\+\_\+\+F\+I\+R\+ST}. \mbox{\Hypertarget{a00212_ga960529c08b25cf15825e0f72ecceb504}\label{a00212_ga960529c08b25cf15825e0f72ecceb504}} 
+\index{Managing memory attributes@{Managing memory attributes}!hwloc\+\_\+memattr\+\_\+set\+\_\+value@{hwloc\+\_\+memattr\+\_\+set\+\_\+value}}
+\index{hwloc\+\_\+memattr\+\_\+set\+\_\+value@{hwloc\+\_\+memattr\+\_\+set\+\_\+value}!Managing memory attributes@{Managing memory attributes}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+set\+\_\+value()}{hwloc\_memattr\_set\_value()}}
+{\footnotesize\ttfamily int hwloc\+\_\+memattr\+\_\+set\+\_\+value (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t}}]{attribute,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{target\+\_\+node,  }\item[{struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$}]{initiator,  }\item[{unsigned long}]{flags,  }\item[{hwloc\+\_\+uint64\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Set an attribute value for a specific target N\+U\+MA node. 
+
+If the attribute does not relate to a specific initiator (it does not have the flag \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR}), location {\ttfamily initiator} is ignored and may be {\ttfamily N\+U\+LL}.
+
+The initiator will be copied into the topology, the caller should free anything allocated to store the initiator, for instance the cpuset.
+
+{\ttfamily flags} must be {\ttfamily 0} for now.
+
+\begin{DoxyNote}{Note}
+The initiator {\ttfamily initiator} should be of type \hyperlink{a00211_gga33099ba58f607fc70925da3777688586a7135318a86361ad75fd1648e6bf6d174}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+P\+U\+S\+ET} when refering to accesses performed by C\+PU cores. \hyperlink{a00211_gga33099ba58f607fc70925da3777688586af637c39b23d48cff15ddb008644aaa84}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+O\+B\+J\+E\+CT} is currently unused internally by hwloc, but users may for instance use it to provide custom information about host memory accesses performed by G\+P\+Us. 
+\end{DoxyNote}

@@ -1,0 +1,92 @@
+\hypertarget{a00290}{}\section{hwloc\+\_\+topology\+\_\+discovery\+\_\+support Struct Reference}
+\label{a00290}\index{hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}}
+
+
+{\ttfamily \#include $<$hwloc.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{a00290_ad7bb4ecf7a82f5a04fc632e9592ad3ab}{pu}
+\item 
+unsigned char \hyperlink{a00290_a955f96066cb9e4cd34e2a3710ad43e80}{numa}
+\item 
+unsigned char \hyperlink{a00290_af193eb858e40e12ef4923f5ed0e1f11a}{numa\+\_\+memory}
+\item 
+unsigned char \hyperlink{a00290_af3c97b28781a2972cf8eaaf94a6617da}{disallowed\+\_\+pu}
+\item 
+unsigned char \hyperlink{a00290_a970e65235873bcdb9669a9805161ce03}{disallowed\+\_\+numa}
+\item 
+unsigned char \hyperlink{a00290_aba80d6f9c15e2395f9ed61db9ff3b75d}{cpukind\+\_\+efficiency}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Flags describing actual discovery support for this topology. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{a00290_aba80d6f9c15e2395f9ed61db9ff3b75d}\label{a00290_aba80d6f9c15e2395f9ed61db9ff3b75d}} 
+\index{hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}!cpukind\+\_\+efficiency@{cpukind\+\_\+efficiency}}
+\index{cpukind\+\_\+efficiency@{cpukind\+\_\+efficiency}!hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}}
+\subsubsection{\texorpdfstring{cpukind\+\_\+efficiency}{cpukind\_efficiency}}
+{\footnotesize\ttfamily unsigned char hwloc\+\_\+topology\+\_\+discovery\+\_\+support\+::cpukind\+\_\+efficiency}
+
+
+
+Detecting the efficiency of C\+PU kinds is supported, see \hyperlink{a00213}{Kinds of C\+PU cores}. 
+
+\mbox{\Hypertarget{a00290_a970e65235873bcdb9669a9805161ce03}\label{a00290_a970e65235873bcdb9669a9805161ce03}} 
+\index{hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}!disallowed\+\_\+numa@{disallowed\+\_\+numa}}
+\index{disallowed\+\_\+numa@{disallowed\+\_\+numa}!hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}}
+\subsubsection{\texorpdfstring{disallowed\+\_\+numa}{disallowed\_numa}}
+{\footnotesize\ttfamily unsigned char hwloc\+\_\+topology\+\_\+discovery\+\_\+support\+::disallowed\+\_\+numa}
+
+
+
+Detecting and identifying N\+U\+MA nodes that are not available to the current process is supported. 
+
+\mbox{\Hypertarget{a00290_af3c97b28781a2972cf8eaaf94a6617da}\label{a00290_af3c97b28781a2972cf8eaaf94a6617da}} 
+\index{hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}!disallowed\+\_\+pu@{disallowed\+\_\+pu}}
+\index{disallowed\+\_\+pu@{disallowed\+\_\+pu}!hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}}
+\subsubsection{\texorpdfstring{disallowed\+\_\+pu}{disallowed\_pu}}
+{\footnotesize\ttfamily unsigned char hwloc\+\_\+topology\+\_\+discovery\+\_\+support\+::disallowed\+\_\+pu}
+
+
+
+Detecting and identifying PU objects that are not available to the current process is supported. 
+
+\mbox{\Hypertarget{a00290_a955f96066cb9e4cd34e2a3710ad43e80}\label{a00290_a955f96066cb9e4cd34e2a3710ad43e80}} 
+\index{hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}!numa@{numa}}
+\index{numa@{numa}!hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}}
+\subsubsection{\texorpdfstring{numa}{numa}}
+{\footnotesize\ttfamily unsigned char hwloc\+\_\+topology\+\_\+discovery\+\_\+support\+::numa}
+
+
+
+Detecting the number of N\+U\+MA nodes is supported. 
+
+\mbox{\Hypertarget{a00290_af193eb858e40e12ef4923f5ed0e1f11a}\label{a00290_af193eb858e40e12ef4923f5ed0e1f11a}} 
+\index{hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}!numa\+\_\+memory@{numa\+\_\+memory}}
+\index{numa\+\_\+memory@{numa\+\_\+memory}!hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}}
+\subsubsection{\texorpdfstring{numa\+\_\+memory}{numa\_memory}}
+{\footnotesize\ttfamily unsigned char hwloc\+\_\+topology\+\_\+discovery\+\_\+support\+::numa\+\_\+memory}
+
+
+
+Detecting the amount of memory in N\+U\+MA nodes is supported. 
+
+\mbox{\Hypertarget{a00290_ad7bb4ecf7a82f5a04fc632e9592ad3ab}\label{a00290_ad7bb4ecf7a82f5a04fc632e9592ad3ab}} 
+\index{hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}!pu@{pu}}
+\index{pu@{pu}!hwloc\+\_\+topology\+\_\+discovery\+\_\+support@{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}}
+\subsubsection{\texorpdfstring{pu}{pu}}
+{\footnotesize\ttfamily unsigned char hwloc\+\_\+topology\+\_\+discovery\+\_\+support\+::pu}
+
+
+
+Detecting the number of PU objects is supported. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+hwloc.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,2055 @@
+\begin{theindex}
+
+  \item {A\+P\+I version}, \hyperpage{87}
+    \subitem {H\+W\+L\+O\+C\+\_\+\+A\+P\+I\+\_\+\+V\+E\+R\+S\+I\+ON}, 
+		\hyperpage{87}
+    \subitem {H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+A\+BI}, 
+		\hyperpage{87}
+    \subitem {hwloc\+\_\+get\+\_\+api\+\_\+version}, \hyperpage{88}
+  \item {abi}
+    \subitem {hwloc\+\_\+component}, \hyperpage{254}
+  \item {Add or remove distances between objects}, \hyperpage{188}
+    \subitem {hwloc\+\_\+distances\+\_\+add}, \hyperpage{188}
+    \subitem {hwloc\+\_\+distances\+\_\+add\+\_\+flag\+\_\+e}, 
+		\hyperpage{188}
+    \subitem {hwloc\+\_\+distances\+\_\+release\+\_\+remove}, 
+		\hyperpage{189}
+    \subitem {hwloc\+\_\+distances\+\_\+remove}, \hyperpage{189}
+    \subitem {hwloc\+\_\+distances\+\_\+remove\+\_\+by\+\_\+depth}, 
+		\hyperpage{189}
+    \subitem {hwloc\+\_\+distances\+\_\+remove\+\_\+by\+\_\+type}, 
+		\hyperpage{189}
+  \item {alloc\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{289}
+  \item {arity}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{267}
+  \item {associativity}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+cache\+\_\+attr\+\_\+s}, 
+		\hyperpage{251}
+  \item {attr}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{267}
+
+  \indexspace
+
+  \item {bind\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{289}
+  \item {bridge}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u}, \hyperpage{274}
+  \item {bus}
+    \subitem {hwloc\+\_\+cl\+\_\+device\+\_\+topology\+\_\+amd}, 
+		\hyperpage{252}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+pcidev\+\_\+attr\+\_\+s}, 
+		\hyperpage{276}
+
+  \indexspace
+
+  \item {C\+P\+U and node sets of entire topologies}, \hyperpage{154}
+    \subitem {hwloc\+\_\+topology\+\_\+get\+\_\+allowed\+\_\+cpuset}, 
+		\hyperpage{154}
+    \subitem {hwloc\+\_\+topology\+\_\+get\+\_\+allowed\+\_\+nodeset}, 
+		\hyperpage{154}
+    \subitem {hwloc\+\_\+topology\+\_\+get\+\_\+complete\+\_\+cpuset}, 
+		\hyperpage{154}
+    \subitem {hwloc\+\_\+topology\+\_\+get\+\_\+complete\+\_\+nodeset}, 
+		\hyperpage{155}
+    \subitem {hwloc\+\_\+topology\+\_\+get\+\_\+topology\+\_\+cpuset}, 
+		\hyperpage{155}
+    \subitem {hwloc\+\_\+topology\+\_\+get\+\_\+topology\+\_\+nodeset}, 
+		\hyperpage{155}
+  \item {C\+P\+U binding}, \hyperpage{108}
+    \subitem {hwloc\+\_\+cpubind\+\_\+flags\+\_\+t}, \hyperpage{109}
+    \subitem {hwloc\+\_\+get\+\_\+cpubind}, \hyperpage{110}
+    \subitem {hwloc\+\_\+get\+\_\+last\+\_\+cpu\+\_\+location}, 
+		\hyperpage{110}
+    \subitem {hwloc\+\_\+get\+\_\+proc\+\_\+cpubind}, \hyperpage{110}
+    \subitem {hwloc\+\_\+get\+\_\+proc\+\_\+last\+\_\+cpu\+\_\+location}, 
+		\hyperpage{110}
+    \subitem {hwloc\+\_\+get\+\_\+thread\+\_\+cpubind}, \hyperpage{111}
+    \subitem {hwloc\+\_\+set\+\_\+cpubind}, \hyperpage{111}
+    \subitem {hwloc\+\_\+set\+\_\+proc\+\_\+cpubind}, \hyperpage{111}
+    \subitem {hwloc\+\_\+set\+\_\+thread\+\_\+cpubind}, \hyperpage{112}
+  \item {cache}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u}, \hyperpage{274}
+  \item {Changing the Source of Topology Discovery}, \hyperpage{122}
+    \subitem {hwloc\+\_\+topology\+\_\+components\+\_\+flag\+\_\+e}, 
+		\hyperpage{122}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+components}, 
+		\hyperpage{122}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+pid}, \hyperpage{123}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+synthetic}, 
+		\hyperpage{123}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+xml}, \hyperpage{123}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer}, 
+		\hyperpage{124}
+  \item {children}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{267}
+  \item {class\+\_\+id}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+pcidev\+\_\+attr\+\_\+s}, 
+		\hyperpage{276}
+  \item {Comparing memory node attributes for finding where to allocate on}, 
+		\hyperpage{190}
+    \subitem {hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs}, 
+		\hyperpage{192}
+    \subitem {hwloc\+\_\+local\+\_\+numanode\+\_\+flag\+\_\+e}, 
+		\hyperpage{191}
+    \subitem {hwloc\+\_\+location\+\_\+type\+\_\+e}, \hyperpage{191}
+    \subitem {hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+initiator}, 
+		\hyperpage{193}
+    \subitem {hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+target}, 
+		\hyperpage{193}
+    \subitem {hwloc\+\_\+memattr\+\_\+get\+\_\+by\+\_\+name}, 
+		\hyperpage{194}
+    \subitem {hwloc\+\_\+memattr\+\_\+get\+\_\+value}, \hyperpage{194}
+    \subitem {hwloc\+\_\+memattr\+\_\+id\+\_\+e}, \hyperpage{192}
+    \subitem {hwloc\+\_\+memattr\+\_\+id\+\_\+t}, \hyperpage{191}
+  \item {complete\+\_\+cpuset}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{267}
+  \item {complete\+\_\+nodeset}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{267}
+  \item {Components and Plugins\+: Core functions to be used by components}, 
+		\hyperpage{238}
+    \subitem {hwloc\+\_\+\+\_\+insert\+\_\+object\+\_\+by\+\_\+cpuset}, 
+		\hyperpage{238}
+    \subitem {hwloc\+\_\+alloc\+\_\+setup\+\_\+object}, \hyperpage{238}
+    \subitem {hwloc\+\_\+hide\+\_\+errors}, \hyperpage{239}
+    \subitem {hwloc\+\_\+insert\+\_\+object\+\_\+by\+\_\+parent}, 
+		\hyperpage{239}
+    \subitem {hwloc\+\_\+obj\+\_\+add\+\_\+children\+\_\+sets}, 
+		\hyperpage{239}
+    \subitem {hwloc\+\_\+plugin\+\_\+check\+\_\+namespace}, 
+		\hyperpage{239}
+    \subitem {hwloc\+\_\+topology\+\_\+reconnect}, \hyperpage{240}
+  \item {Components and Plugins\+: Discovery backends}, \hyperpage{235}
+    \subitem {hwloc\+\_\+backend\+\_\+alloc}, \hyperpage{236}
+    \subitem {hwloc\+\_\+backend\+\_\+enable}, \hyperpage{236}
+    \subitem {hwloc\+\_\+disc\+\_\+phase\+\_\+e}, \hyperpage{235}
+    \subitem {hwloc\+\_\+disc\+\_\+phase\+\_\+t}, \hyperpage{235}
+    \subitem {hwloc\+\_\+disc\+\_\+status\+\_\+flag\+\_\+e}, 
+		\hyperpage{236}
+  \item {Components and Plugins\+: Discovery components}, 
+		\hyperpage{234}
+  \item {Components and Plugins\+: Filtering objects}, \hyperpage{241}
+    \subitem {hwloc\+\_\+filter\+\_\+check\+\_\+keep\+\_\+object}, 
+		\hyperpage{241}
+    \subitem {hwloc\+\_\+filter\+\_\+check\+\_\+keep\+\_\+object\+\_\+type}, 
+		\hyperpage{241}
+    \subitem {hwloc\+\_\+filter\+\_\+check\+\_\+osdev\+\_\+subtype\+\_\+important}, 
+		\hyperpage{241}
+    \subitem {hwloc\+\_\+filter\+\_\+check\+\_\+pcidev\+\_\+subtype\+\_\+important}, 
+		\hyperpage{242}
+  \item {Components and Plugins\+: finding P\+C\+I objects during other discoveries}, 
+		\hyperpage{245}
+    \subitem {hwloc\+\_\+pci\+\_\+find\+\_\+parent\+\_\+by\+\_\+busid}, 
+		\hyperpage{245}
+  \item {Components and Plugins\+: Generic components}, \hyperpage{237}
+    \subitem {hwloc\+\_\+component\+\_\+type\+\_\+e}, \hyperpage{237}
+    \subitem {hwloc\+\_\+component\+\_\+type\+\_\+t}, \hyperpage{237}
+  \item {Components and Plugins\+: helpers for P\+C\+I discovery}, 
+		\hyperpage{243}
+    \subitem {hwloc\+\_\+pcidisc\+\_\+check\+\_\+bridge\+\_\+type}, 
+		\hyperpage{243}
+    \subitem {hwloc\+\_\+pcidisc\+\_\+find\+\_\+bridge\+\_\+buses}, 
+		\hyperpage{243}
+    \subitem {hwloc\+\_\+pcidisc\+\_\+find\+\_\+cap}, \hyperpage{243}
+    \subitem {hwloc\+\_\+pcidisc\+\_\+find\+\_\+linkspeed}, 
+		\hyperpage{244}
+    \subitem {hwloc\+\_\+pcidisc\+\_\+tree\+\_\+attach}, 
+		\hyperpage{244}
+    \subitem {hwloc\+\_\+pcidisc\+\_\+tree\+\_\+insert\+\_\+by\+\_\+busid}, 
+		\hyperpage{244}
+  \item {Consulting and Adding Key-\/\+Value Info Attributes}, 
+		\hyperpage{107}
+    \subitem {hwloc\+\_\+obj\+\_\+add\+\_\+info}, \hyperpage{107}
+    \subitem {hwloc\+\_\+obj\+\_\+get\+\_\+info\+\_\+by\+\_\+name}, 
+		\hyperpage{107}
+  \item {Converting between C\+P\+U sets and node sets}, 
+		\hyperpage{157}
+    \subitem {hwloc\+\_\+cpuset\+\_\+from\+\_\+nodeset}, 
+		\hyperpage{157}
+    \subitem {hwloc\+\_\+cpuset\+\_\+to\+\_\+nodeset}, \hyperpage{157}
+  \item {Converting between Object Types and Attributes, and Strings}, 
+		\hyperpage{104}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+snprintf}, \hyperpage{104}
+    \subitem {hwloc\+\_\+obj\+\_\+type\+\_\+snprintf}, \hyperpage{104}
+    \subitem {hwloc\+\_\+obj\+\_\+type\+\_\+string}, \hyperpage{105}
+    \subitem {hwloc\+\_\+type\+\_\+sscanf}, \hyperpage{105}
+    \subitem {hwloc\+\_\+type\+\_\+sscanf\+\_\+as\+\_\+depth}, 
+		\hyperpage{106}
+  \item {count}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+numanode\+\_\+attr\+\_\+s\+::hwloc\+\_\+memory\+\_\+page\+\_\+type\+\_\+s}, 
+		\hyperpage{264}
+  \item {cpubind}
+    \subitem {hwloc\+\_\+topology\+\_\+support}, \hyperpage{292}
+  \item {cpukind\+\_\+efficiency}
+    \subitem {hwloc\+\_\+topology\+\_\+discovery\+\_\+support}, 
+		\hyperpage{287}
+  \item {cpuset}
+    \subitem {hwloc\+\_\+location\+::hwloc\+\_\+location\+\_\+u}, 
+		\hyperpage{263}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{268}
+
+  \indexspace
+
+  \item {data}
+    \subitem {hwloc\+\_\+cl\+\_\+device\+\_\+topology\+\_\+amd}, 
+		\hyperpage{253}
+    \subitem {hwloc\+\_\+component}, \hyperpage{254}
+  \item {depth}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{268}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+bridge\+\_\+attr\+\_\+s}, 
+		\hyperpage{249}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+cache\+\_\+attr\+\_\+s}, 
+		\hyperpage{251}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+group\+\_\+attr\+\_\+s}, 
+		\hyperpage{260}
+  \item {dev}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+pcidev\+\_\+attr\+\_\+s}, 
+		\hyperpage{276}
+  \item {device}
+    \subitem {hwloc\+\_\+cl\+\_\+device\+\_\+topology\+\_\+amd}, 
+		\hyperpage{253}
+  \item {device\+\_\+id}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+pcidev\+\_\+attr\+\_\+s}, 
+		\hyperpage{276}
+  \item {diff}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+s}, 
+		\hyperpage{281}
+  \item {disable}
+    \subitem {hwloc\+\_\+backend}, \hyperpage{247}
+  \item {disallowed\+\_\+numa}
+    \subitem {hwloc\+\_\+topology\+\_\+discovery\+\_\+support}, 
+		\hyperpage{288}
+  \item {disallowed\+\_\+pu}
+    \subitem {hwloc\+\_\+topology\+\_\+discovery\+\_\+support}, 
+		\hyperpage{288}
+  \item {discover}
+    \subitem {hwloc\+\_\+backend}, \hyperpage{248}
+  \item {discovery}
+    \subitem {hwloc\+\_\+topology\+\_\+support}, \hyperpage{292}
+  \item {Distributing items over a topology}, \hyperpage{152}
+    \subitem {hwloc\+\_\+distrib}, \hyperpage{152}
+    \subitem {hwloc\+\_\+distrib\+\_\+flags\+\_\+e}, \hyperpage{152}
+  \item {domain}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+bridge\+\_\+attr\+\_\+s}, 
+		\hyperpage{249}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+pcidev\+\_\+attr\+\_\+s}, 
+		\hyperpage{276}
+  \item {dont\+\_\+merge}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+group\+\_\+attr\+\_\+s}, 
+		\hyperpage{260}
+  \item {downstream}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+bridge\+\_\+attr\+\_\+s}, 
+		\hyperpage{250}
+  \item {downstream\+\_\+type}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+bridge\+\_\+attr\+\_\+s}, 
+		\hyperpage{250}
+
+  \indexspace
+
+  \item {enabled\+\_\+by\+\_\+default}
+    \subitem {hwloc\+\_\+disc\+\_\+component}, \hyperpage{256}
+  \item {excluded\+\_\+phases}
+    \subitem {hwloc\+\_\+disc\+\_\+component}, \hyperpage{256}
+    \subitem {hwloc\+\_\+disc\+\_\+status}, \hyperpage{258}
+  \item {Exporting Topologies to Synthetic}, \hyperpage{181}
+    \subitem {hwloc\+\_\+topology\+\_\+export\+\_\+synthetic}, 
+		\hyperpage{182}
+    \subitem {hwloc\+\_\+topology\+\_\+export\+\_\+synthetic\+\_\+flags\+\_\+e}, 
+		\hyperpage{181}
+  \item {Exporting Topologies to X\+ML}, \hyperpage{177}
+    \subitem {hwloc\+\_\+export\+\_\+obj\+\_\+userdata}, 
+		\hyperpage{177}
+    \subitem {hwloc\+\_\+export\+\_\+obj\+\_\+userdata\+\_\+base64}, 
+		\hyperpage{178}
+    \subitem {hwloc\+\_\+free\+\_\+xmlbuffer}, \hyperpage{178}
+    \subitem {hwloc\+\_\+topology\+\_\+export\+\_\+xml}, 
+		\hyperpage{178}
+    \subitem {hwloc\+\_\+topology\+\_\+export\+\_\+xml\+\_\+flags\+\_\+e}, 
+		\hyperpage{177}
+    \subitem {hwloc\+\_\+topology\+\_\+export\+\_\+xmlbuffer}, 
+		\hyperpage{179}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback}, 
+		\hyperpage{180}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+import\+\_\+callback}, 
+		\hyperpage{180}
+
+  \indexspace
+
+  \item {finalize}
+    \subitem {hwloc\+\_\+component}, \hyperpage{254}
+  \item {Finding I/\+O objects}, \hyperpage{158}
+    \subitem {hwloc\+\_\+bridge\+\_\+covers\+\_\+pcibus}, 
+		\hyperpage{158}
+    \subitem {hwloc\+\_\+get\+\_\+next\+\_\+bridge}, \hyperpage{158}
+    \subitem {hwloc\+\_\+get\+\_\+next\+\_\+osdev}, \hyperpage{158}
+    \subitem {hwloc\+\_\+get\+\_\+next\+\_\+pcidev}, \hyperpage{158}
+    \subitem {hwloc\+\_\+get\+\_\+non\+\_\+io\+\_\+ancestor\+\_\+obj}, 
+		\hyperpage{159}
+    \subitem {hwloc\+\_\+get\+\_\+pcidev\+\_\+by\+\_\+busid}, 
+		\hyperpage{159}
+    \subitem {hwloc\+\_\+get\+\_\+pcidev\+\_\+by\+\_\+busidstring}, 
+		\hyperpage{159}
+  \item {Finding Objects covering at least C\+P\+U set}, 
+		\hyperpage{141}
+    \subitem {hwloc\+\_\+get\+\_\+child\+\_\+covering\+\_\+cpuset}, 
+		\hyperpage{141}
+    \subitem {hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+covering\+\_\+cpuset\+\_\+by\+\_\+depth}, 
+		\hyperpage{141}
+    \subitem {hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+covering\+\_\+cpuset\+\_\+by\+\_\+type}, 
+		\hyperpage{141}
+    \subitem {hwloc\+\_\+get\+\_\+obj\+\_\+covering\+\_\+cpuset}, 
+		\hyperpage{142}
+  \item {Finding Objects inside a C\+P\+U set}, \hyperpage{137}
+    \subitem {hwloc\+\_\+get\+\_\+first\+\_\+largest\+\_\+obj\+\_\+inside\+\_\+cpuset}, 
+		\hyperpage{137}
+    \subitem {hwloc\+\_\+get\+\_\+largest\+\_\+objs\+\_\+inside\+\_\+cpuset}, 
+		\hyperpage{137}
+    \subitem {hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth}, 
+		\hyperpage{138}
+    \subitem {hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type}, 
+		\hyperpage{138}
+    \subitem {hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth}, 
+		\hyperpage{138}
+    \subitem {hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type}, 
+		\hyperpage{139}
+    \subitem {hwloc\+\_\+get\+\_\+obj\+\_\+index\+\_\+inside\+\_\+cpuset}, 
+		\hyperpage{139}
+    \subitem {hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth}, 
+		\hyperpage{139}
+    \subitem {hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type}, 
+		\hyperpage{140}
+  \item {Finding objects, miscellaneous helpers}, \hyperpage{149}
+    \subitem {hwloc\+\_\+bitmap\+\_\+singlify\+\_\+per\+\_\+core}, 
+		\hyperpage{149}
+    \subitem {hwloc\+\_\+get\+\_\+closest\+\_\+objs}, \hyperpage{149}
+    \subitem {hwloc\+\_\+get\+\_\+numanode\+\_\+obj\+\_\+by\+\_\+os\+\_\+index}, 
+		\hyperpage{150}
+    \subitem {hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+array\+\_\+by\+\_\+type}, 
+		\hyperpage{150}
+    \subitem {hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+by\+\_\+type}, 
+		\hyperpage{150}
+    \subitem {hwloc\+\_\+get\+\_\+pu\+\_\+obj\+\_\+by\+\_\+os\+\_\+index}, 
+		\hyperpage{151}
+  \item {first\+\_\+child}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{268}
+  \item {firsttouch\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{289}
+  \item {flags}
+    \subitem {hwloc\+\_\+backend}, \hyperpage{248}
+    \subitem {hwloc\+\_\+component}, \hyperpage{255}
+    \subitem {hwloc\+\_\+disc\+\_\+status}, \hyperpage{258}
+  \item {func}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+pcidev\+\_\+attr\+\_\+s}, 
+		\hyperpage{277}
+  \item {function}
+    \subitem {hwloc\+\_\+cl\+\_\+device\+\_\+topology\+\_\+amd}, 
+		\hyperpage{253}
+
+  \indexspace
+
+  \item {generic}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u}, 
+		\hyperpage{283}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u}, \hyperpage{287}
+  \item {get\+\_\+area\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{290}
+  \item {get\+\_\+area\+\_\+memlocation}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{290}
+  \item {get\+\_\+pci\+\_\+busid\+\_\+cpuset}
+    \subitem {hwloc\+\_\+backend}, \hyperpage{248}
+  \item {get\+\_\+proc\+\_\+cpubind}
+    \subitem {hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}, 
+		\hyperpage{278}
+  \item {get\+\_\+proc\+\_\+last\+\_\+cpu\+\_\+location}
+    \subitem {hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}, 
+		\hyperpage{278}
+  \item {get\+\_\+proc\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{290}
+  \item {get\+\_\+thisproc\+\_\+cpubind}
+    \subitem {hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}, 
+		\hyperpage{278}
+  \item {get\+\_\+thisproc\+\_\+last\+\_\+cpu\+\_\+location}
+    \subitem {hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}, 
+		\hyperpage{278}
+  \item {get\+\_\+thisproc\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{290}
+  \item {get\+\_\+thisthread\+\_\+cpubind}
+    \subitem {hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}, 
+		\hyperpage{279}
+  \item {get\+\_\+thisthread\+\_\+last\+\_\+cpu\+\_\+location}
+    \subitem {hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}, 
+		\hyperpage{279}
+  \item {get\+\_\+thisthread\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{290}
+  \item {get\+\_\+thread\+\_\+cpubind}
+    \subitem {hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}, 
+		\hyperpage{279}
+  \item {gp\+\_\+index}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{269}
+  \item {group}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u}, \hyperpage{274}
+
+  \indexspace
+
+  \item {H\+W\+L\+O\+C\+\_\+\+A\+P\+I\+\_\+\+V\+E\+R\+S\+I\+ON}
+    \subitem {A\+P\+I version}, \hyperpage{87}
+  \item {H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+A\+BI}
+    \subitem {A\+P\+I version}, \hyperpage{87}
+  \item {H\+W\+L\+O\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+U\+N\+O\+R\+D\+E\+R\+ED}
+    \subitem {Object Types}, \hyperpage{90}
+  \item {Helpers for consulting distance matrices}, \hyperpage{187}
+    \subitem {hwloc\+\_\+distances\+\_\+obj\+\_\+index}, 
+		\hyperpage{187}
+    \subitem {hwloc\+\_\+distances\+\_\+obj\+\_\+pair\+\_\+values}, 
+		\hyperpage{187}
+  \item {hwloc\+\_\+\+\_\+insert\+\_\+object\+\_\+by\+\_\+cpuset}
+    \subitem {Components and Plugins\+: Core functions to be used by components}, 
+		\hyperpage{238}
+  \item {hwloc\+\_\+alloc}
+    \subitem {Memory binding}, \hyperpage{116}
+  \item {hwloc\+\_\+alloc\+\_\+membind}
+    \subitem {Memory binding}, \hyperpage{116}
+  \item {hwloc\+\_\+alloc\+\_\+membind\+\_\+policy}
+    \subitem {Memory binding}, \hyperpage{117}
+  \item {hwloc\+\_\+alloc\+\_\+setup\+\_\+object}
+    \subitem {Components and Plugins\+: Core functions to be used by components}, 
+		\hyperpage{238}
+  \item {hwloc\+\_\+allow\+\_\+flags\+\_\+e}
+    \subitem {Modifying a loaded Topology}, \hyperpage{132}
+  \item {hwloc\+\_\+backend}, \hyperpage{247}
+    \subitem {disable}, \hyperpage{247}
+    \subitem {discover}, \hyperpage{248}
+    \subitem {flags}, \hyperpage{248}
+    \subitem {get\+\_\+pci\+\_\+busid\+\_\+cpuset}, \hyperpage{248}
+    \subitem {is\+\_\+thissystem}, \hyperpage{248}
+    \subitem {phases}, \hyperpage{248}
+    \subitem {private\+\_\+data}, \hyperpage{248}
+  \item {hwloc\+\_\+backend\+\_\+alloc}
+    \subitem {Components and Plugins\+: Discovery backends}, 
+		\hyperpage{236}
+  \item {hwloc\+\_\+backend\+\_\+enable}
+    \subitem {Components and Plugins\+: Discovery backends}, 
+		\hyperpage{236}
+  \item {hwloc\+\_\+bitmap\+\_\+allbut}
+    \subitem {The bitmap A\+PI}, \hyperpage{162}
+  \item {hwloc\+\_\+bitmap\+\_\+alloc}
+    \subitem {The bitmap A\+PI}, \hyperpage{163}
+  \item {hwloc\+\_\+bitmap\+\_\+alloc\+\_\+full}
+    \subitem {The bitmap A\+PI}, \hyperpage{163}
+  \item {hwloc\+\_\+bitmap\+\_\+and}
+    \subitem {The bitmap A\+PI}, \hyperpage{163}
+  \item {hwloc\+\_\+bitmap\+\_\+andnot}
+    \subitem {The bitmap A\+PI}, \hyperpage{163}
+  \item {hwloc\+\_\+bitmap\+\_\+asprintf}
+    \subitem {The bitmap A\+PI}, \hyperpage{163}
+  \item {hwloc\+\_\+bitmap\+\_\+clr}
+    \subitem {The bitmap A\+PI}, \hyperpage{164}
+  \item {hwloc\+\_\+bitmap\+\_\+clr\+\_\+range}
+    \subitem {The bitmap A\+PI}, \hyperpage{164}
+  \item {hwloc\+\_\+bitmap\+\_\+compare}
+    \subitem {The bitmap A\+PI}, \hyperpage{164}
+  \item {hwloc\+\_\+bitmap\+\_\+compare\+\_\+first}
+    \subitem {The bitmap A\+PI}, \hyperpage{164}
+  \item {hwloc\+\_\+bitmap\+\_\+copy}
+    \subitem {The bitmap A\+PI}, \hyperpage{165}
+  \item {hwloc\+\_\+bitmap\+\_\+dup}
+    \subitem {The bitmap A\+PI}, \hyperpage{165}
+  \item {hwloc\+\_\+bitmap\+\_\+fill}
+    \subitem {The bitmap A\+PI}, \hyperpage{165}
+  \item {hwloc\+\_\+bitmap\+\_\+first}
+    \subitem {The bitmap A\+PI}, \hyperpage{165}
+  \item {hwloc\+\_\+bitmap\+\_\+first\+\_\+unset}
+    \subitem {The bitmap A\+PI}, \hyperpage{166}
+  \item {hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin}
+    \subitem {The bitmap A\+PI}, \hyperpage{161}
+  \item {hwloc\+\_\+bitmap\+\_\+foreach\+\_\+end}
+    \subitem {The bitmap A\+PI}, \hyperpage{162}
+  \item {hwloc\+\_\+bitmap\+\_\+free}
+    \subitem {The bitmap A\+PI}, \hyperpage{166}
+  \item {hwloc\+\_\+bitmap\+\_\+from\+\_\+ith\+\_\+ulong}
+    \subitem {The bitmap A\+PI}, \hyperpage{166}
+  \item {hwloc\+\_\+bitmap\+\_\+from\+\_\+ulong}
+    \subitem {The bitmap A\+PI}, \hyperpage{166}
+  \item {hwloc\+\_\+bitmap\+\_\+from\+\_\+ulongs}
+    \subitem {The bitmap A\+PI}, \hyperpage{167}
+  \item {hwloc\+\_\+bitmap\+\_\+intersects}
+    \subitem {The bitmap A\+PI}, \hyperpage{167}
+  \item {hwloc\+\_\+bitmap\+\_\+isequal}
+    \subitem {The bitmap A\+PI}, \hyperpage{167}
+  \item {hwloc\+\_\+bitmap\+\_\+isfull}
+    \subitem {The bitmap A\+PI}, \hyperpage{167}
+  \item {hwloc\+\_\+bitmap\+\_\+isincluded}
+    \subitem {The bitmap A\+PI}, \hyperpage{168}
+  \item {hwloc\+\_\+bitmap\+\_\+isset}
+    \subitem {The bitmap A\+PI}, \hyperpage{168}
+  \item {hwloc\+\_\+bitmap\+\_\+iszero}
+    \subitem {The bitmap A\+PI}, \hyperpage{168}
+  \item {hwloc\+\_\+bitmap\+\_\+last}
+    \subitem {The bitmap A\+PI}, \hyperpage{169}
+  \item {hwloc\+\_\+bitmap\+\_\+last\+\_\+unset}
+    \subitem {The bitmap A\+PI}, \hyperpage{169}
+  \item {hwloc\+\_\+bitmap\+\_\+list\+\_\+asprintf}
+    \subitem {The bitmap A\+PI}, \hyperpage{169}
+  \item {hwloc\+\_\+bitmap\+\_\+list\+\_\+snprintf}
+    \subitem {The bitmap A\+PI}, \hyperpage{169}
+  \item {hwloc\+\_\+bitmap\+\_\+list\+\_\+sscanf}
+    \subitem {The bitmap A\+PI}, \hyperpage{170}
+  \item {hwloc\+\_\+bitmap\+\_\+next}
+    \subitem {The bitmap A\+PI}, \hyperpage{170}
+  \item {hwloc\+\_\+bitmap\+\_\+next\+\_\+unset}
+    \subitem {The bitmap A\+PI}, \hyperpage{170}
+  \item {hwloc\+\_\+bitmap\+\_\+not}
+    \subitem {The bitmap A\+PI}, \hyperpage{171}
+  \item {hwloc\+\_\+bitmap\+\_\+nr\+\_\+ulongs}
+    \subitem {The bitmap A\+PI}, \hyperpage{171}
+  \item {hwloc\+\_\+bitmap\+\_\+only}
+    \subitem {The bitmap A\+PI}, \hyperpage{171}
+  \item {hwloc\+\_\+bitmap\+\_\+or}
+    \subitem {The bitmap A\+PI}, \hyperpage{171}
+  \item {hwloc\+\_\+bitmap\+\_\+set}
+    \subitem {The bitmap A\+PI}, \hyperpage{172}
+  \item {hwloc\+\_\+bitmap\+\_\+set\+\_\+ith\+\_\+ulong}
+    \subitem {The bitmap A\+PI}, \hyperpage{172}
+  \item {hwloc\+\_\+bitmap\+\_\+set\+\_\+range}
+    \subitem {The bitmap A\+PI}, \hyperpage{172}
+  \item {hwloc\+\_\+bitmap\+\_\+singlify}
+    \subitem {The bitmap A\+PI}, \hyperpage{172}
+  \item {hwloc\+\_\+bitmap\+\_\+singlify\+\_\+per\+\_\+core}
+    \subitem {Finding objects, miscellaneous helpers}, \hyperpage{149}
+  \item {hwloc\+\_\+bitmap\+\_\+snprintf}
+    \subitem {The bitmap A\+PI}, \hyperpage{173}
+  \item {hwloc\+\_\+bitmap\+\_\+sscanf}
+    \subitem {The bitmap A\+PI}, \hyperpage{173}
+  \item {hwloc\+\_\+bitmap\+\_\+t}
+    \subitem {The bitmap A\+PI}, \hyperpage{162}
+  \item {hwloc\+\_\+bitmap\+\_\+taskset\+\_\+asprintf}
+    \subitem {The bitmap A\+PI}, \hyperpage{173}
+  \item {hwloc\+\_\+bitmap\+\_\+taskset\+\_\+snprintf}
+    \subitem {The bitmap A\+PI}, \hyperpage{174}
+  \item {hwloc\+\_\+bitmap\+\_\+taskset\+\_\+sscanf}
+    \subitem {The bitmap A\+PI}, \hyperpage{174}
+  \item {hwloc\+\_\+bitmap\+\_\+to\+\_\+ith\+\_\+ulong}
+    \subitem {The bitmap A\+PI}, \hyperpage{174}
+  \item {hwloc\+\_\+bitmap\+\_\+to\+\_\+ulong}
+    \subitem {The bitmap A\+PI}, \hyperpage{175}
+  \item {hwloc\+\_\+bitmap\+\_\+to\+\_\+ulongs}
+    \subitem {The bitmap A\+PI}, \hyperpage{175}
+  \item {hwloc\+\_\+bitmap\+\_\+weight}
+    \subitem {The bitmap A\+PI}, \hyperpage{175}
+  \item {hwloc\+\_\+bitmap\+\_\+xor}
+    \subitem {The bitmap A\+PI}, \hyperpage{175}
+  \item {hwloc\+\_\+bitmap\+\_\+zero}
+    \subitem {The bitmap A\+PI}, \hyperpage{176}
+  \item {hwloc\+\_\+bridge\+\_\+covers\+\_\+pcibus}
+    \subitem {Finding I/\+O objects}, \hyperpage{158}
+  \item {hwloc\+\_\+cl\+\_\+device\+\_\+topology\+\_\+amd}, 
+		\hyperpage{252}
+    \subitem {bus}, \hyperpage{252}
+    \subitem {data}, \hyperpage{253}
+    \subitem {device}, \hyperpage{253}
+    \subitem {function}, \hyperpage{253}
+    \subitem {pcie}, \hyperpage{253}
+    \subitem {raw}, \hyperpage{253}
+    \subitem {type}, \hyperpage{253}
+    \subitem {unused}, \hyperpage{253}
+  \item {hwloc\+\_\+compare\+\_\+types}
+    \subitem {Object Types}, \hyperpage{94}
+  \item {hwloc\+\_\+component}, \hyperpage{254}
+    \subitem {abi}, \hyperpage{254}
+    \subitem {data}, \hyperpage{254}
+    \subitem {finalize}, \hyperpage{254}
+    \subitem {flags}, \hyperpage{255}
+    \subitem {init}, \hyperpage{255}
+    \subitem {type}, \hyperpage{255}
+  \item {hwloc\+\_\+component\+\_\+type\+\_\+e}
+    \subitem {Components and Plugins\+: Generic components}, 
+		\hyperpage{237}
+  \item {hwloc\+\_\+component\+\_\+type\+\_\+t}
+    \subitem {Components and Plugins\+: Generic components}, 
+		\hyperpage{237}
+  \item {hwloc\+\_\+const\+\_\+bitmap\+\_\+t}
+    \subitem {The bitmap A\+PI}, \hyperpage{162}
+  \item {hwloc\+\_\+const\+\_\+cpuset\+\_\+t}
+    \subitem {Object Sets (hwloc\+\_\+cpuset\+\_\+t and hwloc\+\_\+nodeset\+\_\+t)}, 
+		\hyperpage{89}
+  \item {hwloc\+\_\+const\+\_\+nodeset\+\_\+t}
+    \subitem {Object Sets (hwloc\+\_\+cpuset\+\_\+t and hwloc\+\_\+nodeset\+\_\+t)}, 
+		\hyperpage{89}
+  \item {hwloc\+\_\+cpubind\+\_\+flags\+\_\+t}
+    \subitem {C\+P\+U binding}, \hyperpage{109}
+  \item {hwloc\+\_\+cpukinds\+\_\+get\+\_\+by\+\_\+cpuset}
+    \subitem {Kinds of C\+P\+U cores}, \hyperpage{200}
+  \item {hwloc\+\_\+cpukinds\+\_\+get\+\_\+info}
+    \subitem {Kinds of C\+P\+U cores}, \hyperpage{201}
+  \item {hwloc\+\_\+cpukinds\+\_\+get\+\_\+nr}
+    \subitem {Kinds of C\+P\+U cores}, \hyperpage{201}
+  \item {hwloc\+\_\+cpukinds\+\_\+register}
+    \subitem {Kinds of C\+P\+U cores}, \hyperpage{202}
+  \item {hwloc\+\_\+cpuset\+\_\+from\+\_\+glibc\+\_\+sched\+\_\+affinity}
+    \subitem {Interoperability with glibc sched affinity}, 
+		\hyperpage{209}
+  \item {hwloc\+\_\+cpuset\+\_\+from\+\_\+linux\+\_\+libnuma\+\_\+bitmask}
+    \subitem {Interoperability with Linux libnuma bitmask}, 
+		\hyperpage{207}
+  \item {hwloc\+\_\+cpuset\+\_\+from\+\_\+linux\+\_\+libnuma\+\_\+ulongs}
+    \subitem {Interoperability with Linux libnuma unsigned long masks}, 
+		\hyperpage{205}
+  \item {hwloc\+\_\+cpuset\+\_\+from\+\_\+nodeset}
+    \subitem {Converting between C\+P\+U sets and node sets}, 
+		\hyperpage{157}
+  \item {hwloc\+\_\+cpuset\+\_\+t}
+    \subitem {Object Sets (hwloc\+\_\+cpuset\+\_\+t and hwloc\+\_\+nodeset\+\_\+t)}, 
+		\hyperpage{89}
+  \item {hwloc\+\_\+cpuset\+\_\+to\+\_\+glibc\+\_\+sched\+\_\+affinity}
+    \subitem {Interoperability with glibc sched affinity}, 
+		\hyperpage{209}
+  \item {hwloc\+\_\+cpuset\+\_\+to\+\_\+linux\+\_\+libnuma\+\_\+bitmask}
+    \subitem {Interoperability with Linux libnuma bitmask}, 
+		\hyperpage{207}
+  \item {hwloc\+\_\+cpuset\+\_\+to\+\_\+linux\+\_\+libnuma\+\_\+ulongs}
+    \subitem {Interoperability with Linux libnuma unsigned long masks}, 
+		\hyperpage{205}
+  \item {hwloc\+\_\+cpuset\+\_\+to\+\_\+nodeset}
+    \subitem {Converting between C\+P\+U sets and node sets}, 
+		\hyperpage{157}
+  \item {hwloc\+\_\+cuda\+\_\+get\+\_\+device\+\_\+cpuset}
+    \subitem {Interoperability with the C\+U\+D\+A Driver A\+PI}, 
+		\hyperpage{212}
+  \item {hwloc\+\_\+cuda\+\_\+get\+\_\+device\+\_\+osdev}
+    \subitem {Interoperability with the C\+U\+D\+A Driver A\+PI}, 
+		\hyperpage{212}
+  \item {hwloc\+\_\+cuda\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}
+    \subitem {Interoperability with the C\+U\+D\+A Driver A\+PI}, 
+		\hyperpage{212}
+  \item {hwloc\+\_\+cuda\+\_\+get\+\_\+device\+\_\+pci\+\_\+ids}
+    \subitem {Interoperability with the C\+U\+D\+A Driver A\+PI}, 
+		\hyperpage{213}
+  \item {hwloc\+\_\+cuda\+\_\+get\+\_\+device\+\_\+pcidev}
+    \subitem {Interoperability with the C\+U\+D\+A Driver A\+PI}, 
+		\hyperpage{213}
+  \item {hwloc\+\_\+cudart\+\_\+get\+\_\+device\+\_\+cpuset}
+    \subitem {Interoperability with the C\+U\+D\+A Runtime A\+PI}, 
+		\hyperpage{214}
+  \item {hwloc\+\_\+cudart\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}
+    \subitem {Interoperability with the C\+U\+D\+A Runtime A\+PI}, 
+		\hyperpage{214}
+  \item {hwloc\+\_\+cudart\+\_\+get\+\_\+device\+\_\+pci\+\_\+ids}
+    \subitem {Interoperability with the C\+U\+D\+A Runtime A\+PI}, 
+		\hyperpage{214}
+  \item {hwloc\+\_\+cudart\+\_\+get\+\_\+device\+\_\+pcidev}
+    \subitem {Interoperability with the C\+U\+D\+A Runtime A\+PI}, 
+		\hyperpage{215}
+  \item {hwloc\+\_\+disc\+\_\+component}, \hyperpage{256}
+    \subitem {enabled\+\_\+by\+\_\+default}, \hyperpage{256}
+    \subitem {excluded\+\_\+phases}, \hyperpage{256}
+    \subitem {instantiate}, \hyperpage{257}
+    \subitem {name}, \hyperpage{257}
+    \subitem {phases}, \hyperpage{257}
+    \subitem {priority}, \hyperpage{257}
+  \item {hwloc\+\_\+disc\+\_\+phase\+\_\+e}
+    \subitem {Components and Plugins\+: Discovery backends}, 
+		\hyperpage{235}
+  \item {hwloc\+\_\+disc\+\_\+phase\+\_\+t}
+    \subitem {Components and Plugins\+: Discovery backends}, 
+		\hyperpage{235}
+  \item {hwloc\+\_\+disc\+\_\+status}, \hyperpage{258}
+    \subitem {excluded\+\_\+phases}, \hyperpage{258}
+    \subitem {flags}, \hyperpage{258}
+    \subitem {phase}, \hyperpage{258}
+  \item {hwloc\+\_\+disc\+\_\+status\+\_\+flag\+\_\+e}
+    \subitem {Components and Plugins\+: Discovery backends}, 
+		\hyperpage{236}
+  \item {hwloc\+\_\+distances\+\_\+add}
+    \subitem {Add or remove distances between objects}, \hyperpage{188}
+  \item {hwloc\+\_\+distances\+\_\+add\+\_\+flag\+\_\+e}
+    \subitem {Add or remove distances between objects}, \hyperpage{188}
+  \item {hwloc\+\_\+distances\+\_\+get}
+    \subitem {Retrieve distances between objects}, \hyperpage{184}
+  \item {hwloc\+\_\+distances\+\_\+get\+\_\+by\+\_\+depth}
+    \subitem {Retrieve distances between objects}, \hyperpage{184}
+  \item {hwloc\+\_\+distances\+\_\+get\+\_\+by\+\_\+name}
+    \subitem {Retrieve distances between objects}, \hyperpage{185}
+  \item {hwloc\+\_\+distances\+\_\+get\+\_\+by\+\_\+type}
+    \subitem {Retrieve distances between objects}, \hyperpage{185}
+  \item {hwloc\+\_\+distances\+\_\+get\+\_\+name}
+    \subitem {Retrieve distances between objects}, \hyperpage{185}
+  \item {hwloc\+\_\+distances\+\_\+kind\+\_\+e}
+    \subitem {Retrieve distances between objects}, \hyperpage{183}
+  \item {hwloc\+\_\+distances\+\_\+obj\+\_\+index}
+    \subitem {Helpers for consulting distance matrices}, 
+		\hyperpage{187}
+  \item {hwloc\+\_\+distances\+\_\+obj\+\_\+pair\+\_\+values}
+    \subitem {Helpers for consulting distance matrices}, 
+		\hyperpage{187}
+  \item {hwloc\+\_\+distances\+\_\+release}
+    \subitem {Retrieve distances between objects}, \hyperpage{185}
+  \item {hwloc\+\_\+distances\+\_\+release\+\_\+remove}
+    \subitem {Add or remove distances between objects}, \hyperpage{189}
+  \item {hwloc\+\_\+distances\+\_\+remove}
+    \subitem {Add or remove distances between objects}, \hyperpage{189}
+  \item {hwloc\+\_\+distances\+\_\+remove\+\_\+by\+\_\+depth}
+    \subitem {Add or remove distances between objects}, \hyperpage{189}
+  \item {hwloc\+\_\+distances\+\_\+remove\+\_\+by\+\_\+type}
+    \subitem {Add or remove distances between objects}, \hyperpage{189}
+  \item {hwloc\+\_\+distances\+\_\+s}, \hyperpage{259}
+    \subitem {kind}, \hyperpage{259}
+    \subitem {nbobjs}, \hyperpage{259}
+    \subitem {objs}, \hyperpage{259}
+    \subitem {values}, \hyperpage{260}
+  \item {hwloc\+\_\+distrib}
+    \subitem {Distributing items over a topology}, \hyperpage{152}
+  \item {hwloc\+\_\+distrib\+\_\+flags\+\_\+e}
+    \subitem {Distributing items over a topology}, \hyperpage{152}
+  \item {hwloc\+\_\+export\+\_\+obj\+\_\+userdata}
+    \subitem {Exporting Topologies to X\+ML}, \hyperpage{177}
+  \item {hwloc\+\_\+export\+\_\+obj\+\_\+userdata\+\_\+base64}
+    \subitem {Exporting Topologies to X\+ML}, \hyperpage{178}
+  \item {hwloc\+\_\+filter\+\_\+check\+\_\+keep\+\_\+object}
+    \subitem {Components and Plugins\+: Filtering objects}, 
+		\hyperpage{241}
+  \item {hwloc\+\_\+filter\+\_\+check\+\_\+keep\+\_\+object\+\_\+type}
+    \subitem {Components and Plugins\+: Filtering objects}, 
+		\hyperpage{241}
+  \item {hwloc\+\_\+filter\+\_\+check\+\_\+osdev\+\_\+subtype\+\_\+important}
+    \subitem {Components and Plugins\+: Filtering objects}, 
+		\hyperpage{241}
+  \item {hwloc\+\_\+filter\+\_\+check\+\_\+pcidev\+\_\+subtype\+\_\+important}
+    \subitem {Components and Plugins\+: Filtering objects}, 
+		\hyperpage{242}
+  \item {hwloc\+\_\+free}
+    \subitem {Memory binding}, \hyperpage{117}
+  \item {hwloc\+\_\+free\+\_\+xmlbuffer}
+    \subitem {Exporting Topologies to X\+ML}, \hyperpage{178}
+  \item {hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+depth}
+    \subitem {Looking at Ancestor and Child Objects}, \hyperpage{143}
+  \item {hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+type}
+    \subitem {Looking at Ancestor and Child Objects}, \hyperpage{143}
+  \item {hwloc\+\_\+get\+\_\+api\+\_\+version}
+    \subitem {A\+P\+I version}, \hyperpage{88}
+  \item {hwloc\+\_\+get\+\_\+area\+\_\+membind}
+    \subitem {Memory binding}, \hyperpage{117}
+  \item {hwloc\+\_\+get\+\_\+area\+\_\+memlocation}
+    \subitem {Memory binding}, \hyperpage{118}
+  \item {hwloc\+\_\+get\+\_\+cache\+\_\+covering\+\_\+cpuset}
+    \subitem {Looking at Cache Objects}, \hyperpage{147}
+  \item {hwloc\+\_\+get\+\_\+cache\+\_\+type\+\_\+depth}
+    \subitem {Looking at Cache Objects}, \hyperpage{147}
+  \item {hwloc\+\_\+get\+\_\+child\+\_\+covering\+\_\+cpuset}
+    \subitem {Finding Objects covering at least C\+P\+U set}, 
+		\hyperpage{141}
+  \item {hwloc\+\_\+get\+\_\+closest\+\_\+objs}
+    \subitem {Finding objects, miscellaneous helpers}, \hyperpage{149}
+  \item {hwloc\+\_\+get\+\_\+common\+\_\+ancestor\+\_\+obj}
+    \subitem {Looking at Ancestor and Child Objects}, \hyperpage{143}
+  \item {hwloc\+\_\+get\+\_\+cpubind}
+    \subitem {C\+P\+U binding}, \hyperpage{110}
+  \item {hwloc\+\_\+get\+\_\+depth\+\_\+type}
+    \subitem {Object levels, depths and types}, \hyperpage{100}
+  \item {hwloc\+\_\+get\+\_\+first\+\_\+largest\+\_\+obj\+\_\+inside\+\_\+cpuset}
+    \subitem {Finding Objects inside a C\+P\+U set}, \hyperpage{137}
+  \item {hwloc\+\_\+get\+\_\+largest\+\_\+objs\+\_\+inside\+\_\+cpuset}
+    \subitem {Finding Objects inside a C\+P\+U set}, \hyperpage{137}
+  \item {hwloc\+\_\+get\+\_\+last\+\_\+cpu\+\_\+location}
+    \subitem {C\+P\+U binding}, \hyperpage{110}
+  \item {hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs}
+    \subitem {Comparing memory node attributes for finding where to allocate on}, 
+		\hyperpage{192}
+  \item {hwloc\+\_\+get\+\_\+membind}
+    \subitem {Memory binding}, \hyperpage{118}
+  \item {hwloc\+\_\+get\+\_\+memory\+\_\+parents\+\_\+depth}
+    \subitem {Object levels, depths and types}, \hyperpage{100}
+  \item {hwloc\+\_\+get\+\_\+nbobjs\+\_\+by\+\_\+depth}
+    \subitem {Object levels, depths and types}, \hyperpage{100}
+  \item {hwloc\+\_\+get\+\_\+nbobjs\+\_\+by\+\_\+type}
+    \subitem {Object levels, depths and types}, \hyperpage{100}
+  \item {hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth}
+    \subitem {Finding Objects inside a C\+P\+U set}, \hyperpage{138}
+  \item {hwloc\+\_\+get\+\_\+nbobjs\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type}
+    \subitem {Finding Objects inside a C\+P\+U set}, \hyperpage{138}
+  \item {hwloc\+\_\+get\+\_\+next\+\_\+bridge}
+    \subitem {Finding I/\+O objects}, \hyperpage{158}
+  \item {hwloc\+\_\+get\+\_\+next\+\_\+child}
+    \subitem {Looking at Ancestor and Child Objects}, \hyperpage{144}
+  \item {hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+by\+\_\+depth}
+    \subitem {Object levels, depths and types}, \hyperpage{101}
+  \item {hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+by\+\_\+type}
+    \subitem {Object levels, depths and types}, \hyperpage{101}
+  \item {hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+covering\+\_\+cpuset\+\_\+by\+\_\+depth}
+    \subitem {Finding Objects covering at least C\+P\+U set}, 
+		\hyperpage{141}
+  \item {hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+covering\+\_\+cpuset\+\_\+by\+\_\+type}
+    \subitem {Finding Objects covering at least C\+P\+U set}, 
+		\hyperpage{141}
+  \item {hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth}
+    \subitem {Finding Objects inside a C\+P\+U set}, \hyperpage{138}
+  \item {hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type}
+    \subitem {Finding Objects inside a C\+P\+U set}, \hyperpage{139}
+  \item {hwloc\+\_\+get\+\_\+next\+\_\+osdev}
+    \subitem {Finding I/\+O objects}, \hyperpage{158}
+  \item {hwloc\+\_\+get\+\_\+next\+\_\+pcidev}
+    \subitem {Finding I/\+O objects}, \hyperpage{158}
+  \item {hwloc\+\_\+get\+\_\+non\+\_\+io\+\_\+ancestor\+\_\+obj}
+    \subitem {Finding I/\+O objects}, \hyperpage{159}
+  \item {hwloc\+\_\+get\+\_\+numanode\+\_\+obj\+\_\+by\+\_\+os\+\_\+index}
+    \subitem {Finding objects, miscellaneous helpers}, \hyperpage{150}
+  \item {hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+array\+\_\+by\+\_\+type}
+    \subitem {Finding objects, miscellaneous helpers}, \hyperpage{150}
+  \item {hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+by\+\_\+type}
+    \subitem {Finding objects, miscellaneous helpers}, \hyperpage{150}
+  \item {hwloc\+\_\+get\+\_\+obj\+\_\+by\+\_\+depth}
+    \subitem {Object levels, depths and types}, \hyperpage{101}
+  \item {hwloc\+\_\+get\+\_\+obj\+\_\+by\+\_\+type}
+    \subitem {Object levels, depths and types}, \hyperpage{101}
+  \item {hwloc\+\_\+get\+\_\+obj\+\_\+covering\+\_\+cpuset}
+    \subitem {Finding Objects covering at least C\+P\+U set}, 
+		\hyperpage{142}
+  \item {hwloc\+\_\+get\+\_\+obj\+\_\+index\+\_\+inside\+\_\+cpuset}
+    \subitem {Finding Objects inside a C\+P\+U set}, \hyperpage{139}
+  \item {hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+depth}
+    \subitem {Finding Objects inside a C\+P\+U set}, \hyperpage{139}
+  \item {hwloc\+\_\+get\+\_\+obj\+\_\+inside\+\_\+cpuset\+\_\+by\+\_\+type}
+    \subitem {Finding Objects inside a C\+P\+U set}, \hyperpage{140}
+  \item {hwloc\+\_\+get\+\_\+pcidev\+\_\+by\+\_\+busid}
+    \subitem {Finding I/\+O objects}, \hyperpage{159}
+  \item {hwloc\+\_\+get\+\_\+pcidev\+\_\+by\+\_\+busidstring}
+    \subitem {Finding I/\+O objects}, \hyperpage{159}
+  \item {hwloc\+\_\+get\+\_\+proc\+\_\+cpubind}
+    \subitem {C\+P\+U binding}, \hyperpage{110}
+  \item {hwloc\+\_\+get\+\_\+proc\+\_\+last\+\_\+cpu\+\_\+location}
+    \subitem {C\+P\+U binding}, \hyperpage{110}
+  \item {hwloc\+\_\+get\+\_\+proc\+\_\+membind}
+    \subitem {Memory binding}, \hyperpage{119}
+  \item {hwloc\+\_\+get\+\_\+pu\+\_\+obj\+\_\+by\+\_\+os\+\_\+index}
+    \subitem {Finding objects, miscellaneous helpers}, \hyperpage{151}
+  \item {hwloc\+\_\+get\+\_\+root\+\_\+obj}
+    \subitem {Object levels, depths and types}, \hyperpage{101}
+  \item {hwloc\+\_\+get\+\_\+shared\+\_\+cache\+\_\+covering\+\_\+obj}
+    \subitem {Looking at Cache Objects}, \hyperpage{147}
+  \item {hwloc\+\_\+get\+\_\+thread\+\_\+cpubind}
+    \subitem {C\+P\+U binding}, \hyperpage{111}
+  \item {hwloc\+\_\+get\+\_\+type\+\_\+depth}
+    \subitem {Object levels, depths and types}, \hyperpage{102}
+  \item {hwloc\+\_\+get\+\_\+type\+\_\+depth\+\_\+e}
+    \subitem {Object levels, depths and types}, \hyperpage{99}
+  \item {hwloc\+\_\+get\+\_\+type\+\_\+or\+\_\+above\+\_\+depth}
+    \subitem {Object levels, depths and types}, \hyperpage{102}
+  \item {hwloc\+\_\+get\+\_\+type\+\_\+or\+\_\+below\+\_\+depth}
+    \subitem {Object levels, depths and types}, \hyperpage{102}
+  \item {hwloc\+\_\+gl\+\_\+get\+\_\+display\+\_\+by\+\_\+osdev}
+    \subitem {Interoperability with Open\+G\+L displays}, 
+		\hyperpage{220}
+  \item {hwloc\+\_\+gl\+\_\+get\+\_\+display\+\_\+osdev\+\_\+by\+\_\+name}
+    \subitem {Interoperability with Open\+G\+L displays}, 
+		\hyperpage{220}
+  \item {hwloc\+\_\+gl\+\_\+get\+\_\+display\+\_\+osdev\+\_\+by\+\_\+port\+\_\+device}
+    \subitem {Interoperability with Open\+G\+L displays}, 
+		\hyperpage{220}
+  \item {hwloc\+\_\+hide\+\_\+errors}
+    \subitem {Components and Plugins\+: Core functions to be used by components}, 
+		\hyperpage{239}
+  \item {hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+cpuset}
+    \subitem {Interoperability with Open\+Fabrics}, \hyperpage{222}
+  \item {hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev}
+    \subitem {Interoperability with Open\+Fabrics}, \hyperpage{222}
+  \item {hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+name}
+    \subitem {Interoperability with Open\+Fabrics}, \hyperpage{222}
+  \item {hwloc\+\_\+info\+\_\+s}, \hyperpage{261}
+    \subitem {name}, \hyperpage{261}
+    \subitem {value}, \hyperpage{262}
+  \item {hwloc\+\_\+insert\+\_\+object\+\_\+by\+\_\+parent}
+    \subitem {Components and Plugins\+: Core functions to be used by components}, 
+		\hyperpage{239}
+  \item {hwloc\+\_\+linux\+\_\+get\+\_\+tid\+\_\+cpubind}
+    \subitem {Linux-\/specific helpers}, \hyperpage{203}
+  \item {hwloc\+\_\+linux\+\_\+get\+\_\+tid\+\_\+last\+\_\+cpu\+\_\+location}
+    \subitem {Linux-\/specific helpers}, \hyperpage{203}
+  \item {hwloc\+\_\+linux\+\_\+read\+\_\+path\+\_\+as\+\_\+cpumask}
+    \subitem {Linux-\/specific helpers}, \hyperpage{203}
+  \item {hwloc\+\_\+linux\+\_\+set\+\_\+tid\+\_\+cpubind}
+    \subitem {Linux-\/specific helpers}, \hyperpage{204}
+  \item {hwloc\+\_\+local\+\_\+numanode\+\_\+flag\+\_\+e}
+    \subitem {Comparing memory node attributes for finding where to allocate on}, 
+		\hyperpage{191}
+  \item {hwloc\+\_\+location}, \hyperpage{262}
+    \subitem {location}, \hyperpage{262}
+    \subitem {type}, \hyperpage{262}
+  \item {hwloc\+\_\+location\+::hwloc\+\_\+location\+\_\+u}, 
+		\hyperpage{263}
+    \subitem {cpuset}, \hyperpage{263}
+    \subitem {object}, \hyperpage{263}
+  \item {hwloc\+\_\+location\+\_\+type\+\_\+e}
+    \subitem {Comparing memory node attributes for finding where to allocate on}, 
+		\hyperpage{191}
+  \item {hwloc\+\_\+memattr\+\_\+flag\+\_\+e}
+    \subitem {Managing memory attributes}, \hyperpage{196}
+  \item {hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+initiator}
+    \subitem {Comparing memory node attributes for finding where to allocate on}, 
+		\hyperpage{193}
+  \item {hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+target}
+    \subitem {Comparing memory node attributes for finding where to allocate on}, 
+		\hyperpage{193}
+  \item {hwloc\+\_\+memattr\+\_\+get\+\_\+by\+\_\+name}
+    \subitem {Comparing memory node attributes for finding where to allocate on}, 
+		\hyperpage{194}
+  \item {hwloc\+\_\+memattr\+\_\+get\+\_\+flags}
+    \subitem {Managing memory attributes}, \hyperpage{196}
+  \item {hwloc\+\_\+memattr\+\_\+get\+\_\+initiators}
+    \subitem {Managing memory attributes}, \hyperpage{197}
+  \item {hwloc\+\_\+memattr\+\_\+get\+\_\+name}
+    \subitem {Managing memory attributes}, \hyperpage{197}
+  \item {hwloc\+\_\+memattr\+\_\+get\+\_\+targets}
+    \subitem {Managing memory attributes}, \hyperpage{197}
+  \item {hwloc\+\_\+memattr\+\_\+get\+\_\+value}
+    \subitem {Comparing memory node attributes for finding where to allocate on}, 
+		\hyperpage{194}
+  \item {hwloc\+\_\+memattr\+\_\+id\+\_\+e}
+    \subitem {Comparing memory node attributes for finding where to allocate on}, 
+		\hyperpage{192}
+  \item {hwloc\+\_\+memattr\+\_\+id\+\_\+t}
+    \subitem {Comparing memory node attributes for finding where to allocate on}, 
+		\hyperpage{191}
+  \item {hwloc\+\_\+memattr\+\_\+register}
+    \subitem {Managing memory attributes}, \hyperpage{198}
+  \item {hwloc\+\_\+memattr\+\_\+set\+\_\+value}
+    \subitem {Managing memory attributes}, \hyperpage{198}
+  \item {hwloc\+\_\+membind\+\_\+flags\+\_\+t}
+    \subitem {Memory binding}, \hyperpage{114}
+  \item {hwloc\+\_\+membind\+\_\+policy\+\_\+t}
+    \subitem {Memory binding}, \hyperpage{115}
+  \item {hwloc\+\_\+nodeset\+\_\+from\+\_\+linux\+\_\+libnuma\+\_\+bitmask}
+    \subitem {Interoperability with Linux libnuma bitmask}, 
+		\hyperpage{207}
+  \item {hwloc\+\_\+nodeset\+\_\+from\+\_\+linux\+\_\+libnuma\+\_\+ulongs}
+    \subitem {Interoperability with Linux libnuma unsigned long masks}, 
+		\hyperpage{206}
+  \item {hwloc\+\_\+nodeset\+\_\+t}
+    \subitem {Object Sets (hwloc\+\_\+cpuset\+\_\+t and hwloc\+\_\+nodeset\+\_\+t)}, 
+		\hyperpage{89}
+  \item {hwloc\+\_\+nodeset\+\_\+to\+\_\+linux\+\_\+libnuma\+\_\+bitmask}
+    \subitem {Interoperability with Linux libnuma bitmask}, 
+		\hyperpage{208}
+  \item {hwloc\+\_\+nodeset\+\_\+to\+\_\+linux\+\_\+libnuma\+\_\+ulongs}
+    \subitem {Interoperability with Linux libnuma unsigned long masks}, 
+		\hyperpage{206}
+  \item {hwloc\+\_\+nvml\+\_\+get\+\_\+device\+\_\+cpuset}
+    \subitem {Interoperability with the N\+V\+I\+D\+I\+A Management Library}, 
+		\hyperpage{216}
+  \item {hwloc\+\_\+nvml\+\_\+get\+\_\+device\+\_\+osdev}
+    \subitem {Interoperability with the N\+V\+I\+D\+I\+A Management Library}, 
+		\hyperpage{216}
+  \item {hwloc\+\_\+nvml\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}
+    \subitem {Interoperability with the N\+V\+I\+D\+I\+A Management Library}, 
+		\hyperpage{216}
+  \item {hwloc\+\_\+obj}, \hyperpage{265}
+    \subitem {arity}, \hyperpage{267}
+    \subitem {attr}, \hyperpage{267}
+    \subitem {children}, \hyperpage{267}
+    \subitem {complete\+\_\+cpuset}, \hyperpage{267}
+    \subitem {complete\+\_\+nodeset}, \hyperpage{267}
+    \subitem {cpuset}, \hyperpage{268}
+    \subitem {depth}, \hyperpage{268}
+    \subitem {first\+\_\+child}, \hyperpage{268}
+    \subitem {gp\+\_\+index}, \hyperpage{269}
+    \subitem {infos}, \hyperpage{269}
+    \subitem {infos\+\_\+count}, \hyperpage{269}
+    \subitem {io\+\_\+arity}, \hyperpage{269}
+    \subitem {io\+\_\+first\+\_\+child}, \hyperpage{269}
+    \subitem {last\+\_\+child}, \hyperpage{269}
+    \subitem {logical\+\_\+index}, \hyperpage{270}
+    \subitem {memory\+\_\+arity}, \hyperpage{270}
+    \subitem {memory\+\_\+first\+\_\+child}, \hyperpage{270}
+    \subitem {misc\+\_\+arity}, \hyperpage{270}
+    \subitem {misc\+\_\+first\+\_\+child}, \hyperpage{270}
+    \subitem {name}, \hyperpage{270}
+    \subitem {next\+\_\+cousin}, \hyperpage{271}
+    \subitem {next\+\_\+sibling}, \hyperpage{271}
+    \subitem {nodeset}, \hyperpage{271}
+    \subitem {os\+\_\+index}, \hyperpage{271}
+    \subitem {parent}, \hyperpage{272}
+    \subitem {prev\+\_\+cousin}, \hyperpage{272}
+    \subitem {prev\+\_\+sibling}, \hyperpage{272}
+    \subitem {sibling\+\_\+rank}, \hyperpage{272}
+    \subitem {subtype}, \hyperpage{272}
+    \subitem {symmetric\+\_\+subtree}, \hyperpage{272}
+    \subitem {total\+\_\+memory}, \hyperpage{273}
+    \subitem {type}, \hyperpage{273}
+    \subitem {userdata}, \hyperpage{273}
+  \item {hwloc\+\_\+obj\+\_\+add\+\_\+children\+\_\+sets}
+    \subitem {Components and Plugins\+: Core functions to be used by components}, 
+		\hyperpage{239}
+  \item {hwloc\+\_\+obj\+\_\+add\+\_\+info}
+    \subitem {Consulting and Adding Key-\/\+Value Info Attributes}, 
+		\hyperpage{107}
+  \item {hwloc\+\_\+obj\+\_\+add\+\_\+other\+\_\+obj\+\_\+sets}
+    \subitem {Modifying a loaded Topology}, \hyperpage{133}
+  \item {hwloc\+\_\+obj\+\_\+attr\+\_\+snprintf}
+    \subitem {Converting between Object Types and Attributes, and Strings}, 
+		\hyperpage{104}
+  \item {hwloc\+\_\+obj\+\_\+attr\+\_\+u}, \hyperpage{273}
+    \subitem {bridge}, \hyperpage{274}
+    \subitem {cache}, \hyperpage{274}
+    \subitem {group}, \hyperpage{274}
+    \subitem {numanode}, \hyperpage{274}
+    \subitem {osdev}, \hyperpage{274}
+    \subitem {pcidev}, \hyperpage{274}
+  \item {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+bridge\+\_\+attr\+\_\+s}, 
+		\hyperpage{249}
+    \subitem {depth}, \hyperpage{249}
+    \subitem {domain}, \hyperpage{249}
+    \subitem {downstream}, \hyperpage{250}
+    \subitem {downstream\+\_\+type}, \hyperpage{250}
+    \subitem {pci}, \hyperpage{250}
+    \subitem {secondary\+\_\+bus}, \hyperpage{250}
+    \subitem {subordinate\+\_\+bus}, \hyperpage{250}
+    \subitem {upstream}, \hyperpage{250}
+    \subitem {upstream\+\_\+type}, \hyperpage{250}
+  \item {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+cache\+\_\+attr\+\_\+s}, 
+		\hyperpage{251}
+    \subitem {associativity}, \hyperpage{251}
+    \subitem {depth}, \hyperpage{251}
+    \subitem {linesize}, \hyperpage{251}
+    \subitem {size}, \hyperpage{252}
+    \subitem {type}, \hyperpage{252}
+  \item {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+group\+\_\+attr\+\_\+s}, 
+		\hyperpage{260}
+    \subitem {depth}, \hyperpage{260}
+    \subitem {dont\+\_\+merge}, \hyperpage{260}
+    \subitem {kind}, \hyperpage{261}
+    \subitem {subkind}, \hyperpage{261}
+  \item {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+numanode\+\_\+attr\+\_\+s}, 
+		\hyperpage{264}
+    \subitem {local\+\_\+memory}, \hyperpage{265}
+    \subitem {page\+\_\+types}, \hyperpage{265}
+    \subitem {page\+\_\+types\+\_\+len}, \hyperpage{265}
+  \item {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+numanode\+\_\+attr\+\_\+s\+::hwloc\+\_\+memory\+\_\+page\+\_\+type\+\_\+s}, 
+		\hyperpage{264}
+    \subitem {count}, \hyperpage{264}
+    \subitem {size}, \hyperpage{264}
+  \item {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+osdev\+\_\+attr\+\_\+s}, 
+		\hyperpage{275}
+    \subitem {type}, \hyperpage{275}
+  \item {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+pcidev\+\_\+attr\+\_\+s}, 
+		\hyperpage{275}
+    \subitem {bus}, \hyperpage{276}
+    \subitem {class\+\_\+id}, \hyperpage{276}
+    \subitem {dev}, \hyperpage{276}
+    \subitem {device\+\_\+id}, \hyperpage{276}
+    \subitem {domain}, \hyperpage{276}
+    \subitem {func}, \hyperpage{277}
+    \subitem {linkspeed}, \hyperpage{277}
+    \subitem {revision}, \hyperpage{277}
+    \subitem {subdevice\+\_\+id}, \hyperpage{277}
+    \subitem {subvendor\+\_\+id}, \hyperpage{277}
+    \subitem {vendor\+\_\+id}, \hyperpage{277}
+  \item {hwloc\+\_\+obj\+\_\+bridge\+\_\+type\+\_\+e}
+    \subitem {Object Types}, \hyperpage{91}
+  \item {hwloc\+\_\+obj\+\_\+bridge\+\_\+type\+\_\+t}
+    \subitem {Object Types}, \hyperpage{91}
+  \item {hwloc\+\_\+obj\+\_\+cache\+\_\+type\+\_\+e}
+    \subitem {Object Types}, \hyperpage{91}
+  \item {hwloc\+\_\+obj\+\_\+cache\+\_\+type\+\_\+t}
+    \subitem {Object Types}, \hyperpage{91}
+  \item {hwloc\+\_\+obj\+\_\+get\+\_\+info\+\_\+by\+\_\+name}
+    \subitem {Consulting and Adding Key-\/\+Value Info Attributes}, 
+		\hyperpage{107}
+  \item {hwloc\+\_\+obj\+\_\+is\+\_\+in\+\_\+subtree}
+    \subitem {Looking at Ancestor and Child Objects}, \hyperpage{144}
+  \item {hwloc\+\_\+obj\+\_\+osdev\+\_\+type\+\_\+e}
+    \subitem {Object Types}, \hyperpage{92}
+  \item {hwloc\+\_\+obj\+\_\+osdev\+\_\+type\+\_\+t}
+    \subitem {Object Types}, \hyperpage{91}
+  \item {hwloc\+\_\+obj\+\_\+t}
+    \subitem {Object Structure and Attributes}, \hyperpage{95}
+  \item {hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+cache}
+    \subitem {Kinds of object Type}, \hyperpage{145}
+  \item {hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+dcache}
+    \subitem {Kinds of object Type}, \hyperpage{145}
+  \item {hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+icache}
+    \subitem {Kinds of object Type}, \hyperpage{145}
+  \item {hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+io}
+    \subitem {Kinds of object Type}, \hyperpage{146}
+  \item {hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+memory}
+    \subitem {Kinds of object Type}, \hyperpage{146}
+  \item {hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+normal}
+    \subitem {Kinds of object Type}, \hyperpage{146}
+  \item {hwloc\+\_\+obj\+\_\+type\+\_\+snprintf}
+    \subitem {Converting between Object Types and Attributes, and Strings}, 
+		\hyperpage{104}
+  \item {hwloc\+\_\+obj\+\_\+type\+\_\+string}
+    \subitem {Converting between Object Types and Attributes, and Strings}, 
+		\hyperpage{105}
+  \item {hwloc\+\_\+obj\+\_\+type\+\_\+t}
+    \subitem {Object Types}, \hyperpage{92}
+  \item {hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+cpuset}
+    \subitem {Interoperability with Open\+CL}, \hyperpage{210}
+  \item {hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev}
+    \subitem {Interoperability with Open\+CL}, \hyperpage{210}
+  \item {hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}
+    \subitem {Interoperability with Open\+CL}, \hyperpage{211}
+  \item {hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+pci\+\_\+busid}
+    \subitem {Interoperability with Open\+CL}, \hyperpage{211}
+  \item {hwloc\+\_\+pci\+\_\+find\+\_\+parent\+\_\+by\+\_\+busid}
+    \subitem {Components and Plugins\+: finding P\+C\+I objects during other discoveries}, 
+		\hyperpage{245}
+  \item {hwloc\+\_\+pcidisc\+\_\+check\+\_\+bridge\+\_\+type}
+    \subitem {Components and Plugins\+: helpers for P\+C\+I discovery}, 
+		\hyperpage{243}
+  \item {hwloc\+\_\+pcidisc\+\_\+find\+\_\+bridge\+\_\+buses}
+    \subitem {Components and Plugins\+: helpers for P\+C\+I discovery}, 
+		\hyperpage{243}
+  \item {hwloc\+\_\+pcidisc\+\_\+find\+\_\+cap}
+    \subitem {Components and Plugins\+: helpers for P\+C\+I discovery}, 
+		\hyperpage{243}
+  \item {hwloc\+\_\+pcidisc\+\_\+find\+\_\+linkspeed}
+    \subitem {Components and Plugins\+: helpers for P\+C\+I discovery}, 
+		\hyperpage{244}
+  \item {hwloc\+\_\+pcidisc\+\_\+tree\+\_\+attach}
+    \subitem {Components and Plugins\+: helpers for P\+C\+I discovery}, 
+		\hyperpage{244}
+  \item {hwloc\+\_\+pcidisc\+\_\+tree\+\_\+insert\+\_\+by\+\_\+busid}
+    \subitem {Components and Plugins\+: helpers for P\+C\+I discovery}, 
+		\hyperpage{244}
+  \item {hwloc\+\_\+plugin\+\_\+check\+\_\+namespace}
+    \subitem {Components and Plugins\+: Core functions to be used by components}, 
+		\hyperpage{239}
+  \item {hwloc\+\_\+restrict\+\_\+flags\+\_\+e}
+    \subitem {Modifying a loaded Topology}, \hyperpage{133}
+  \item {hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+cpuset}
+    \subitem {Interoperability with the R\+O\+Cm S\+M\+I Management Library}, 
+		\hyperpage{218}
+  \item {hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev}
+    \subitem {Interoperability with the R\+O\+Cm S\+M\+I Management Library}, 
+		\hyperpage{218}
+  \item {hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}
+    \subitem {Interoperability with the R\+O\+Cm S\+M\+I Management Library}, 
+		\hyperpage{218}
+  \item {hwloc\+\_\+set\+\_\+area\+\_\+membind}
+    \subitem {Memory binding}, \hyperpage{120}
+  \item {hwloc\+\_\+set\+\_\+cpubind}
+    \subitem {C\+P\+U binding}, \hyperpage{111}
+  \item {hwloc\+\_\+set\+\_\+membind}
+    \subitem {Memory binding}, \hyperpage{120}
+  \item {hwloc\+\_\+set\+\_\+proc\+\_\+cpubind}
+    \subitem {C\+P\+U binding}, \hyperpage{111}
+  \item {hwloc\+\_\+set\+\_\+proc\+\_\+membind}
+    \subitem {Memory binding}, \hyperpage{120}
+  \item {hwloc\+\_\+set\+\_\+thread\+\_\+cpubind}
+    \subitem {C\+P\+U binding}, \hyperpage{112}
+  \item {hwloc\+\_\+shmem\+\_\+topology\+\_\+adopt}
+    \subitem {Sharing topologies between processes}, \hyperpage{231}
+  \item {hwloc\+\_\+shmem\+\_\+topology\+\_\+get\+\_\+length}
+    \subitem {Sharing topologies between processes}, \hyperpage{232}
+  \item {hwloc\+\_\+shmem\+\_\+topology\+\_\+write}
+    \subitem {Sharing topologies between processes}, \hyperpage{232}
+  \item {hwloc\+\_\+topology\+\_\+abi\+\_\+check}
+    \subitem {Topology Creation and Destruction}, \hyperpage{96}
+  \item {hwloc\+\_\+topology\+\_\+alloc\+\_\+group\+\_\+object}
+    \subitem {Modifying a loaded Topology}, \hyperpage{133}
+  \item {hwloc\+\_\+topology\+\_\+allow}
+    \subitem {Modifying a loaded Topology}, \hyperpage{134}
+  \item {hwloc\+\_\+topology\+\_\+check}
+    \subitem {Topology Creation and Destruction}, \hyperpage{96}
+  \item {hwloc\+\_\+topology\+\_\+components\+\_\+flag\+\_\+e}
+    \subitem {Changing the Source of Topology Discovery}, 
+		\hyperpage{122}
+  \item {hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}, 
+		\hyperpage{278}
+    \subitem {get\+\_\+proc\+\_\+cpubind}, \hyperpage{278}
+    \subitem {get\+\_\+proc\+\_\+last\+\_\+cpu\+\_\+location}, 
+		\hyperpage{278}
+    \subitem {get\+\_\+thisproc\+\_\+cpubind}, \hyperpage{278}
+    \subitem {get\+\_\+thisproc\+\_\+last\+\_\+cpu\+\_\+location}, 
+		\hyperpage{278}
+    \subitem {get\+\_\+thisthread\+\_\+cpubind}, \hyperpage{279}
+    \subitem {get\+\_\+thisthread\+\_\+last\+\_\+cpu\+\_\+location}, 
+		\hyperpage{279}
+    \subitem {get\+\_\+thread\+\_\+cpubind}, \hyperpage{279}
+    \subitem {set\+\_\+proc\+\_\+cpubind}, \hyperpage{279}
+    \subitem {set\+\_\+thisproc\+\_\+cpubind}, \hyperpage{279}
+    \subitem {set\+\_\+thisthread\+\_\+cpubind}, \hyperpage{279}
+    \subitem {set\+\_\+thread\+\_\+cpubind}, \hyperpage{279}
+  \item {hwloc\+\_\+topology\+\_\+destroy}
+    \subitem {Topology Creation and Destruction}, \hyperpage{97}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+apply}
+    \subitem {Topology differences}, \hyperpage{227}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+apply\+\_\+flags\+\_\+e}
+    \subitem {Topology differences}, \hyperpage{225}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+build}
+    \subitem {Topology differences}, \hyperpage{228}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+destroy}
+    \subitem {Topology differences}, \hyperpage{228}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+export\+\_\+xml}
+    \subitem {Topology differences}, \hyperpage{228}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+export\+\_\+xmlbuffer}
+    \subitem {Topology differences}, \hyperpage{229}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+load\+\_\+xml}
+    \subitem {Topology differences}, \hyperpage{229}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+load\+\_\+xmlbuffer}
+    \subitem {Topology differences}, \hyperpage{229}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+type\+\_\+e}
+    \subitem {Topology differences}, \hyperpage{225}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+type\+\_\+t}
+    \subitem {Topology differences}, \hyperpage{225}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u}, 
+		\hyperpage{283}
+    \subitem {generic}, \hyperpage{283}
+    \subitem {string}, \hyperpage{284}
+    \subitem {uint64}, \hyperpage{284}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+generic\+\_\+s}, 
+		\hyperpage{280}
+    \subitem {type}, \hyperpage{281}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+string\+\_\+s}, 
+		\hyperpage{282}
+    \subitem {name}, \hyperpage{282}
+    \subitem {newvalue}, \hyperpage{282}
+    \subitem {oldvalue}, \hyperpage{283}
+    \subitem {type}, \hyperpage{283}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+uint64\+\_\+s}, 
+		\hyperpage{284}
+    \subitem {index}, \hyperpage{284}
+    \subitem {newvalue}, \hyperpage{285}
+    \subitem {oldvalue}, \hyperpage{285}
+    \subitem {type}, \hyperpage{285}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+t}
+    \subitem {Topology differences}, \hyperpage{225}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+type\+\_\+e}
+    \subitem {Topology differences}, \hyperpage{227}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+type\+\_\+t}
+    \subitem {Topology differences}, \hyperpage{225}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+u}, \hyperpage{286}
+    \subitem {generic}, \hyperpage{287}
+    \subitem {obj\+\_\+attr}, \hyperpage{287}
+    \subitem {too\+\_\+complex}, \hyperpage{287}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+generic\+\_\+s}, 
+		\hyperpage{280}
+    \subitem {next}, \hyperpage{280}
+    \subitem {type}, \hyperpage{280}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+s}, 
+		\hyperpage{281}
+    \subitem {diff}, \hyperpage{281}
+    \subitem {next}, \hyperpage{281}
+    \subitem {obj\+\_\+depth}, \hyperpage{281}
+    \subitem {obj\+\_\+index}, \hyperpage{282}
+    \subitem {type}, \hyperpage{282}
+  \item {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+too\+\_\+complex\+\_\+s}, 
+		\hyperpage{285}
+    \subitem {next}, \hyperpage{285}
+    \subitem {obj\+\_\+depth}, \hyperpage{286}
+    \subitem {obj\+\_\+index}, \hyperpage{286}
+    \subitem {type}, \hyperpage{286}
+  \item {hwloc\+\_\+topology\+\_\+discovery\+\_\+support}, 
+		\hyperpage{287}
+    \subitem {cpukind\+\_\+efficiency}, \hyperpage{287}
+    \subitem {disallowed\+\_\+numa}, \hyperpage{288}
+    \subitem {disallowed\+\_\+pu}, \hyperpage{288}
+    \subitem {numa}, \hyperpage{288}
+    \subitem {numa\+\_\+memory}, \hyperpage{288}
+    \subitem {pu}, \hyperpage{288}
+  \item {hwloc\+\_\+topology\+\_\+dup}
+    \subitem {Topology Creation and Destruction}, \hyperpage{97}
+  \item {hwloc\+\_\+topology\+\_\+export\+\_\+synthetic}
+    \subitem {Exporting Topologies to Synthetic}, \hyperpage{182}
+  \item {hwloc\+\_\+topology\+\_\+export\+\_\+synthetic\+\_\+flags\+\_\+e}
+    \subitem {Exporting Topologies to Synthetic}, \hyperpage{181}
+  \item {hwloc\+\_\+topology\+\_\+export\+\_\+xml}
+    \subitem {Exporting Topologies to X\+ML}, \hyperpage{178}
+  \item {hwloc\+\_\+topology\+\_\+export\+\_\+xml\+\_\+flags\+\_\+e}
+    \subitem {Exporting Topologies to X\+ML}, \hyperpage{177}
+  \item {hwloc\+\_\+topology\+\_\+export\+\_\+xmlbuffer}
+    \subitem {Exporting Topologies to X\+ML}, \hyperpage{179}
+  \item {hwloc\+\_\+topology\+\_\+flags\+\_\+e}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{125}
+  \item {hwloc\+\_\+topology\+\_\+get\+\_\+allowed\+\_\+cpuset}
+    \subitem {C\+P\+U and node sets of entire topologies}, 
+		\hyperpage{154}
+  \item {hwloc\+\_\+topology\+\_\+get\+\_\+allowed\+\_\+nodeset}
+    \subitem {C\+P\+U and node sets of entire topologies}, 
+		\hyperpage{154}
+  \item {hwloc\+\_\+topology\+\_\+get\+\_\+complete\+\_\+cpuset}
+    \subitem {C\+P\+U and node sets of entire topologies}, 
+		\hyperpage{154}
+  \item {hwloc\+\_\+topology\+\_\+get\+\_\+complete\+\_\+nodeset}
+    \subitem {C\+P\+U and node sets of entire topologies}, 
+		\hyperpage{155}
+  \item {hwloc\+\_\+topology\+\_\+get\+\_\+depth}
+    \subitem {Object levels, depths and types}, \hyperpage{103}
+  \item {hwloc\+\_\+topology\+\_\+get\+\_\+flags}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{128}
+  \item {hwloc\+\_\+topology\+\_\+get\+\_\+support}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{128}
+  \item {hwloc\+\_\+topology\+\_\+get\+\_\+topology\+\_\+cpuset}
+    \subitem {C\+P\+U and node sets of entire topologies}, 
+		\hyperpage{155}
+  \item {hwloc\+\_\+topology\+\_\+get\+\_\+topology\+\_\+nodeset}
+    \subitem {C\+P\+U and node sets of entire topologies}, 
+		\hyperpage{155}
+  \item {hwloc\+\_\+topology\+\_\+get\+\_\+type\+\_\+filter}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{129}
+  \item {hwloc\+\_\+topology\+\_\+get\+\_\+userdata}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{129}
+  \item {hwloc\+\_\+topology\+\_\+init}
+    \subitem {Topology Creation and Destruction}, \hyperpage{97}
+  \item {hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object}
+    \subitem {Modifying a loaded Topology}, \hyperpage{134}
+  \item {hwloc\+\_\+topology\+\_\+insert\+\_\+misc\+\_\+object}
+    \subitem {Modifying a loaded Topology}, \hyperpage{135}
+  \item {hwloc\+\_\+topology\+\_\+is\+\_\+thissystem}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{129}
+  \item {hwloc\+\_\+topology\+\_\+load}
+    \subitem {Topology Creation and Destruction}, \hyperpage{98}
+  \item {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{289}
+    \subitem {alloc\+\_\+membind}, \hyperpage{289}
+    \subitem {bind\+\_\+membind}, \hyperpage{289}
+    \subitem {firsttouch\+\_\+membind}, \hyperpage{289}
+    \subitem {get\+\_\+area\+\_\+membind}, \hyperpage{290}
+    \subitem {get\+\_\+area\+\_\+memlocation}, \hyperpage{290}
+    \subitem {get\+\_\+proc\+\_\+membind}, \hyperpage{290}
+    \subitem {get\+\_\+thisproc\+\_\+membind}, \hyperpage{290}
+    \subitem {get\+\_\+thisthread\+\_\+membind}, \hyperpage{290}
+    \subitem {interleave\+\_\+membind}, \hyperpage{290}
+    \subitem {migrate\+\_\+membind}, \hyperpage{290}
+    \subitem {nexttouch\+\_\+membind}, \hyperpage{290}
+    \subitem {set\+\_\+area\+\_\+membind}, \hyperpage{291}
+    \subitem {set\+\_\+proc\+\_\+membind}, \hyperpage{291}
+    \subitem {set\+\_\+thisproc\+\_\+membind}, \hyperpage{291}
+    \subitem {set\+\_\+thisthread\+\_\+membind}, \hyperpage{291}
+  \item {hwloc\+\_\+topology\+\_\+misc\+\_\+support}, \hyperpage{291}
+    \subitem {imported\+\_\+support}, \hyperpage{292}
+  \item {hwloc\+\_\+topology\+\_\+reconnect}
+    \subitem {Components and Plugins\+: Core functions to be used by components}, 
+		\hyperpage{240}
+  \item {hwloc\+\_\+topology\+\_\+refresh}
+    \subitem {Modifying a loaded Topology}, \hyperpage{135}
+  \item {hwloc\+\_\+topology\+\_\+restrict}
+    \subitem {Modifying a loaded Topology}, \hyperpage{135}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+all\+\_\+types\+\_\+filter}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{129}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+cache\+\_\+types\+\_\+filter}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{130}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+components}
+    \subitem {Changing the Source of Topology Discovery}, 
+		\hyperpage{122}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+flags}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{130}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+icache\+\_\+types\+\_\+filter}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{130}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+io\+\_\+types\+\_\+filter}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{130}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+pid}
+    \subitem {Changing the Source of Topology Discovery}, 
+		\hyperpage{123}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+synthetic}
+    \subitem {Changing the Source of Topology Discovery}, 
+		\hyperpage{123}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+type\+\_\+filter}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{130}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+userdata}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{131}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback}
+    \subitem {Exporting Topologies to X\+ML}, \hyperpage{180}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+import\+\_\+callback}
+    \subitem {Exporting Topologies to X\+ML}, \hyperpage{180}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+xml}
+    \subitem {Changing the Source of Topology Discovery}, 
+		\hyperpage{123}
+  \item {hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer}
+    \subitem {Changing the Source of Topology Discovery}, 
+		\hyperpage{124}
+  \item {hwloc\+\_\+topology\+\_\+support}, \hyperpage{292}
+    \subitem {cpubind}, \hyperpage{292}
+    \subitem {discovery}, \hyperpage{292}
+    \subitem {membind}, \hyperpage{293}
+    \subitem {misc}, \hyperpage{293}
+  \item {hwloc\+\_\+topology\+\_\+t}
+    \subitem {Topology Creation and Destruction}, \hyperpage{96}
+  \item {hwloc\+\_\+type\+\_\+filter\+\_\+e}
+    \subitem {Topology Detection Configuration and Query}, 
+		\hyperpage{127}
+  \item {hwloc\+\_\+type\+\_\+sscanf}
+    \subitem {Converting between Object Types and Attributes, and Strings}, 
+		\hyperpage{105}
+  \item {hwloc\+\_\+type\+\_\+sscanf\+\_\+as\+\_\+depth}
+    \subitem {Converting between Object Types and Attributes, and Strings}, 
+		\hyperpage{106}
+
+  \indexspace
+
+  \item {imported\+\_\+support}
+    \subitem {hwloc\+\_\+topology\+\_\+misc\+\_\+support}, 
+		\hyperpage{292}
+  \item {index}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+uint64\+\_\+s}, 
+		\hyperpage{284}
+  \item {infos}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{269}
+  \item {infos\+\_\+count}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{269}
+  \item {init}
+    \subitem {hwloc\+\_\+component}, \hyperpage{255}
+  \item {instantiate}
+    \subitem {hwloc\+\_\+disc\+\_\+component}, \hyperpage{257}
+  \item {interleave\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{290}
+  \item {Interoperability with glibc sched affinity}, \hyperpage{209}
+    \subitem {hwloc\+\_\+cpuset\+\_\+from\+\_\+glibc\+\_\+sched\+\_\+affinity}, 
+		\hyperpage{209}
+    \subitem {hwloc\+\_\+cpuset\+\_\+to\+\_\+glibc\+\_\+sched\+\_\+affinity}, 
+		\hyperpage{209}
+  \item {Interoperability with Linux libnuma bitmask}, \hyperpage{207}
+    \subitem {hwloc\+\_\+cpuset\+\_\+from\+\_\+linux\+\_\+libnuma\+\_\+bitmask}, 
+		\hyperpage{207}
+    \subitem {hwloc\+\_\+cpuset\+\_\+to\+\_\+linux\+\_\+libnuma\+\_\+bitmask}, 
+		\hyperpage{207}
+    \subitem {hwloc\+\_\+nodeset\+\_\+from\+\_\+linux\+\_\+libnuma\+\_\+bitmask}, 
+		\hyperpage{207}
+    \subitem {hwloc\+\_\+nodeset\+\_\+to\+\_\+linux\+\_\+libnuma\+\_\+bitmask}, 
+		\hyperpage{208}
+  \item {Interoperability with Linux libnuma unsigned long masks}, 
+		\hyperpage{205}
+    \subitem {hwloc\+\_\+cpuset\+\_\+from\+\_\+linux\+\_\+libnuma\+\_\+ulongs}, 
+		\hyperpage{205}
+    \subitem {hwloc\+\_\+cpuset\+\_\+to\+\_\+linux\+\_\+libnuma\+\_\+ulongs}, 
+		\hyperpage{205}
+    \subitem {hwloc\+\_\+nodeset\+\_\+from\+\_\+linux\+\_\+libnuma\+\_\+ulongs}, 
+		\hyperpage{206}
+    \subitem {hwloc\+\_\+nodeset\+\_\+to\+\_\+linux\+\_\+libnuma\+\_\+ulongs}, 
+		\hyperpage{206}
+  \item {Interoperability with Open\+CL}, \hyperpage{210}
+    \subitem {hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+cpuset}, 
+		\hyperpage{210}
+    \subitem {hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev}, 
+		\hyperpage{210}
+    \subitem {hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}, 
+		\hyperpage{211}
+    \subitem {hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+pci\+\_\+busid}, 
+		\hyperpage{211}
+  \item {Interoperability with Open\+Fabrics}, \hyperpage{222}
+    \subitem {hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+cpuset}, 
+		\hyperpage{222}
+    \subitem {hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev}, 
+		\hyperpage{222}
+    \subitem {hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+name}, 
+		\hyperpage{222}
+  \item {Interoperability with Open\+G\+L displays}, \hyperpage{220}
+    \subitem {hwloc\+\_\+gl\+\_\+get\+\_\+display\+\_\+by\+\_\+osdev}, 
+		\hyperpage{220}
+    \subitem {hwloc\+\_\+gl\+\_\+get\+\_\+display\+\_\+osdev\+\_\+by\+\_\+name}, 
+		\hyperpage{220}
+    \subitem {hwloc\+\_\+gl\+\_\+get\+\_\+display\+\_\+osdev\+\_\+by\+\_\+port\+\_\+device}, 
+		\hyperpage{220}
+  \item {Interoperability with the C\+U\+D\+A Driver A\+PI}, 
+		\hyperpage{212}
+    \subitem {hwloc\+\_\+cuda\+\_\+get\+\_\+device\+\_\+cpuset}, 
+		\hyperpage{212}
+    \subitem {hwloc\+\_\+cuda\+\_\+get\+\_\+device\+\_\+osdev}, 
+		\hyperpage{212}
+    \subitem {hwloc\+\_\+cuda\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}, 
+		\hyperpage{212}
+    \subitem {hwloc\+\_\+cuda\+\_\+get\+\_\+device\+\_\+pci\+\_\+ids}, 
+		\hyperpage{213}
+    \subitem {hwloc\+\_\+cuda\+\_\+get\+\_\+device\+\_\+pcidev}, 
+		\hyperpage{213}
+  \item {Interoperability with the C\+U\+D\+A Runtime A\+PI}, 
+		\hyperpage{214}
+    \subitem {hwloc\+\_\+cudart\+\_\+get\+\_\+device\+\_\+cpuset}, 
+		\hyperpage{214}
+    \subitem {hwloc\+\_\+cudart\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}, 
+		\hyperpage{214}
+    \subitem {hwloc\+\_\+cudart\+\_\+get\+\_\+device\+\_\+pci\+\_\+ids}, 
+		\hyperpage{214}
+    \subitem {hwloc\+\_\+cudart\+\_\+get\+\_\+device\+\_\+pcidev}, 
+		\hyperpage{215}
+  \item {Interoperability with the N\+V\+I\+D\+I\+A Management Library}, 
+		\hyperpage{216}
+    \subitem {hwloc\+\_\+nvml\+\_\+get\+\_\+device\+\_\+cpuset}, 
+		\hyperpage{216}
+    \subitem {hwloc\+\_\+nvml\+\_\+get\+\_\+device\+\_\+osdev}, 
+		\hyperpage{216}
+    \subitem {hwloc\+\_\+nvml\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}, 
+		\hyperpage{216}
+  \item {Interoperability with the R\+O\+Cm S\+M\+I Management Library}, 
+		\hyperpage{218}
+    \subitem {hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+cpuset}, 
+		\hyperpage{218}
+    \subitem {hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev}, 
+		\hyperpage{218}
+    \subitem {hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}, 
+		\hyperpage{218}
+  \item {io\+\_\+arity}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{269}
+  \item {io\+\_\+first\+\_\+child}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{269}
+  \item {is\+\_\+thissystem}
+    \subitem {hwloc\+\_\+backend}, \hyperpage{248}
+
+  \indexspace
+
+  \item {kind}
+    \subitem {hwloc\+\_\+distances\+\_\+s}, \hyperpage{259}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+group\+\_\+attr\+\_\+s}, 
+		\hyperpage{261}
+  \item {Kinds of C\+P\+U cores}, \hyperpage{200}
+    \subitem {hwloc\+\_\+cpukinds\+\_\+get\+\_\+by\+\_\+cpuset}, 
+		\hyperpage{200}
+    \subitem {hwloc\+\_\+cpukinds\+\_\+get\+\_\+info}, \hyperpage{201}
+    \subitem {hwloc\+\_\+cpukinds\+\_\+get\+\_\+nr}, \hyperpage{201}
+    \subitem {hwloc\+\_\+cpukinds\+\_\+register}, \hyperpage{202}
+  \item {Kinds of object Type}, \hyperpage{145}
+    \subitem {hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+cache}, 
+		\hyperpage{145}
+    \subitem {hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+dcache}, 
+		\hyperpage{145}
+    \subitem {hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+icache}, 
+		\hyperpage{145}
+    \subitem {hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+io}, 
+		\hyperpage{146}
+    \subitem {hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+memory}, 
+		\hyperpage{146}
+    \subitem {hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+normal}, 
+		\hyperpage{146}
+
+  \indexspace
+
+  \item {last\+\_\+child}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{269}
+  \item {linesize}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+cache\+\_\+attr\+\_\+s}, 
+		\hyperpage{251}
+  \item {linkspeed}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+pcidev\+\_\+attr\+\_\+s}, 
+		\hyperpage{277}
+  \item {Linux-\/specific helpers}, \hyperpage{203}
+    \subitem {hwloc\+\_\+linux\+\_\+get\+\_\+tid\+\_\+cpubind}, 
+		\hyperpage{203}
+    \subitem {hwloc\+\_\+linux\+\_\+get\+\_\+tid\+\_\+last\+\_\+cpu\+\_\+location}, 
+		\hyperpage{203}
+    \subitem {hwloc\+\_\+linux\+\_\+read\+\_\+path\+\_\+as\+\_\+cpumask}, 
+		\hyperpage{203}
+    \subitem {hwloc\+\_\+linux\+\_\+set\+\_\+tid\+\_\+cpubind}, 
+		\hyperpage{204}
+  \item {local\+\_\+memory}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+numanode\+\_\+attr\+\_\+s}, 
+		\hyperpage{265}
+  \item {location}
+    \subitem {hwloc\+\_\+location}, \hyperpage{262}
+  \item {logical\+\_\+index}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{270}
+  \item {Looking at Ancestor and Child Objects}, \hyperpage{143}
+    \subitem {hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+depth}, 
+		\hyperpage{143}
+    \subitem {hwloc\+\_\+get\+\_\+ancestor\+\_\+obj\+\_\+by\+\_\+type}, 
+		\hyperpage{143}
+    \subitem {hwloc\+\_\+get\+\_\+common\+\_\+ancestor\+\_\+obj}, 
+		\hyperpage{143}
+    \subitem {hwloc\+\_\+get\+\_\+next\+\_\+child}, \hyperpage{144}
+    \subitem {hwloc\+\_\+obj\+\_\+is\+\_\+in\+\_\+subtree}, 
+		\hyperpage{144}
+  \item {Looking at Cache Objects}, \hyperpage{147}
+    \subitem {hwloc\+\_\+get\+\_\+cache\+\_\+covering\+\_\+cpuset}, 
+		\hyperpage{147}
+    \subitem {hwloc\+\_\+get\+\_\+cache\+\_\+type\+\_\+depth}, 
+		\hyperpage{147}
+    \subitem {hwloc\+\_\+get\+\_\+shared\+\_\+cache\+\_\+covering\+\_\+obj}, 
+		\hyperpage{147}
+
+  \indexspace
+
+  \item {Managing memory attributes}, \hyperpage{196}
+    \subitem {hwloc\+\_\+memattr\+\_\+flag\+\_\+e}, \hyperpage{196}
+    \subitem {hwloc\+\_\+memattr\+\_\+get\+\_\+flags}, \hyperpage{196}
+    \subitem {hwloc\+\_\+memattr\+\_\+get\+\_\+initiators}, 
+		\hyperpage{197}
+    \subitem {hwloc\+\_\+memattr\+\_\+get\+\_\+name}, \hyperpage{197}
+    \subitem {hwloc\+\_\+memattr\+\_\+get\+\_\+targets}, 
+		\hyperpage{197}
+    \subitem {hwloc\+\_\+memattr\+\_\+register}, \hyperpage{198}
+    \subitem {hwloc\+\_\+memattr\+\_\+set\+\_\+value}, \hyperpage{198}
+  \item {membind}
+    \subitem {hwloc\+\_\+topology\+\_\+support}, \hyperpage{293}
+  \item {Memory binding}, \hyperpage{113}
+    \subitem {hwloc\+\_\+alloc}, \hyperpage{116}
+    \subitem {hwloc\+\_\+alloc\+\_\+membind}, \hyperpage{116}
+    \subitem {hwloc\+\_\+alloc\+\_\+membind\+\_\+policy}, 
+		\hyperpage{117}
+    \subitem {hwloc\+\_\+free}, \hyperpage{117}
+    \subitem {hwloc\+\_\+get\+\_\+area\+\_\+membind}, \hyperpage{117}
+    \subitem {hwloc\+\_\+get\+\_\+area\+\_\+memlocation}, 
+		\hyperpage{118}
+    \subitem {hwloc\+\_\+get\+\_\+membind}, \hyperpage{118}
+    \subitem {hwloc\+\_\+get\+\_\+proc\+\_\+membind}, \hyperpage{119}
+    \subitem {hwloc\+\_\+membind\+\_\+flags\+\_\+t}, \hyperpage{114}
+    \subitem {hwloc\+\_\+membind\+\_\+policy\+\_\+t}, \hyperpage{115}
+    \subitem {hwloc\+\_\+set\+\_\+area\+\_\+membind}, \hyperpage{120}
+    \subitem {hwloc\+\_\+set\+\_\+membind}, \hyperpage{120}
+    \subitem {hwloc\+\_\+set\+\_\+proc\+\_\+membind}, \hyperpage{120}
+  \item {memory\+\_\+arity}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{270}
+  \item {memory\+\_\+first\+\_\+child}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{270}
+  \item {migrate\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{290}
+  \item {misc}
+    \subitem {hwloc\+\_\+topology\+\_\+support}, \hyperpage{293}
+  \item {misc\+\_\+arity}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{270}
+  \item {misc\+\_\+first\+\_\+child}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{270}
+  \item {Modifying a loaded Topology}, \hyperpage{132}
+    \subitem {hwloc\+\_\+allow\+\_\+flags\+\_\+e}, \hyperpage{132}
+    \subitem {hwloc\+\_\+obj\+\_\+add\+\_\+other\+\_\+obj\+\_\+sets}, 
+		\hyperpage{133}
+    \subitem {hwloc\+\_\+restrict\+\_\+flags\+\_\+e}, \hyperpage{133}
+    \subitem {hwloc\+\_\+topology\+\_\+alloc\+\_\+group\+\_\+object}, 
+		\hyperpage{133}
+    \subitem {hwloc\+\_\+topology\+\_\+allow}, \hyperpage{134}
+    \subitem {hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object}, 
+		\hyperpage{134}
+    \subitem {hwloc\+\_\+topology\+\_\+insert\+\_\+misc\+\_\+object}, 
+		\hyperpage{135}
+    \subitem {hwloc\+\_\+topology\+\_\+refresh}, \hyperpage{135}
+    \subitem {hwloc\+\_\+topology\+\_\+restrict}, \hyperpage{135}
+
+  \indexspace
+
+  \item {name}
+    \subitem {hwloc\+\_\+disc\+\_\+component}, \hyperpage{257}
+    \subitem {hwloc\+\_\+info\+\_\+s}, \hyperpage{261}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{270}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+string\+\_\+s}, 
+		\hyperpage{282}
+  \item {nbobjs}
+    \subitem {hwloc\+\_\+distances\+\_\+s}, \hyperpage{259}
+  \item {Netloc A\+PI}, \hyperpage{246}
+  \item {newvalue}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+string\+\_\+s}, 
+		\hyperpage{282}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+uint64\+\_\+s}, 
+		\hyperpage{285}
+  \item {next}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+generic\+\_\+s}, 
+		\hyperpage{280}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+s}, 
+		\hyperpage{281}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+too\+\_\+complex\+\_\+s}, 
+		\hyperpage{285}
+  \item {next\+\_\+cousin}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{271}
+  \item {next\+\_\+sibling}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{271}
+  \item {nexttouch\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{290}
+  \item {nodeset}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{271}
+  \item {numa}
+    \subitem {hwloc\+\_\+topology\+\_\+discovery\+\_\+support}, 
+		\hyperpage{288}
+  \item {numa\+\_\+memory}
+    \subitem {hwloc\+\_\+topology\+\_\+discovery\+\_\+support}, 
+		\hyperpage{288}
+  \item {numanode}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u}, \hyperpage{274}
+
+  \indexspace
+
+  \item {obj\+\_\+attr}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u}, \hyperpage{287}
+  \item {obj\+\_\+depth}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+s}, 
+		\hyperpage{281}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+too\+\_\+complex\+\_\+s}, 
+		\hyperpage{286}
+  \item {obj\+\_\+index}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+s}, 
+		\hyperpage{282}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+too\+\_\+complex\+\_\+s}, 
+		\hyperpage{286}
+  \item {object}
+    \subitem {hwloc\+\_\+location\+::hwloc\+\_\+location\+\_\+u}, 
+		\hyperpage{263}
+  \item {Object levels, depths and types}, \hyperpage{99}
+    \subitem {hwloc\+\_\+get\+\_\+depth\+\_\+type}, \hyperpage{100}
+    \subitem {hwloc\+\_\+get\+\_\+memory\+\_\+parents\+\_\+depth}, 
+		\hyperpage{100}
+    \subitem {hwloc\+\_\+get\+\_\+nbobjs\+\_\+by\+\_\+depth}, 
+		\hyperpage{100}
+    \subitem {hwloc\+\_\+get\+\_\+nbobjs\+\_\+by\+\_\+type}, 
+		\hyperpage{100}
+    \subitem {hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+by\+\_\+depth}, 
+		\hyperpage{101}
+    \subitem {hwloc\+\_\+get\+\_\+next\+\_\+obj\+\_\+by\+\_\+type}, 
+		\hyperpage{101}
+    \subitem {hwloc\+\_\+get\+\_\+obj\+\_\+by\+\_\+depth}, 
+		\hyperpage{101}
+    \subitem {hwloc\+\_\+get\+\_\+obj\+\_\+by\+\_\+type}, 
+		\hyperpage{101}
+    \subitem {hwloc\+\_\+get\+\_\+root\+\_\+obj}, \hyperpage{101}
+    \subitem {hwloc\+\_\+get\+\_\+type\+\_\+depth}, \hyperpage{102}
+    \subitem {hwloc\+\_\+get\+\_\+type\+\_\+depth\+\_\+e}, 
+		\hyperpage{99}
+    \subitem {hwloc\+\_\+get\+\_\+type\+\_\+or\+\_\+above\+\_\+depth}, 
+		\hyperpage{102}
+    \subitem {hwloc\+\_\+get\+\_\+type\+\_\+or\+\_\+below\+\_\+depth}, 
+		\hyperpage{102}
+    \subitem {hwloc\+\_\+topology\+\_\+get\+\_\+depth}, \hyperpage{103}
+  \item {Object Sets (hwloc\+\_\+cpuset\+\_\+t and hwloc\+\_\+nodeset\+\_\+t)}, 
+		\hyperpage{89}
+    \subitem {hwloc\+\_\+const\+\_\+cpuset\+\_\+t}, \hyperpage{89}
+    \subitem {hwloc\+\_\+const\+\_\+nodeset\+\_\+t}, \hyperpage{89}
+    \subitem {hwloc\+\_\+cpuset\+\_\+t}, \hyperpage{89}
+    \subitem {hwloc\+\_\+nodeset\+\_\+t}, \hyperpage{89}
+  \item {Object Structure and Attributes}, \hyperpage{95}
+    \subitem {hwloc\+\_\+obj\+\_\+t}, \hyperpage{95}
+  \item {Object Types}, \hyperpage{90}
+    \subitem {H\+W\+L\+O\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+U\+N\+O\+R\+D\+E\+R\+ED}, 
+		\hyperpage{90}
+    \subitem {hwloc\+\_\+compare\+\_\+types}, \hyperpage{94}
+    \subitem {hwloc\+\_\+obj\+\_\+bridge\+\_\+type\+\_\+e}, 
+		\hyperpage{91}
+    \subitem {hwloc\+\_\+obj\+\_\+bridge\+\_\+type\+\_\+t}, 
+		\hyperpage{91}
+    \subitem {hwloc\+\_\+obj\+\_\+cache\+\_\+type\+\_\+e}, 
+		\hyperpage{91}
+    \subitem {hwloc\+\_\+obj\+\_\+cache\+\_\+type\+\_\+t}, 
+		\hyperpage{91}
+    \subitem {hwloc\+\_\+obj\+\_\+osdev\+\_\+type\+\_\+e}, 
+		\hyperpage{92}
+    \subitem {hwloc\+\_\+obj\+\_\+osdev\+\_\+type\+\_\+t}, 
+		\hyperpage{91}
+    \subitem {hwloc\+\_\+obj\+\_\+type\+\_\+t}, \hyperpage{92}
+  \item {objs}
+    \subitem {hwloc\+\_\+distances\+\_\+s}, \hyperpage{259}
+  \item {oldvalue}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+string\+\_\+s}, 
+		\hyperpage{283}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+uint64\+\_\+s}, 
+		\hyperpage{285}
+  \item {os\+\_\+index}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{271}
+  \item {osdev}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u}, \hyperpage{274}
+
+  \indexspace
+
+  \item {page\+\_\+types}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+numanode\+\_\+attr\+\_\+s}, 
+		\hyperpage{265}
+  \item {page\+\_\+types\+\_\+len}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+numanode\+\_\+attr\+\_\+s}, 
+		\hyperpage{265}
+  \item {parent}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{272}
+  \item {pci}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+bridge\+\_\+attr\+\_\+s}, 
+		\hyperpage{250}
+  \item {pcidev}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u}, \hyperpage{274}
+  \item {pcie}
+    \subitem {hwloc\+\_\+cl\+\_\+device\+\_\+topology\+\_\+amd}, 
+		\hyperpage{253}
+  \item {phase}
+    \subitem {hwloc\+\_\+disc\+\_\+status}, \hyperpage{258}
+  \item {phases}
+    \subitem {hwloc\+\_\+backend}, \hyperpage{248}
+    \subitem {hwloc\+\_\+disc\+\_\+component}, \hyperpage{257}
+  \item {prev\+\_\+cousin}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{272}
+  \item {prev\+\_\+sibling}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{272}
+  \item {priority}
+    \subitem {hwloc\+\_\+disc\+\_\+component}, \hyperpage{257}
+  \item {private\+\_\+data}
+    \subitem {hwloc\+\_\+backend}, \hyperpage{248}
+  \item {pu}
+    \subitem {hwloc\+\_\+topology\+\_\+discovery\+\_\+support}, 
+		\hyperpage{288}
+
+  \indexspace
+
+  \item {raw}
+    \subitem {hwloc\+\_\+cl\+\_\+device\+\_\+topology\+\_\+amd}, 
+		\hyperpage{253}
+  \item {Retrieve distances between objects}, \hyperpage{183}
+    \subitem {hwloc\+\_\+distances\+\_\+get}, \hyperpage{184}
+    \subitem {hwloc\+\_\+distances\+\_\+get\+\_\+by\+\_\+depth}, 
+		\hyperpage{184}
+    \subitem {hwloc\+\_\+distances\+\_\+get\+\_\+by\+\_\+name}, 
+		\hyperpage{185}
+    \subitem {hwloc\+\_\+distances\+\_\+get\+\_\+by\+\_\+type}, 
+		\hyperpage{185}
+    \subitem {hwloc\+\_\+distances\+\_\+get\+\_\+name}, \hyperpage{185}
+    \subitem {hwloc\+\_\+distances\+\_\+kind\+\_\+e}, \hyperpage{183}
+    \subitem {hwloc\+\_\+distances\+\_\+release}, \hyperpage{185}
+  \item {revision}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+pcidev\+\_\+attr\+\_\+s}, 
+		\hyperpage{277}
+
+  \indexspace
+
+  \item {secondary\+\_\+bus}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+bridge\+\_\+attr\+\_\+s}, 
+		\hyperpage{250}
+  \item {set\+\_\+area\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{291}
+  \item {set\+\_\+proc\+\_\+cpubind}
+    \subitem {hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}, 
+		\hyperpage{279}
+  \item {set\+\_\+proc\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{291}
+  \item {set\+\_\+thisproc\+\_\+cpubind}
+    \subitem {hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}, 
+		\hyperpage{279}
+  \item {set\+\_\+thisproc\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{291}
+  \item {set\+\_\+thisthread\+\_\+cpubind}
+    \subitem {hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}, 
+		\hyperpage{279}
+  \item {set\+\_\+thisthread\+\_\+membind}
+    \subitem {hwloc\+\_\+topology\+\_\+membind\+\_\+support}, 
+		\hyperpage{291}
+  \item {set\+\_\+thread\+\_\+cpubind}
+    \subitem {hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}, 
+		\hyperpage{279}
+  \item {Sharing topologies between processes}, \hyperpage{231}
+    \subitem {hwloc\+\_\+shmem\+\_\+topology\+\_\+adopt}, 
+		\hyperpage{231}
+    \subitem {hwloc\+\_\+shmem\+\_\+topology\+\_\+get\+\_\+length}, 
+		\hyperpage{232}
+    \subitem {hwloc\+\_\+shmem\+\_\+topology\+\_\+write}, 
+		\hyperpage{232}
+  \item {sibling\+\_\+rank}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{272}
+  \item {size}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+cache\+\_\+attr\+\_\+s}, 
+		\hyperpage{252}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+numanode\+\_\+attr\+\_\+s\+::hwloc\+\_\+memory\+\_\+page\+\_\+type\+\_\+s}, 
+		\hyperpage{264}
+  \item {string}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u}, 
+		\hyperpage{284}
+  \item {subdevice\+\_\+id}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+pcidev\+\_\+attr\+\_\+s}, 
+		\hyperpage{277}
+  \item {subkind}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+group\+\_\+attr\+\_\+s}, 
+		\hyperpage{261}
+  \item {subordinate\+\_\+bus}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+bridge\+\_\+attr\+\_\+s}, 
+		\hyperpage{250}
+  \item {subtype}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{272}
+  \item {subvendor\+\_\+id}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+pcidev\+\_\+attr\+\_\+s}, 
+		\hyperpage{277}
+  \item {symmetric\+\_\+subtree}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{272}
+
+  \indexspace
+
+  \item {The bitmap A\+PI}, \hyperpage{160}
+    \subitem {hwloc\+\_\+bitmap\+\_\+allbut}, \hyperpage{162}
+    \subitem {hwloc\+\_\+bitmap\+\_\+alloc}, \hyperpage{163}
+    \subitem {hwloc\+\_\+bitmap\+\_\+alloc\+\_\+full}, \hyperpage{163}
+    \subitem {hwloc\+\_\+bitmap\+\_\+and}, \hyperpage{163}
+    \subitem {hwloc\+\_\+bitmap\+\_\+andnot}, \hyperpage{163}
+    \subitem {hwloc\+\_\+bitmap\+\_\+asprintf}, \hyperpage{163}
+    \subitem {hwloc\+\_\+bitmap\+\_\+clr}, \hyperpage{164}
+    \subitem {hwloc\+\_\+bitmap\+\_\+clr\+\_\+range}, \hyperpage{164}
+    \subitem {hwloc\+\_\+bitmap\+\_\+compare}, \hyperpage{164}
+    \subitem {hwloc\+\_\+bitmap\+\_\+compare\+\_\+first}, 
+		\hyperpage{164}
+    \subitem {hwloc\+\_\+bitmap\+\_\+copy}, \hyperpage{165}
+    \subitem {hwloc\+\_\+bitmap\+\_\+dup}, \hyperpage{165}
+    \subitem {hwloc\+\_\+bitmap\+\_\+fill}, \hyperpage{165}
+    \subitem {hwloc\+\_\+bitmap\+\_\+first}, \hyperpage{165}
+    \subitem {hwloc\+\_\+bitmap\+\_\+first\+\_\+unset}, \hyperpage{166}
+    \subitem {hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin}, 
+		\hyperpage{161}
+    \subitem {hwloc\+\_\+bitmap\+\_\+foreach\+\_\+end}, \hyperpage{162}
+    \subitem {hwloc\+\_\+bitmap\+\_\+free}, \hyperpage{166}
+    \subitem {hwloc\+\_\+bitmap\+\_\+from\+\_\+ith\+\_\+ulong}, 
+		\hyperpage{166}
+    \subitem {hwloc\+\_\+bitmap\+\_\+from\+\_\+ulong}, \hyperpage{166}
+    \subitem {hwloc\+\_\+bitmap\+\_\+from\+\_\+ulongs}, \hyperpage{167}
+    \subitem {hwloc\+\_\+bitmap\+\_\+intersects}, \hyperpage{167}
+    \subitem {hwloc\+\_\+bitmap\+\_\+isequal}, \hyperpage{167}
+    \subitem {hwloc\+\_\+bitmap\+\_\+isfull}, \hyperpage{167}
+    \subitem {hwloc\+\_\+bitmap\+\_\+isincluded}, \hyperpage{168}
+    \subitem {hwloc\+\_\+bitmap\+\_\+isset}, \hyperpage{168}
+    \subitem {hwloc\+\_\+bitmap\+\_\+iszero}, \hyperpage{168}
+    \subitem {hwloc\+\_\+bitmap\+\_\+last}, \hyperpage{169}
+    \subitem {hwloc\+\_\+bitmap\+\_\+last\+\_\+unset}, \hyperpage{169}
+    \subitem {hwloc\+\_\+bitmap\+\_\+list\+\_\+asprintf}, 
+		\hyperpage{169}
+    \subitem {hwloc\+\_\+bitmap\+\_\+list\+\_\+snprintf}, 
+		\hyperpage{169}
+    \subitem {hwloc\+\_\+bitmap\+\_\+list\+\_\+sscanf}, \hyperpage{170}
+    \subitem {hwloc\+\_\+bitmap\+\_\+next}, \hyperpage{170}
+    \subitem {hwloc\+\_\+bitmap\+\_\+next\+\_\+unset}, \hyperpage{170}
+    \subitem {hwloc\+\_\+bitmap\+\_\+not}, \hyperpage{171}
+    \subitem {hwloc\+\_\+bitmap\+\_\+nr\+\_\+ulongs}, \hyperpage{171}
+    \subitem {hwloc\+\_\+bitmap\+\_\+only}, \hyperpage{171}
+    \subitem {hwloc\+\_\+bitmap\+\_\+or}, \hyperpage{171}
+    \subitem {hwloc\+\_\+bitmap\+\_\+set}, \hyperpage{172}
+    \subitem {hwloc\+\_\+bitmap\+\_\+set\+\_\+ith\+\_\+ulong}, 
+		\hyperpage{172}
+    \subitem {hwloc\+\_\+bitmap\+\_\+set\+\_\+range}, \hyperpage{172}
+    \subitem {hwloc\+\_\+bitmap\+\_\+singlify}, \hyperpage{172}
+    \subitem {hwloc\+\_\+bitmap\+\_\+snprintf}, \hyperpage{173}
+    \subitem {hwloc\+\_\+bitmap\+\_\+sscanf}, \hyperpage{173}
+    \subitem {hwloc\+\_\+bitmap\+\_\+t}, \hyperpage{162}
+    \subitem {hwloc\+\_\+bitmap\+\_\+taskset\+\_\+asprintf}, 
+		\hyperpage{173}
+    \subitem {hwloc\+\_\+bitmap\+\_\+taskset\+\_\+snprintf}, 
+		\hyperpage{174}
+    \subitem {hwloc\+\_\+bitmap\+\_\+taskset\+\_\+sscanf}, 
+		\hyperpage{174}
+    \subitem {hwloc\+\_\+bitmap\+\_\+to\+\_\+ith\+\_\+ulong}, 
+		\hyperpage{174}
+    \subitem {hwloc\+\_\+bitmap\+\_\+to\+\_\+ulong}, \hyperpage{175}
+    \subitem {hwloc\+\_\+bitmap\+\_\+to\+\_\+ulongs}, \hyperpage{175}
+    \subitem {hwloc\+\_\+bitmap\+\_\+weight}, \hyperpage{175}
+    \subitem {hwloc\+\_\+bitmap\+\_\+xor}, \hyperpage{175}
+    \subitem {hwloc\+\_\+bitmap\+\_\+zero}, \hyperpage{176}
+    \subitem {hwloc\+\_\+const\+\_\+bitmap\+\_\+t}, \hyperpage{162}
+  \item {too\+\_\+complex}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u}, \hyperpage{287}
+  \item {Topology Creation and Destruction}, \hyperpage{96}
+    \subitem {hwloc\+\_\+topology\+\_\+abi\+\_\+check}, \hyperpage{96}
+    \subitem {hwloc\+\_\+topology\+\_\+check}, \hyperpage{96}
+    \subitem {hwloc\+\_\+topology\+\_\+destroy}, \hyperpage{97}
+    \subitem {hwloc\+\_\+topology\+\_\+dup}, \hyperpage{97}
+    \subitem {hwloc\+\_\+topology\+\_\+init}, \hyperpage{97}
+    \subitem {hwloc\+\_\+topology\+\_\+load}, \hyperpage{98}
+    \subitem {hwloc\+\_\+topology\+\_\+t}, \hyperpage{96}
+  \item {Topology Detection Configuration and Query}, \hyperpage{125}
+    \subitem {hwloc\+\_\+topology\+\_\+flags\+\_\+e}, \hyperpage{125}
+    \subitem {hwloc\+\_\+topology\+\_\+get\+\_\+flags}, \hyperpage{128}
+    \subitem {hwloc\+\_\+topology\+\_\+get\+\_\+support}, 
+		\hyperpage{128}
+    \subitem {hwloc\+\_\+topology\+\_\+get\+\_\+type\+\_\+filter}, 
+		\hyperpage{129}
+    \subitem {hwloc\+\_\+topology\+\_\+get\+\_\+userdata}, 
+		\hyperpage{129}
+    \subitem {hwloc\+\_\+topology\+\_\+is\+\_\+thissystem}, 
+		\hyperpage{129}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+all\+\_\+types\+\_\+filter}, 
+		\hyperpage{129}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+cache\+\_\+types\+\_\+filter}, 
+		\hyperpage{130}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+flags}, \hyperpage{130}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+icache\+\_\+types\+\_\+filter}, 
+		\hyperpage{130}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+io\+\_\+types\+\_\+filter}, 
+		\hyperpage{130}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+type\+\_\+filter}, 
+		\hyperpage{130}
+    \subitem {hwloc\+\_\+topology\+\_\+set\+\_\+userdata}, 
+		\hyperpage{131}
+    \subitem {hwloc\+\_\+type\+\_\+filter\+\_\+e}, \hyperpage{127}
+  \item {Topology differences}, \hyperpage{224}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+apply}, 
+		\hyperpage{227}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+apply\+\_\+flags\+\_\+e}, 
+		\hyperpage{225}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+build}, 
+		\hyperpage{228}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+destroy}, 
+		\hyperpage{228}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+export\+\_\+xml}, 
+		\hyperpage{228}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+export\+\_\+xmlbuffer}, 
+		\hyperpage{229}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+load\+\_\+xml}, 
+		\hyperpage{229}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+load\+\_\+xmlbuffer}, 
+		\hyperpage{229}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+type\+\_\+e}, 
+		\hyperpage{225}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+type\+\_\+t}, 
+		\hyperpage{225}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+t}, \hyperpage{225}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+type\+\_\+e}, 
+		\hyperpage{227}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+type\+\_\+t}, 
+		\hyperpage{225}
+  \item {total\+\_\+memory}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{273}
+  \item {type}
+    \subitem {hwloc\+\_\+cl\+\_\+device\+\_\+topology\+\_\+amd}, 
+		\hyperpage{253}
+    \subitem {hwloc\+\_\+component}, \hyperpage{255}
+    \subitem {hwloc\+\_\+location}, \hyperpage{262}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{273}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+cache\+\_\+attr\+\_\+s}, 
+		\hyperpage{252}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+osdev\+\_\+attr\+\_\+s}, 
+		\hyperpage{275}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+generic\+\_\+s}, 
+		\hyperpage{281}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+string\+\_\+s}, 
+		\hyperpage{283}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+uint64\+\_\+s}, 
+		\hyperpage{285}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+generic\+\_\+s}, 
+		\hyperpage{280}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+s}, 
+		\hyperpage{282}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+u\+::hwloc\+\_\+topology\+\_\+diff\+\_\+too\+\_\+complex\+\_\+s}, 
+		\hyperpage{286}
+
+  \indexspace
+
+  \item {uint64}
+    \subitem {hwloc\+\_\+topology\+\_\+diff\+\_\+obj\+\_\+attr\+\_\+u}, 
+		\hyperpage{284}
+  \item {unused}
+    \subitem {hwloc\+\_\+cl\+\_\+device\+\_\+topology\+\_\+amd}, 
+		\hyperpage{253}
+  \item {upstream}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+bridge\+\_\+attr\+\_\+s}, 
+		\hyperpage{250}
+  \item {upstream\+\_\+type}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+bridge\+\_\+attr\+\_\+s}, 
+		\hyperpage{250}
+  \item {userdata}
+    \subitem {hwloc\+\_\+obj}, \hyperpage{273}
+
+  \indexspace
+
+  \item {value}
+    \subitem {hwloc\+\_\+info\+\_\+s}, \hyperpage{262}
+  \item {values}
+    \subitem {hwloc\+\_\+distances\+\_\+s}, \hyperpage{260}
+  \item {vendor\+\_\+id}
+    \subitem {hwloc\+\_\+obj\+\_\+attr\+\_\+u\+::hwloc\+\_\+pcidev\+\_\+attr\+\_\+s}, 
+		\hyperpage{277}
+
+\end{theindex}

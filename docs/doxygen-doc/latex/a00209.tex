@@ -1,0 +1,43 @@
+\hypertarget{a00209}{}\section{Helpers for consulting distance matrices}
+\label{a00209}\index{Helpers for consulting distance matrices@{Helpers for consulting distance matrices}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{a00209_gab9e770c7d56c5d6040f26bd1dc8854cd}{hwloc\+\_\+distances\+\_\+obj\+\_\+index} (struct \hyperlink{a00310}{hwloc\+\_\+distances\+\_\+s} $\ast$distances, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj)
+\item 
+static int \hyperlink{a00209_ga3c665b23056e3269f777b21a67148c82}{hwloc\+\_\+distances\+\_\+obj\+\_\+pair\+\_\+values} (struct \hyperlink{a00310}{hwloc\+\_\+distances\+\_\+s} $\ast$distances, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj1, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj2, hwloc\+\_\+uint64\+\_\+t $\ast$value1to2, hwloc\+\_\+uint64\+\_\+t $\ast$value2to1)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00209_gab9e770c7d56c5d6040f26bd1dc8854cd}\label{a00209_gab9e770c7d56c5d6040f26bd1dc8854cd}} 
+\index{Helpers for consulting distance matrices@{Helpers for consulting distance matrices}!hwloc\+\_\+distances\+\_\+obj\+\_\+index@{hwloc\+\_\+distances\+\_\+obj\+\_\+index}}
+\index{hwloc\+\_\+distances\+\_\+obj\+\_\+index@{hwloc\+\_\+distances\+\_\+obj\+\_\+index}!Helpers for consulting distance matrices@{Helpers for consulting distance matrices}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+distances\+\_\+obj\+\_\+index()}{hwloc\_distances\_obj\_index()}}
+{\footnotesize\ttfamily static int hwloc\+\_\+distances\+\_\+obj\+\_\+index (\begin{DoxyParamCaption}\item[{struct \hyperlink{a00310}{hwloc\+\_\+distances\+\_\+s} $\ast$}]{distances,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Find the index of an object in a distances structure. 
+
+\begin{DoxyReturn}{Returns}
+-\/1 if object {\ttfamily obj} is not involved in structure {\ttfamily distances}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00209_ga3c665b23056e3269f777b21a67148c82}\label{a00209_ga3c665b23056e3269f777b21a67148c82}} 
+\index{Helpers for consulting distance matrices@{Helpers for consulting distance matrices}!hwloc\+\_\+distances\+\_\+obj\+\_\+pair\+\_\+values@{hwloc\+\_\+distances\+\_\+obj\+\_\+pair\+\_\+values}}
+\index{hwloc\+\_\+distances\+\_\+obj\+\_\+pair\+\_\+values@{hwloc\+\_\+distances\+\_\+obj\+\_\+pair\+\_\+values}!Helpers for consulting distance matrices@{Helpers for consulting distance matrices}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+distances\+\_\+obj\+\_\+pair\+\_\+values()}{hwloc\_distances\_obj\_pair\_values()}}
+{\footnotesize\ttfamily static int hwloc\+\_\+distances\+\_\+obj\+\_\+pair\+\_\+values (\begin{DoxyParamCaption}\item[{struct \hyperlink{a00310}{hwloc\+\_\+distances\+\_\+s} $\ast$}]{distances,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj1,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj2,  }\item[{hwloc\+\_\+uint64\+\_\+t $\ast$}]{value1to2,  }\item[{hwloc\+\_\+uint64\+\_\+t $\ast$}]{value2to1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Find the values between two objects in a distance matrices. 
+
+The distance from {\ttfamily obj1} to {\ttfamily obj2} is stored in the value pointed by {\ttfamily value1to2} and reciprocally.
+
+\begin{DoxyReturn}{Returns}
+-\/1 if object {\ttfamily obj1} or {\ttfamily obj2} is not involved in structure {\ttfamily distances}. 
+\end{DoxyReturn}

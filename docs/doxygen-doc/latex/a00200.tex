@@ -1,0 +1,121 @@
+\hypertarget{a00200}{}\section{Finding objects, miscellaneous helpers}
+\label{a00200}\index{Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{a00200_ga050646458efc8ca1120d9f124c5ad861}{hwloc\+\_\+bitmap\+\_\+singlify\+\_\+per\+\_\+core} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} cpuset, unsigned which)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00200_ga751c238a4931db5cc0ca3181b7dd7479}{hwloc\+\_\+get\+\_\+pu\+\_\+obj\+\_\+by\+\_\+os\+\_\+index} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, unsigned os\+\_\+index)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00200_gab89d9ed9edfaa3dd526fb6ee1a1618ea}{hwloc\+\_\+get\+\_\+numanode\+\_\+obj\+\_\+by\+\_\+os\+\_\+index} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, unsigned os\+\_\+index)
+\item 
+unsigned \hyperlink{a00200_ga2cd22a34360643f7f5bad09576dec205}{hwloc\+\_\+get\+\_\+closest\+\_\+objs} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} src, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} $\ast$restrict objs, unsigned max)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00200_ga7a0c1046851f7a88bd52f5a1d4ba0a97}{hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+by\+\_\+type} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type1, unsigned idx1, \hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type2, unsigned idx2)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00200_gacb51295ff3fbd3a96f990f20c6492b1d}{hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+array\+\_\+by\+\_\+type} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, int nr, \hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} $\ast$typev, unsigned $\ast$idxv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Be sure to see the figure in \hyperlink{a00380}{Terms and Definitions} that shows a complete topology tree, including depths, child/sibling/cousin relationships, and an example of an asymmetric topology where one package has fewer caches than its peers. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00200_ga050646458efc8ca1120d9f124c5ad861}\label{a00200_ga050646458efc8ca1120d9f124c5ad861}} 
+\index{Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}!hwloc\+\_\+bitmap\+\_\+singlify\+\_\+per\+\_\+core@{hwloc\+\_\+bitmap\+\_\+singlify\+\_\+per\+\_\+core}}
+\index{hwloc\+\_\+bitmap\+\_\+singlify\+\_\+per\+\_\+core@{hwloc\+\_\+bitmap\+\_\+singlify\+\_\+per\+\_\+core}!Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+bitmap\+\_\+singlify\+\_\+per\+\_\+core()}{hwloc\_bitmap\_singlify\_per\_core()}}
+{\footnotesize\ttfamily int hwloc\+\_\+bitmap\+\_\+singlify\+\_\+per\+\_\+core (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{cpuset,  }\item[{unsigned}]{which }\end{DoxyParamCaption})}
+
+
+
+Remove simultaneous multithreading P\+Us from a C\+PU set. 
+
+For each core in {\ttfamily topology}, if {\ttfamily cpuset} contains some P\+Us of that core, modify {\ttfamily cpuset} to only keep a single PU for that core.
+
+{\ttfamily which} specifies which PU will be kept. PU are considered in physical index order. If 0, for each core, the function keeps the first PU that was originally set in {\ttfamily cpuset}.
+
+If {\ttfamily which} is larger than the number of P\+Us in a core there were originally set in {\ttfamily cpuset}, no PU is kept for that core.
+
+\begin{DoxyNote}{Note}
+P\+Us that are not below a Core object are ignored (for instance if the topology does not contain any Core object). None of them is removed from {\ttfamily cpuset}. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00200_ga2cd22a34360643f7f5bad09576dec205}\label{a00200_ga2cd22a34360643f7f5bad09576dec205}} 
+\index{Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}!hwloc\+\_\+get\+\_\+closest\+\_\+objs@{hwloc\+\_\+get\+\_\+closest\+\_\+objs}}
+\index{hwloc\+\_\+get\+\_\+closest\+\_\+objs@{hwloc\+\_\+get\+\_\+closest\+\_\+objs}!Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+closest\+\_\+objs()}{hwloc\_get\_closest\_objs()}}
+{\footnotesize\ttfamily unsigned hwloc\+\_\+get\+\_\+closest\+\_\+objs (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{src,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} $\ast$restrict}]{objs,  }\item[{unsigned}]{max }\end{DoxyParamCaption})}
+
+
+
+Do a depth-\/first traversal of the topology to find and sort. 
+
+all objects that are at the same depth than {\ttfamily src}. Report in {\ttfamily objs} up to {\ttfamily max} physically closest ones to {\ttfamily src}.
+
+\begin{DoxyReturn}{Returns}
+the number of objects returned in {\ttfamily objs}.
+
+0 if {\ttfamily src} is an I/O object.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function requires the {\ttfamily src} object to have a C\+PU set. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00200_gab89d9ed9edfaa3dd526fb6ee1a1618ea}\label{a00200_gab89d9ed9edfaa3dd526fb6ee1a1618ea}} 
+\index{Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}!hwloc\+\_\+get\+\_\+numanode\+\_\+obj\+\_\+by\+\_\+os\+\_\+index@{hwloc\+\_\+get\+\_\+numanode\+\_\+obj\+\_\+by\+\_\+os\+\_\+index}}
+\index{hwloc\+\_\+get\+\_\+numanode\+\_\+obj\+\_\+by\+\_\+os\+\_\+index@{hwloc\+\_\+get\+\_\+numanode\+\_\+obj\+\_\+by\+\_\+os\+\_\+index}!Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+numanode\+\_\+obj\+\_\+by\+\_\+os\+\_\+index()}{hwloc\_get\_numanode\_obj\_by\_os\_index()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+numanode\+\_\+obj\+\_\+by\+\_\+os\+\_\+index (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{unsigned}]{os\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns the object of type \hyperlink{a00184_ggacd37bb612667dc437d66bfb175a8dc55a9d917a3e5497950c6d8948b8e183db5a}{H\+W\+L\+O\+C\+\_\+\+O\+B\+J\+\_\+\+N\+U\+M\+A\+N\+O\+DE} with {\ttfamily os\+\_\+index}. 
+
+This function is useful for converting a nodeset into the N\+U\+MA node objects it contains. When retrieving the current binding (e.\+g. with \hyperlink{a00191_gae21f0a1a884929c784bebf070252aa56}{hwloc\+\_\+get\+\_\+membind()} with H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+B\+I\+N\+D\+\_\+\+B\+Y\+N\+O\+D\+E\+S\+ET), one may iterate over the bits of the resulting nodeset with \hyperlink{a00205_ga3f6861045a8029ade373510ffa727d2a}{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin()}, and find the corresponding N\+U\+MA nodes with this function. \mbox{\Hypertarget{a00200_gacb51295ff3fbd3a96f990f20c6492b1d}\label{a00200_gacb51295ff3fbd3a96f990f20c6492b1d}} 
+\index{Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}!hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+array\+\_\+by\+\_\+type@{hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+array\+\_\+by\+\_\+type}}
+\index{hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+array\+\_\+by\+\_\+type@{hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+array\+\_\+by\+\_\+type}!Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+array\+\_\+by\+\_\+type()}{hwloc\_get\_obj\_below\_array\_by\_type()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+array\+\_\+by\+\_\+type (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{int}]{nr,  }\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} $\ast$}]{typev,  }\item[{unsigned $\ast$}]{idxv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Find an object below a chain of objects specified by types and indexes. 
+
+This is a generalized version of \hyperlink{a00200_ga7a0c1046851f7a88bd52f5a1d4ba0a97}{hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+by\+\_\+type()}.
+
+Arrays {\ttfamily typev} and {\ttfamily idxv} must contain {\ttfamily nr} types and indexes.
+
+Start from the top system object and walk the arrays {\ttfamily typev} and {\ttfamily idxv}. For each type and logical index couple in the arrays, look under the previously found object to find the index-\/th object of the given type. Indexes are specified within the parent, not withing the entire system.
+
+For instance, if nr is 3, typev contains N\+O\+DE, P\+A\+C\+K\+A\+GE and C\+O\+RE, and idxv contains 0, 1 and 2, return the third core object below the second package below the first N\+U\+MA node.
+
+\begin{DoxyNote}{Note}
+This function requires all these objects and the root object to have a C\+PU set. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00200_ga7a0c1046851f7a88bd52f5a1d4ba0a97}\label{a00200_ga7a0c1046851f7a88bd52f5a1d4ba0a97}} 
+\index{Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}!hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+by\+\_\+type@{hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+by\+\_\+type}}
+\index{hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+by\+\_\+type@{hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+by\+\_\+type}!Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+by\+\_\+type()}{hwloc\_get\_obj\_below\_by\_type()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+obj\+\_\+below\+\_\+by\+\_\+type (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type1,  }\item[{unsigned}]{idx1,  }\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type2,  }\item[{unsigned}]{idx2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Find an object below another object, both specified by types and indexes. 
+
+Start from the top system object and find object of type {\ttfamily type1} and logical index {\ttfamily idx1}. Then look below this object and find another object of type {\ttfamily type2} and logical index {\ttfamily idx2}. Indexes are specified within the parent, not withing the entire system.
+
+For instance, if type1 is P\+A\+C\+K\+A\+GE, idx1 is 2, type2 is C\+O\+RE and idx2 is 3, return the fourth core object below the third package.
+
+\begin{DoxyNote}{Note}
+This function requires these objects to have a C\+PU set. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00200_ga751c238a4931db5cc0ca3181b7dd7479}\label{a00200_ga751c238a4931db5cc0ca3181b7dd7479}} 
+\index{Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}!hwloc\+\_\+get\+\_\+pu\+\_\+obj\+\_\+by\+\_\+os\+\_\+index@{hwloc\+\_\+get\+\_\+pu\+\_\+obj\+\_\+by\+\_\+os\+\_\+index}}
+\index{hwloc\+\_\+get\+\_\+pu\+\_\+obj\+\_\+by\+\_\+os\+\_\+index@{hwloc\+\_\+get\+\_\+pu\+\_\+obj\+\_\+by\+\_\+os\+\_\+index}!Finding objects, miscellaneous helpers@{Finding objects, miscellaneous helpers}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+pu\+\_\+obj\+\_\+by\+\_\+os\+\_\+index()}{hwloc\_get\_pu\_obj\_by\_os\_index()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+pu\+\_\+obj\+\_\+by\+\_\+os\+\_\+index (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{unsigned}]{os\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns the object of type \hyperlink{a00184_ggacd37bb612667dc437d66bfb175a8dc55abca6887e80cb291353b0a0c1da83f661}{H\+W\+L\+O\+C\+\_\+\+O\+B\+J\+\_\+\+PU} with {\ttfamily os\+\_\+index}. 
+
+This function is useful for converting a C\+PU set into the PU objects it contains. When retrieving the current binding (e.\+g. with \hyperlink{a00190_gacba7ecb979baf824d5240fa2cb2a8be6}{hwloc\+\_\+get\+\_\+cpubind()}), one may iterate over the bits of the resulting C\+PU set with \hyperlink{a00205_ga3f6861045a8029ade373510ffa727d2a}{hwloc\+\_\+bitmap\+\_\+foreach\+\_\+begin()}, and find the corresponding P\+Us with this function. 

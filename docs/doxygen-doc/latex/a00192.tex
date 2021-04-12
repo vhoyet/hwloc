@@ -1,0 +1,154 @@
+\hypertarget{a00192}{}\section{Changing the Source of Topology Discovery}
+\label{a00192}\index{Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{a00192_ga949f656c779208a36790feba24048b7e}{hwloc\+\_\+topology\+\_\+components\+\_\+flag\+\_\+e} \{ \hyperlink{a00192_gga949f656c779208a36790feba24048b7ea33eec25d29253a2aba21dd3c731b416e}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+S\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+A\+C\+K\+L\+I\+ST}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{a00192_ga341fc17b5867a4715570baab131f68cd}{hwloc\+\_\+topology\+\_\+set\+\_\+pid} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict topology, hwloc\+\_\+pid\+\_\+t pid)
+\item 
+int \hyperlink{a00192_ga4fab186bb6181a00bcf585825fddd38d}{hwloc\+\_\+topology\+\_\+set\+\_\+synthetic} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict topology, const char $\ast$restrict description)
+\item 
+int \hyperlink{a00192_ga879439b7ee99407ee911b3ac64e9a25e}{hwloc\+\_\+topology\+\_\+set\+\_\+xml} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict topology, const char $\ast$restrict xmlpath)
+\item 
+int \hyperlink{a00192_ga2745616b65595e1c1e579ecc7e461fa8}{hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict topology, const char $\ast$restrict buffer, int size)
+\item 
+int \hyperlink{a00192_ga9ad41adf418cee1c0ee32ba9bd4a3d36}{hwloc\+\_\+topology\+\_\+set\+\_\+components} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict topology, unsigned long flags, const char $\ast$restrict name)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+If none of the functions below is called, the default is to detect all the objects of the machine that the caller is allowed to access.
+
+This default behavior may also be modified through environment variables if the application did not modify it already. Setting H\+W\+L\+O\+C\+\_\+\+X\+M\+L\+F\+I\+LE in the environment enforces the discovery from a X\+ML file as if \hyperlink{a00192_ga879439b7ee99407ee911b3ac64e9a25e}{hwloc\+\_\+topology\+\_\+set\+\_\+xml()} had been called. Setting H\+W\+L\+O\+C\+\_\+\+S\+Y\+N\+T\+H\+E\+T\+IC enforces a synthetic topology as if \hyperlink{a00192_ga4fab186bb6181a00bcf585825fddd38d}{hwloc\+\_\+topology\+\_\+set\+\_\+synthetic()} had been called.
+
+Finally, H\+W\+L\+O\+C\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM enforces the return value of \hyperlink{a00193_ga68ffdcfd9175cdf40709801092f18017}{hwloc\+\_\+topology\+\_\+is\+\_\+thissystem()}. 
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{a00192_ga949f656c779208a36790feba24048b7e}\label{a00192_ga949f656c779208a36790feba24048b7e}} 
+\index{Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}!hwloc\+\_\+topology\+\_\+components\+\_\+flag\+\_\+e@{hwloc\+\_\+topology\+\_\+components\+\_\+flag\+\_\+e}}
+\index{hwloc\+\_\+topology\+\_\+components\+\_\+flag\+\_\+e@{hwloc\+\_\+topology\+\_\+components\+\_\+flag\+\_\+e}!Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+components\+\_\+flag\+\_\+e}{hwloc\_topology\_components\_flag\_e}}
+{\footnotesize\ttfamily enum \hyperlink{a00192_ga949f656c779208a36790feba24048b7e}{hwloc\+\_\+topology\+\_\+components\+\_\+flag\+\_\+e}}
+
+
+
+Flags to be passed to \hyperlink{a00192_ga9ad41adf418cee1c0ee32ba9bd4a3d36}{hwloc\+\_\+topology\+\_\+set\+\_\+components()} 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+S\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+A\+C\+K\+L\+I\+ST@{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+S\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+A\+C\+K\+L\+I\+ST}!Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}}\index{Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}!H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+S\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+A\+C\+K\+L\+I\+ST@{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+S\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+A\+C\+K\+L\+I\+ST}}}\mbox{\Hypertarget{a00192_gga949f656c779208a36790feba24048b7ea33eec25d29253a2aba21dd3c731b416e}\label{a00192_gga949f656c779208a36790feba24048b7ea33eec25d29253a2aba21dd3c731b416e}} 
+H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+S\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+A\+C\+K\+L\+I\+ST&Blacklist the target component from being used. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00192_ga9ad41adf418cee1c0ee32ba9bd4a3d36}\label{a00192_ga9ad41adf418cee1c0ee32ba9bd4a3d36}} 
+\index{Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}!hwloc\+\_\+topology\+\_\+set\+\_\+components@{hwloc\+\_\+topology\+\_\+set\+\_\+components}}
+\index{hwloc\+\_\+topology\+\_\+set\+\_\+components@{hwloc\+\_\+topology\+\_\+set\+\_\+components}!Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+set\+\_\+components()}{hwloc\_topology\_set\_components()}}
+{\footnotesize\ttfamily int hwloc\+\_\+topology\+\_\+set\+\_\+components (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict}]{topology,  }\item[{unsigned long}]{flags,  }\item[{const char $\ast$restrict}]{name }\end{DoxyParamCaption})}
+
+
+
+Prevent a discovery component from being used for a topology. 
+
+{\ttfamily name} is the name of the discovery component that should not be used when loading topology {\ttfamily topology}. The name is a string such as \char`\"{}cuda\char`\"{}.
+
+For components with multiple phases, it may also be suffixed with the name of a phase, for instance \char`\"{}linux\+:io\char`\"{}.
+
+{\ttfamily flags} should be \hyperlink{a00192_gga949f656c779208a36790feba24048b7ea33eec25d29253a2aba21dd3c731b416e}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+S\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+A\+C\+K\+L\+I\+ST}.
+
+This may be used to avoid expensive parts of the discovery process. For instance, C\+U\+D\+A-\/specific discovery may be expensive and unneeded while generic I/O discovery could still be useful. \mbox{\Hypertarget{a00192_ga341fc17b5867a4715570baab131f68cd}\label{a00192_ga341fc17b5867a4715570baab131f68cd}} 
+\index{Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}!hwloc\+\_\+topology\+\_\+set\+\_\+pid@{hwloc\+\_\+topology\+\_\+set\+\_\+pid}}
+\index{hwloc\+\_\+topology\+\_\+set\+\_\+pid@{hwloc\+\_\+topology\+\_\+set\+\_\+pid}!Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+set\+\_\+pid()}{hwloc\_topology\_set\_pid()}}
+{\footnotesize\ttfamily int hwloc\+\_\+topology\+\_\+set\+\_\+pid (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict}]{topology,  }\item[{hwloc\+\_\+pid\+\_\+t}]{pid }\end{DoxyParamCaption})}
+
+
+
+Change which process the topology is viewed from. 
+
+On some systems, processes may have different views of the machine, for instance the set of allowed C\+P\+Us. By default, hwloc exposes the view from the current process. Calling \hyperlink{a00192_ga341fc17b5867a4715570baab131f68cd}{hwloc\+\_\+topology\+\_\+set\+\_\+pid()} permits to make it expose the topology of the machine from the point of view of another process.
+
+\begin{DoxyNote}{Note}
+{\ttfamily hwloc\+\_\+pid\+\_\+t} is {\ttfamily pid\+\_\+t} on Unix platforms, and {\ttfamily H\+A\+N\+D\+LE} on native Windows platforms.
+
+-\/1 is returned and errno is set to E\+N\+O\+S\+YS on platforms that do not support this feature. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00192_ga4fab186bb6181a00bcf585825fddd38d}\label{a00192_ga4fab186bb6181a00bcf585825fddd38d}} 
+\index{Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}!hwloc\+\_\+topology\+\_\+set\+\_\+synthetic@{hwloc\+\_\+topology\+\_\+set\+\_\+synthetic}}
+\index{hwloc\+\_\+topology\+\_\+set\+\_\+synthetic@{hwloc\+\_\+topology\+\_\+set\+\_\+synthetic}!Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+set\+\_\+synthetic()}{hwloc\_topology\_set\_synthetic()}}
+{\footnotesize\ttfamily int hwloc\+\_\+topology\+\_\+set\+\_\+synthetic (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict}]{topology,  }\item[{const char $\ast$restrict}]{description }\end{DoxyParamCaption})}
+
+
+
+Enable synthetic topology. 
+
+Gather topology information from the given {\ttfamily description}, a space-\/separated string of $<$type\+:number$>$ describing the object type and arity at each level. All types may be omitted (space-\/separated string of numbers) so that hwloc chooses all types according to usual topologies. See also the \hyperlink{a00389}{Synthetic topologies}.
+
+Setting the environment variable H\+W\+L\+O\+C\+\_\+\+S\+Y\+N\+T\+H\+E\+T\+IC may also result in this behavior.
+
+If {\ttfamily description} was properly parsed and describes a valid topology configuration, this function returns 0. Otherwise -\/1 is returned and errno is set to E\+I\+N\+V\+AL.
+
+Note that this function does not actually load topology information; it just tells hwloc where to load it from. You\textquotesingle{}ll still need to invoke \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()} to actually load the topology information.
+
+\begin{DoxyNote}{Note}
+For convenience, this backend provides empty binding hooks which just return success.
+
+On success, the synthetic component replaces the previously enabled component (if any), but the topology is not actually modified until \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()}. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00192_ga879439b7ee99407ee911b3ac64e9a25e}\label{a00192_ga879439b7ee99407ee911b3ac64e9a25e}} 
+\index{Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}!hwloc\+\_\+topology\+\_\+set\+\_\+xml@{hwloc\+\_\+topology\+\_\+set\+\_\+xml}}
+\index{hwloc\+\_\+topology\+\_\+set\+\_\+xml@{hwloc\+\_\+topology\+\_\+set\+\_\+xml}!Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+set\+\_\+xml()}{hwloc\_topology\_set\_xml()}}
+{\footnotesize\ttfamily int hwloc\+\_\+topology\+\_\+set\+\_\+xml (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict}]{topology,  }\item[{const char $\ast$restrict}]{xmlpath }\end{DoxyParamCaption})}
+
+
+
+Enable X\+M\+L-\/file based topology. 
+
+Gather topology information from the X\+ML file given at {\ttfamily xmlpath}. Setting the environment variable H\+W\+L\+O\+C\+\_\+\+X\+M\+L\+F\+I\+LE may also result in this behavior. This file may have been generated earlier with \hyperlink{a00206_ga333f79975b4eeb28a3d8fad3373583ce}{hwloc\+\_\+topology\+\_\+export\+\_\+xml()} in \hyperlink{a00128_source}{hwloc/export.\+h}, or lstopo file.\+xml.
+
+Note that this function does not actually load topology information; it just tells hwloc where to load it from. You\textquotesingle{}ll still need to invoke \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()} to actually load the topology information.
+
+\begin{DoxyReturn}{Returns}
+-\/1 with errno set to E\+I\+N\+V\+AL on failure to read the X\+ML file.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+See also \hyperlink{a00206_ga5ac6917ea7289955fb1ffda4353af9b0}{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+import\+\_\+callback()} for importing application-\/specific object userdata.
+
+For convenience, this backend provides empty binding hooks which just return success. To have hwloc still actually call O\+S-\/specific hooks, the \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea6ecb6abc6a0bb75e81564f8bca85783b}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+I\+S\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM} has to be set to assert that the loaded file is really the underlying system.
+
+On success, the X\+ML component replaces the previously enabled component (if any), but the topology is not actually modified until \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()}. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00192_ga2745616b65595e1c1e579ecc7e461fa8}\label{a00192_ga2745616b65595e1c1e579ecc7e461fa8}} 
+\index{Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}!hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer@{hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer}}
+\index{hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer@{hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer}!Changing the Source of Topology Discovery@{Changing the Source of Topology Discovery}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer()}{hwloc\_topology\_set\_xmlbuffer()}}
+{\footnotesize\ttfamily int hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict}]{topology,  }\item[{const char $\ast$restrict}]{buffer,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Enable X\+ML based topology using a memory buffer (instead of a file, as with \hyperlink{a00192_ga879439b7ee99407ee911b3ac64e9a25e}{hwloc\+\_\+topology\+\_\+set\+\_\+xml()}). 
+
+Gather topology information from the X\+ML memory buffer given at {\ttfamily buffer} and of length {\ttfamily size}. This buffer may have been filled earlier with \hyperlink{a00206_gad33b7f7c11db10459505a3b1634fd3f1}{hwloc\+\_\+topology\+\_\+export\+\_\+xmlbuffer()} in \hyperlink{a00128_source}{hwloc/export.\+h}.
+
+Note that this function does not actually load topology information; it just tells hwloc where to load it from. You\textquotesingle{}ll still need to invoke \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()} to actually load the topology information.
+
+\begin{DoxyReturn}{Returns}
+-\/1 with errno set to E\+I\+N\+V\+AL on failure to read the X\+ML buffer.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+See also \hyperlink{a00206_ga5ac6917ea7289955fb1ffda4353af9b0}{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+import\+\_\+callback()} for importing application-\/specific object userdata.
+
+For convenience, this backend provides empty binding hooks which just return success. To have hwloc still actually call O\+S-\/specific hooks, the \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea6ecb6abc6a0bb75e81564f8bca85783b}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+I\+S\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM} has to be set to assert that the loaded file is really the underlying system.
+
+On success, the X\+ML component replaces the previously enabled component (if any), but the topology is not actually modified until \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()}. 
+\end{DoxyNote}

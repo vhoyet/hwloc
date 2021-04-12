@@ -1,0 +1,243 @@
+\hypertarget{a00194}{}\section{Modifying a loaded Topology}
+\label{a00194}\index{Modifying a loaded Topology@{Modifying a loaded Topology}}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{a00194_ga9d80f08eb25b7ac22f1b998dc8bf521f}{hwloc\+\_\+restrict\+\_\+flags\+\_\+e} \{ \newline
+\hyperlink{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fa80eeb9cbba401ab050f8fb4573725891}{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+C\+P\+U\+L\+E\+SS}, 
+\hyperlink{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fae4c5b1b87232f2d8a60559e77ac65a68}{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+Y\+N\+O\+D\+E\+S\+ET} = (1\+UL$<$$<$3), 
+\hyperlink{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521faf5ba49808855704bfe9cb9fe7347f93b}{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+M\+E\+M\+L\+E\+SS}, 
+\hyperlink{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fa699969227a09bbc1a7de51dc9fb7be4b}{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+A\+D\+A\+P\+T\+\_\+\+M\+I\+SC}, 
+\newline
+\hyperlink{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521faa95d6985e36ec1e55f68b210297a85cb}{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+A\+D\+A\+P\+T\+\_\+\+IO}
+ \}
+\item 
+enum \hyperlink{a00194_ga38b1be3922094d880f6e76bf56c973d6}{hwloc\+\_\+allow\+\_\+flags\+\_\+e} \{ \hyperlink{a00194_gga38b1be3922094d880f6e76bf56c973d6aca107692455774f9d323d21b8abfce72}{H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+A\+LL}, 
+\hyperlink{a00194_gga38b1be3922094d880f6e76bf56c973d6a88c50088c09dcf1e1a496c0817556fb9}{H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+I\+O\+NS}, 
+\hyperlink{a00194_gga38b1be3922094d880f6e76bf56c973d6a489c8c1b67ce7e0b8cf7a665852760e1}{H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+C\+U\+S\+T\+OM}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{a00194_ga6db81ed13ac0a9d70cc80372ab537815}{hwloc\+\_\+topology\+\_\+restrict} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict topology, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} set, unsigned long flags)
+\item 
+int \hyperlink{a00194_gaf955b190c0299dcfb5bc985d777f92a1}{hwloc\+\_\+topology\+\_\+allow} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict topology, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t} cpuset, \hyperlink{a00183_ga2f5276235841ad66a79bedad16a5a10c}{hwloc\+\_\+const\+\_\+nodeset\+\_\+t} nodeset, unsigned long flags)
+\item 
+\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00194_gad980782ade737900c5cf208946768c30}{hwloc\+\_\+topology\+\_\+insert\+\_\+misc\+\_\+object} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} parent, const char $\ast$name)
+\item 
+\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00194_ga4cea4741165faf5323931a9ed8786ef7}{hwloc\+\_\+topology\+\_\+alloc\+\_\+group\+\_\+object} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology)
+\item 
+\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00194_ga1fc6012b3e1c249b83f48cb7bcacaa5b}{hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} group)
+\item 
+int \hyperlink{a00194_gad458715d3335df44849216cc123d1055}{hwloc\+\_\+obj\+\_\+add\+\_\+other\+\_\+obj\+\_\+sets} (\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} dst, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} src)
+\item 
+int \hyperlink{a00194_ga698ecd640d2b76742bba3829a145cd9a}{hwloc\+\_\+topology\+\_\+refresh} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{a00194_ga38b1be3922094d880f6e76bf56c973d6}\label{a00194_ga38b1be3922094d880f6e76bf56c973d6}} 
+\index{Modifying a loaded Topology@{Modifying a loaded Topology}!hwloc\+\_\+allow\+\_\+flags\+\_\+e@{hwloc\+\_\+allow\+\_\+flags\+\_\+e}}
+\index{hwloc\+\_\+allow\+\_\+flags\+\_\+e@{hwloc\+\_\+allow\+\_\+flags\+\_\+e}!Modifying a loaded Topology@{Modifying a loaded Topology}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+allow\+\_\+flags\+\_\+e}{hwloc\_allow\_flags\_e}}
+{\footnotesize\ttfamily enum \hyperlink{a00194_ga38b1be3922094d880f6e76bf56c973d6}{hwloc\+\_\+allow\+\_\+flags\+\_\+e}}
+
+
+
+Flags to be given to \hyperlink{a00194_gaf955b190c0299dcfb5bc985d777f92a1}{hwloc\+\_\+topology\+\_\+allow()}. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+A\+LL@{H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+A\+LL}!Modifying a loaded Topology@{Modifying a loaded Topology}}\index{Modifying a loaded Topology@{Modifying a loaded Topology}!H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+A\+LL@{H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+A\+LL}}}\mbox{\Hypertarget{a00194_gga38b1be3922094d880f6e76bf56c973d6aca107692455774f9d323d21b8abfce72}\label{a00194_gga38b1be3922094d880f6e76bf56c973d6aca107692455774f9d323d21b8abfce72}} 
+H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+A\+LL&Mark all objects as allowed in the topology. {\ttfamily cpuset} and {\ttfamily nođeset} given to \hyperlink{a00194_gaf955b190c0299dcfb5bc985d777f92a1}{hwloc\+\_\+topology\+\_\+allow()} must be {\ttfamily N\+U\+LL}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+I\+O\+NS@{H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+I\+O\+NS}!Modifying a loaded Topology@{Modifying a loaded Topology}}\index{Modifying a loaded Topology@{Modifying a loaded Topology}!H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+I\+O\+NS@{H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+I\+O\+NS}}}\mbox{\Hypertarget{a00194_gga38b1be3922094d880f6e76bf56c973d6a88c50088c09dcf1e1a496c0817556fb9}\label{a00194_gga38b1be3922094d880f6e76bf56c973d6a88c50088c09dcf1e1a496c0817556fb9}} 
+H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+C\+A\+L\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+I\+O\+NS&Only allow objects that are available to the current process. The topology must have \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea6ecb6abc6a0bb75e81564f8bca85783b}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+I\+S\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM} so that the set of available resources can actually be retrieved from the operating system.
+
+{\ttfamily cpuset} and {\ttfamily nođeset} given to \hyperlink{a00194_gaf955b190c0299dcfb5bc985d777f92a1}{hwloc\+\_\+topology\+\_\+allow()} must be {\ttfamily N\+U\+LL}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+C\+U\+S\+T\+OM@{H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+C\+U\+S\+T\+OM}!Modifying a loaded Topology@{Modifying a loaded Topology}}\index{Modifying a loaded Topology@{Modifying a loaded Topology}!H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+C\+U\+S\+T\+OM@{H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+C\+U\+S\+T\+OM}}}\mbox{\Hypertarget{a00194_gga38b1be3922094d880f6e76bf56c973d6a489c8c1b67ce7e0b8cf7a665852760e1}\label{a00194_gga38b1be3922094d880f6e76bf56c973d6a489c8c1b67ce7e0b8cf7a665852760e1}} 
+H\+W\+L\+O\+C\+\_\+\+A\+L\+L\+O\+W\+\_\+\+F\+L\+A\+G\+\_\+\+C\+U\+S\+T\+OM&Allow a custom set of objects, given to \hyperlink{a00194_gaf955b190c0299dcfb5bc985d777f92a1}{hwloc\+\_\+topology\+\_\+allow()} as {\ttfamily cpuset} and/or {\ttfamily nodeset} parameters. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{a00194_ga9d80f08eb25b7ac22f1b998dc8bf521f}\label{a00194_ga9d80f08eb25b7ac22f1b998dc8bf521f}} 
+\index{Modifying a loaded Topology@{Modifying a loaded Topology}!hwloc\+\_\+restrict\+\_\+flags\+\_\+e@{hwloc\+\_\+restrict\+\_\+flags\+\_\+e}}
+\index{hwloc\+\_\+restrict\+\_\+flags\+\_\+e@{hwloc\+\_\+restrict\+\_\+flags\+\_\+e}!Modifying a loaded Topology@{Modifying a loaded Topology}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+restrict\+\_\+flags\+\_\+e}{hwloc\_restrict\_flags\_e}}
+{\footnotesize\ttfamily enum \hyperlink{a00194_ga9d80f08eb25b7ac22f1b998dc8bf521f}{hwloc\+\_\+restrict\+\_\+flags\+\_\+e}}
+
+
+
+Flags to be given to \hyperlink{a00194_ga6db81ed13ac0a9d70cc80372ab537815}{hwloc\+\_\+topology\+\_\+restrict()}. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+C\+P\+U\+L\+E\+SS@{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+C\+P\+U\+L\+E\+SS}!Modifying a loaded Topology@{Modifying a loaded Topology}}\index{Modifying a loaded Topology@{Modifying a loaded Topology}!H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+C\+P\+U\+L\+E\+SS@{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+C\+P\+U\+L\+E\+SS}}}\mbox{\Hypertarget{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fa80eeb9cbba401ab050f8fb4573725891}\label{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fa80eeb9cbba401ab050f8fb4573725891}} 
+H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+C\+P\+U\+L\+E\+SS&Remove all objects that became C\+P\+U-\/less. By default, only objects that contain no PU and no memory are removed. This flag may not be used with \hyperlink{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fae4c5b1b87232f2d8a60559e77ac65a68}{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+Y\+N\+O\+D\+E\+S\+ET}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+Y\+N\+O\+D\+E\+S\+ET@{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+Y\+N\+O\+D\+E\+S\+ET}!Modifying a loaded Topology@{Modifying a loaded Topology}}\index{Modifying a loaded Topology@{Modifying a loaded Topology}!H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+Y\+N\+O\+D\+E\+S\+ET@{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+Y\+N\+O\+D\+E\+S\+ET}}}\mbox{\Hypertarget{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fae4c5b1b87232f2d8a60559e77ac65a68}\label{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fae4c5b1b87232f2d8a60559e77ac65a68}} 
+H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+Y\+N\+O\+D\+E\+S\+ET&Restrict by nodeset instead of C\+PU set. Only keep objects whose nodeset is included or partially included in the given set. This flag may not be used with \hyperlink{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fa80eeb9cbba401ab050f8fb4573725891}{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+C\+P\+U\+L\+E\+SS}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+M\+E\+M\+L\+E\+SS@{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+M\+E\+M\+L\+E\+SS}!Modifying a loaded Topology@{Modifying a loaded Topology}}\index{Modifying a loaded Topology@{Modifying a loaded Topology}!H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+M\+E\+M\+L\+E\+SS@{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+M\+E\+M\+L\+E\+SS}}}\mbox{\Hypertarget{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521faf5ba49808855704bfe9cb9fe7347f93b}\label{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521faf5ba49808855704bfe9cb9fe7347f93b}} 
+H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+M\+E\+M\+L\+E\+SS&Remove all objects that became Memory-\/less. By default, only objects that contain no PU and no memory are removed. This flag may only be used with \hyperlink{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fae4c5b1b87232f2d8a60559e77ac65a68}{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+Y\+N\+O\+D\+E\+S\+ET}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+A\+D\+A\+P\+T\+\_\+\+M\+I\+SC@{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+A\+D\+A\+P\+T\+\_\+\+M\+I\+SC}!Modifying a loaded Topology@{Modifying a loaded Topology}}\index{Modifying a loaded Topology@{Modifying a loaded Topology}!H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+A\+D\+A\+P\+T\+\_\+\+M\+I\+SC@{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+A\+D\+A\+P\+T\+\_\+\+M\+I\+SC}}}\mbox{\Hypertarget{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fa699969227a09bbc1a7de51dc9fb7be4b}\label{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fa699969227a09bbc1a7de51dc9fb7be4b}} 
+H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+A\+D\+A\+P\+T\+\_\+\+M\+I\+SC&Move Misc objects to ancestors if their parents are removed during restriction. If this flag is not set, Misc objects are removed when their parents are removed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+A\+D\+A\+P\+T\+\_\+\+IO@{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+A\+D\+A\+P\+T\+\_\+\+IO}!Modifying a loaded Topology@{Modifying a loaded Topology}}\index{Modifying a loaded Topology@{Modifying a loaded Topology}!H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+A\+D\+A\+P\+T\+\_\+\+IO@{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+A\+D\+A\+P\+T\+\_\+\+IO}}}\mbox{\Hypertarget{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521faa95d6985e36ec1e55f68b210297a85cb}\label{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521faa95d6985e36ec1e55f68b210297a85cb}} 
+H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+A\+D\+A\+P\+T\+\_\+\+IO&Move I/O objects to ancestors if their parents are removed during restriction. If this flag is not set, I/O devices and bridges are removed when their parents are removed. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00194_gad458715d3335df44849216cc123d1055}\label{a00194_gad458715d3335df44849216cc123d1055}} 
+\index{Modifying a loaded Topology@{Modifying a loaded Topology}!hwloc\+\_\+obj\+\_\+add\+\_\+other\+\_\+obj\+\_\+sets@{hwloc\+\_\+obj\+\_\+add\+\_\+other\+\_\+obj\+\_\+sets}}
+\index{hwloc\+\_\+obj\+\_\+add\+\_\+other\+\_\+obj\+\_\+sets@{hwloc\+\_\+obj\+\_\+add\+\_\+other\+\_\+obj\+\_\+sets}!Modifying a loaded Topology@{Modifying a loaded Topology}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+add\+\_\+other\+\_\+obj\+\_\+sets()}{hwloc\_obj\_add\_other\_obj\_sets()}}
+{\footnotesize\ttfamily int hwloc\+\_\+obj\+\_\+add\+\_\+other\+\_\+obj\+\_\+sets (\begin{DoxyParamCaption}\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{dst,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{src }\end{DoxyParamCaption})}
+
+
+
+Setup object cpusets/nodesets by OR\textquotesingle{}ing another object\textquotesingle{}s sets. 
+
+For each defined cpuset or nodeset in {\ttfamily src}, allocate the corresponding set in {\ttfamily dst} and add {\ttfamily src} to it by OR\textquotesingle{}ing sets.
+
+This function is convenient between \hyperlink{a00194_ga4cea4741165faf5323931a9ed8786ef7}{hwloc\+\_\+topology\+\_\+alloc\+\_\+group\+\_\+object()} and \hyperlink{a00194_ga1fc6012b3e1c249b83f48cb7bcacaa5b}{hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object()}. It builds the sets of the new Group that will be inserted as a new intermediate parent of several objects. \mbox{\Hypertarget{a00194_ga4cea4741165faf5323931a9ed8786ef7}\label{a00194_ga4cea4741165faf5323931a9ed8786ef7}} 
+\index{Modifying a loaded Topology@{Modifying a loaded Topology}!hwloc\+\_\+topology\+\_\+alloc\+\_\+group\+\_\+object@{hwloc\+\_\+topology\+\_\+alloc\+\_\+group\+\_\+object}}
+\index{hwloc\+\_\+topology\+\_\+alloc\+\_\+group\+\_\+object@{hwloc\+\_\+topology\+\_\+alloc\+\_\+group\+\_\+object}!Modifying a loaded Topology@{Modifying a loaded Topology}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+alloc\+\_\+group\+\_\+object()}{hwloc\_topology\_alloc\_group\_object()}}
+{\footnotesize\ttfamily \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+topology\+\_\+alloc\+\_\+group\+\_\+object (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology }\end{DoxyParamCaption})}
+
+
+
+Allocate a Group object to insert later with \hyperlink{a00194_ga1fc6012b3e1c249b83f48cb7bcacaa5b}{hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object()}. 
+
+This function returns a new Group object.
+
+The caller should (at least) initialize its sets before inserting the object in the topology. See \hyperlink{a00194_ga1fc6012b3e1c249b83f48cb7bcacaa5b}{hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object()}. \mbox{\Hypertarget{a00194_gaf955b190c0299dcfb5bc985d777f92a1}\label{a00194_gaf955b190c0299dcfb5bc985d777f92a1}} 
+\index{Modifying a loaded Topology@{Modifying a loaded Topology}!hwloc\+\_\+topology\+\_\+allow@{hwloc\+\_\+topology\+\_\+allow}}
+\index{hwloc\+\_\+topology\+\_\+allow@{hwloc\+\_\+topology\+\_\+allow}!Modifying a loaded Topology@{Modifying a loaded Topology}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+allow()}{hwloc\_topology\_allow()}}
+{\footnotesize\ttfamily int hwloc\+\_\+topology\+\_\+allow (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict}]{topology,  }\item[{\hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t}}]{cpuset,  }\item[{\hyperlink{a00183_ga2f5276235841ad66a79bedad16a5a10c}{hwloc\+\_\+const\+\_\+nodeset\+\_\+t}}]{nodeset,  }\item[{unsigned long}]{flags }\end{DoxyParamCaption})}
+
+
+
+Change the sets of allowed P\+Us and N\+U\+MA nodes in the topology. 
+
+This function only works if the \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea10907044bbb306fd0dc76acf046d9258}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+D\+I\+S\+A\+L\+L\+O\+W\+ED} was set on the topology. It does not modify any object, it only changes the sets returned by \hyperlink{a00202_ga517d5d68ec9f24583d8933aab713be8e}{hwloc\+\_\+topology\+\_\+get\+\_\+allowed\+\_\+cpuset()} and \hyperlink{a00202_ga21a4d7237a11e76b912ed4524ab78cbd}{hwloc\+\_\+topology\+\_\+get\+\_\+allowed\+\_\+nodeset()}.
+
+It is notably useful when importing a topology from another process running in a different Linux Cgroup.
+
+{\ttfamily flags} must be set to one flag among \hyperlink{a00194_ga38b1be3922094d880f6e76bf56c973d6}{hwloc\+\_\+allow\+\_\+flags\+\_\+e}.
+
+\begin{DoxyNote}{Note}
+Removing objects from a topology should rather be performed with \hyperlink{a00194_ga6db81ed13ac0a9d70cc80372ab537815}{hwloc\+\_\+topology\+\_\+restrict()}. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00194_ga1fc6012b3e1c249b83f48cb7bcacaa5b}\label{a00194_ga1fc6012b3e1c249b83f48cb7bcacaa5b}} 
+\index{Modifying a loaded Topology@{Modifying a loaded Topology}!hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object@{hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object}}
+\index{hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object@{hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object}!Modifying a loaded Topology@{Modifying a loaded Topology}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object()}{hwloc\_topology\_insert\_group\_object()}}
+{\footnotesize\ttfamily \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+topology\+\_\+insert\+\_\+group\+\_\+object (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{group }\end{DoxyParamCaption})}
+
+
+
+Add more structure to the topology by adding an intermediate Group. 
+
+The caller should first allocate a new Group object with \hyperlink{a00194_ga4cea4741165faf5323931a9ed8786ef7}{hwloc\+\_\+topology\+\_\+alloc\+\_\+group\+\_\+object()}. Then it must setup at least one of its C\+PU or node sets to specify the final location of the Group in the topology. Then the object can be passed to this function for actual insertion in the topology.
+
+Either the cpuset or nodeset field (or both, if compatible) must be set to a non-\/empty bitmap. The complete\+\_\+cpuset or complete\+\_\+nodeset may be set instead if inserting with respect to the complete topology (including disallowed, offline or unknown objects). If grouping several objects, \hyperlink{a00194_gad458715d3335df44849216cc123d1055}{hwloc\+\_\+obj\+\_\+add\+\_\+other\+\_\+obj\+\_\+sets()} is an easy way to build the Group sets iteratively. These sets cannot be larger than the current topology, or they would get restricted silently. The core will setup the other sets after actual insertion.
+
+The {\ttfamily subtype} object attribute may be defined (to a dynamically allocated string) to display something else than \char`\"{}\+Group\char`\"{} as the type name for this object in lstopo. Custom name/value info pairs may be added with \hyperlink{a00189_gace7654bb8a9002caae1a4b8a59e7452e}{hwloc\+\_\+obj\+\_\+add\+\_\+info()} after insertion.
+
+The group {\ttfamily dont\+\_\+merge} attribute may be set to {\ttfamily 1} to prevent the hwloc core from ever merging this object with another hierarchically-\/identical object. This is useful when the Group itself describes an important feature that cannot be exposed anywhere else in the hierarchy.
+
+The group {\ttfamily kind} attribute may be set to a high value such as {\ttfamily 0xffffffff} to tell hwloc that this new Group should always be discarded in favor of any existing Group with the same locality.
+
+\begin{DoxyReturn}{Returns}
+The inserted object if it was properly inserted.
+
+An existing object if the Group was merged or discarded because the topology already contained an object at the same location (the Group did not add any hierarchy information).
+
+{\ttfamily N\+U\+LL} if the insertion failed because of conflicting sets in topology tree.
+
+{\ttfamily N\+U\+LL} if Group objects are filtered-\/out of the topology (\hyperlink{a00193_gga9a5a1f0140cd1952544477833733195ba4f835955414de92c77d99b8419d4647a}{H\+W\+L\+O\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+K\+E\+E\+P\+\_\+\+N\+O\+NE}).
+
+{\ttfamily N\+U\+LL} if the object was discarded because no set was initialized in the Group before insert, or all of them were empty. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00194_gad980782ade737900c5cf208946768c30}\label{a00194_gad980782ade737900c5cf208946768c30}} 
+\index{Modifying a loaded Topology@{Modifying a loaded Topology}!hwloc\+\_\+topology\+\_\+insert\+\_\+misc\+\_\+object@{hwloc\+\_\+topology\+\_\+insert\+\_\+misc\+\_\+object}}
+\index{hwloc\+\_\+topology\+\_\+insert\+\_\+misc\+\_\+object@{hwloc\+\_\+topology\+\_\+insert\+\_\+misc\+\_\+object}!Modifying a loaded Topology@{Modifying a loaded Topology}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+insert\+\_\+misc\+\_\+object()}{hwloc\_topology\_insert\_misc\_object()}}
+{\footnotesize\ttfamily \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+topology\+\_\+insert\+\_\+misc\+\_\+object (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{parent,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Add a M\+I\+SC object as a leaf of the topology. 
+
+A new M\+I\+SC object will be created and inserted into the topology at the position given by parent. It is appended to the list of existing Misc children, without ever adding any intermediate hierarchy level. This is useful for annotating the topology without actually changing the hierarchy.
+
+{\ttfamily name} is supposed to be unique across all Misc objects in the topology. It will be duplicated to setup the new object attributes.
+
+The new leaf object will not have any {\ttfamily cpuset}.
+
+\begin{DoxyReturn}{Returns}
+the newly-\/created object
+
+{\ttfamily N\+U\+LL} on error.
+
+{\ttfamily N\+U\+LL} if Misc objects are filtered-\/out of the topology (\hyperlink{a00193_gga9a5a1f0140cd1952544477833733195ba4f835955414de92c77d99b8419d4647a}{H\+W\+L\+O\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+K\+E\+E\+P\+\_\+\+N\+O\+NE}).
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If {\ttfamily name} contains some non-\/printable characters, they will be dropped when exporting to X\+ML, see \hyperlink{a00206_ga333f79975b4eeb28a3d8fad3373583ce}{hwloc\+\_\+topology\+\_\+export\+\_\+xml()} in \hyperlink{a00128_source}{hwloc/export.\+h}. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00194_ga698ecd640d2b76742bba3829a145cd9a}\label{a00194_ga698ecd640d2b76742bba3829a145cd9a}} 
+\index{Modifying a loaded Topology@{Modifying a loaded Topology}!hwloc\+\_\+topology\+\_\+refresh@{hwloc\+\_\+topology\+\_\+refresh}}
+\index{hwloc\+\_\+topology\+\_\+refresh@{hwloc\+\_\+topology\+\_\+refresh}!Modifying a loaded Topology@{Modifying a loaded Topology}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+refresh()}{hwloc\_topology\_refresh()}}
+{\footnotesize\ttfamily int hwloc\+\_\+topology\+\_\+refresh (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology }\end{DoxyParamCaption})}
+
+
+
+Refresh internal structures after topology modification. 
+
+Modifying the topology (by restricting, adding objects, modifying structures such as distances or memory attributes, etc.) may cause some internal caches to become invalid. These caches are automatically refreshed when accessed but this refreshing is not thread-\/safe.
+
+This function is not thread-\/safe either, but it is a good way to end a non-\/thread-\/safe phase of topology modification. Once this refresh is done, multiple threads may concurrently consult the topology, objects, distances, attributes, etc.
+
+See also \hyperlink{a00391}{Thread Safety} \mbox{\Hypertarget{a00194_ga6db81ed13ac0a9d70cc80372ab537815}\label{a00194_ga6db81ed13ac0a9d70cc80372ab537815}} 
+\index{Modifying a loaded Topology@{Modifying a loaded Topology}!hwloc\+\_\+topology\+\_\+restrict@{hwloc\+\_\+topology\+\_\+restrict}}
+\index{hwloc\+\_\+topology\+\_\+restrict@{hwloc\+\_\+topology\+\_\+restrict}!Modifying a loaded Topology@{Modifying a loaded Topology}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+restrict()}{hwloc\_topology\_restrict()}}
+{\footnotesize\ttfamily int hwloc\+\_\+topology\+\_\+restrict (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} restrict}]{topology,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{set,  }\item[{unsigned long}]{flags }\end{DoxyParamCaption})}
+
+
+
+Restrict the topology to the given C\+PU set or nodeset. 
+
+Topology {\ttfamily topology} is modified so as to remove all objects that are not included (or partially included) in the C\+PU set {\ttfamily set}. All objects C\+PU and node sets are restricted accordingly.
+
+If \hyperlink{a00194_gga9d80f08eb25b7ac22f1b998dc8bf521fae4c5b1b87232f2d8a60559e77ac65a68}{H\+W\+L\+O\+C\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+Y\+N\+O\+D\+E\+S\+ET} is passed in {\ttfamily flags}, {\ttfamily set} is considered a nodeset instead of a C\+PU set.
+
+{\ttfamily flags} is a OR\textquotesingle{}ed set of \hyperlink{a00194_ga9d80f08eb25b7ac22f1b998dc8bf521f}{hwloc\+\_\+restrict\+\_\+flags\+\_\+e}.
+
+\begin{DoxyNote}{Note}
+This call may not be reverted by restricting back to a larger set. Once dropped during restriction, objects may not be brought back, except by loading another topology with \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()}.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+0 on success.
+
+-\/1 with errno set to E\+I\+N\+V\+AL if the input set is invalid. The topology is not modified in this case.
+
+-\/1 with errno set to E\+N\+O\+M\+EM on failure to allocate internal data. The topology is reinitialized in this case. It should be either destroyed with \hyperlink{a00186_ga9f34a640b6fd28d23699d4d084667b15}{hwloc\+\_\+topology\+\_\+destroy()} or configured and loaded again. 
+\end{DoxyReturn}

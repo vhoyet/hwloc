@@ -1,0 +1,134 @@
+\hypertarget{a00213}{}\section{Kinds of C\+PU cores}
+\label{a00213}\index{Kinds of C\+P\+U cores@{Kinds of C\+P\+U cores}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{a00213_ga7553f7c6d3920b169f3fc18dfe6a33e3}{hwloc\+\_\+cpukinds\+\_\+get\+\_\+nr} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, unsigned long flags)
+\item 
+int \hyperlink{a00213_gaf979833aab18d2e7f4b17c932cbcf5d8}{hwloc\+\_\+cpukinds\+\_\+get\+\_\+by\+\_\+cpuset} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t} cpuset, unsigned long flags)
+\item 
+int \hyperlink{a00213_gae1b38fbe9c645583fc16052ce6fbb275}{hwloc\+\_\+cpukinds\+\_\+get\+\_\+info} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, unsigned kind\+\_\+index, \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} cpuset, int $\ast$efficiency, unsigned $\ast$nr\+\_\+infos, struct \hyperlink{a00286}{hwloc\+\_\+info\+\_\+s} $\ast$$\ast$infos, unsigned long flags)
+\item 
+int \hyperlink{a00213_ga6164ba92cfd06f530ec2c4a18a0dd5a9}{hwloc\+\_\+cpukinds\+\_\+register} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t} cpuset, int forced\+\_\+efficiency, unsigned nr\+\_\+infos, struct \hyperlink{a00286}{hwloc\+\_\+info\+\_\+s} $\ast$infos, unsigned long flags)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Platforms with heterogeneous C\+P\+Us may have some cores with different features or frequencies. This A\+PI exposes identical P\+Us in sets called C\+PU kinds. Each PU of the topology may only be in a single kind.
+
+The number of kinds may be obtained with \hyperlink{a00213_ga7553f7c6d3920b169f3fc18dfe6a33e3}{hwloc\+\_\+cpukinds\+\_\+get\+\_\+nr()}. If the platform is homogeneous, there may be a single kind with all P\+Us. If the platform or operating system does not expose any information about C\+PU cores, there may be no kind at all.
+
+The index of the kind that describes a given C\+PU set (if any, and not partially) may be obtained with \hyperlink{a00213_gaf979833aab18d2e7f4b17c932cbcf5d8}{hwloc\+\_\+cpukinds\+\_\+get\+\_\+by\+\_\+cpuset()}.
+
+From the index of a kind, it is possible to retrieve information with \hyperlink{a00213_gae1b38fbe9c645583fc16052ce6fbb275}{hwloc\+\_\+cpukinds\+\_\+get\+\_\+info()}\+: an abstracted efficiency value, and an array of info attributes (for instance the \char`\"{}\+Core\+Type\char`\"{} and \char`\"{}\+Frequency\+Max\+M\+Hz\char`\"{}, see \hyperlink{a00387_topoattrs_cpukinds}{C\+PU Kinds}).
+
+A higher efficiency value means intrinsic greater performance (and possibly less performance/power efficiency). Kinds with lower efficiency are ranked first\+: Passing 0 as {\ttfamily kind\+\_\+index} to \hyperlink{a00213_gae1b38fbe9c645583fc16052ce6fbb275}{hwloc\+\_\+cpukinds\+\_\+get\+\_\+info()} will return information about the less efficient C\+PU kind.
+
+When available, efficiency values are gathered from the operating system (when {\ttfamily cpukind\+\_\+efficiency} is set in the struct \hyperlink{a00290}{hwloc\+\_\+topology\+\_\+discovery\+\_\+support} array, only on Windows 10 for now). Otherwise hwloc tries to compute efficiencies by comparing C\+PU kinds using frequencies (on A\+RM), or core types and frequencies (on other architectures). The environment variable H\+W\+L\+O\+C\+\_\+\+C\+P\+U\+K\+I\+N\+D\+S\+\_\+\+R\+A\+N\+K\+I\+NG may be used to change this heuristics, see \hyperlink{a00382}{Environment Variables}.
+
+If hwloc fails to rank any kind, for instance because the operating system does not expose efficiencies and core frequencies, all kinds will have an unknown efficiency ({\ttfamily -\/1}), and they are not indexed/ordered in any specific way. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00213_gaf979833aab18d2e7f4b17c932cbcf5d8}\label{a00213_gaf979833aab18d2e7f4b17c932cbcf5d8}} 
+\index{Kinds of C\+P\+U cores@{Kinds of C\+P\+U cores}!hwloc\+\_\+cpukinds\+\_\+get\+\_\+by\+\_\+cpuset@{hwloc\+\_\+cpukinds\+\_\+get\+\_\+by\+\_\+cpuset}}
+\index{hwloc\+\_\+cpukinds\+\_\+get\+\_\+by\+\_\+cpuset@{hwloc\+\_\+cpukinds\+\_\+get\+\_\+by\+\_\+cpuset}!Kinds of C\+P\+U cores@{Kinds of C\+P\+U cores}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+cpukinds\+\_\+get\+\_\+by\+\_\+cpuset()}{hwloc\_cpukinds\_get\_by\_cpuset()}}
+{\footnotesize\ttfamily int hwloc\+\_\+cpukinds\+\_\+get\+\_\+by\+\_\+cpuset (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\+\_\+const\+\_\+bitmap\+\_\+t}}]{cpuset,  }\item[{unsigned long}]{flags }\end{DoxyParamCaption})}
+
+
+
+Get the index of the C\+PU kind that contains C\+P\+Us listed in {\ttfamily cpuset}. 
+
+{\ttfamily flags} must be {\ttfamily 0} for now.
+
+\begin{DoxyReturn}{Returns}
+The index of the C\+PU kind (positive integer or 0) on success. 
+
+{\ttfamily -\/1} with {\ttfamily errno} set to {\ttfamily E\+X\+D\+EV} if {\ttfamily cpuset} is only partially included in the some kind. 
+
+{\ttfamily -\/1} with {\ttfamily errno} set to {\ttfamily E\+N\+O\+E\+NT} if {\ttfamily cpuset} is not included in any kind, even partially. 
+
+{\ttfamily -\/1} with {\ttfamily errno} set to {\ttfamily E\+I\+N\+V\+AL} if parameters are invalid. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00213_gae1b38fbe9c645583fc16052ce6fbb275}\label{a00213_gae1b38fbe9c645583fc16052ce6fbb275}} 
+\index{Kinds of C\+P\+U cores@{Kinds of C\+P\+U cores}!hwloc\+\_\+cpukinds\+\_\+get\+\_\+info@{hwloc\+\_\+cpukinds\+\_\+get\+\_\+info}}
+\index{hwloc\+\_\+cpukinds\+\_\+get\+\_\+info@{hwloc\+\_\+cpukinds\+\_\+get\+\_\+info}!Kinds of C\+P\+U cores@{Kinds of C\+P\+U cores}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+cpukinds\+\_\+get\+\_\+info()}{hwloc\_cpukinds\_get\_info()}}
+{\footnotesize\ttfamily int hwloc\+\_\+cpukinds\+\_\+get\+\_\+info (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{unsigned}]{kind\+\_\+index,  }\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{cpuset,  }\item[{int $\ast$}]{efficiency,  }\item[{unsigned $\ast$}]{nr\+\_\+infos,  }\item[{struct \hyperlink{a00286}{hwloc\+\_\+info\+\_\+s} $\ast$$\ast$}]{infos,  }\item[{unsigned long}]{flags }\end{DoxyParamCaption})}
+
+
+
+Get the C\+PU set and infos about a C\+PU kind in the topology. 
+
+{\ttfamily kind\+\_\+index} identifies one kind of C\+PU between 0 and the number of kinds returned by \hyperlink{a00213_ga7553f7c6d3920b169f3fc18dfe6a33e3}{hwloc\+\_\+cpukinds\+\_\+get\+\_\+nr()} minus 1.
+
+If not {\ttfamily N\+U\+LL}, the bitmap {\ttfamily cpuset} will be filled with the set of P\+Us of this kind.
+
+The integer pointed by {\ttfamily efficiency}, if not {\ttfamily N\+U\+LL} will, be filled with the ranking of this kind of C\+PU in term of efficiency (see above). It ranges from {\ttfamily 0} to the number of kinds (as reported by \hyperlink{a00213_ga7553f7c6d3920b169f3fc18dfe6a33e3}{hwloc\+\_\+cpukinds\+\_\+get\+\_\+nr()}) minus 1.
+
+Kinds with lower efficiency are reported first.
+
+If there is a single kind in the topology, its efficiency {\ttfamily 0}. If the efficiency of some kinds of cores is unknown, the efficiency of all kinds is set to {\ttfamily -\/1}, and kinds are reported in no specific order.
+
+The array of info attributes (for instance the \char`\"{}\+Core\+Type\char`\"{}, \char`\"{}\+Frequency\+Max\+M\+Hz\char`\"{} or \char`\"{}\+Frequency\+Base\+M\+Hz\char`\"{}, see \hyperlink{a00387_topoattrs_cpukinds}{C\+PU Kinds}) and its length are returned in {\ttfamily infos} or {\ttfamily nr\+\_\+infos}. The array belongs to the topology, it should not be freed or modified.
+
+If {\ttfamily nr\+\_\+infos} or {\ttfamily infos} is {\ttfamily N\+U\+LL}, no info is returned.
+
+{\ttfamily flags} must be {\ttfamily 0} for now.
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily 0} on success. 
+
+{\ttfamily -\/1} with {\ttfamily errno} set to {\ttfamily E\+N\+O\+E\+NT} if {\ttfamily kind\+\_\+index} does not match any C\+PU kind. 
+
+{\ttfamily -\/1} with {\ttfamily errno} set to {\ttfamily E\+I\+N\+V\+AL} if parameters are invalid. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00213_ga7553f7c6d3920b169f3fc18dfe6a33e3}\label{a00213_ga7553f7c6d3920b169f3fc18dfe6a33e3}} 
+\index{Kinds of C\+P\+U cores@{Kinds of C\+P\+U cores}!hwloc\+\_\+cpukinds\+\_\+get\+\_\+nr@{hwloc\+\_\+cpukinds\+\_\+get\+\_\+nr}}
+\index{hwloc\+\_\+cpukinds\+\_\+get\+\_\+nr@{hwloc\+\_\+cpukinds\+\_\+get\+\_\+nr}!Kinds of C\+P\+U cores@{Kinds of C\+P\+U cores}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+cpukinds\+\_\+get\+\_\+nr()}{hwloc\_cpukinds\_get\_nr()}}
+{\footnotesize\ttfamily int hwloc\+\_\+cpukinds\+\_\+get\+\_\+nr (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{unsigned long}]{flags }\end{DoxyParamCaption})}
+
+
+
+Get the number of different kinds of C\+PU cores in the topology. 
+
+{\ttfamily flags} must be {\ttfamily 0} for now.
+
+\begin{DoxyReturn}{Returns}
+The number of C\+PU kinds (positive integer) on success. 
+
+{\ttfamily 0} if no information about kinds was found. 
+
+{\ttfamily -\/1} with {\ttfamily errno} set to {\ttfamily E\+I\+N\+V\+AL} if {\ttfamily flags} is invalid. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00213_ga6164ba92cfd06f530ec2c4a18a0dd5a9}\label{a00213_ga6164ba92cfd06f530ec2c4a18a0dd5a9}} 
+\index{Kinds of C\+P\+U cores@{Kinds of C\+P\+U cores}!hwloc\+\_\+cpukinds\+\_\+register@{hwloc\+\_\+cpukinds\+\_\+register}}
+\index{hwloc\+\_\+cpukinds\+\_\+register@{hwloc\+\_\+cpukinds\+\_\+register}!Kinds of C\+P\+U cores@{Kinds of C\+P\+U cores}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+cpukinds\+\_\+register()}{hwloc\_cpukinds\_register()}}
+{\footnotesize\ttfamily int hwloc\+\_\+cpukinds\+\_\+register (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\+\_\+bitmap\+\_\+t}}]{cpuset,  }\item[{int}]{forced\+\_\+efficiency,  }\item[{unsigned}]{nr\+\_\+infos,  }\item[{struct \hyperlink{a00286}{hwloc\+\_\+info\+\_\+s} $\ast$}]{infos,  }\item[{unsigned long}]{flags }\end{DoxyParamCaption})}
+
+
+
+Register a kind of C\+PU in the topology. 
+
+Mark the P\+Us listed in {\ttfamily cpuset} as being of the same kind with respect to the given attributes.
+
+{\ttfamily forced\+\_\+efficiency} should be {\ttfamily -\/1} if unknown. Otherwise it is an abstracted efficiency value to enforce the ranking of all kinds if all of them have valid (and different) efficiencies.
+
+The array {\ttfamily infos} of size {\ttfamily nr\+\_\+infos} may be used to provide info names and values describing this kind of P\+Us.
+
+{\ttfamily flags} must be {\ttfamily 0} for now.
+
+Parameters {\ttfamily cpuset} and {\ttfamily infos} will be duplicated internally, the caller is responsible for freeing them.
+
+If {\ttfamily cpuset} overlaps with some existing kinds, those might get modified or split. For instance if existing kind A contains P\+Us 0 and 1, and one registers another kind for PU 1 and 2, there will be 3 resulting kinds\+: existing kind A is restricted to only PU 0; new kind B contains only PU 1 and combines information from A and from the newly-\/registered kind; new kind C contains only PU 2 and only gets information from the newly-\/registered kind.
+
+\begin{DoxyNote}{Note}
+The efficiency {\ttfamily forced\+\_\+efficiency} provided to this function may be different from the one reported later by \hyperlink{a00213_gae1b38fbe9c645583fc16052ce6fbb275}{hwloc\+\_\+cpukinds\+\_\+get\+\_\+info()} because hwloc will scale efficiency values down to between 0 and the number of kinds minus 1.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+{\ttfamily 0} on success. 
+
+{\ttfamily -\/1} with {\ttfamily errno} set to {\ttfamily E\+I\+N\+V\+AL} if some parameters are invalid, for instance if {\ttfamily cpuset} is {\ttfamily N\+U\+LL} or empty. 
+\end{DoxyReturn}

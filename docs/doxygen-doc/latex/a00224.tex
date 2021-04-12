@@ -1,0 +1,67 @@
+\hypertarget{a00224}{}\section{Interoperability with Open\+Fabrics}
+\label{a00224}\index{Interoperability with Open\+Fabrics@{Interoperability with Open\+Fabrics}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{a00224_ga3ea0d838c1e7f1671b35687aae2da6ae}{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+cpuset} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, struct ibv\+\_\+device $\ast$ibdev, \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t} set)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00224_ga31d794567f4420bbdc8baa7bf8bf6138}{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+name} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, const char $\ast$ibname)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00224_ga7324cdfd5db6ed2669c051ef7e1b64e1}{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, struct ibv\+\_\+device $\ast$ibdev)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This interface offers ways to retrieve topology information about Open\+Fabrics devices (Infini\+Band, Omni-\/\+Path, us\+N\+IC, etc). 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00224_ga3ea0d838c1e7f1671b35687aae2da6ae}\label{a00224_ga3ea0d838c1e7f1671b35687aae2da6ae}} 
+\index{Interoperability with Open\+Fabrics@{Interoperability with Open\+Fabrics}!hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+cpuset@{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+cpuset}}
+\index{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+cpuset@{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+cpuset}!Interoperability with Open\+Fabrics@{Interoperability with Open\+Fabrics}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+cpuset()}{hwloc\_ibv\_get\_device\_cpuset()}}
+{\footnotesize\ttfamily static int hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+cpuset (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{struct ibv\+\_\+device $\ast$}]{ibdev,  }\item[{\hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t}}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the C\+PU set of processors that are physically close to device {\ttfamily ibdev}. 
+
+Return the C\+PU set describing the locality of the Open\+Fabrics device {\ttfamily ibdev} (Infini\+Band, etc).
+
+Topology {\ttfamily topology} and device {\ttfamily ibdev} must match the local machine. I/O devices detection is not needed in the topology.
+
+The function only returns the locality of the device. If more information about the device is needed, OS objects should be used instead, see \hyperlink{a00224_ga7324cdfd5db6ed2669c051ef7e1b64e1}{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev()} and \hyperlink{a00224_ga31d794567f4420bbdc8baa7bf8bf6138}{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+name()}.
+
+This function is currently only implemented in a meaningful way for Linux; other systems will simply get a full cpuset. \mbox{\Hypertarget{a00224_ga7324cdfd5db6ed2669c051ef7e1b64e1}\label{a00224_ga7324cdfd5db6ed2669c051ef7e1b64e1}} 
+\index{Interoperability with Open\+Fabrics@{Interoperability with Open\+Fabrics}!hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev@{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev}}
+\index{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev@{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev}!Interoperability with Open\+Fabrics@{Interoperability with Open\+Fabrics}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev()}{hwloc\_ibv\_get\_device\_osdev()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{struct ibv\+\_\+device $\ast$}]{ibdev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the hwloc OS device object corresponding to the Open\+Fabrics device {\ttfamily ibdev}. 
+
+Return the OS device object describing the Open\+Fabrics device {\ttfamily ibdev} (Infini\+Band, etc). Returns N\+U\+LL if there is none.
+
+Topology {\ttfamily topology} and device {\ttfamily ibdev} must match the local machine. I/O devices detection must be enabled in the topology. If not, the locality of the object may still be found using \hyperlink{a00224_ga3ea0d838c1e7f1671b35687aae2da6ae}{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+cpuset()}.
+
+\begin{DoxyNote}{Note}
+The corresponding P\+CI device object can be obtained by looking at the OS device parent object. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00224_ga31d794567f4420bbdc8baa7bf8bf6138}\label{a00224_ga31d794567f4420bbdc8baa7bf8bf6138}} 
+\index{Interoperability with Open\+Fabrics@{Interoperability with Open\+Fabrics}!hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+name@{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+name}}
+\index{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+name@{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+name}!Interoperability with Open\+Fabrics@{Interoperability with Open\+Fabrics}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+name()}{hwloc\_ibv\_get\_device\_osdev\_by\_name()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+ibv\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{const char $\ast$}]{ibname }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the hwloc OS device object corresponding to the Open\+Fabrics device named {\ttfamily ibname}. 
+
+Return the OS device object describing the Open\+Fabrics device (Infini\+Band, Omni-\/\+Path, us\+N\+IC, etc) whose name is {\ttfamily ibname} (mlx5\+\_\+0, hfi1\+\_\+0, usnic\+\_\+0, qib0, etc). Returns N\+U\+LL if there is none. The name {\ttfamily ibname} is usually obtained from ibv\+\_\+get\+\_\+device\+\_\+name().
+
+The topology {\ttfamily topology} does not necessarily have to match the current machine. For instance the topology may be an X\+ML import of a remote host. I/O devices detection must be enabled in the topology.
+
+\begin{DoxyNote}{Note}
+The corresponding P\+CI device object can be obtained by looking at the OS device parent object. 
+\end{DoxyNote}

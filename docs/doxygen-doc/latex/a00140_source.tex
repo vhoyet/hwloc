@@ -1,0 +1,43 @@
+\hypertarget{a00140_source}{}\section{linux.\+h}
+\label{a00140_source}\index{linux.\+h@{linux.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright © 2009 CNRS}
+00003 \textcolor{comment}{ * Copyright © 2009-2016 Inria.  All rights reserved.}
+00004 \textcolor{comment}{ * Copyright © 2009-2011 Université Bordeaux}
+00005 \textcolor{comment}{ * See COPYING in top-level directory.}
+00006 \textcolor{comment}{ */}
+00007 
+00015 \textcolor{preprocessor}{#ifndef HWLOC\_LINUX\_H}
+00016 \textcolor{preprocessor}{#define HWLOC\_LINUX\_H}
+00017 
+00018 \textcolor{preprocessor}{#include "hwloc.h"}
+00019 
+00020 \textcolor{preprocessor}{#include <stdio.h>}
+00021 
+00022 
+00023 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00024 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00025 \textcolor{preprocessor}{#endif}
+00026 
+00027 
+00044 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00214_ga630e699c56b5f3d2e534b475944c216e}{hwloc\_linux\_set\_tid\_cpubind}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology, pid\_t tid, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\_const\_cpuset\_t} \textcolor{keyword}{set});
+00045 
+00054 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00214_gaddcb985cb56337a4d6693cee72e7bf94}{hwloc\_linux\_get\_tid\_cpubind}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology, pid\_t tid, \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\_cpuset\_t} \textcolor{keyword}{set});
+00055 
+00061 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00214_gacc7945c2d06c6db1e58f8fd953009134}{hwloc\_linux\_get\_tid\_last\_cpu\_location}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology, pid\_t tid, \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\_bitmap\_t} \textcolor{keyword}{set});
+00062 
+00070 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00214_gaf72d83e273803226ce772973e37b85de}{hwloc\_linux\_read\_path\_as\_cpumask}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *path, 
+      \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\_bitmap\_t} \textcolor{keyword}{set});
+00071 
+00075 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00076 \} \textcolor{comment}{/* extern "C" */}
+00077 \textcolor{preprocessor}{#endif}
+00078 
+00079 
+00080 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* HWLOC\_LINUX\_H */}\textcolor{preprocessor}{}
+\end{DoxyCode}

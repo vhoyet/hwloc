@@ -1,0 +1,52 @@
+\hypertarget{a00189}{}\section{Consulting and Adding Key-\/\+Value Info Attributes}
+\label{a00189}\index{Consulting and Adding Key-\/\+Value Info Attributes@{Consulting and Adding Key-\/\+Value Info Attributes}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const char $\ast$ \hyperlink{a00189_gab358661a92bb27d8542b255cc9f6f25e}{hwloc\+\_\+obj\+\_\+get\+\_\+info\+\_\+by\+\_\+name} (\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj, const char $\ast$name)
+\item 
+int \hyperlink{a00189_gace7654bb8a9002caae1a4b8a59e7452e}{hwloc\+\_\+obj\+\_\+add\+\_\+info} (\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj, const char $\ast$name, const char $\ast$value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00189_gace7654bb8a9002caae1a4b8a59e7452e}\label{a00189_gace7654bb8a9002caae1a4b8a59e7452e}} 
+\index{Consulting and Adding Key-\/\+Value Info Attributes@{Consulting and Adding Key-\/\+Value Info Attributes}!hwloc\+\_\+obj\+\_\+add\+\_\+info@{hwloc\+\_\+obj\+\_\+add\+\_\+info}}
+\index{hwloc\+\_\+obj\+\_\+add\+\_\+info@{hwloc\+\_\+obj\+\_\+add\+\_\+info}!Consulting and Adding Key-\/\+Value Info Attributes@{Consulting and Adding Key-\/\+Value Info Attributes}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+add\+\_\+info()}{hwloc\_obj\_add\_info()}}
+{\footnotesize\ttfamily int hwloc\+\_\+obj\+\_\+add\+\_\+info (\begin{DoxyParamCaption}\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj,  }\item[{const char $\ast$}]{name,  }\item[{const char $\ast$}]{value }\end{DoxyParamCaption})}
+
+
+
+Add the given info name and value pair to the given object. 
+
+The info is appended to the existing info array even if another key with the same name already exists.
+
+The input strings are copied before being added in the object infos.
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily 0} on success, {\ttfamily -\/1} on error.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function may be used to enforce object colors in the lstopo graphical output by using \char`\"{}lstopo\+Style\char`\"{} as a name and \char`\"{}\+Background=\#rrggbb\char`\"{} as a value. See C\+U\+S\+T\+OM C\+O\+L\+O\+RS in the lstopo(1) manpage for details.
+
+If {\ttfamily value} contains some non-\/printable characters, they will be dropped when exporting to X\+ML, see \hyperlink{a00206_ga333f79975b4eeb28a3d8fad3373583ce}{hwloc\+\_\+topology\+\_\+export\+\_\+xml()} in \hyperlink{a00128_source}{hwloc/export.\+h}. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00189_gab358661a92bb27d8542b255cc9f6f25e}\label{a00189_gab358661a92bb27d8542b255cc9f6f25e}} 
+\index{Consulting and Adding Key-\/\+Value Info Attributes@{Consulting and Adding Key-\/\+Value Info Attributes}!hwloc\+\_\+obj\+\_\+get\+\_\+info\+\_\+by\+\_\+name@{hwloc\+\_\+obj\+\_\+get\+\_\+info\+\_\+by\+\_\+name}}
+\index{hwloc\+\_\+obj\+\_\+get\+\_\+info\+\_\+by\+\_\+name@{hwloc\+\_\+obj\+\_\+get\+\_\+info\+\_\+by\+\_\+name}!Consulting and Adding Key-\/\+Value Info Attributes@{Consulting and Adding Key-\/\+Value Info Attributes}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+get\+\_\+info\+\_\+by\+\_\+name()}{hwloc\_obj\_get\_info\_by\_name()}}
+{\footnotesize\ttfamily static const char$\ast$ hwloc\+\_\+obj\+\_\+get\+\_\+info\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Search the given key name in object infos and return the corresponding value. 
+
+If multiple keys match the given name, only the first one is returned.
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily N\+U\+LL} if no such key exists. 
+\end{DoxyReturn}

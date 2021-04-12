@@ -1,0 +1,67 @@
+\hypertarget{a00222}{}\section{Interoperability with the R\+O\+Cm S\+MI Management Library}
+\label{a00222}\index{Interoperability with the R\+O\+Cm S\+M\+I Management Library@{Interoperability with the R\+O\+Cm S\+M\+I Management Library}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{a00222_gaf939e697e3769c3524255318262b9c29}{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+cpuset} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, uint32\+\_\+t dv\+\_\+ind, \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t} set)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00222_ga507d0acdd5e9ac374a8d120d59604c80}{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, uint32\+\_\+t dv\+\_\+ind)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00222_gaba05bf9710655bb5b1439bee654340ba}{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, uint32\+\_\+t dv\+\_\+ind)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This interface offers ways to retrieve topology information about devices managed by the R\+O\+Cm S\+MI Management Library. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00222_gaf939e697e3769c3524255318262b9c29}\label{a00222_gaf939e697e3769c3524255318262b9c29}} 
+\index{Interoperability with the R\+O\+Cm S\+M\+I Management Library@{Interoperability with the R\+O\+Cm S\+M\+I Management Library}!hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+cpuset@{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+cpuset}}
+\index{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+cpuset@{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+cpuset}!Interoperability with the R\+O\+Cm S\+M\+I Management Library@{Interoperability with the R\+O\+Cm S\+M\+I Management Library}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+cpuset()}{hwloc\_rsmi\_get\_device\_cpuset()}}
+{\footnotesize\ttfamily static int hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+cpuset (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{uint32\+\_\+t}]{dv\+\_\+ind,  }\item[{\hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t}}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the C\+PU set of logical processors that are physically close to A\+MD G\+PU device whose index is {\ttfamily dv\+\_\+ind}. 
+
+Return the C\+PU set describing the locality of the A\+MD G\+PU device whose index is {\ttfamily dv\+\_\+ind}.
+
+Topology {\ttfamily topology} and device {\ttfamily dv\+\_\+ind} must match the local machine. I/O devices detection and the R\+O\+Cm S\+MI component are not needed in the topology.
+
+The function only returns the locality of the device. If more information about the device is needed, OS objects should be used instead, see \hyperlink{a00222_gaba05bf9710655bb5b1439bee654340ba}{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev()} and \hyperlink{a00222_ga507d0acdd5e9ac374a8d120d59604c80}{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index()}.
+
+This function is currently only implemented in a meaningful way for Linux; other systems will simply get a full cpuset. \mbox{\Hypertarget{a00222_gaba05bf9710655bb5b1439bee654340ba}\label{a00222_gaba05bf9710655bb5b1439bee654340ba}} 
+\index{Interoperability with the R\+O\+Cm S\+M\+I Management Library@{Interoperability with the R\+O\+Cm S\+M\+I Management Library}!hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev@{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev}}
+\index{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev@{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev}!Interoperability with the R\+O\+Cm S\+M\+I Management Library@{Interoperability with the R\+O\+Cm S\+M\+I Management Library}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev()}{hwloc\_rsmi\_get\_device\_osdev()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{uint32\+\_\+t}]{dv\+\_\+ind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the hwloc OS device object corresponding to A\+MD G\+PU device, whose index is {\ttfamily dv\+\_\+ind}. 
+
+Return the hwloc OS device object that describes the given A\+MD G\+PU, whose index is {\ttfamily dv\+\_\+ind} Return N\+U\+LL if there is none.
+
+Topology {\ttfamily topology} and device {\ttfamily dv\+\_\+ind} must match the local machine. I/O devices detection and the R\+O\+Cm S\+MI component must be enabled in the topology. If not, the locality of the object may still be found using \hyperlink{a00222_gaf939e697e3769c3524255318262b9c29}{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+cpuset()}.
+
+\begin{DoxyNote}{Note}
+The corresponding hwloc P\+CI device may be found by looking at the result parent pointer (unless P\+CI devices are filtered out). 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00222_ga507d0acdd5e9ac374a8d120d59604c80}\label{a00222_ga507d0acdd5e9ac374a8d120d59604c80}} 
+\index{Interoperability with the R\+O\+Cm S\+M\+I Management Library@{Interoperability with the R\+O\+Cm S\+M\+I Management Library}!hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index@{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}}
+\index{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index@{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}!Interoperability with the R\+O\+Cm S\+M\+I Management Library@{Interoperability with the R\+O\+Cm S\+M\+I Management Library}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index()}{hwloc\_rsmi\_get\_device\_osdev\_by\_index()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+rsmi\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{uint32\+\_\+t}]{dv\+\_\+ind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the hwloc OS device object corresponding to the A\+MD G\+PU device whose index is {\ttfamily dv\+\_\+ind}. 
+
+Return the OS device object describing the A\+MD G\+PU device whose index is {\ttfamily dv\+\_\+ind}. Returns N\+U\+LL if there is none.
+
+The topology {\ttfamily topology} does not necessarily have to match the current machine. For instance the topology may be an X\+ML import of a remote host. I/O devices detection and the R\+O\+Cm S\+MI component must be enabled in the topology.
+
+\begin{DoxyNote}{Note}
+The corresponding P\+CI device object can be obtained by looking at the OS device parent object (unless P\+CI devices are filtered out). 
+\end{DoxyNote}

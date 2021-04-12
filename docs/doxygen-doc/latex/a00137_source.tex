@@ -1,0 +1,51 @@
+\hypertarget{a00137_source}{}\section{cpukinds.\+h}
+\label{a00137_source}\index{cpukinds.\+h@{cpukinds.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright © 2020 Inria.  All rights reserved.}
+00003 \textcolor{comment}{ * See COPYING in top-level directory.}
+00004 \textcolor{comment}{ */}
+00005 
+00010 \textcolor{preprocessor}{#ifndef HWLOC\_CPUKINDS\_H}
+00011 \textcolor{preprocessor}{#define HWLOC\_CPUKINDS\_H}
+00012 
+00013 \textcolor{preprocessor}{#include "hwloc.h"}
+00014 
+00015 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00016 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00017 \textcolor{preprocessor}{#elif 0}
+00018 \}
+00019 \textcolor{preprocessor}{#endif}
+00020 
+00076 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00077 \hyperlink{a00213_ga7553f7c6d3920b169f3fc18dfe6a33e3}{hwloc\_cpukinds\_get\_nr}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00078                       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags);
+00079 
+00091 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00092 \hyperlink{a00213_gaf979833aab18d2e7f4b17c932cbcf5d8}{hwloc\_cpukinds\_get\_by\_cpuset}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00093                              \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\_const\_bitmap\_t} cpuset,
+00094                              \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags);
+00095 
+00129 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00130 \hyperlink{a00213_gae1b38fbe9c645583fc16052ce6fbb275}{hwloc\_cpukinds\_get\_info}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00131                         \textcolor{keywordtype}{unsigned} kind\_index,
+00132                         \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\_bitmap\_t} cpuset,
+00133                         \textcolor{keywordtype}{int} *efficiency,
+00134                         \textcolor{keywordtype}{unsigned} *nr\_infos, \textcolor{keyword}{struct} \hyperlink{a00286}{hwloc\_info\_s} **infos,
+00135                         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags);
+00136 
+00174 HWLOC\_DECLSPEC \textcolor{keywordtype}{int}
+00175 \hyperlink{a00213_ga6164ba92cfd06f530ec2c4a18a0dd5a9}{hwloc\_cpukinds\_register}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00176                         \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\_bitmap\_t} cpuset,
+00177                         \textcolor{keywordtype}{int} forced\_efficiency,
+00178                         \textcolor{keywordtype}{unsigned} nr\_infos, \textcolor{keyword}{struct} \hyperlink{a00286}{hwloc\_info\_s} *infos,
+00179                         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags);
+00180 
+00183 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00184 \} \textcolor{comment}{/* extern "C" */}
+00185 \textcolor{preprocessor}{#endif}
+00186 
+00187 
+00188 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* HWLOC\_CPUKINDS\_H */}\textcolor{preprocessor}{}
+\end{DoxyCode}

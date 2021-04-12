@@ -1,0 +1,53 @@
+\hypertarget{a00179_source}{}\section{netloc.\+h}
+\label{a00179_source}\index{netloc.\+h@{netloc.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright © 2013-2014 Cisco Systems, Inc.  All rights reserved.}
+00003 \textcolor{comment}{ * Copyright © 2013-2014 University of Wisconsin-La Crosse.}
+00004 \textcolor{comment}{ *                         All rights reserved.}
+00005 \textcolor{comment}{ * Copyright © 2015-2016 Inria.  All rights reserved.}
+00006 \textcolor{comment}{ *}
+00007 \textcolor{comment}{ * $COPYRIGHT$}
+00008 \textcolor{comment}{ *}
+00009 \textcolor{comment}{ * Additional copyrights may follow}
+00010 \textcolor{comment}{ * See COPYING in top-level directory.}
+00011 \textcolor{comment}{ *}
+00012 \textcolor{comment}{ * $HEADER$}
+00013 \textcolor{comment}{ */}
+00014 
+00015 \textcolor{preprocessor}{#ifndef \_NETLOC\_H\_}
+00016 \textcolor{preprocessor}{#define \_NETLOC\_H\_}
+00017 
+00018 \textcolor{preprocessor}{#ifndef \_GNU\_SOURCE}
+00019 \textcolor{preprocessor}{#define \_GNU\_SOURCE // for asprintf}
+00020 \textcolor{preprocessor}{#endif}
+00021 
+00022 \textcolor{preprocessor}{#include <hwloc/autogen/config.h>}
+00023 
+00024 \textcolor{preprocessor}{#include <hwloc.h>}
+00025 
+00026 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00027 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00028 \textcolor{preprocessor}{#endif}
+00029 
+00036 \textcolor{keyword}{enum} \{
+\Hypertarget{a00179_source_l00037}\hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea4deb864e4b46fe70b83c3220442a627c}{00037}     \hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea4deb864e4b46fe70b83c3220442a627c}{NETLOC\_SUCCESS}         =  0, 
+\Hypertarget{a00179_source_l00038}\hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea4b33f8da6efc963562a93569ac8b349a}{00038}     \hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea4b33f8da6efc963562a93569ac8b349a}{NETLOC\_ERROR}           = -1, 
+\Hypertarget{a00179_source_l00039}\hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea6e4322619d38dec18dbd16a606b14aa8}{00039}     \hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea6e4322619d38dec18dbd16a606b14aa8}{NETLOC\_ERROR\_NOTDIR}    = -2, 
+\Hypertarget{a00179_source_l00040}\hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea81bc77a77d1a42054dc64b11a4cc8612}{00040}     \hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea81bc77a77d1a42054dc64b11a4cc8612}{NETLOC\_ERROR\_NOENT}     = -3, 
+\Hypertarget{a00179_source_l00041}\hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea0dc7c18a5a3d027bf3f835eacdbed932}{00041}     \hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea0dc7c18a5a3d027bf3f835eacdbed932}{NETLOC\_ERROR\_EMPTY}     = -4, 
+\Hypertarget{a00179_source_l00042}\hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea4485021555c6cb24d5f6e391b1bd6dee}{00042}     \hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea4485021555c6cb24d5f6e391b1bd6dee}{NETLOC\_ERROR\_MULTIPLE}  = -5, 
+\Hypertarget{a00179_source_l00043}\hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea4a55d10dfc1eb5c84027de7d48dfac4d}{00043}     \hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea4a55d10dfc1eb5c84027de7d48dfac4d}{NETLOC\_ERROR\_NOT\_IMPL}  = -6, 
+\Hypertarget{a00179_source_l00044}\hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea67dfc8498fa899900e2231fad4538556}{00044}     \hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea67dfc8498fa899900e2231fad4538556}{NETLOC\_ERROR\_EXISTS}    = -7, 
+\Hypertarget{a00179_source_l00045}\hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea61b43e2553779d3610f894fd6698a6ee}{00045}     \hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea61b43e2553779d3610f894fd6698a6ee}{NETLOC\_ERROR\_NOT\_FOUND} = -8, 
+\Hypertarget{a00179_source_l00046}\hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea39974c6110bed527cb7658672b8eeeb9}{00046}     \hyperlink{a00234_gga61dadd085c1777f559549e05962b2c9ea39974c6110bed527cb7658672b8eeeb9}{NETLOC\_ERROR\_MAX}       = -9  
+00047 \};
+00048 
+00049 
+00050 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00051 \} \textcolor{comment}{/* extern "C" */}
+00052 \textcolor{preprocessor}{#endif}
+00053 
+00056 \textcolor{preprocessor}{#endif // \_NETLOC\_H\_}
+\end{DoxyCode}

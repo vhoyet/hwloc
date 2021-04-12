@@ -1,0 +1,58 @@
+\section*{Portable abstraction of parallel architectures for high-\/performance computing}
+
+
+
+
+
+ \hypertarget{index_common_introduction}{}\section{Introduction}\label{index_common_introduction}
+The Hardware Locality (hwloc) software project aims at easing the process of discovering hardware resources in parallel architectures. It offers command-\/line tools and a C A\+PI for consulting these resources, their locality, attributes, and interconnection. hwloc primarily aims at helping high-\/performance computing (H\+PC) applications, but is also applicable to any project seeking to exploit code and/or data locality on modern computing platforms.
+
+hwloc is actually made of two subprojects distributed together\+: 
+\begin{DoxyItemize}
+\item {\bfseries The original hwloc project for describing the internals of computing nodes}. It is described in details starting at section \hyperlink{a00379}{Hardware Locality (hwloc) Introduction}.  
+\item {\bfseries The network-\/oriented companion called netloc (Network Locality)}, described in details starting with section \hyperlink{a00396}{Network Locality (netloc)}.  
+\end{DoxyItemize}
+
+
+
+Netloc may be disabled, but the original hwloc cannot. Both hwloc and netloc A\+P\+Is are documented after these sections.
+
+ \hypertarget{index_common_installation}{}\section{Installation}\label{index_common_installation}
+hwloc (\href{https://www.open-mpi.org/projects/hwloc/}{\tt https\+://www.\+open-\/mpi.\+org/projects/hwloc/}) is available under the B\+SD license. It is hosted as a sub-\/project of the overall Open M\+PI project (\href{https://www.open-mpi.org/}{\tt https\+://www.\+open-\/mpi.\+org/}). Note that hwloc does not require any functionality from Open M\+PI -- it is a wholly separate (and much smaller!) project and code base. It just happens to be hosted as part of the overall Open M\+PI project.\hypertarget{index_basic_installation}{}\subsection{Basic Installation}\label{index_basic_installation}
+Installation is the fairly common G\+N\+U-\/based process\+:
+
+\begin{DoxyVerb}shell$ ./configure --prefix=...
+shell$ make
+shell$ make install
+\end{DoxyVerb}
+
+
+hwloc-\/ and netloc-\/specific configure options and requirements are documented in sections \hyperlink{a00379_hwloc_installation}{hwloc Installation} and \hyperlink{a00396_netloc_installation}{Netloc Installation} respectively.
+
+Also note that if you install supplemental libraries in non-\/standard locations, hwloc\textquotesingle{}s configure script may not be able to find them without some help. You may need to specify additional C\+P\+P\+F\+L\+A\+GS, L\+D\+F\+L\+A\+GS, or P\+K\+G\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+P\+A\+TH values on the configure command line.
+
+For example, if libpciaccess was installed into /opt/pciaccess, hwloc\textquotesingle{}s configure script may not find it be default. Try adding P\+K\+G\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+P\+A\+TH to the ./configure command line, like this\+:
+
+\begin{DoxyVerb}./configure PKG_CONFIG_PATH=/opt/pciaccess/lib/pkgconfig ...
+\end{DoxyVerb}
+
+
+Running the \char`\"{}lstopo\char`\"{} tool is a good way to check as a graphical output whether hwloc properly detected the architecture of your node. Netloc command-\/line tools can be used to display the network topology interconnecting your nodes.\hypertarget{index_gitclone_installation}{}\subsection{Installing from a Git clone}\label{index_gitclone_installation}
+Additionally, the code can be directly cloned from Git\+:
+
+\begin{DoxyVerb}shell$ git clone https://github.com/open-mpi/hwloc.git
+shell$ cd hwloc
+shell$ ./autogen.sh
+\end{DoxyVerb}
+
+
+Note that G\+NU Autoconf $>$=2.\+63, Automake $>$=1.\+11 and Libtool $>$=2.\+2.\+6 are required when building from a Git clone.
+
+Nightly development snapshots are available on the web site, they can be configured and built without any need for Git or G\+NU Autotools.
+
+ \hypertarget{index_bugs}{}\section{Questions and Bugs}\label{index_bugs}
+Bugs should be reported in the tracker (\href{https://github.com/open-mpi/hwloc/issues}{\tt https\+://github.\+com/open-\/mpi/hwloc/issues}). Opening a new issue automatically displays lots of hints about how to debug and report issues.
+
+Questions may be sent to the users or developers mailing lists (\href{https://www.open-mpi.org/community/lists/hwloc.php}{\tt https\+://www.\+open-\/mpi.\+org/community/lists/hwloc.\+php}).
+
+There is also a {\ttfamily \#hwloc} I\+RC channel on Freenode ({\ttfamily irc.\+freenode.\+net}). 

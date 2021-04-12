@@ -1,0 +1,63 @@
+\hypertarget{a00199}{}\section{Looking at Cache Objects}
+\label{a00199}\index{Looking at Cache Objects@{Looking at Cache Objects}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{a00199_gad108a09ce400222fe45545257d575489}{hwloc\+\_\+get\+\_\+cache\+\_\+type\+\_\+depth} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, unsigned cachelevel, \hyperlink{a00184_gab6e1e7efedae8b341f3ee14fbe53d66c}{hwloc\+\_\+obj\+\_\+cache\+\_\+type\+\_\+t} cachetype)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00199_gac4cd480a5deaa4ada047fdd11ae4c070}{hwloc\+\_\+get\+\_\+cache\+\_\+covering\+\_\+cpuset} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t} set)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00199_ga36f48c32837c7a70b424706e213dcd71}{hwloc\+\_\+get\+\_\+shared\+\_\+cache\+\_\+covering\+\_\+obj} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00199_gac4cd480a5deaa4ada047fdd11ae4c070}\label{a00199_gac4cd480a5deaa4ada047fdd11ae4c070}} 
+\index{Looking at Cache Objects@{Looking at Cache Objects}!hwloc\+\_\+get\+\_\+cache\+\_\+covering\+\_\+cpuset@{hwloc\+\_\+get\+\_\+cache\+\_\+covering\+\_\+cpuset}}
+\index{hwloc\+\_\+get\+\_\+cache\+\_\+covering\+\_\+cpuset@{hwloc\+\_\+get\+\_\+cache\+\_\+covering\+\_\+cpuset}!Looking at Cache Objects@{Looking at Cache Objects}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+cache\+\_\+covering\+\_\+cpuset()}{hwloc\_get\_cache\_covering\_cpuset()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+cache\+\_\+covering\+\_\+cpuset (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t}}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the first data (or unified) cache covering a cpuset {\ttfamily set}. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily N\+U\+LL} if no cache matches. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00199_gad108a09ce400222fe45545257d575489}\label{a00199_gad108a09ce400222fe45545257d575489}} 
+\index{Looking at Cache Objects@{Looking at Cache Objects}!hwloc\+\_\+get\+\_\+cache\+\_\+type\+\_\+depth@{hwloc\+\_\+get\+\_\+cache\+\_\+type\+\_\+depth}}
+\index{hwloc\+\_\+get\+\_\+cache\+\_\+type\+\_\+depth@{hwloc\+\_\+get\+\_\+cache\+\_\+type\+\_\+depth}!Looking at Cache Objects@{Looking at Cache Objects}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+cache\+\_\+type\+\_\+depth()}{hwloc\_get\_cache\_type\_depth()}}
+{\footnotesize\ttfamily static int hwloc\+\_\+get\+\_\+cache\+\_\+type\+\_\+depth (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{unsigned}]{cachelevel,  }\item[{\hyperlink{a00184_gab6e1e7efedae8b341f3ee14fbe53d66c}{hwloc\+\_\+obj\+\_\+cache\+\_\+type\+\_\+t}}]{cachetype }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Find the depth of cache objects matching cache level and type. 
+
+Return the depth of the topology level that contains cache objects whose attributes match {\ttfamily cachelevel} and {\ttfamily cachetype}.
+
+This function is identical to calling \hyperlink{a00187_ga8bec782e21be313750da70cf7428b374}{hwloc\+\_\+get\+\_\+type\+\_\+depth()} with the corresponding type such as \hyperlink{a00184_ggacd37bb612667dc437d66bfb175a8dc55afa834a85d9e53836cf0db6d0bd8329b4}{H\+W\+L\+O\+C\+\_\+\+O\+B\+J\+\_\+\+L1\+I\+C\+A\+C\+HE}, except that it may also return a Unified cache when looking for an instruction cache.
+
+If no cache level matches, \hyperlink{a00187_ggaf4e663cf42bbe20756b849c6293ef575a0565ab92ab72cb0cec91e23003294aad}{H\+W\+L\+O\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+D\+E\+P\+T\+H\+\_\+\+U\+N\+K\+N\+O\+WN} is returned.
+
+If {\ttfamily cachetype} is \hyperlink{a00184_gga791c9875c8fe20f3e1e5871e0657e59ba3900b3b2db54941aac249e5a638a2d7a}{H\+W\+L\+O\+C\+\_\+\+O\+B\+J\+\_\+\+C\+A\+C\+H\+E\+\_\+\+U\+N\+I\+F\+I\+ED}, the depth of the unique matching unified cache level is returned.
+
+If {\ttfamily cachetype} is \hyperlink{a00184_gga791c9875c8fe20f3e1e5871e0657e59bacac60ecad4206f85aeb79bef1604b488}{H\+W\+L\+O\+C\+\_\+\+O\+B\+J\+\_\+\+C\+A\+C\+H\+E\+\_\+\+D\+A\+TA} or \hyperlink{a00184_gga791c9875c8fe20f3e1e5871e0657e59ba6f98b0d422b38ba90c5f5c79a11b0658}{H\+W\+L\+O\+C\+\_\+\+O\+B\+J\+\_\+\+C\+A\+C\+H\+E\+\_\+\+I\+N\+S\+T\+R\+U\+C\+T\+I\+ON}, either a matching cache, or a unified cache is returned.
+
+If {\ttfamily cachetype} is {\ttfamily -\/1}, it is ignored and multiple levels may match. The function returns either the depth of a uniquely matching level or \hyperlink{a00187_ggaf4e663cf42bbe20756b849c6293ef575ae99465995cacde6c210d5fc2e409798c}{H\+W\+L\+O\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+D\+E\+P\+T\+H\+\_\+\+M\+U\+L\+T\+I\+P\+LE}. \mbox{\Hypertarget{a00199_ga36f48c32837c7a70b424706e213dcd71}\label{a00199_ga36f48c32837c7a70b424706e213dcd71}} 
+\index{Looking at Cache Objects@{Looking at Cache Objects}!hwloc\+\_\+get\+\_\+shared\+\_\+cache\+\_\+covering\+\_\+obj@{hwloc\+\_\+get\+\_\+shared\+\_\+cache\+\_\+covering\+\_\+obj}}
+\index{hwloc\+\_\+get\+\_\+shared\+\_\+cache\+\_\+covering\+\_\+obj@{hwloc\+\_\+get\+\_\+shared\+\_\+cache\+\_\+covering\+\_\+obj}!Looking at Cache Objects@{Looking at Cache Objects}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+shared\+\_\+cache\+\_\+covering\+\_\+obj()}{hwloc\_get\_shared\_cache\_covering\_obj()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+get\+\_\+shared\+\_\+cache\+\_\+covering\+\_\+obj (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the first data (or unified) cache shared between an object and somebody else. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily N\+U\+LL} if no cache matches or if an invalid object is given. 
+\end{DoxyReturn}

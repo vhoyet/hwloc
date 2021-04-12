@@ -1,0 +1,86 @@
+\hypertarget{a00164_source}{}\section{gl.\+h}
+\label{a00164_source}\index{gl.\+h@{gl.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright © 2012 Blue Brain Project, EPFL. All rights reserved.}
+00003 \textcolor{comment}{ * Copyright © 2012-2013 Inria.  All rights reserved.}
+00004 \textcolor{comment}{ * See COPYING in top-level directory.}
+00005 \textcolor{comment}{ */}
+00006 
+00014 \textcolor{preprocessor}{#ifndef HWLOC\_GL\_H}
+00015 \textcolor{preprocessor}{#define HWLOC\_GL\_H}
+00016 
+00017 \textcolor{preprocessor}{#include "hwloc.h"}
+00018 
+00019 \textcolor{preprocessor}{#include <stdio.h>}
+00020 \textcolor{preprocessor}{#include <string.h>}
+00021 
+00022 
+00023 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00024 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00025 \textcolor{preprocessor}{#endif}
+00026 
+00027 
+00053 \textcolor{keyword}{static} \_\_hwloc\_inline \hyperlink{a00238}{hwloc\_obj\_t}
+\Hypertarget{a00164_source_l00054}\hyperlink{a00223_ga4d66a77e4fe4051d6e5b772c1b8fcec5}{00054} \hyperlink{a00223_ga4d66a77e4fe4051d6e5b772c1b8fcec5}{hwloc\_gl\_get\_display\_osdev\_by\_port\_device}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00055                                           \textcolor{keywordtype}{unsigned} port, \textcolor{keywordtype}{unsigned} device)
+00056 \{
+00057         \textcolor{keywordtype}{unsigned} x = (unsigned) -1, y = (\textcolor{keywordtype}{unsigned}) -1;
+00058         \hyperlink{a00238}{hwloc\_obj\_t} osdev = NULL;
+00059         \textcolor{keywordflow}{while} ((osdev = \hyperlink{a00204_ga8b4584c8949e2c5f1c97ba7fe92b8145}{hwloc\_get\_next\_osdev}(topology, osdev)) != NULL) \{
+00060                 \textcolor{keywordflow}{if} (\hyperlink{a00184_gga64f5d539df299c97ae80ce53fc4b56c0aa3a09798ef2836abb236dc3a645ffc90}{HWLOC\_OBJ\_OSDEV\_GPU} == osdev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->
+      \hyperlink{a00242_a22904c25fe44b323bab5c9bc52660fca}{osdev}.\hyperlink{a00282_a31e019e27e54ac6138d04be639bb96f9}{type}
+00061                     && osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}
+00062                     && sscanf(osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}, \textcolor{stringliteral}{":%u.%u"}, &x, &y) == 2
+00063                     && port == x && device == y)
+00064                         \textcolor{keywordflow}{return} osdev;
+00065         \}
+00066         errno = EINVAL;
+00067         \textcolor{keywordflow}{return} NULL;
+00068 \}
+00069 
+00084 \textcolor{keyword}{static} \_\_hwloc\_inline \hyperlink{a00238}{hwloc\_obj\_t}
+\Hypertarget{a00164_source_l00085}\hyperlink{a00223_ga2d36ef441d1dfddf49cfb5c01bd58d8e}{00085} \hyperlink{a00223_ga2d36ef441d1dfddf49cfb5c01bd58d8e}{hwloc\_gl\_get\_display\_osdev\_by\_name}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00086                                    \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name)
+00087 \{
+00088         \hyperlink{a00238}{hwloc\_obj\_t} osdev = NULL;
+00089         \textcolor{keywordflow}{while} ((osdev = \hyperlink{a00204_ga8b4584c8949e2c5f1c97ba7fe92b8145}{hwloc\_get\_next\_osdev}(topology, osdev)) != NULL) \{
+00090                 \textcolor{keywordflow}{if} (\hyperlink{a00184_gga64f5d539df299c97ae80ce53fc4b56c0aa3a09798ef2836abb236dc3a645ffc90}{HWLOC\_OBJ\_OSDEV\_GPU} == osdev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->
+      \hyperlink{a00242_a22904c25fe44b323bab5c9bc52660fca}{osdev}.\hyperlink{a00282_a31e019e27e54ac6138d04be639bb96f9}{type}
+00091                     && osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}
+00092                     && !strcmp(name, osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}))
+00093                         \textcolor{keywordflow}{return} osdev;
+00094         \}
+00095         errno = EINVAL;
+00096         \textcolor{keywordflow}{return} NULL;
+00097 \}
+00098 
+00110 \textcolor{keyword}{static} \_\_hwloc\_inline \textcolor{keywordtype}{int}
+\Hypertarget{a00164_source_l00111}\hyperlink{a00223_ga936665ab5f0d29a081c4b78d11f4ad07}{00111} \hyperlink{a00223_ga936665ab5f0d29a081c4b78d11f4ad07}{hwloc\_gl\_get\_display\_by\_osdev}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology 
+      \_\_hwloc\_attribute\_unused,
+00112                               \hyperlink{a00238}{hwloc\_obj\_t} osdev,
+00113                               \textcolor{keywordtype}{unsigned} *port, \textcolor{keywordtype}{unsigned} *device)
+00114 \{
+00115         \textcolor{keywordtype}{unsigned} x = -1, y = -1;
+00116         \textcolor{keywordflow}{if} (\hyperlink{a00184_gga64f5d539df299c97ae80ce53fc4b56c0aa3a09798ef2836abb236dc3a645ffc90}{HWLOC\_OBJ\_OSDEV\_GPU} == osdev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->\hyperlink{a00242_a22904c25fe44b323bab5c9bc52660fca}{osdev}.
+      \hyperlink{a00282_a31e019e27e54ac6138d04be639bb96f9}{type}
+00117             && sscanf(osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}, \textcolor{stringliteral}{":%u.%u"}, &x, &y) == 2) \{
+00118                 *port = x;
+00119                 *device = y;
+00120                 \textcolor{keywordflow}{return} 0;
+00121         \}
+00122         errno = EINVAL;
+00123         \textcolor{keywordflow}{return} -1;
+00124 \}
+00125 
+00129 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00130 \} \textcolor{comment}{/* extern "C" */}
+00131 \textcolor{preprocessor}{#endif}
+00132 
+00133 
+00134 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* HWLOC\_GL\_H */}\textcolor{preprocessor}{}
+00135 
+\end{DoxyCode}

@@ -1,0 +1,124 @@
+\hypertarget{a00188}{}\section{Converting between Object Types and Attributes, and Strings}
+\label{a00188}\index{Converting between Object Types and Attributes, and Strings@{Converting between Object Types and Attributes, and Strings}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{a00188_ga5ca0bf94bbbb080d0eff17a57bd90422}{hwloc\+\_\+obj\+\_\+type\+\_\+string} (\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type)
+\item 
+int \hyperlink{a00188_gadb8765c260edea80c52cd06a76639ba4}{hwloc\+\_\+obj\+\_\+type\+\_\+snprintf} (char $\ast$restrict string, size\+\_\+t size, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj, int verbose)
+\item 
+int \hyperlink{a00188_ga870e876931c282a1c7aee2f031912ce3}{hwloc\+\_\+obj\+\_\+attr\+\_\+snprintf} (char $\ast$restrict string, size\+\_\+t size, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj, const char $\ast$restrict separator, int verbose)
+\item 
+int \hyperlink{a00188_ga510f21b066fba2dab12b8c9b173b1dfd}{hwloc\+\_\+type\+\_\+sscanf} (const char $\ast$string, \hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} $\ast$typep, union \hyperlink{a00242}{hwloc\+\_\+obj\+\_\+attr\+\_\+u} $\ast$attrp, size\+\_\+t attrsize)
+\item 
+int \hyperlink{a00188_ga52c63cd7203e55b804c1314affc9bd12}{hwloc\+\_\+type\+\_\+sscanf\+\_\+as\+\_\+depth} (const char $\ast$string, \hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} $\ast$typep, \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, int $\ast$depthp)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00188_ga870e876931c282a1c7aee2f031912ce3}\label{a00188_ga870e876931c282a1c7aee2f031912ce3}} 
+\index{Converting between Object Types and Attributes, and Strings@{Converting between Object Types and Attributes, and Strings}!hwloc\+\_\+obj\+\_\+attr\+\_\+snprintf@{hwloc\+\_\+obj\+\_\+attr\+\_\+snprintf}}
+\index{hwloc\+\_\+obj\+\_\+attr\+\_\+snprintf@{hwloc\+\_\+obj\+\_\+attr\+\_\+snprintf}!Converting between Object Types and Attributes, and Strings@{Converting between Object Types and Attributes, and Strings}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+attr\+\_\+snprintf()}{hwloc\_obj\_attr\_snprintf()}}
+{\footnotesize\ttfamily int hwloc\+\_\+obj\+\_\+attr\+\_\+snprintf (\begin{DoxyParamCaption}\item[{char $\ast$restrict}]{string,  }\item[{size\+\_\+t}]{size,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj,  }\item[{const char $\ast$restrict}]{separator,  }\item[{int}]{verbose }\end{DoxyParamCaption})}
+
+
+
+Stringify the attributes of a given topology object into a human-\/readable form. 
+
+Attribute values are separated by {\ttfamily separator}.
+
+Only the major attributes are printed in non-\/verbose mode.
+
+If {\ttfamily size} is 0, {\ttfamily string} may safely be {\ttfamily N\+U\+LL}.
+
+\begin{DoxyReturn}{Returns}
+the number of character that were actually written if not truncating, or that would have been written (not including the ending \textbackslash{}0). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00188_gadb8765c260edea80c52cd06a76639ba4}\label{a00188_gadb8765c260edea80c52cd06a76639ba4}} 
+\index{Converting between Object Types and Attributes, and Strings@{Converting between Object Types and Attributes, and Strings}!hwloc\+\_\+obj\+\_\+type\+\_\+snprintf@{hwloc\+\_\+obj\+\_\+type\+\_\+snprintf}}
+\index{hwloc\+\_\+obj\+\_\+type\+\_\+snprintf@{hwloc\+\_\+obj\+\_\+type\+\_\+snprintf}!Converting between Object Types and Attributes, and Strings@{Converting between Object Types and Attributes, and Strings}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+type\+\_\+snprintf()}{hwloc\_obj\_type\_snprintf()}}
+{\footnotesize\ttfamily int hwloc\+\_\+obj\+\_\+type\+\_\+snprintf (\begin{DoxyParamCaption}\item[{char $\ast$restrict}]{string,  }\item[{size\+\_\+t}]{size,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj,  }\item[{int}]{verbose }\end{DoxyParamCaption})}
+
+
+
+Stringify the type of a given topology object into a human-\/readable form. 
+
+Contrary to \hyperlink{a00188_ga5ca0bf94bbbb080d0eff17a57bd90422}{hwloc\+\_\+obj\+\_\+type\+\_\+string()}, this function includes object-\/specific attributes (such as the Group depth, the Bridge type, or OS device type) in the output, and it requires the caller to provide the output buffer.
+
+The output is guaranteed to be the same for all objects of a same topology level.
+
+If {\ttfamily verbose} is 1, longer type names are used, e.\+g. L1\+Cache instead of L1.
+
+The output string may be parsed back by \hyperlink{a00188_ga510f21b066fba2dab12b8c9b173b1dfd}{hwloc\+\_\+type\+\_\+sscanf()}.
+
+If {\ttfamily size} is 0, {\ttfamily string} may safely be {\ttfamily N\+U\+LL}.
+
+\begin{DoxyReturn}{Returns}
+the number of character that were actually written if not truncating, or that would have been written (not including the ending \textbackslash{}0). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00188_ga5ca0bf94bbbb080d0eff17a57bd90422}\label{a00188_ga5ca0bf94bbbb080d0eff17a57bd90422}} 
+\index{Converting between Object Types and Attributes, and Strings@{Converting between Object Types and Attributes, and Strings}!hwloc\+\_\+obj\+\_\+type\+\_\+string@{hwloc\+\_\+obj\+\_\+type\+\_\+string}}
+\index{hwloc\+\_\+obj\+\_\+type\+\_\+string@{hwloc\+\_\+obj\+\_\+type\+\_\+string}!Converting between Object Types and Attributes, and Strings@{Converting between Object Types and Attributes, and Strings}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+type\+\_\+string()}{hwloc\_obj\_type\_string()}}
+{\footnotesize\ttfamily const char$\ast$ hwloc\+\_\+obj\+\_\+type\+\_\+string (\begin{DoxyParamCaption}\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type }\end{DoxyParamCaption})}
+
+
+
+Return a constant stringified object type. 
+
+This function is the basic way to convert a generic type into a string. The output string may be parsed back by \hyperlink{a00188_ga510f21b066fba2dab12b8c9b173b1dfd}{hwloc\+\_\+type\+\_\+sscanf()}.
+
+\hyperlink{a00188_gadb8765c260edea80c52cd06a76639ba4}{hwloc\+\_\+obj\+\_\+type\+\_\+snprintf()} may return a more precise output for a specific object, but it requires the caller to provide the output buffer. \mbox{\Hypertarget{a00188_ga510f21b066fba2dab12b8c9b173b1dfd}\label{a00188_ga510f21b066fba2dab12b8c9b173b1dfd}} 
+\index{Converting between Object Types and Attributes, and Strings@{Converting between Object Types and Attributes, and Strings}!hwloc\+\_\+type\+\_\+sscanf@{hwloc\+\_\+type\+\_\+sscanf}}
+\index{hwloc\+\_\+type\+\_\+sscanf@{hwloc\+\_\+type\+\_\+sscanf}!Converting between Object Types and Attributes, and Strings@{Converting between Object Types and Attributes, and Strings}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+type\+\_\+sscanf()}{hwloc\_type\_sscanf()}}
+{\footnotesize\ttfamily int hwloc\+\_\+type\+\_\+sscanf (\begin{DoxyParamCaption}\item[{const char $\ast$}]{string,  }\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} $\ast$}]{typep,  }\item[{union \hyperlink{a00242}{hwloc\+\_\+obj\+\_\+attr\+\_\+u} $\ast$}]{attrp,  }\item[{size\+\_\+t}]{attrsize }\end{DoxyParamCaption})}
+
+
+
+Return an object type and attributes from a type string. 
+
+Convert strings such as \char`\"{}\+Package\char`\"{} or \char`\"{}\+L1i\+Cache\char`\"{} into the corresponding types. Matching is case-\/insensitive, and only the first letters are actually required to match.
+
+The matched object type is set in {\ttfamily typep} (which cannot be {\ttfamily N\+U\+LL}).
+
+Type-\/specific attributes, for instance Cache type, Cache depth, Group depth, Bridge type or OS Device type may be returned in {\ttfamily attrp}. Attributes that are not specified in the string (for instance \char`\"{}\+Group\char`\"{} without a depth, or \char`\"{}\+L2\+Cache\char`\"{} without a cache type) are set to -\/1.
+
+{\ttfamily attrp} is only filled if not {\ttfamily N\+U\+LL} and if its size specified in {\ttfamily attrsize} is large enough. It should be at least as large as union \hyperlink{a00242}{hwloc\+\_\+obj\+\_\+attr\+\_\+u}.
+
+\begin{DoxyReturn}{Returns}
+0 if a type was correctly identified, otherwise -\/1.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function is guaranteed to match any string returned by \hyperlink{a00188_ga5ca0bf94bbbb080d0eff17a57bd90422}{hwloc\+\_\+obj\+\_\+type\+\_\+string()} or \hyperlink{a00188_gadb8765c260edea80c52cd06a76639ba4}{hwloc\+\_\+obj\+\_\+type\+\_\+snprintf()}.
+
+This is an extended version of the now deprecated hwloc\+\_\+obj\+\_\+type\+\_\+sscanf(). 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00188_ga52c63cd7203e55b804c1314affc9bd12}\label{a00188_ga52c63cd7203e55b804c1314affc9bd12}} 
+\index{Converting between Object Types and Attributes, and Strings@{Converting between Object Types and Attributes, and Strings}!hwloc\+\_\+type\+\_\+sscanf\+\_\+as\+\_\+depth@{hwloc\+\_\+type\+\_\+sscanf\+\_\+as\+\_\+depth}}
+\index{hwloc\+\_\+type\+\_\+sscanf\+\_\+as\+\_\+depth@{hwloc\+\_\+type\+\_\+sscanf\+\_\+as\+\_\+depth}!Converting between Object Types and Attributes, and Strings@{Converting between Object Types and Attributes, and Strings}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+type\+\_\+sscanf\+\_\+as\+\_\+depth()}{hwloc\_type\_sscanf\_as\_depth()}}
+{\footnotesize\ttfamily int hwloc\+\_\+type\+\_\+sscanf\+\_\+as\+\_\+depth (\begin{DoxyParamCaption}\item[{const char $\ast$}]{string,  }\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} $\ast$}]{typep,  }\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{int $\ast$}]{depthp }\end{DoxyParamCaption})}
+
+
+
+Return an object type and its level depth from a type string. 
+
+Convert strings such as \char`\"{}\+Package\char`\"{} or \char`\"{}\+L1i\+Cache\char`\"{} into the corresponding types and return in {\ttfamily depthp} the depth of the corresponding level in the topology {\ttfamily topology}.
+
+If no object of this type is present on the underlying architecture, \hyperlink{a00187_ggaf4e663cf42bbe20756b849c6293ef575a0565ab92ab72cb0cec91e23003294aad}{H\+W\+L\+O\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+D\+E\+P\+T\+H\+\_\+\+U\+N\+K\+N\+O\+WN} is returned.
+
+If multiple such levels exist (for instance if giving Group without any depth), the function may return \hyperlink{a00187_ggaf4e663cf42bbe20756b849c6293ef575ae99465995cacde6c210d5fc2e409798c}{H\+W\+L\+O\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+D\+E\+P\+T\+H\+\_\+\+M\+U\+L\+T\+I\+P\+LE} instead.
+
+The matched object type is set in {\ttfamily typep} if {\ttfamily typep} is non {\ttfamily N\+U\+LL}.
+
+\begin{DoxyNote}{Note}
+This function is similar to \hyperlink{a00188_ga510f21b066fba2dab12b8c9b173b1dfd}{hwloc\+\_\+type\+\_\+sscanf()} followed by \hyperlink{a00187_ga8bec782e21be313750da70cf7428b374}{hwloc\+\_\+get\+\_\+type\+\_\+depth()} but it also automatically disambiguates multiple group levels etc.
+
+This function is guaranteed to match any string returned by \hyperlink{a00188_ga5ca0bf94bbbb080d0eff17a57bd90422}{hwloc\+\_\+obj\+\_\+type\+\_\+string()} or \hyperlink{a00188_gadb8765c260edea80c52cd06a76639ba4}{hwloc\+\_\+obj\+\_\+type\+\_\+snprintf()}. 
+\end{DoxyNote}

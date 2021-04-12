@@ -1,0 +1,45 @@
+\hypertarget{a00217}{}\section{Interoperability with glibc sched affinity}
+\label{a00217}\index{Interoperability with glibc sched affinity@{Interoperability with glibc sched affinity}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{a00217_ga88699a0c86c66a9b7baa3468cd9d24c3}{hwloc\+\_\+cpuset\+\_\+to\+\_\+glibc\+\_\+sched\+\_\+affinity} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t} hwlocset, cpu\+\_\+set\+\_\+t $\ast$schedset, size\+\_\+t schedsetsize)
+\item 
+static int \hyperlink{a00217_ga8ec807ec17de57fa77aa5cfd6c8e4bfb}{hwloc\+\_\+cpuset\+\_\+from\+\_\+glibc\+\_\+sched\+\_\+affinity} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t} hwlocset, const cpu\+\_\+set\+\_\+t $\ast$schedset, size\+\_\+t schedsetsize)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This interface offers ways to convert between hwloc cpusets and glibc cpusets such as those manipulated by sched\+\_\+getaffinity() or pthread\+\_\+attr\+\_\+setaffinity\+\_\+np().
+
+\begin{DoxyNote}{Note}
+Topology {\ttfamily topology} must match the current machine. 
+\end{DoxyNote}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00217_ga8ec807ec17de57fa77aa5cfd6c8e4bfb}\label{a00217_ga8ec807ec17de57fa77aa5cfd6c8e4bfb}} 
+\index{Interoperability with glibc sched affinity@{Interoperability with glibc sched affinity}!hwloc\+\_\+cpuset\+\_\+from\+\_\+glibc\+\_\+sched\+\_\+affinity@{hwloc\+\_\+cpuset\+\_\+from\+\_\+glibc\+\_\+sched\+\_\+affinity}}
+\index{hwloc\+\_\+cpuset\+\_\+from\+\_\+glibc\+\_\+sched\+\_\+affinity@{hwloc\+\_\+cpuset\+\_\+from\+\_\+glibc\+\_\+sched\+\_\+affinity}!Interoperability with glibc sched affinity@{Interoperability with glibc sched affinity}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+cpuset\+\_\+from\+\_\+glibc\+\_\+sched\+\_\+affinity()}{hwloc\_cpuset\_from\_glibc\_sched\_affinity()}}
+{\footnotesize\ttfamily static int hwloc\+\_\+cpuset\+\_\+from\+\_\+glibc\+\_\+sched\+\_\+affinity (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t}}]{hwlocset,  }\item[{const cpu\+\_\+set\+\_\+t $\ast$}]{schedset,  }\item[{size\+\_\+t}]{schedsetsize }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Convert glibc sched affinity C\+PU set {\ttfamily schedset} into hwloc C\+PU set. 
+
+This function may be used before calling sched\+\_\+setaffinity or any other function that takes a cpu\+\_\+set\+\_\+t as input parameter.
+
+{\ttfamily schedsetsize} should be sizeof(cpu\+\_\+set\+\_\+t) unless {\ttfamily schedset} was dynamically allocated with C\+P\+U\+\_\+\+A\+L\+L\+OC \mbox{\Hypertarget{a00217_ga88699a0c86c66a9b7baa3468cd9d24c3}\label{a00217_ga88699a0c86c66a9b7baa3468cd9d24c3}} 
+\index{Interoperability with glibc sched affinity@{Interoperability with glibc sched affinity}!hwloc\+\_\+cpuset\+\_\+to\+\_\+glibc\+\_\+sched\+\_\+affinity@{hwloc\+\_\+cpuset\+\_\+to\+\_\+glibc\+\_\+sched\+\_\+affinity}}
+\index{hwloc\+\_\+cpuset\+\_\+to\+\_\+glibc\+\_\+sched\+\_\+affinity@{hwloc\+\_\+cpuset\+\_\+to\+\_\+glibc\+\_\+sched\+\_\+affinity}!Interoperability with glibc sched affinity@{Interoperability with glibc sched affinity}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+cpuset\+\_\+to\+\_\+glibc\+\_\+sched\+\_\+affinity()}{hwloc\_cpuset\_to\_glibc\_sched\_affinity()}}
+{\footnotesize\ttfamily static int hwloc\+\_\+cpuset\+\_\+to\+\_\+glibc\+\_\+sched\+\_\+affinity (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00183_ga1f784433e9b606261f62d1134f6a3b25}{hwloc\+\_\+const\+\_\+cpuset\+\_\+t}}]{hwlocset,  }\item[{cpu\+\_\+set\+\_\+t $\ast$}]{schedset,  }\item[{size\+\_\+t}]{schedsetsize }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Convert hwloc C\+PU set {\ttfamily toposet} into glibc sched affinity C\+PU set {\ttfamily schedset}. 
+
+This function may be used before calling sched\+\_\+setaffinity or any other function that takes a cpu\+\_\+set\+\_\+t as input parameter.
+
+{\ttfamily schedsetsize} should be sizeof(cpu\+\_\+set\+\_\+t) unless {\ttfamily schedset} was dynamically allocated with C\+P\+U\+\_\+\+A\+L\+L\+OC 

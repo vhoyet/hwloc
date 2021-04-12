@@ -1,0 +1,124 @@
+\hypertarget{a00155_source}{}\section{cudart.\+h}
+\label{a00155_source}\index{cudart.\+h@{cudart.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright © 2010-2020 Inria.  All rights reserved.}
+00003 \textcolor{comment}{ * Copyright © 2010-2011 Université Bordeaux}
+00004 \textcolor{comment}{ * Copyright © 2011 Cisco Systems, Inc.  All rights reserved.}
+00005 \textcolor{comment}{ * See COPYING in top-level directory.}
+00006 \textcolor{comment}{ */}
+00007 
+00016 \textcolor{preprocessor}{#ifndef HWLOC\_CUDART\_H}
+00017 \textcolor{preprocessor}{#define HWLOC\_CUDART\_H}
+00018 
+00019 \textcolor{preprocessor}{#include "hwloc.h"}
+00020 \textcolor{preprocessor}{#include "hwloc/autogen/config.h"}
+00021 \textcolor{preprocessor}{#include "hwloc/helper.h"}
+00022 \textcolor{preprocessor}{#ifdef HWLOC\_LINUX\_SYS}
+00023 \textcolor{preprocessor}{#include "hwloc/linux.h"}
+00024 \textcolor{preprocessor}{#endif}
+00025 
+00026 \textcolor{preprocessor}{#include <cuda.h>} \textcolor{comment}{/* for CUDA\_VERSION */}
+00027 \textcolor{preprocessor}{#include <cuda\_runtime\_api.h>}
+00028 
+00029 
+00030 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00031 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00032 \textcolor{preprocessor}{#endif}
+00033 
+00034 
+00047 \textcolor{keyword}{static} \_\_hwloc\_inline \textcolor{keywordtype}{int}
+\Hypertarget{a00155_source_l00048}\hyperlink{a00220_gad8b701d9a34923e34bd58defd4c1e704}{00048} \hyperlink{a00220_gad8b701d9a34923e34bd58defd4c1e704}{hwloc\_cudart\_get\_device\_pci\_ids}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology 
+      \_\_hwloc\_attribute\_unused,
+00049                                 \textcolor{keywordtype}{int} idx, \textcolor{keywordtype}{int} *domain, \textcolor{keywordtype}{int} *bus, \textcolor{keywordtype}{int} *dev)
+00050 \{
+00051   cudaError\_t cerr;
+00052   \textcolor{keyword}{struct }cudaDeviceProp prop;
+00053 
+00054   cerr = cudaGetDeviceProperties(&prop, idx);
+00055   \textcolor{keywordflow}{if} (cerr) \{
+00056     errno = ENOSYS;
+00057     \textcolor{keywordflow}{return} -1;
+00058   \}
+00059 
+00060 \textcolor{preprocessor}{#if CUDA\_VERSION >= 4000}
+00061   *domain = prop.pciDomainID;
+00062 \textcolor{preprocessor}{#else}
+00063   *domain = 0;
+00064 \textcolor{preprocessor}{#endif}
+00065 
+00066   *bus = prop.pciBusID;
+00067   *dev = prop.pciDeviceID;
+00068 
+00069   \textcolor{keywordflow}{return} 0;
+00070 \}
+00071 
+00088 \textcolor{keyword}{static} \_\_hwloc\_inline \textcolor{keywordtype}{int}
+\Hypertarget{a00155_source_l00089}\hyperlink{a00220_ga187ca00c6e12800a25151ce331620980}{00089} \hyperlink{a00220_ga187ca00c6e12800a25151ce331620980}{hwloc\_cudart\_get\_device\_cpuset}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology 
+      \_\_hwloc\_attribute\_unused,
+00090                                \textcolor{keywordtype}{int} idx, \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\_cpuset\_t} \textcolor{keyword}{set})
+00091 \{
+00092 \textcolor{preprocessor}{#ifdef HWLOC\_LINUX\_SYS}
+00093   \textcolor{comment}{/* If we're on Linux, use the sysfs mechanism to get the local cpus */}
+00094 \textcolor{preprocessor}{#define HWLOC\_CUDART\_DEVICE\_SYSFS\_PATH\_MAX 128}
+00095   \textcolor{keywordtype}{char} path[HWLOC\_CUDART\_DEVICE\_SYSFS\_PATH\_MAX];
+00096   \textcolor{keywordtype}{int} domain, bus, dev;
+00097 
+00098   \textcolor{keywordflow}{if} (\hyperlink{a00220_gad8b701d9a34923e34bd58defd4c1e704}{hwloc\_cudart\_get\_device\_pci\_ids}(topology, idx, &domain, &bus, &dev))
+00099     \textcolor{keywordflow}{return} -1;
+00100 
+00101   \textcolor{keywordflow}{if} (!\hyperlink{a00193_ga68ffdcfd9175cdf40709801092f18017}{hwloc\_topology\_is\_thissystem}(topology)) \{
+00102     errno = EINVAL;
+00103     \textcolor{keywordflow}{return} -1;
+00104   \}
+00105 
+00106   sprintf(path, \textcolor{stringliteral}{"/sys/bus/pci/devices/%04x:%02x:%02x.0/local\_cpus"}, (\textcolor{keywordtype}{unsigned}) domain, (\textcolor{keywordtype}{unsigned}) bus, (\textcolor{keywordtype}{
+      unsigned}) dev);
+00107   \textcolor{keywordflow}{if} (\hyperlink{a00214_gaf72d83e273803226ce772973e37b85de}{hwloc\_linux\_read\_path\_as\_cpumask}(path, \textcolor{keyword}{set}) < 0
+00108       || \hyperlink{a00205_ga5b64be28f5a7176ed8ad0d6a90bdf108}{hwloc\_bitmap\_iszero}(\textcolor{keyword}{set}))
+00109     \hyperlink{a00205_ga72a29824798b48784b8217471ec8f14c}{hwloc\_bitmap\_copy}(\textcolor{keyword}{set}, \hyperlink{a00202_gaee30e03391c1ed7dfd617fb5c7bbb033}{hwloc\_topology\_get\_complete\_cpuset}
+      (topology));
+00110 \textcolor{preprocessor}{#else}
+00111   \textcolor{comment}{/* Non-Linux systems simply get a full cpuset */}
+00112   \hyperlink{a00205_ga72a29824798b48784b8217471ec8f14c}{hwloc\_bitmap\_copy}(\textcolor{keyword}{set}, \hyperlink{a00202_gaee30e03391c1ed7dfd617fb5c7bbb033}{hwloc\_topology\_get\_complete\_cpuset}
+      (topology));
+00113 \textcolor{preprocessor}{#endif}
+00114   \textcolor{keywordflow}{return} 0;
+00115 \}
+00116 
+00127 \textcolor{keyword}{static} \_\_hwloc\_inline \hyperlink{a00238}{hwloc\_obj\_t}
+\Hypertarget{a00155_source_l00128}\hyperlink{a00220_gaeda4e6efbb36b518b2c286434ad23bb2}{00128} \hyperlink{a00220_gaeda4e6efbb36b518b2c286434ad23bb2}{hwloc\_cudart\_get\_device\_pcidev}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology, \textcolor{keywordtype}{int}
+       idx)
+00129 \{
+00130   \textcolor{keywordtype}{int} domain, bus, dev;
+00131 
+00132   \textcolor{keywordflow}{if} (\hyperlink{a00220_gad8b701d9a34923e34bd58defd4c1e704}{hwloc\_cudart\_get\_device\_pci\_ids}(topology, idx, &domain, &bus, &dev))
+00133     \textcolor{keywordflow}{return} NULL;
+00134 
+00135   \textcolor{keywordflow}{return} \hyperlink{a00204_gacdbaf0db98872e224b7883a84bfb0455}{hwloc\_get\_pcidev\_by\_busid}(topology, domain, bus, dev, 0);
+00136 \}
+00137 
+00155 \textcolor{keyword}{static} \_\_hwloc\_inline \hyperlink{a00238}{hwloc\_obj\_t}
+\Hypertarget{a00155_source_l00156}\hyperlink{a00220_gac0f3eeaf7712919f298097b1a21307b0}{00156} \hyperlink{a00220_gac0f3eeaf7712919f298097b1a21307b0}{hwloc\_cudart\_get\_device\_osdev\_by\_index}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology, \textcolor{keywordtype}{unsigned} idx)
+00157 \{
+00158         \hyperlink{a00238}{hwloc\_obj\_t} osdev = NULL;
+00159         \textcolor{keywordflow}{while} ((osdev = \hyperlink{a00204_ga8b4584c8949e2c5f1c97ba7fe92b8145}{hwloc\_get\_next\_osdev}(topology, osdev)) != NULL) \{
+00160                 \textcolor{keywordflow}{if} (\hyperlink{a00184_gga64f5d539df299c97ae80ce53fc4b56c0a46f8927e1c3e137eaa86cc8f6861fb83}{HWLOC\_OBJ\_OSDEV\_COPROC} == osdev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->
+      \hyperlink{a00242_a22904c25fe44b323bab5c9bc52660fca}{osdev}.\hyperlink{a00282_a31e019e27e54ac6138d04be639bb96f9}{type}
+00161                     && osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}
+00162                     && !strncmp(\textcolor{stringliteral}{"cuda"}, osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}, 4)
+00163                     && atoi(osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name} + 4) == (\textcolor{keywordtype}{int}) idx)
+00164                         \textcolor{keywordflow}{return} osdev;
+00165         \}
+00166         \textcolor{keywordflow}{return} NULL;
+00167 \}
+00168 
+00172 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00173 \} \textcolor{comment}{/* extern "C" */}
+00174 \textcolor{preprocessor}{#endif}
+00175 
+00176 
+00177 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* HWLOC\_CUDART\_H */}\textcolor{preprocessor}{}
+\end{DoxyCode}

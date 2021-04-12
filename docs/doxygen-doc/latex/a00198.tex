@@ -1,0 +1,115 @@
+\hypertarget{a00198}{}\section{Kinds of object Type}
+\label{a00198}\index{Kinds of object Type@{Kinds of object Type}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{a00198_ga52ef38431eba383b048b98c669b59a16}{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+normal} (\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type)
+\item 
+int \hyperlink{a00198_gac8a954ed37a4376097234c828068cbef}{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+io} (\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type)
+\item 
+int \hyperlink{a00198_ga1d074390c8a3dc3088d84f73fb73f966}{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+memory} (\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type)
+\item 
+int \hyperlink{a00198_ga2ed589bea28711e80b92066510a5607d}{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+cache} (\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type)
+\item 
+int \hyperlink{a00198_ga395e48cd221d107e5891689624e1aec4}{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+dcache} (\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type)
+\item 
+int \hyperlink{a00198_ga8abcee67b9b074332c1866405a3648a9}{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+icache} (\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t} type)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Each object type is either Normal (i.\+e. \hyperlink{a00198_ga52ef38431eba383b048b98c669b59a16}{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+normal()} returns 1), or Memory (i.\+e. \hyperlink{a00198_ga1d074390c8a3dc3088d84f73fb73f966}{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+memory()} returns 1) or I/O (i.\+e. \hyperlink{a00198_gac8a954ed37a4376097234c828068cbef}{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+io()} returns 1) or Misc (i.\+e. equal to \hyperlink{a00184_ggacd37bb612667dc437d66bfb175a8dc55a19f8a6953fa91efc76bcbcdf2d22de4d}{H\+W\+L\+O\+C\+\_\+\+O\+B\+J\+\_\+\+M\+I\+SC}). It cannot be of more than one of these kinds. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00198_ga2ed589bea28711e80b92066510a5607d}\label{a00198_ga2ed589bea28711e80b92066510a5607d}} 
+\index{Kinds of object Type@{Kinds of object Type}!hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+cache@{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+cache}}
+\index{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+cache@{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+cache}!Kinds of object Type@{Kinds of object Type}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+cache()}{hwloc\_obj\_type\_is\_cache()}}
+{\footnotesize\ttfamily int hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+cache (\begin{DoxyParamCaption}\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type }\end{DoxyParamCaption})}
+
+
+
+Check whether an object type is a C\+PU Cache (Data, Unified or Instruction). 
+
+Memory-\/side caches are not C\+PU caches.
+
+\begin{DoxyReturn}{Returns}
+1 if an object of type {\ttfamily type} is a Cache, 0 otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00198_ga395e48cd221d107e5891689624e1aec4}\label{a00198_ga395e48cd221d107e5891689624e1aec4}} 
+\index{Kinds of object Type@{Kinds of object Type}!hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+dcache@{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+dcache}}
+\index{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+dcache@{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+dcache}!Kinds of object Type@{Kinds of object Type}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+dcache()}{hwloc\_obj\_type\_is\_dcache()}}
+{\footnotesize\ttfamily int hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+dcache (\begin{DoxyParamCaption}\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type }\end{DoxyParamCaption})}
+
+
+
+Check whether an object type is a C\+PU Data or Unified Cache. 
+
+Memory-\/side caches are not C\+PU caches.
+
+\begin{DoxyReturn}{Returns}
+1 if an object of type {\ttfamily type} is a C\+PU Data or Unified Cache, 0 otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00198_ga8abcee67b9b074332c1866405a3648a9}\label{a00198_ga8abcee67b9b074332c1866405a3648a9}} 
+\index{Kinds of object Type@{Kinds of object Type}!hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+icache@{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+icache}}
+\index{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+icache@{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+icache}!Kinds of object Type@{Kinds of object Type}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+icache()}{hwloc\_obj\_type\_is\_icache()}}
+{\footnotesize\ttfamily int hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+icache (\begin{DoxyParamCaption}\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type }\end{DoxyParamCaption})}
+
+
+
+Check whether an object type is a C\+PU Instruction Cache,. 
+
+Memory-\/side caches are not C\+PU caches.
+
+\begin{DoxyReturn}{Returns}
+1 if an object of type {\ttfamily type} is a C\+PU Instruction Cache, 0 otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00198_gac8a954ed37a4376097234c828068cbef}\label{a00198_gac8a954ed37a4376097234c828068cbef}} 
+\index{Kinds of object Type@{Kinds of object Type}!hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+io@{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+io}}
+\index{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+io@{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+io}!Kinds of object Type@{Kinds of object Type}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+io()}{hwloc\_obj\_type\_is\_io()}}
+{\footnotesize\ttfamily int hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+io (\begin{DoxyParamCaption}\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type }\end{DoxyParamCaption})}
+
+
+
+Check whether an object type is I/O. 
+
+I/O objects are objects attached to their parents in the I/O children list. This current includes Bridges, P\+CI and OS devices.
+
+\begin{DoxyReturn}{Returns}
+1 if an object of type {\ttfamily type} is a I/O object, 0 otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00198_ga1d074390c8a3dc3088d84f73fb73f966}\label{a00198_ga1d074390c8a3dc3088d84f73fb73f966}} 
+\index{Kinds of object Type@{Kinds of object Type}!hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+memory@{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+memory}}
+\index{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+memory@{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+memory}!Kinds of object Type@{Kinds of object Type}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+memory()}{hwloc\_obj\_type\_is\_memory()}}
+{\footnotesize\ttfamily int hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+memory (\begin{DoxyParamCaption}\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type }\end{DoxyParamCaption})}
+
+
+
+Check whether an object type is Memory. 
+
+Memory objects are objects attached to their parents in the Memory children list. This current includes N\+U\+MA nodes and Memory-\/side caches.
+
+\begin{DoxyReturn}{Returns}
+1 if an object of type {\ttfamily type} is a Memory object, 0 otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00198_ga52ef38431eba383b048b98c669b59a16}\label{a00198_ga52ef38431eba383b048b98c669b59a16}} 
+\index{Kinds of object Type@{Kinds of object Type}!hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+normal@{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+normal}}
+\index{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+normal@{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+normal}!Kinds of object Type@{Kinds of object Type}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+normal()}{hwloc\_obj\_type\_is\_normal()}}
+{\footnotesize\ttfamily int hwloc\+\_\+obj\+\_\+type\+\_\+is\+\_\+normal (\begin{DoxyParamCaption}\item[{\hyperlink{a00184_gacd37bb612667dc437d66bfb175a8dc55}{hwloc\+\_\+obj\+\_\+type\+\_\+t}}]{type }\end{DoxyParamCaption})}
+
+
+
+Check whether an object type is Normal. 
+
+Normal objects are objects of the main C\+PU hierarchy (Machine, Package, Core, PU, C\+PU caches, etc.), but they are not N\+U\+MA nodes, I/O devices or Misc objects.
+
+They are attached to parent as Normal children, not as Memory, I/O or Misc children.
+
+\begin{DoxyReturn}{Returns}
+1 if an object of type {\ttfamily type} is a Normal object, 0 otherwise. 
+\end{DoxyReturn}

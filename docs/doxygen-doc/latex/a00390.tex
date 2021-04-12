@@ -1,0 +1,41 @@
+
+
+Although hwloc offers its own portable interface, it still may have to interoperate with specific or non-\/portable libraries that manipulate similar kinds of objects. hwloc therefore offers several specific \char`\"{}helpers\char`\"{} to assist converting between those specific interfaces and hwloc.
+
+Some external libraries may be specific to a particular OS; others may not always be available. The hwloc core therefore generally does not explicitly depend on these types of libraries. However, when a custom application uses or otherwise depends on such a library, it may optionally include the corresponding hwloc helper to extend the hwloc interface with dedicated helpers.
+
+Most of these helpers use structures that are specific to these external libraries and only meaningful on the local machine. If so, the helper requires the input topology to match the current machine. Some helpers also require I/O device discovery to be supported and enabled for the current topology.
+
+
+\begin{DoxyDescription}
+\item[Linux specific features ]\hyperlink{a00140_source}{hwloc/linux.\+h} offers Linux-\/specific helpers that utilize some non-\/portable features of the Linux system, such as binding threads through their thread ID (\char`\"{}tid\char`\"{}) or parsing kernel C\+PU mask files. 
+
+
+\item[Linux libnuma ]\hyperlink{a00143_source}{hwloc/linux-\/libnuma.\+h} provides conversion helpers between hwloc C\+PU sets and libnuma-\/specific types, such as bitmasks. It helps you use libnuma memory-\/binding functions with hwloc C\+PU sets. 
+
+
+\item[Glibc ]\hyperlink{a00146_source}{hwloc/glibc-\/sched.\+h} offers conversion routines between Glibc and hwloc C\+PU sets in order to use hwloc with functions such as sched\+\_\+getaffinity() or pthread\+\_\+attr\+\_\+setaffinity\+\_\+np(). 
+
+
+\item[Open\+Fabrics Verbs ]\hyperlink{a00167_source}{hwloc/openfabrics-\/verbs.\+h} helps interoperability with the Open\+Fabrics Verbs interface. For example, it can return a list of processors near an Open\+Fabrics device. It may also return the corresponding OS device hwloc object for further information (if I/O device discovery is enabled). 
+
+
+\item[Open\+CL ]\hyperlink{a00149_source}{hwloc/opencl.\+h} enables interoperability with the Open\+CL interface. Only the A\+MD and N\+V\+I\+D\+IA implementations currently offer locality information. It may return the list of processors near a G\+PU given as a {\ttfamily cl\+\_\+device\+\_\+id}. It may also return the corresponding OS device hwloc object for further information (if I/O device discovery is enabled). 
+
+
+\item[A\+MD R\+O\+Cm S\+MI Library (R\+S\+MI) ]\hyperlink{a00161_source}{hwloc/rsmi.\+h} enables interoperability with the A\+MD R\+O\+Cm S\+MI interface. It may return the list of processors near an A\+MD G\+PU. It may also return the corresponding OS device hwloc object for further information (if I/O device discovery is enabled). 
+
+
+\item[N\+V\+I\+D\+IA C\+U\+DA ]\hyperlink{a00152_source}{hwloc/cuda.\+h} and \hyperlink{a00155_source}{hwloc/cudart.\+h} enable interoperability with N\+V\+I\+D\+IA C\+U\+DA Driver and Runtime interfaces. For instance, it may return the list of processors near N\+V\+I\+D\+IA G\+P\+Us. It may also return the corresponding OS device hwloc object for further information (if I/O device discovery is enabled). 
+
+
+\item[N\+V\+I\+D\+IA Management Library (N\+V\+ML) ]\hyperlink{a00158_source}{hwloc/nvml.\+h} enables interoperability with the N\+V\+I\+D\+IA N\+V\+ML interface. It may return the list of processors near a N\+V\+I\+D\+IA G\+PU given as a {\ttfamily nvml\+Device\+\_\+t}. It may also return the corresponding OS device hwloc object for further information (if I/O device discovery is enabled). 
+
+
+\item[N\+V\+I\+D\+IA displays ]\hyperlink{a00164_source}{hwloc/gl.\+h} enables interoperability with N\+V\+I\+D\+IA displays using the N\+V-\/\+C\+O\+N\+T\+R\+OL X extension (N\+V\+Ctrl library). If I/O device discovery is enabled, it may return the OS device hwloc object that corresponds to a display given as a name such as {\itshape \+:0.\+0} or given as a port/device pair (server/screen). 
+
+
+\item[Taskset command-\/line tool ]The taskset command-\/line tool is widely used for binding processes. It manipulates C\+PU set strings in a format that is slightly different from hwloc\textquotesingle{}s one (it does not divide the string in fixed-\/size subsets and separates them with commas). To ease interoperability, hwloc offers routines to convert hwloc C\+PU sets from/to taskset-\/specific string format. Most hwloc command-\/line tools also support the {\ttfamily -\/-\/taskset} option to manipulate taskset-\/specific strings. 
+
+
+\end{DoxyDescription}

@@ -1,0 +1,20 @@
+
+
+Some operating systems do not systematically provide separate functions for C\+PU and memory binding. This means that C\+PU binding functions may have have effects on the memory binding policy. Likewise, changing the memory binding policy may change the C\+PU binding of the current thread. This is often not a problem for applications, so by default hwloc will make use of these functions when they provide better binding support.
+
+If the application does not want the C\+PU binding to change when changing the memory policy, it needs to use the \hyperlink{a00191_ggab00475fd98815bf4fb9aaf752030e7d2aad6b9eaf2ee324ca58dc8f58094b9997}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+B\+I\+N\+D\+\_\+\+N\+O\+C\+P\+U\+B\+I\+ND} flag to prevent hwloc from using OS functions which would change the C\+PU binding. Additionally, \hyperlink{a00190_gga217dc8d373f8958cc93c154ebce1c71ca41ce440443cc3087caed95ab60edcad6}{H\+W\+L\+O\+C\+\_\+\+C\+P\+U\+B\+I\+N\+D\+\_\+\+N\+O\+M\+E\+M\+B\+I\+ND} can be passed to C\+PU binding function to prevent hwloc from using OS functions would change the memory binding policy. Of course, using these flags will reduce hwloc\textquotesingle{}s overall support for binding, so their use is discouraged.
+
+One can avoid using these flags but still closely control both memory and C\+PU binding by allocating memory, touching each page in the allocated memory, and then changing the C\+PU binding. The already-\/really-\/allocated memory will then be \char`\"{}locked\char`\"{} to physical memory and will not be migrated. Thus, even if the memory binding policy gets changed by the C\+PU binding order, the already-\/allocated memory will not change with it. When binding and allocating further memory, the C\+PU binding should be performed again in case the memory binding altered the previously-\/selected C\+PU binding.
+
+Not all operating systems support the notion of a \char`\"{}current\char`\"{} memory binding policy for the current process, but such operating systems often still provide a way to allocate data on a given node set. Conversely, some operating systems support the notion of a \char`\"{}current\char`\"{} memory binding policy and do not permit allocating data on a specific node set without changing the current policy and allocate the data. To provide the most powerful coverage of these facilities, hwloc provides\+:
+
+
+\begin{DoxyItemize}
+\item functions that set/get the current memory binding policies (if supported)\+: hwloc\+\_\+set/get\+\_\+membind() and hwloc\+\_\+set/get\+\_\+proc\+\_\+membind() 
+\item a function that allocates memory bound to specific node set without changing the current memory binding policy (if supported)\+: \hyperlink{a00191_ga04736461780fadcf193af218c0122273}{hwloc\+\_\+alloc\+\_\+membind()}. 
+\item a helper which, if needed, changes the current memory binding policy of the process in order to obtain memory binding\+: \hyperlink{a00191_gab1b77b8408bacaf03c7e8878f7577922}{hwloc\+\_\+alloc\+\_\+membind\+\_\+policy()}. 
+\end{DoxyItemize}
+
+An application can thus use the two first sets of functions if it wants to manage separately the global process binding policy and directed allocation, or use the third set of functions if it does not care about the process memory binding policy.
+
+See \hyperlink{a00190}{C\+PU binding} and \hyperlink{a00191}{Memory binding} for hwloc\textquotesingle{}s A\+PI functions regarding C\+PU and memory binding, respectively. There are some examples under doc/examples/ in the source tree. 

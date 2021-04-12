@@ -1,0 +1,54 @@
+\hypertarget{a00306}{}\section{hwloc\+\_\+topology\+\_\+support Struct Reference}
+\label{a00306}\index{hwloc\+\_\+topology\+\_\+support@{hwloc\+\_\+topology\+\_\+support}}
+
+
+{\ttfamily \#include $<$hwloc.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00290}{hwloc\+\_\+topology\+\_\+discovery\+\_\+support} $\ast$ \hyperlink{a00306_aea3fbd7653d987d81f848636c420504d}{discovery}
+\item 
+struct \hyperlink{a00294}{hwloc\+\_\+topology\+\_\+cpubind\+\_\+support} $\ast$ \hyperlink{a00306_adef2bb91f74c3e70a2a071393caf5f56}{cpubind}
+\item 
+struct \hyperlink{a00298}{hwloc\+\_\+topology\+\_\+membind\+\_\+support} $\ast$ \hyperlink{a00306_ac6eb62ae8bc0a68dce679a7107a36194}{membind}
+\item 
+struct \hyperlink{a00302}{hwloc\+\_\+topology\+\_\+misc\+\_\+support} $\ast$ \hyperlink{a00306_ab9d08df4b0b03994f21b893ece826e78}{misc}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Set of flags describing actual support for this topology. 
+
+This is retrieved with \hyperlink{a00193_gab8c76173c4a8ce1a9a9366012b1388e6}{hwloc\+\_\+topology\+\_\+get\+\_\+support()} and will be valid until the topology object is destroyed. Note\+: the values are correct only after discovery. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{a00306_adef2bb91f74c3e70a2a071393caf5f56}\label{a00306_adef2bb91f74c3e70a2a071393caf5f56}} 
+\index{hwloc\+\_\+topology\+\_\+support@{hwloc\+\_\+topology\+\_\+support}!cpubind@{cpubind}}
+\index{cpubind@{cpubind}!hwloc\+\_\+topology\+\_\+support@{hwloc\+\_\+topology\+\_\+support}}
+\subsubsection{\texorpdfstring{cpubind}{cpubind}}
+{\footnotesize\ttfamily struct \hyperlink{a00294}{hwloc\+\_\+topology\+\_\+cpubind\+\_\+support}$\ast$ hwloc\+\_\+topology\+\_\+support\+::cpubind}
+
+\mbox{\Hypertarget{a00306_aea3fbd7653d987d81f848636c420504d}\label{a00306_aea3fbd7653d987d81f848636c420504d}} 
+\index{hwloc\+\_\+topology\+\_\+support@{hwloc\+\_\+topology\+\_\+support}!discovery@{discovery}}
+\index{discovery@{discovery}!hwloc\+\_\+topology\+\_\+support@{hwloc\+\_\+topology\+\_\+support}}
+\subsubsection{\texorpdfstring{discovery}{discovery}}
+{\footnotesize\ttfamily struct \hyperlink{a00290}{hwloc\+\_\+topology\+\_\+discovery\+\_\+support}$\ast$ hwloc\+\_\+topology\+\_\+support\+::discovery}
+
+\mbox{\Hypertarget{a00306_ac6eb62ae8bc0a68dce679a7107a36194}\label{a00306_ac6eb62ae8bc0a68dce679a7107a36194}} 
+\index{hwloc\+\_\+topology\+\_\+support@{hwloc\+\_\+topology\+\_\+support}!membind@{membind}}
+\index{membind@{membind}!hwloc\+\_\+topology\+\_\+support@{hwloc\+\_\+topology\+\_\+support}}
+\subsubsection{\texorpdfstring{membind}{membind}}
+{\footnotesize\ttfamily struct \hyperlink{a00298}{hwloc\+\_\+topology\+\_\+membind\+\_\+support}$\ast$ hwloc\+\_\+topology\+\_\+support\+::membind}
+
+\mbox{\Hypertarget{a00306_ab9d08df4b0b03994f21b893ece826e78}\label{a00306_ab9d08df4b0b03994f21b893ece826e78}} 
+\index{hwloc\+\_\+topology\+\_\+support@{hwloc\+\_\+topology\+\_\+support}!misc@{misc}}
+\index{misc@{misc}!hwloc\+\_\+topology\+\_\+support@{hwloc\+\_\+topology\+\_\+support}}
+\subsubsection{\texorpdfstring{misc}{misc}}
+{\footnotesize\ttfamily struct \hyperlink{a00302}{hwloc\+\_\+topology\+\_\+misc\+\_\+support}$\ast$ hwloc\+\_\+topology\+\_\+support\+::misc}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+hwloc.\+h\end{DoxyCompactItemize}

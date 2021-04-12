@@ -1,0 +1,61 @@
+\hypertarget{a00182}{}\section{A\+PI version}
+\label{a00182}\index{A\+P\+I version@{A\+P\+I version}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00182_ga8f4dfb8eef138af55dd1a0fa802e5476}{H\+W\+L\+O\+C\+\_\+\+A\+P\+I\+\_\+\+V\+E\+R\+S\+I\+ON}~0x00020400
+\item 
+\#define \hyperlink{a00182_gaac5bc1f46f55e10ef0141a68ce70e21f}{H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+A\+BI}~7
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{a00182_ga9c0b50c98add1adf57ed1ce85bb5190d}{hwloc\+\_\+get\+\_\+api\+\_\+version} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{a00182_ga8f4dfb8eef138af55dd1a0fa802e5476}\label{a00182_ga8f4dfb8eef138af55dd1a0fa802e5476}} 
+\index{A\+P\+I version@{A\+P\+I version}!H\+W\+L\+O\+C\+\_\+\+A\+P\+I\+\_\+\+V\+E\+R\+S\+I\+ON@{H\+W\+L\+O\+C\+\_\+\+A\+P\+I\+\_\+\+V\+E\+R\+S\+I\+ON}}
+\index{H\+W\+L\+O\+C\+\_\+\+A\+P\+I\+\_\+\+V\+E\+R\+S\+I\+ON@{H\+W\+L\+O\+C\+\_\+\+A\+P\+I\+\_\+\+V\+E\+R\+S\+I\+ON}!A\+P\+I version@{A\+P\+I version}}
+\subsubsection{\texorpdfstring{H\+W\+L\+O\+C\+\_\+\+A\+P\+I\+\_\+\+V\+E\+R\+S\+I\+ON}{HWLOC\_API\_VERSION}}
+{\footnotesize\ttfamily \#define H\+W\+L\+O\+C\+\_\+\+A\+P\+I\+\_\+\+V\+E\+R\+S\+I\+ON~0x00020400}
+
+
+
+Indicate at build time which hwloc A\+PI version is being used. 
+
+This number is updated to (X$<$$<$16)+(Y$<$$<$8)+Z when a new release X.\+Y.\+Z actually modifies the A\+PI.
+
+Users may check for available features at build time using this number (see \hyperlink{a00394_faq_version_api}{How do I handle A\+PI changes?}).
+
+\begin{DoxyNote}{Note}
+This should not be confused with H\+W\+L\+O\+C\+\_\+\+V\+E\+R\+S\+I\+ON, the library version. Two stable releases of the same series usually have the same \hyperlink{a00182_ga8f4dfb8eef138af55dd1a0fa802e5476}{H\+W\+L\+O\+C\+\_\+\+A\+P\+I\+\_\+\+V\+E\+R\+S\+I\+ON} even if their H\+W\+L\+O\+C\+\_\+\+V\+E\+R\+S\+I\+ON are different. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00182_gaac5bc1f46f55e10ef0141a68ce70e21f}\label{a00182_gaac5bc1f46f55e10ef0141a68ce70e21f}} 
+\index{A\+P\+I version@{A\+P\+I version}!H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+A\+BI@{H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+A\+BI}}
+\index{H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+A\+BI@{H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+A\+BI}!A\+P\+I version@{A\+P\+I version}}
+\subsubsection{\texorpdfstring{H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+A\+BI}{HWLOC\_COMPONENT\_ABI}}
+{\footnotesize\ttfamily \#define H\+W\+L\+O\+C\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+A\+BI~7}
+
+
+
+Current component and plugin A\+BI version (see \hyperlink{a00176_source}{hwloc/plugins.\+h}) 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00182_ga9c0b50c98add1adf57ed1ce85bb5190d}\label{a00182_ga9c0b50c98add1adf57ed1ce85bb5190d}} 
+\index{A\+P\+I version@{A\+P\+I version}!hwloc\+\_\+get\+\_\+api\+\_\+version@{hwloc\+\_\+get\+\_\+api\+\_\+version}}
+\index{hwloc\+\_\+get\+\_\+api\+\_\+version@{hwloc\+\_\+get\+\_\+api\+\_\+version}!A\+P\+I version@{A\+P\+I version}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+api\+\_\+version()}{hwloc\_get\_api\_version()}}
+{\footnotesize\ttfamily unsigned hwloc\+\_\+get\+\_\+api\+\_\+version (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Indicate at runtime which hwloc A\+PI version was used at build time. 
+
+Should be \hyperlink{a00182_ga8f4dfb8eef138af55dd1a0fa802e5476}{H\+W\+L\+O\+C\+\_\+\+A\+P\+I\+\_\+\+V\+E\+R\+S\+I\+ON} if running on the same version. 

@@ -1,0 +1,86 @@
+\hypertarget{a00218}{}\section{Interoperability with Open\+CL}
+\label{a00218}\index{Interoperability with Open\+CL@{Interoperability with Open\+CL}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{a00218_gab89e4d20f8a353299351b41849e35ac9}{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+pci\+\_\+busid} (cl\+\_\+device\+\_\+id device, unsigned $\ast$domain, unsigned $\ast$bus, unsigned $\ast$dev, unsigned $\ast$func)
+\item 
+static int \hyperlink{a00218_gacc32737d4648d16b0d292438f210ec90}{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+cpuset} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, cl\+\_\+device\+\_\+id device, \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t} set)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00218_gae39352d124cb330eb37b84b418ed6cc5}{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, unsigned platform\+\_\+index, unsigned device\+\_\+index)
+\item 
+static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} \hyperlink{a00218_gadabfa6516aa12e5d8f79b9b4dd9f3cf8}{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, cl\+\_\+device\+\_\+id device)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This interface offers ways to retrieve topology information about Open\+CL devices.
+
+Only A\+MD and N\+V\+I\+D\+IA Open\+CL implementations currently offer useful locality information about their devices. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00218_gacc32737d4648d16b0d292438f210ec90}\label{a00218_gacc32737d4648d16b0d292438f210ec90}} 
+\index{Interoperability with Open\+CL@{Interoperability with Open\+CL}!hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+cpuset@{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+cpuset}}
+\index{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+cpuset@{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+cpuset}!Interoperability with Open\+CL@{Interoperability with Open\+CL}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+cpuset()}{hwloc\_opencl\_get\_device\_cpuset()}}
+{\footnotesize\ttfamily static int hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+cpuset (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{cl\+\_\+device\+\_\+id}]{device,  }\item[{\hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\+\_\+cpuset\+\_\+t}}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the C\+PU set of processors that are physically close to Open\+CL device {\ttfamily device}. 
+
+Return the C\+PU set describing the locality of the Open\+CL device {\ttfamily device}.
+
+Topology {\ttfamily topology} and device {\ttfamily device} must match the local machine. I/O devices detection and the Open\+CL component are not needed in the topology.
+
+The function only returns the locality of the device. If more information about the device is needed, OS objects should be used instead, see \hyperlink{a00218_gadabfa6516aa12e5d8f79b9b4dd9f3cf8}{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev()} and \hyperlink{a00218_gae39352d124cb330eb37b84b418ed6cc5}{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index()}.
+
+This function is currently only implemented in a meaningful way for Linux with the A\+MD or N\+V\+I\+D\+IA Open\+CL implementation; other systems will simply get a full cpuset. \mbox{\Hypertarget{a00218_gadabfa6516aa12e5d8f79b9b4dd9f3cf8}\label{a00218_gadabfa6516aa12e5d8f79b9b4dd9f3cf8}} 
+\index{Interoperability with Open\+CL@{Interoperability with Open\+CL}!hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev@{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev}}
+\index{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev@{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev}!Interoperability with Open\+CL@{Interoperability with Open\+CL}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev()}{hwloc\_opencl\_get\_device\_osdev()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{cl\+\_\+device\+\_\+id}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the hwloc OS device object corresponding to Open\+CL device {\ttfamily deviceX}. 
+
+Use Open\+CL device attributes to find the corresponding hwloc OS device object. Return N\+U\+LL if there is none or if useful attributes are not available.
+
+This function currently only works on A\+MD and N\+V\+I\+D\+IA Open\+CL devices that support relevant Open\+CL extensions. \hyperlink{a00218_gae39352d124cb330eb37b84b418ed6cc5}{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index()} should be preferred whenever possible, i.\+e. when platform and device index are known.
+
+Topology {\ttfamily topology} and device {\ttfamily device} must match the local machine. I/O devices detection and the Open\+CL component must be enabled in the topology. If not, the locality of the object may still be found using \hyperlink{a00218_gacc32737d4648d16b0d292438f210ec90}{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+cpuset()}.
+
+\begin{DoxyNote}{Note}
+This function cannot work if P\+CI devices are filtered out.
+
+The corresponding hwloc P\+CI device may be found by looking at the result parent pointer (unless P\+CI devices are filtered out). 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00218_gae39352d124cb330eb37b84b418ed6cc5}\label{a00218_gae39352d124cb330eb37b84b418ed6cc5}} 
+\index{Interoperability with Open\+CL@{Interoperability with Open\+CL}!hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index@{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}}
+\index{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index@{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index}!Interoperability with Open\+CL@{Interoperability with Open\+CL}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index()}{hwloc\_opencl\_get\_device\_osdev\_by\_index()}}
+{\footnotesize\ttfamily static \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+osdev\+\_\+by\+\_\+index (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{unsigned}]{platform\+\_\+index,  }\item[{unsigned}]{device\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the hwloc OS device object corresponding to the Open\+CL device for the given indexes. 
+
+Return the OS device object describing the Open\+CL device whose platform index is {\ttfamily platform\+\_\+index}, and whose device index within this platform if {\ttfamily device\+\_\+index}. Return N\+U\+LL if there is none.
+
+The topology {\ttfamily topology} does not necessarily have to match the current machine. For instance the topology may be an X\+ML import of a remote host. I/O devices detection and the Open\+CL component must be enabled in the topology.
+
+\begin{DoxyNote}{Note}
+The corresponding P\+CI device object can be obtained by looking at the OS device parent object (unless P\+CI devices are filtered out). 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00218_gab89e4d20f8a353299351b41849e35ac9}\label{a00218_gab89e4d20f8a353299351b41849e35ac9}} 
+\index{Interoperability with Open\+CL@{Interoperability with Open\+CL}!hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+pci\+\_\+busid@{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+pci\+\_\+busid}}
+\index{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+pci\+\_\+busid@{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+pci\+\_\+busid}!Interoperability with Open\+CL@{Interoperability with Open\+CL}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+pci\+\_\+busid()}{hwloc\_opencl\_get\_device\_pci\_busid()}}
+{\footnotesize\ttfamily static int hwloc\+\_\+opencl\+\_\+get\+\_\+device\+\_\+pci\+\_\+busid (\begin{DoxyParamCaption}\item[{cl\+\_\+device\+\_\+id}]{device,  }\item[{unsigned $\ast$}]{domain,  }\item[{unsigned $\ast$}]{bus,  }\item[{unsigned $\ast$}]{dev,  }\item[{unsigned $\ast$}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Return the domain, bus and device I\+Ds of the Open\+CL device {\ttfamily device}. 
+
+Device {\ttfamily device} must match the local machine. 

@@ -1,0 +1,44 @@
+\hypertarget{a00173_source}{}\section{shmem.\+h}
+\label{a00173_source}\index{shmem.\+h@{shmem.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright © 2013-2018 Inria.  All rights reserved.}
+00003 \textcolor{comment}{ * See COPYING in top-level directory.}
+00004 \textcolor{comment}{ */}
+00005 
+00010 \textcolor{preprocessor}{#ifndef HWLOC\_SHMEM\_H}
+00011 \textcolor{preprocessor}{#define HWLOC\_SHMEM\_H}
+00012 
+00013 \textcolor{preprocessor}{#include "hwloc.h"}
+00014 
+00015 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00016 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00017 \textcolor{preprocessor}{#elif 0}
+00018 \}
+00019 \textcolor{preprocessor}{#endif}
+00020 
+00021 
+00053 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00226_ga772ab52750cdd0eec85128df24888001}{hwloc\_shmem\_topology\_get\_length}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00054                                                    \textcolor{keywordtype}{size\_t} *lengthp,
+00055                                                    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags);
+00056 
+00082 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00226_ga61b20e346fc76f76420e3a88cc80a671}{hwloc\_shmem\_topology\_write}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology,
+00083                                               \textcolor{keywordtype}{int} fd, hwloc\_uint64\_t fileoffset,
+00084                                               \textcolor{keywordtype}{void} *mmap\_address, \textcolor{keywordtype}{size\_t} length,
+00085                                               \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags);
+00086 
+00125 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00226_ga21545bd0f09d9b554c8e60a630e0e629}{hwloc\_shmem\_topology\_adopt}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} *topologyp,
+00126                                               \textcolor{keywordtype}{int} fd, hwloc\_uint64\_t fileoffset,
+00127                                               \textcolor{keywordtype}{void} *mmap\_address, \textcolor{keywordtype}{size\_t} length,
+00128                                               \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} flags);
+00132 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00133 \} \textcolor{comment}{/* extern "C" */}
+00134 \textcolor{preprocessor}{#endif}
+00135 
+00136 
+00137 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* HWLOC\_SHMEM\_H */}\textcolor{preprocessor}{}
+\end{DoxyCode}

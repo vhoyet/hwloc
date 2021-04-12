@@ -1,0 +1,221 @@
+\hypertarget{a00125_source}{}\section{bitmap.\+h}
+\label{a00125_source}\index{bitmap.\+h@{bitmap.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright © 2009 CNRS}
+00003 \textcolor{comment}{ * Copyright © 2009-2020 Inria.  All rights reserved.}
+00004 \textcolor{comment}{ * Copyright © 2009-2012 Université Bordeaux}
+00005 \textcolor{comment}{ * Copyright © 2009-2011 Cisco Systems, Inc.  All rights reserved.}
+00006 \textcolor{comment}{ * See COPYING in top-level directory.}
+00007 \textcolor{comment}{ */}
+00008 
+00013 \textcolor{preprocessor}{#ifndef HWLOC\_BITMAP\_H}
+00014 \textcolor{preprocessor}{#define HWLOC\_BITMAP\_H}
+00015 
+00016 \textcolor{preprocessor}{#include "hwloc/autogen/config.h"}
+00017 
+00018 \textcolor{preprocessor}{#include <assert.h>}
+00019 
+00020 
+00021 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00022 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00023 \textcolor{preprocessor}{#endif}
+00024 
+00025 
+\Hypertarget{a00125_source_l00068}\hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{00068} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }hwloc\_bitmap\_s * \hyperlink{a00205_gaa3c2bf4c776d603dcebbb61b0c923d84}{hwloc\_bitmap\_t};
+\Hypertarget{a00125_source_l00070}\hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{00070} \textcolor{keyword}{typedef} \textcolor{keyword}{const} \textcolor{keyword}{struct }hwloc\_bitmap\_s * \hyperlink{a00205_gae991a108af01d408be2776c5b2c467b2}{hwloc\_const\_bitmap\_t};
+00071 
+00072 
+00073 \textcolor{comment}{/*}
+00074 \textcolor{comment}{ * Bitmap allocation, freeing and copying.}
+00075 \textcolor{comment}{ */}
+00076 
+00084 HWLOC\_DECLSPEC hwloc\_bitmap\_t \hyperlink{a00205_gadece3d1eb5199fc2fb99bc7dcf1ccc05}{hwloc\_bitmap\_alloc}(\textcolor{keywordtype}{void}) \_\_hwloc\_attribute\_malloc;
+00085 
+00087 HWLOC\_DECLSPEC hwloc\_bitmap\_t \hyperlink{a00205_ga02853b4a224970587b9d7a0e20d857c0}{hwloc\_bitmap\_alloc\_full}(\textcolor{keywordtype}{void}) \_\_hwloc\_attribute\_malloc
+      ;
+00088 
+00093 HWLOC\_DECLSPEC \textcolor{keywordtype}{void} \hyperlink{a00205_ga156130d85b3a0674d6e0e6770fe68fbe}{hwloc\_bitmap\_free}(hwloc\_bitmap\_t bitmap);
+00094 
+00099 HWLOC\_DECLSPEC hwloc\_bitmap\_t \hyperlink{a00205_gae679434c1a5f41d3560a8a7e2c1b0dee}{hwloc\_bitmap\_dup}(hwloc\_const\_bitmap\_t bitmap) 
+      \_\_hwloc\_attribute\_malloc;
+00100 
+00102 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga72a29824798b48784b8217471ec8f14c}{hwloc\_bitmap\_copy}(hwloc\_bitmap\_t dst, hwloc\_const\_bitmap\_t src);
+00103 
+00104 
+00105 \textcolor{comment}{/*}
+00106 \textcolor{comment}{ * Bitmap/String Conversion}
+00107 \textcolor{comment}{ */}
+00108 
+00118 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga9511644657030a021dce9941e3cda583}{hwloc\_bitmap\_snprintf}(\textcolor{keywordtype}{char} * \_\_hwloc\_restrict buf, \textcolor{keywordtype}{size\_t} buflen, 
+      hwloc\_const\_bitmap\_t bitmap);
+00119 
+00124 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga0fece972134fdecf2da9bc7a11dd827e}{hwloc\_bitmap\_asprintf}(\textcolor{keywordtype}{char} ** strp, hwloc\_const\_bitmap\_t bitmap);
+00125 
+00128 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga064a85c643a364b60acbfa0f3663fc18}{hwloc\_bitmap\_sscanf}(hwloc\_bitmap\_t bitmap, \textcolor{keyword}{const} \textcolor{keywordtype}{char} * 
+      \_\_hwloc\_restrict \textcolor{keywordtype}{string});
+00129 
+00143 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga3d06e6447edeb61e56a9ad83f31f0a37}{hwloc\_bitmap\_list\_snprintf}(\textcolor{keywordtype}{char} * \_\_hwloc\_restrict buf, \textcolor{keywordtype}{size\_t}
+       buflen, hwloc\_const\_bitmap\_t bitmap);
+00144 
+00149 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga39c0f1b02053de66d205c9f8260b3665}{hwloc\_bitmap\_list\_asprintf}(\textcolor{keywordtype}{char} ** strp, hwloc\_const\_bitmap\_t 
+      bitmap);
+00150 
+00153 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_gaf9314311d482c621e17c6a53a9fe993e}{hwloc\_bitmap\_list\_sscanf}(hwloc\_bitmap\_t bitmap, \textcolor{keyword}{const} \textcolor{keywordtype}{char} * 
+      \_\_hwloc\_restrict \textcolor{keywordtype}{string});
+00154 
+00167 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga5beb68a987fe48e5c5edef06ab260e14}{hwloc\_bitmap\_taskset\_snprintf}(\textcolor{keywordtype}{char} * \_\_hwloc\_restrict buf, \textcolor{keywordtype}{
+      size\_t} buflen, hwloc\_const\_bitmap\_t bitmap);
+00168 
+00173 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga391312513f17c985d871f18367c59512}{hwloc\_bitmap\_taskset\_asprintf}(\textcolor{keywordtype}{char} ** strp, 
+      hwloc\_const\_bitmap\_t bitmap);
+00174 
+00177 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga4f23db5041240e03e348752f8bd6ec2d}{hwloc\_bitmap\_taskset\_sscanf}(hwloc\_bitmap\_t bitmap, \textcolor{keyword}{const} \textcolor{keywordtype}{char}
+       * \_\_hwloc\_restrict \textcolor{keywordtype}{string});
+00178 
+00179 
+00180 \textcolor{comment}{/*}
+00181 \textcolor{comment}{ * Building bitmaps.}
+00182 \textcolor{comment}{ */}
+00183 
+00185 HWLOC\_DECLSPEC \textcolor{keywordtype}{void} \hyperlink{a00205_gaa97c5217613c8cae9862287170ea2132}{hwloc\_bitmap\_zero}(hwloc\_bitmap\_t bitmap);
+00186 
+00188 HWLOC\_DECLSPEC \textcolor{keywordtype}{void} \hyperlink{a00205_ga07b2de8786b3cdb22f21d9dd42588275}{hwloc\_bitmap\_fill}(hwloc\_bitmap\_t bitmap);
+00189 
+00191 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga10be0840cdeb7ce26d862819dd303baa}{hwloc\_bitmap\_only}(hwloc\_bitmap\_t bitmap, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{id});
+00192 
+00194 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga06d505f8a1c0a536614f65f503ee6d93}{hwloc\_bitmap\_allbut}(hwloc\_bitmap\_t bitmap, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{id});
+00195 
+00197 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_gad59b0ebeb29c1bfabbb2a379e55c1159}{hwloc\_bitmap\_from\_ulong}(hwloc\_bitmap\_t bitmap, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} mask
+      );
+00198 
+00200 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga4947c46d47bcfcd3faf3f59569be3e37}{hwloc\_bitmap\_from\_ith\_ulong}(hwloc\_bitmap\_t bitmap, \textcolor{keywordtype}{unsigned} i
+      , \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} mask);
+00201 
+00203 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_gabcfef22f6fc4d4b33f068dd91a1c38f5}{hwloc\_bitmap\_from\_ulongs}(hwloc\_bitmap\_t bitmap, \textcolor{keywordtype}{unsigned} nr, \textcolor{keyword}{
+      const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} *masks);
+00204 
+00205 
+00206 \textcolor{comment}{/*}
+00207 \textcolor{comment}{ * Modifying bitmaps.}
+00208 \textcolor{comment}{ */}
+00209 
+00211 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga062dbff93baeff3b425a7260c5463646}{hwloc\_bitmap\_set}(hwloc\_bitmap\_t bitmap, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{id});
+00212 
+00217 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga9c9a8433732fb9f24899e7aa4c014d7e}{hwloc\_bitmap\_set\_range}(hwloc\_bitmap\_t bitmap, \textcolor{keywordtype}{unsigned} begin, \textcolor{keywordtype}{int} 
+      end);
+00218 
+00220 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga3daeed965c35c6d2fd4820a318219985}{hwloc\_bitmap\_set\_ith\_ulong}(hwloc\_bitmap\_t bitmap, \textcolor{keywordtype}{unsigned} i, \textcolor{keywordtype}{
+      unsigned} \textcolor{keywordtype}{long} mask);
+00221 
+00223 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_gaf20bb350b6844d08931a064a73f86743}{hwloc\_bitmap\_clr}(hwloc\_bitmap\_t bitmap, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{id});
+00224 
+00229 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga833776709df94d727f8c22304b3388cf}{hwloc\_bitmap\_clr\_range}(hwloc\_bitmap\_t bitmap, \textcolor{keywordtype}{unsigned} begin, \textcolor{keywordtype}{int} 
+      end);
+00230 
+00250 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_gaa611a77c092e679246afdf9a60d5db8b}{hwloc\_bitmap\_singlify}(hwloc\_bitmap\_t bitmap);
+00251 
+00252 
+00253 \textcolor{comment}{/*}
+00254 \textcolor{comment}{ * Consulting bitmaps.}
+00255 \textcolor{comment}{ */}
+00256 
+00258 HWLOC\_DECLSPEC \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \hyperlink{a00205_gab6a6bae22a33ec6adfc169a953c13e6c}{hwloc\_bitmap\_to\_ulong}(hwloc\_const\_bitmap\_t bitmap) 
+      \_\_hwloc\_attribute\_pure;
+00259 
+00261 HWLOC\_DECLSPEC \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \hyperlink{a00205_gac92e6404f648d6b99d2c626b05b2ffa4}{hwloc\_bitmap\_to\_ith\_ulong}(hwloc\_const\_bitmap\_t bitmap
+      , \textcolor{keywordtype}{unsigned} i) \_\_hwloc\_attribute\_pure;
+00262 
+00269 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_gacd215a2348732de25d94a4ecd76d528c}{hwloc\_bitmap\_to\_ulongs}(hwloc\_const\_bitmap\_t bitmap, \textcolor{keywordtype}{unsigned} nr, \textcolor{keywordtype}{
+      unsigned} \textcolor{keywordtype}{long} *masks);
+00270 
+00284 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_gac0744734d761d65c977aece565364908}{hwloc\_bitmap\_nr\_ulongs}(hwloc\_const\_bitmap\_t bitmap) 
+      \_\_hwloc\_attribute\_pure;
+00285 
+00290 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga11340dd487f110bb84f0a6e4ae90bd06}{hwloc\_bitmap\_isset}(hwloc\_const\_bitmap\_t bitmap, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{id}) 
+      \_\_hwloc\_attribute\_pure;
+00291 
+00296 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga5b64be28f5a7176ed8ad0d6a90bdf108}{hwloc\_bitmap\_iszero}(hwloc\_const\_bitmap\_t bitmap) 
+      \_\_hwloc\_attribute\_pure;
+00297 
+00304 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga5fdcb8c19c336511c37076d649e74af4}{hwloc\_bitmap\_isfull}(hwloc\_const\_bitmap\_t bitmap) 
+      \_\_hwloc\_attribute\_pure;
+00305 
+00310 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga3ec1ced43afadf8c0a7197320bc016ed}{hwloc\_bitmap\_first}(hwloc\_const\_bitmap\_t bitmap) \_\_hwloc\_attribute\_pure
+      ;
+00311 
+00318 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_gaab7240b4b644693b775dad17b44ffd68}{hwloc\_bitmap\_next}(hwloc\_const\_bitmap\_t bitmap, \textcolor{keywordtype}{int} prev) 
+      \_\_hwloc\_attribute\_pure;
+00319 
+00324 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga3d9b08b060a59bbab5a4ea6d0a1ed7a6}{hwloc\_bitmap\_last}(hwloc\_const\_bitmap\_t bitmap) \_\_hwloc\_attribute\_pure;
+00325 
+00333 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga0200466842c0e1f5da75e84dde460b10}{hwloc\_bitmap\_weight}(hwloc\_const\_bitmap\_t bitmap) 
+      \_\_hwloc\_attribute\_pure;
+00334 
+00339 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_gae408841487b288e148a478ba0465c99e}{hwloc\_bitmap\_first\_unset}(hwloc\_const\_bitmap\_t bitmap) 
+      \_\_hwloc\_attribute\_pure;
+00340 
+00347 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga9653af34d1460ef106b7df25af4cdca8}{hwloc\_bitmap\_next\_unset}(hwloc\_const\_bitmap\_t bitmap, \textcolor{keywordtype}{int} prev) 
+      \_\_hwloc\_attribute\_pure;
+00348 
+00353 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga45d49aeb45c7da631b1480a93dc3fc92}{hwloc\_bitmap\_last\_unset}(hwloc\_const\_bitmap\_t bitmap) 
+      \_\_hwloc\_attribute\_pure;
+00354 
+\Hypertarget{a00125_source_l00370}\hyperlink{a00205_ga3f6861045a8029ade373510ffa727d2a}{00370} \textcolor{preprocessor}{#define hwloc\_bitmap\_foreach\_begin(id, bitmap) \(\backslash\)}
+00371 \textcolor{preprocessor}{do \{ \(\backslash\)}
+00372 \textcolor{preprocessor}{        assert(hwloc\_bitmap\_weight(bitmap) != -1); \(\backslash\)}
+00373 \textcolor{preprocessor}{        for (id = hwloc\_bitmap\_first(bitmap); \(\backslash\)}
+00374 \textcolor{preprocessor}{             (unsigned) id != (unsigned) -1; \(\backslash\)}
+00375 \textcolor{preprocessor}{             id = hwloc\_bitmap\_next(bitmap, id)) \{}
+00376 
+\Hypertarget{a00125_source_l00384}\hyperlink{a00205_gafcf3246db406218d4e155735b3fa6528}{00384} \textcolor{preprocessor}{#define hwloc\_bitmap\_foreach\_end()              \(\backslash\)}
+00385 \textcolor{preprocessor}{        \} \(\backslash\)}
+00386 \textcolor{preprocessor}{\} while (0)}
+00387 
+00388 
+00389 \textcolor{comment}{/*}
+00390 \textcolor{comment}{ * Combining bitmaps.}
+00391 \textcolor{comment}{ */}
+00392 
+00397 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga120b8aefb9ce7ef349929656359b1859}{hwloc\_bitmap\_or} (hwloc\_bitmap\_t res, hwloc\_const\_bitmap\_t bitmap1, 
+      hwloc\_const\_bitmap\_t bitmap2);
+00398 
+00403 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga674533016ffed922a28b4f0b49b82cd4}{hwloc\_bitmap\_and} (hwloc\_bitmap\_t res, hwloc\_const\_bitmap\_t bitmap1, 
+      hwloc\_const\_bitmap\_t bitmap2);
+00404 
+00409 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga7ca5c72db65406b85aca032c8a990f9e}{hwloc\_bitmap\_andnot} (hwloc\_bitmap\_t res, hwloc\_const\_bitmap\_t bitmap1
+      , hwloc\_const\_bitmap\_t bitmap2);
+00410 
+00415 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga205508218e09cb9befd0687f16409f09}{hwloc\_bitmap\_xor} (hwloc\_bitmap\_t res, hwloc\_const\_bitmap\_t bitmap1, 
+      hwloc\_const\_bitmap\_t bitmap2);
+00416 
+00421 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga84cfdb4f8ab8c1f7e097728e613a2a3f}{hwloc\_bitmap\_not} (hwloc\_bitmap\_t res, hwloc\_const\_bitmap\_t bitmap);
+00422 
+00423 
+00424 \textcolor{comment}{/*}
+00425 \textcolor{comment}{ * Comparing bitmaps.}
+00426 \textcolor{comment}{ */}
+00427 
+00432 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_gaefa070f9232857ba5a57297ea9a08ea2}{hwloc\_bitmap\_intersects} (hwloc\_const\_bitmap\_t bitmap1, 
+      hwloc\_const\_bitmap\_t bitmap2) \_\_hwloc\_attribute\_pure;
+00433 
+00440 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga0526e03db81956fb02acc8260b66d6a4}{hwloc\_bitmap\_isincluded} (hwloc\_const\_bitmap\_t sub\_bitmap, 
+      hwloc\_const\_bitmap\_t super\_bitmap) \_\_hwloc\_attribute\_pure;
+00441 
+00446 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga32376b1405e57472b73c3aa53bb39663}{hwloc\_bitmap\_isequal} (hwloc\_const\_bitmap\_t bitmap1, 
+      hwloc\_const\_bitmap\_t bitmap2) \_\_hwloc\_attribute\_pure;
+00447 
+00465 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_gaa39cda1510ab721b5c012c76ead72365}{hwloc\_bitmap\_compare\_first}(hwloc\_const\_bitmap\_t bitmap1, 
+      hwloc\_const\_bitmap\_t bitmap2) \_\_hwloc\_attribute\_pure;
+00466 
+00484 HWLOC\_DECLSPEC \textcolor{keywordtype}{int} \hyperlink{a00205_ga14cdbc0ef0a705e84999bd48a2e649f3}{hwloc\_bitmap\_compare}(hwloc\_const\_bitmap\_t bitmap1, 
+      hwloc\_const\_bitmap\_t bitmap2) \_\_hwloc\_attribute\_pure;
+00485 
+00489 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00490 \} \textcolor{comment}{/* extern "C" */}
+00491 \textcolor{preprocessor}{#endif}
+00492 
+00493 
+00494 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* HWLOC\_BITMAP\_H */}\textcolor{preprocessor}{}
+\end{DoxyCode}

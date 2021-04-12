@@ -1,0 +1,196 @@
+\hypertarget{a00206}{}\section{Exporting Topologies to X\+ML}
+\label{a00206}\index{Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{a00206_ga0eb99636aff71fe2704e1fa0ffe8c18d}{hwloc\+\_\+topology\+\_\+export\+\_\+xml\+\_\+flags\+\_\+e} \{ \hyperlink{a00206_gga0eb99636aff71fe2704e1fa0ffe8c18dae7d6d96546131ef0043867b836b02e0f}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+E\+X\+P\+O\+R\+T\+\_\+\+X\+M\+L\+\_\+\+F\+L\+A\+G\+\_\+\+V1}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{a00206_ga333f79975b4eeb28a3d8fad3373583ce}{hwloc\+\_\+topology\+\_\+export\+\_\+xml} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, const char $\ast$xmlpath, unsigned long flags)
+\item 
+int \hyperlink{a00206_gad33b7f7c11db10459505a3b1634fd3f1}{hwloc\+\_\+topology\+\_\+export\+\_\+xmlbuffer} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, char $\ast$$\ast$xmlbuffer, int $\ast$buflen, unsigned long flags)
+\item 
+void \hyperlink{a00206_ga293e4a6489f15fd16ad22a5734561cf1}{hwloc\+\_\+free\+\_\+xmlbuffer} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, char $\ast$xmlbuffer)
+\item 
+void \hyperlink{a00206_ga9d6ff0f7a8dd45be9aa8575ef31978cc}{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, void($\ast$export\+\_\+cb)(void $\ast$reserved, \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj))
+\item 
+int \hyperlink{a00206_gaa541bdd628416dbbe97d0df69d3de958}{hwloc\+\_\+export\+\_\+obj\+\_\+userdata} (void $\ast$reserved, \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj, const char $\ast$name, const void $\ast$buffer, size\+\_\+t length)
+\item 
+int \hyperlink{a00206_ga1b7358137cec27bd073f58a606ecbaba}{hwloc\+\_\+export\+\_\+obj\+\_\+userdata\+\_\+base64} (void $\ast$reserved, \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj, const char $\ast$name, const void $\ast$buffer, size\+\_\+t length)
+\item 
+void \hyperlink{a00206_ga5ac6917ea7289955fb1ffda4353af9b0}{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+import\+\_\+callback} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, void($\ast$import\+\_\+cb)(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj, const char $\ast$name, const void $\ast$buffer, size\+\_\+t length))
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{a00206_ga0eb99636aff71fe2704e1fa0ffe8c18d}\label{a00206_ga0eb99636aff71fe2704e1fa0ffe8c18d}} 
+\index{Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}!hwloc\+\_\+topology\+\_\+export\+\_\+xml\+\_\+flags\+\_\+e@{hwloc\+\_\+topology\+\_\+export\+\_\+xml\+\_\+flags\+\_\+e}}
+\index{hwloc\+\_\+topology\+\_\+export\+\_\+xml\+\_\+flags\+\_\+e@{hwloc\+\_\+topology\+\_\+export\+\_\+xml\+\_\+flags\+\_\+e}!Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+export\+\_\+xml\+\_\+flags\+\_\+e}{hwloc\_topology\_export\_xml\_flags\_e}}
+{\footnotesize\ttfamily enum \hyperlink{a00206_ga0eb99636aff71fe2704e1fa0ffe8c18d}{hwloc\+\_\+topology\+\_\+export\+\_\+xml\+\_\+flags\+\_\+e}}
+
+
+
+Flags for exporting X\+ML topologies. 
+
+Flags to be given as a OR\textquotesingle{}ed set to \hyperlink{a00206_ga333f79975b4eeb28a3d8fad3373583ce}{hwloc\+\_\+topology\+\_\+export\+\_\+xml()}. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+E\+X\+P\+O\+R\+T\+\_\+\+X\+M\+L\+\_\+\+F\+L\+A\+G\+\_\+\+V1@{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+E\+X\+P\+O\+R\+T\+\_\+\+X\+M\+L\+\_\+\+F\+L\+A\+G\+\_\+\+V1}!Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}}\index{Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}!H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+E\+X\+P\+O\+R\+T\+\_\+\+X\+M\+L\+\_\+\+F\+L\+A\+G\+\_\+\+V1@{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+E\+X\+P\+O\+R\+T\+\_\+\+X\+M\+L\+\_\+\+F\+L\+A\+G\+\_\+\+V1}}}\mbox{\Hypertarget{a00206_gga0eb99636aff71fe2704e1fa0ffe8c18dae7d6d96546131ef0043867b836b02e0f}\label{a00206_gga0eb99636aff71fe2704e1fa0ffe8c18dae7d6d96546131ef0043867b836b02e0f}} 
+H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+E\+X\+P\+O\+R\+T\+\_\+\+X\+M\+L\+\_\+\+F\+L\+A\+G\+\_\+\+V1&Export X\+ML that is loadable by hwloc v1.\+x. However, the export may miss some details about the topology. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00206_gaa541bdd628416dbbe97d0df69d3de958}\label{a00206_gaa541bdd628416dbbe97d0df69d3de958}} 
+\index{Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}!hwloc\+\_\+export\+\_\+obj\+\_\+userdata@{hwloc\+\_\+export\+\_\+obj\+\_\+userdata}}
+\index{hwloc\+\_\+export\+\_\+obj\+\_\+userdata@{hwloc\+\_\+export\+\_\+obj\+\_\+userdata}!Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+export\+\_\+obj\+\_\+userdata()}{hwloc\_export\_obj\_userdata()}}
+{\footnotesize\ttfamily int hwloc\+\_\+export\+\_\+obj\+\_\+userdata (\begin{DoxyParamCaption}\item[{void $\ast$}]{reserved,  }\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj,  }\item[{const char $\ast$}]{name,  }\item[{const void $\ast$}]{buffer,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Export some object userdata to X\+ML. 
+
+This function may only be called from within the export() callback passed to \hyperlink{a00206_ga9d6ff0f7a8dd45be9aa8575ef31978cc}{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback()}. It may be invoked one of multiple times to export some userdata to X\+ML. The {\ttfamily buffer} content of length {\ttfamily length} is stored with optional name {\ttfamily name}.
+
+When importing this X\+ML file, the import() callback (if set) will be called exactly as many times as \hyperlink{a00206_gaa541bdd628416dbbe97d0df69d3de958}{hwloc\+\_\+export\+\_\+obj\+\_\+userdata()} was called during export(). It will receive the corresponding {\ttfamily name}, {\ttfamily buffer} and {\ttfamily length} arguments.
+
+{\ttfamily reserved}, {\ttfamily topology} and {\ttfamily obj} must be the first three parameters that were given to the export callback.
+
+Only printable characters may be exported to X\+ML string attributes. If a non-\/printable character is passed in {\ttfamily name} or {\ttfamily buffer}, the function returns -\/1 with errno set to E\+I\+N\+V\+AL.
+
+If exporting binary data, the application should first encode into printable characters only (or use \hyperlink{a00206_ga1b7358137cec27bd073f58a606ecbaba}{hwloc\+\_\+export\+\_\+obj\+\_\+userdata\+\_\+base64()}). It should also take care of portability issues if the export may be reimported on a different architecture. \mbox{\Hypertarget{a00206_ga1b7358137cec27bd073f58a606ecbaba}\label{a00206_ga1b7358137cec27bd073f58a606ecbaba}} 
+\index{Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}!hwloc\+\_\+export\+\_\+obj\+\_\+userdata\+\_\+base64@{hwloc\+\_\+export\+\_\+obj\+\_\+userdata\+\_\+base64}}
+\index{hwloc\+\_\+export\+\_\+obj\+\_\+userdata\+\_\+base64@{hwloc\+\_\+export\+\_\+obj\+\_\+userdata\+\_\+base64}!Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+export\+\_\+obj\+\_\+userdata\+\_\+base64()}{hwloc\_export\_obj\_userdata\_base64()}}
+{\footnotesize\ttfamily int hwloc\+\_\+export\+\_\+obj\+\_\+userdata\+\_\+base64 (\begin{DoxyParamCaption}\item[{void $\ast$}]{reserved,  }\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{obj,  }\item[{const char $\ast$}]{name,  }\item[{const void $\ast$}]{buffer,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Encode and export some object userdata to X\+ML. 
+
+This function is similar to \hyperlink{a00206_gaa541bdd628416dbbe97d0df69d3de958}{hwloc\+\_\+export\+\_\+obj\+\_\+userdata()} but it encodes the input buffer into printable characters before exporting. On import, decoding is automatically performed before the data is given to the import() callback if any.
+
+This function may only be called from within the export() callback passed to \hyperlink{a00206_ga9d6ff0f7a8dd45be9aa8575ef31978cc}{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback()}.
+
+The function does not take care of portability issues if the export may be reimported on a different architecture. \mbox{\Hypertarget{a00206_ga293e4a6489f15fd16ad22a5734561cf1}\label{a00206_ga293e4a6489f15fd16ad22a5734561cf1}} 
+\index{Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}!hwloc\+\_\+free\+\_\+xmlbuffer@{hwloc\+\_\+free\+\_\+xmlbuffer}}
+\index{hwloc\+\_\+free\+\_\+xmlbuffer@{hwloc\+\_\+free\+\_\+xmlbuffer}!Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+free\+\_\+xmlbuffer()}{hwloc\_free\_xmlbuffer()}}
+{\footnotesize\ttfamily void hwloc\+\_\+free\+\_\+xmlbuffer (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{char $\ast$}]{xmlbuffer }\end{DoxyParamCaption})}
+
+
+
+Free a buffer allocated by \hyperlink{a00206_gad33b7f7c11db10459505a3b1634fd3f1}{hwloc\+\_\+topology\+\_\+export\+\_\+xmlbuffer()} 
+
+\mbox{\Hypertarget{a00206_ga333f79975b4eeb28a3d8fad3373583ce}\label{a00206_ga333f79975b4eeb28a3d8fad3373583ce}} 
+\index{Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}!hwloc\+\_\+topology\+\_\+export\+\_\+xml@{hwloc\+\_\+topology\+\_\+export\+\_\+xml}}
+\index{hwloc\+\_\+topology\+\_\+export\+\_\+xml@{hwloc\+\_\+topology\+\_\+export\+\_\+xml}!Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+export\+\_\+xml()}{hwloc\_topology\_export\_xml()}}
+{\footnotesize\ttfamily int hwloc\+\_\+topology\+\_\+export\+\_\+xml (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{const char $\ast$}]{xmlpath,  }\item[{unsigned long}]{flags }\end{DoxyParamCaption})}
+
+
+
+Export the topology into an X\+ML file. 
+
+This file may be loaded later through \hyperlink{a00192_ga879439b7ee99407ee911b3ac64e9a25e}{hwloc\+\_\+topology\+\_\+set\+\_\+xml()}.
+
+By default, the latest export format is used, which means older hwloc releases (e.\+g. v1.\+x) will not be able to import it. Exporting to v1.\+x specific X\+ML format is possible using flag \hyperlink{a00206_gga0eb99636aff71fe2704e1fa0ffe8c18dae7d6d96546131ef0043867b836b02e0f}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+E\+X\+P\+O\+R\+T\+\_\+\+X\+M\+L\+\_\+\+F\+L\+A\+G\+\_\+\+V1} but it may miss some details about the topology. If there is any chance that the exported file may ever be imported back by a process using hwloc 1.\+x, one should consider detecting it at runtime and using the corresponding export format.
+
+{\ttfamily flags} is a OR\textquotesingle{}ed set of \hyperlink{a00206_ga0eb99636aff71fe2704e1fa0ffe8c18d}{hwloc\+\_\+topology\+\_\+export\+\_\+xml\+\_\+flags\+\_\+e}.
+
+\begin{DoxyReturn}{Returns}
+-\/1 if a failure occured.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+See also \hyperlink{a00206_ga9d6ff0f7a8dd45be9aa8575ef31978cc}{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback()} for exporting application-\/specific object userdata.
+
+The topology-\/specific userdata pointer is ignored when exporting to X\+ML.
+
+Only printable characters may be exported to X\+ML string attributes. Any other character, especially any non-\/\+A\+S\+C\+II character, will be silently dropped.
+
+If {\ttfamily name} is \char`\"{}-\/\char`\"{}, the X\+ML output is sent to the standard output. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00206_gad33b7f7c11db10459505a3b1634fd3f1}\label{a00206_gad33b7f7c11db10459505a3b1634fd3f1}} 
+\index{Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}!hwloc\+\_\+topology\+\_\+export\+\_\+xmlbuffer@{hwloc\+\_\+topology\+\_\+export\+\_\+xmlbuffer}}
+\index{hwloc\+\_\+topology\+\_\+export\+\_\+xmlbuffer@{hwloc\+\_\+topology\+\_\+export\+\_\+xmlbuffer}!Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+export\+\_\+xmlbuffer()}{hwloc\_topology\_export\_xmlbuffer()}}
+{\footnotesize\ttfamily int hwloc\+\_\+topology\+\_\+export\+\_\+xmlbuffer (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{char $\ast$$\ast$}]{xmlbuffer,  }\item[{int $\ast$}]{buflen,  }\item[{unsigned long}]{flags }\end{DoxyParamCaption})}
+
+
+
+Export the topology into a newly-\/allocated X\+ML memory buffer. 
+
+{\ttfamily xmlbuffer} is allocated by the callee and should be freed with \hyperlink{a00206_ga293e4a6489f15fd16ad22a5734561cf1}{hwloc\+\_\+free\+\_\+xmlbuffer()} later in the caller.
+
+This memory buffer may be loaded later through \hyperlink{a00192_ga2745616b65595e1c1e579ecc7e461fa8}{hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer()}.
+
+By default, the latest export format is used, which means older hwloc releases (e.\+g. v1.\+x) will not be able to import it. Exporting to v1.\+x specific X\+ML format is possible using flag \hyperlink{a00206_gga0eb99636aff71fe2704e1fa0ffe8c18dae7d6d96546131ef0043867b836b02e0f}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+E\+X\+P\+O\+R\+T\+\_\+\+X\+M\+L\+\_\+\+F\+L\+A\+G\+\_\+\+V1} but it may miss some details about the topology. If there is any chance that the exported buffer may ever be imported back by a process using hwloc 1.\+x, one should consider detecting it at runtime and using the corresponding export format.
+
+The returned buffer ends with a \textbackslash{}0 that is included in the returned length.
+
+{\ttfamily flags} is a OR\textquotesingle{}ed set of \hyperlink{a00206_ga0eb99636aff71fe2704e1fa0ffe8c18d}{hwloc\+\_\+topology\+\_\+export\+\_\+xml\+\_\+flags\+\_\+e}.
+
+\begin{DoxyReturn}{Returns}
+-\/1 if a failure occured.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+See also \hyperlink{a00206_ga9d6ff0f7a8dd45be9aa8575ef31978cc}{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback()} for exporting application-\/specific object userdata.
+
+The topology-\/specific userdata pointer is ignored when exporting to X\+ML.
+
+Only printable characters may be exported to X\+ML string attributes. Any other character, especially any non-\/\+A\+S\+C\+II character, will be silently dropped. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00206_ga9d6ff0f7a8dd45be9aa8575ef31978cc}\label{a00206_ga9d6ff0f7a8dd45be9aa8575ef31978cc}} 
+\index{Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}!hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback@{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback}}
+\index{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback@{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback}!Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback()}{hwloc\_topology\_set\_userdata\_export\_callback()}}
+{\footnotesize\ttfamily void hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+export\+\_\+callback (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{void($\ast$)(void $\ast$reserved, \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj)}]{export\+\_\+cb }\end{DoxyParamCaption})}
+
+
+
+Set the application-\/specific callback for exporting object userdata. 
+
+The object userdata pointer is not exported to X\+ML by default because hwloc does not know what it contains.
+
+This function lets applications set {\ttfamily export\+\_\+cb} to a callback function that converts this opaque userdata into an exportable string.
+
+{\ttfamily export\+\_\+cb} is invoked during X\+ML export for each object whose {\ttfamily userdata} pointer is not {\ttfamily N\+U\+LL}. The callback should use \hyperlink{a00206_gaa541bdd628416dbbe97d0df69d3de958}{hwloc\+\_\+export\+\_\+obj\+\_\+userdata()} or \hyperlink{a00206_ga1b7358137cec27bd073f58a606ecbaba}{hwloc\+\_\+export\+\_\+obj\+\_\+userdata\+\_\+base64()} to actually export something to X\+ML (possibly multiple times per object).
+
+{\ttfamily export\+\_\+cb} may be set to {\ttfamily N\+U\+LL} if userdata should not be exported to X\+ML.
+
+\begin{DoxyNote}{Note}
+The topology-\/specific userdata pointer is ignored when exporting to X\+ML. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00206_ga5ac6917ea7289955fb1ffda4353af9b0}\label{a00206_ga5ac6917ea7289955fb1ffda4353af9b0}} 
+\index{Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}!hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+import\+\_\+callback@{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+import\+\_\+callback}}
+\index{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+import\+\_\+callback@{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+import\+\_\+callback}!Exporting Topologies to X\+ML@{Exporting Topologies to X\+ML}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+import\+\_\+callback()}{hwloc\_topology\_set\_userdata\_import\_callback()}}
+{\footnotesize\ttfamily void hwloc\+\_\+topology\+\_\+set\+\_\+userdata\+\_\+import\+\_\+callback (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{void($\ast$)(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} obj, const char $\ast$name, const void $\ast$buffer, size\+\_\+t length)}]{import\+\_\+cb }\end{DoxyParamCaption})}
+
+
+
+Set the application-\/specific callback for importing userdata. 
+
+On X\+ML import, userdata is ignored by default because hwloc does not know how to store it in memory.
+
+This function lets applications set {\ttfamily import\+\_\+cb} to a callback function that will get the X\+M\+L-\/stored userdata and store it in the object as expected by the application.
+
+{\ttfamily import\+\_\+cb} is called during \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()} as many times as \hyperlink{a00206_gaa541bdd628416dbbe97d0df69d3de958}{hwloc\+\_\+export\+\_\+obj\+\_\+userdata()} was called during export. The topology is not entirely setup yet. Object attributes are ready to consult, but links between objects are not.
+
+{\ttfamily import\+\_\+cb} may be {\ttfamily N\+U\+LL} if userdata should be ignored during import.
+
+\begin{DoxyNote}{Note}
+{\ttfamily buffer} contains {\ttfamily length} characters followed by a null byte (\textquotesingle{}\textbackslash{}0\textquotesingle{}).
+
+This function should be called before \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()}.
+
+The topology-\/specific userdata pointer is ignored when importing from X\+ML. 
+\end{DoxyNote}

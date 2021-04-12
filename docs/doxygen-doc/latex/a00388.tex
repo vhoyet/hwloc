@@ -1,0 +1,34 @@
+
+
+hwloc offers the ability to export topologies to X\+ML files and reload them later. This is for instance useful for loading topologies faster (see \hyperlink{a00394_faq_xml}{I do not want hwloc to rediscover my enormous machine topology every time I rerun a process}), manipulating other nodes\textquotesingle{} topology, or avoiding the need for privileged processes (see \hyperlink{a00394_faq_privileged}{Does hwloc require privileged access?}).
+
+Topologies may be exported to X\+ML files thanks to \hyperlink{a00206_ga333f79975b4eeb28a3d8fad3373583ce}{hwloc\+\_\+topology\+\_\+export\+\_\+xml()}, or to a X\+ML memory buffer with \hyperlink{a00206_gad33b7f7c11db10459505a3b1634fd3f1}{hwloc\+\_\+topology\+\_\+export\+\_\+xmlbuffer()}. The lstopo program can also serve as a X\+ML topology export tool.
+
+X\+ML topologies may then be reloaded later with \hyperlink{a00192_ga879439b7ee99407ee911b3ac64e9a25e}{hwloc\+\_\+topology\+\_\+set\+\_\+xml()} and \hyperlink{a00192_ga2745616b65595e1c1e579ecc7e461fa8}{hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer()}. The H\+W\+L\+O\+C\+\_\+\+X\+M\+L\+F\+I\+LE environment variable also tells hwloc to load the topology from the given X\+ML file (see \hyperlink{a00382}{Environment Variables}).
+
+\begin{DoxyNote}{Note}
+Loading X\+ML topologies disables binding because the loaded topology may not correspond to the physical machine that loads it. This behavior may be reverted by asserting that loaded file really matches the underlying system with the H\+W\+L\+O\+C\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM environment variable or the \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea6ecb6abc6a0bb75e81564f8bca85783b}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+I\+S\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+EM} topology flag.
+
+The topology flag \hyperlink{a00193_ggada025d3ec20b4b420f8038d23d6e7bdea1b66bbd66e900e5c837f71defb32ad89}{H\+W\+L\+O\+C\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+F\+L\+A\+G\+\_\+\+T\+H\+I\+S\+S\+Y\+S\+T\+E\+M\+\_\+\+A\+L\+L\+O\+W\+E\+D\+\_\+\+R\+E\+S\+O\+U\+R\+C\+ES} may be used to load a X\+ML topology that contains the entire machine and restrict it to the part that is actually available to the current process (e.\+g. when Linux Cgroup/\+Cpuset are used to restrict the set of resources).
+
+hwloc also offers the ability to export/import \hyperlink{a00225}{Topology differences}.
+
+X\+ML topology files are not localized. They use a dot as a decimal separator. Therefore any exported topology can be reloaded on any other machine without requiring to change the locale.
+
+X\+ML exports contain all details about the platform. It means that two very similar nodes still have different X\+ML exports (e.\+g. some serial numbers or M\+AC addresses are different). If a less precise exporting/importing is required, one may want to look at \hyperlink{a00389}{Synthetic topologies} instead.
+\end{DoxyNote}
+ \hypertarget{a00388_xml_backends}{}\section{libxml2 and minimalistic X\+M\+L backends}\label{a00388_xml_backends}
+hwloc offers two backends for importing/exporting X\+ML.
+
+First, it can use the libxml2 library for importing/exporting X\+ML files. It features full X\+ML support, for instance when those files have to be manipulated by non-\/hwloc software (e.\+g. a X\+S\+LT parser). The libxml2 backend is enabled by default if libxml2 development headers are available (the relevant development package is usually {\ttfamily libxml2-\/devel} or {\ttfamily libxml2-\/dev}).
+
+If libxml2 is not available at configure time, or if {\ttfamily -\/-\/disable-\/libxml2} is passed, hwloc falls back to a custom backend. Contrary to the aforementioned full X\+ML backend with libxml2, this minimalistic X\+ML backend cannot be guaranteed to work with external programs. It should only be assumed to be compatible with the same hwloc release (even if using the libxml2 backend). Its advantage is, however, to always be available without requiring any external dependency.
+
+If libxml2 is available but the core hwloc library should not directly depend on it, the libxml2 support may be built as a dynamicall-\/loaded plugin. One should pass {\ttfamily -\/-\/enable-\/plugins} to enable plugin support (when supported) and build as plugins all component that support it. Or pass {\ttfamily -\/-\/enable-\/plugins=xml\+\_\+libxml} to only build this libxml2 support as a plugin.
+
+ \hypertarget{a00388_xml_errors}{}\section{X\+M\+L import error management}\label{a00388_xml_errors}
+Importing X\+ML files can fail at least because of file access errors, invalid X\+ML syntax, non-\/hwloc-\/valid X\+ML contents, or incompatibilities between hwloc releases (see \hyperlink{a00394_faq_version_xml}{Are X\+ML topology files compatible between hwloc releases?}).
+
+Both backend cannot detect all these errors when the input X\+ML file or buffer is selected (when \hyperlink{a00192_ga879439b7ee99407ee911b3ac64e9a25e}{hwloc\+\_\+topology\+\_\+set\+\_\+xml()} or \hyperlink{a00192_ga2745616b65595e1c1e579ecc7e461fa8}{hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer()} is called). Some errors such non-\/hwloc-\/valid contents can only be detected later when loading the topology with \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()}.
+
+It is therefore strongly recommended to check the return value of both \hyperlink{a00192_ga879439b7ee99407ee911b3ac64e9a25e}{hwloc\+\_\+topology\+\_\+set\+\_\+xml()} (or \hyperlink{a00192_ga2745616b65595e1c1e579ecc7e461fa8}{hwloc\+\_\+topology\+\_\+set\+\_\+xmlbuffer()}) and \hyperlink{a00186_gabdf58d87ad77f6615fccdfe0535ff826}{hwloc\+\_\+topology\+\_\+load()} to handle all these errors. 

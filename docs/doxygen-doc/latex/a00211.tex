@@ -1,0 +1,249 @@
+\hypertarget{a00211}{}\section{Comparing memory node attributes for finding where to allocate on}
+\label{a00211}\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00314}{hwloc\+\_\+location}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{a00211_gab4bde745db676fc2ea4b47011cd9a80e}{hwloc\+\_\+memattr\+\_\+id\+\_\+e} \{ \hyperlink{a00211_ggab4bde745db676fc2ea4b47011cd9a80eaa1cfa3ff3d56ff00ecabf7da4f5642cc}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+C\+A\+P\+A\+C\+I\+TY} = 0, 
+\hyperlink{a00211_ggab4bde745db676fc2ea4b47011cd9a80ea9334e3a4c30a67f491c6523255134efe}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+L\+O\+C\+A\+L\+I\+TY} = 1, 
+\hyperlink{a00211_ggab4bde745db676fc2ea4b47011cd9a80ea25fe3c7376ae6f9b584bacdb039f8c0f}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+B\+A\+N\+D\+W\+I\+D\+TH} = 2, 
+\hyperlink{a00211_ggab4bde745db676fc2ea4b47011cd9a80ead1796413759b8b87b61ad195a9349b19}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+L\+A\+T\+E\+N\+CY} = 3
+ \}
+\item 
+enum \hyperlink{a00211_ga33099ba58f607fc70925da3777688586}{hwloc\+\_\+location\+\_\+type\+\_\+e} \{ \hyperlink{a00211_gga33099ba58f607fc70925da3777688586a7135318a86361ad75fd1648e6bf6d174}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+P\+U\+S\+ET}, 
+\hyperlink{a00211_gga33099ba58f607fc70925da3777688586af637c39b23d48cff15ddb008644aaa84}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+O\+B\+J\+E\+CT}
+ \}
+\item 
+enum \hyperlink{a00211_gab9c963ca37255da71b00d94e1b106f9d}{hwloc\+\_\+local\+\_\+numanode\+\_\+flag\+\_\+e} \{ \hyperlink{a00211_ggab9c963ca37255da71b00d94e1b106f9da200c6c133bb2125ba36d77ce9ca268cc}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+L\+A\+R\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY}, 
+\hyperlink{a00211_ggab9c963ca37255da71b00d94e1b106f9daac9c5e3a2cfb1b193e4acfceaf3bad57}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+S\+M\+A\+L\+L\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY}, 
+\hyperlink{a00211_ggab9c963ca37255da71b00d94e1b106f9dab5778b34c961a5d56f98f1549edeaed0}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+A\+LL}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{a00211_ga79f44f8e1cfd2f97a19171417a75a137}{hwloc\+\_\+memattr\+\_\+get\+\_\+by\+\_\+name} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, const char $\ast$name, \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t} $\ast$id)
+\item 
+int \hyperlink{a00211_ga569e80c5be7ef27649b0ef5aa52ffcdc}{hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$location, unsigned $\ast$nr, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} $\ast$nodes, unsigned long flags)
+\item 
+int \hyperlink{a00211_ga297e4a9adc2272446a4c7449dacef0df}{hwloc\+\_\+memattr\+\_\+get\+\_\+value} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t} attribute, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} target\+\_\+node, struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$initiator, unsigned long flags, hwloc\+\_\+uint64\+\_\+t $\ast$value)
+\item 
+int \hyperlink{a00211_ga884d1f2ad745c2fa69c1583c82d28f10}{hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+target} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t} attribute, struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$initiator, unsigned long flags, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} $\ast$best\+\_\+target, hwloc\+\_\+uint64\+\_\+t $\ast$value)
+\item 
+int \hyperlink{a00211_ga9a453879892893cf8a3fcd431ade84cd}{hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+initiator} (\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t} topology, \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t} attribute, \hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} target, unsigned long flags, struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$best\+\_\+initiator, hwloc\+\_\+uint64\+\_\+t $\ast$value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Platforms with heterogeneous memory require ways to decide whether a buffer should be allocated on \char`\"{}fast\char`\"{} memory (such as H\+BM), \char`\"{}normal\char`\"{} memory (D\+DR) or even \char`\"{}slow\char`\"{} but large-\/capacity memory (non-\/volatile memory). These memory nodes are called \char`\"{}\+Targets\char`\"{} while the C\+PU accessing them is called the \char`\"{}\+Initiator\char`\"{}. Access performance depends on their locality (N\+U\+MA platforms) as well as the intrinsic performance of the targets (heterogeneous platforms).
+
+The following attributes describe the performance of memory accesses from an Initiator to a memory Target, for instance their latency or bandwidth. Initiators performing these memory accesses are usually some P\+Us or Cores (described as a C\+PU set). Hence a Core may choose where to allocate a memory buffer by comparing the attributes of different target memory nodes nearby.
+
+There are also some attributes that are system-\/wide. Their value does not depend on a specific initiator performing an access. The memory node Capacity is an example of such attribute without initiator.
+
+One way to use this A\+PI is to start with a cpuset describing the Cores where a program is bound. The best target N\+U\+MA node for allocating memory in this program on these Cores may be obtained by passing this cpuset as an initiator to \hyperlink{a00211_ga884d1f2ad745c2fa69c1583c82d28f10}{hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+target()} with the relevant memory attribute. For instance, if the code is latency limited, use the Latency attribute.
+
+A more flexible approach consists in getting the list of local N\+U\+MA nodes by passing this cpuset to \hyperlink{a00211_ga569e80c5be7ef27649b0ef5aa52ffcdc}{hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs()}. Attribute values for these nodes, if any, may then be obtained with \hyperlink{a00211_ga297e4a9adc2272446a4c7449dacef0df}{hwloc\+\_\+memattr\+\_\+get\+\_\+value()} and manually compared with the desired criteria.
+
+\begin{DoxyNote}{Note}
+The A\+PI also supports specific objects as initiator, but it is currently not used internally by hwloc. Users may for instance use it to provide custom performance values for host memory accesses performed by G\+P\+Us.
+
+The interface actually also accepts targets that are not N\+U\+MA nodes. 
+\end{DoxyNote}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{a00211_gacc82003a8610be554615995f0996c888}\label{a00211_gacc82003a8610be554615995f0996c888}} 
+\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!hwloc\+\_\+memattr\+\_\+id\+\_\+t@{hwloc\+\_\+memattr\+\_\+id\+\_\+t}}
+\index{hwloc\+\_\+memattr\+\_\+id\+\_\+t@{hwloc\+\_\+memattr\+\_\+id\+\_\+t}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+id\+\_\+t}{hwloc\_memattr\_id\_t}}
+{\footnotesize\ttfamily typedef unsigned \hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t}}
+
+
+
+A memory attribute identifier. May be either one of \hyperlink{a00211_gab4bde745db676fc2ea4b47011cd9a80e}{hwloc\+\_\+memattr\+\_\+id\+\_\+e} or a new id returned by \hyperlink{a00212_ga770657d1e44b09e93e09f623936c1e5f}{hwloc\+\_\+memattr\+\_\+register()}. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{a00211_gab9c963ca37255da71b00d94e1b106f9d}\label{a00211_gab9c963ca37255da71b00d94e1b106f9d}} 
+\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!hwloc\+\_\+local\+\_\+numanode\+\_\+flag\+\_\+e@{hwloc\+\_\+local\+\_\+numanode\+\_\+flag\+\_\+e}}
+\index{hwloc\+\_\+local\+\_\+numanode\+\_\+flag\+\_\+e@{hwloc\+\_\+local\+\_\+numanode\+\_\+flag\+\_\+e}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+local\+\_\+numanode\+\_\+flag\+\_\+e}{hwloc\_local\_numanode\_flag\_e}}
+{\footnotesize\ttfamily enum \hyperlink{a00211_gab9c963ca37255da71b00d94e1b106f9d}{hwloc\+\_\+local\+\_\+numanode\+\_\+flag\+\_\+e}}
+
+
+
+Flags for selecting target N\+U\+MA nodes. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+L\+A\+R\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY@{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+L\+A\+R\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+L\+A\+R\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY@{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+L\+A\+R\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY}}}\mbox{\Hypertarget{a00211_ggab9c963ca37255da71b00d94e1b106f9da200c6c133bb2125ba36d77ce9ca268cc}\label{a00211_ggab9c963ca37255da71b00d94e1b106f9da200c6c133bb2125ba36d77ce9ca268cc}} 
+H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+L\+A\+R\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY&Select N\+U\+MA nodes whose locality is larger than the given cpuset. For instance, if a single PU (or its cpuset) is given in {\ttfamily initiator}, select all nodes close to the package that contains this PU. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+S\+M\+A\+L\+L\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY@{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+S\+M\+A\+L\+L\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+S\+M\+A\+L\+L\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY@{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+S\+M\+A\+L\+L\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY}}}\mbox{\Hypertarget{a00211_ggab9c963ca37255da71b00d94e1b106f9daac9c5e3a2cfb1b193e4acfceaf3bad57}\label{a00211_ggab9c963ca37255da71b00d94e1b106f9daac9c5e3a2cfb1b193e4acfceaf3bad57}} 
+H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+S\+M\+A\+L\+L\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY&Select N\+U\+MA nodes whose locality is smaller than the given cpuset. For instance, if a package (or its cpuset) is given in {\ttfamily initiator}, also select nodes that are attached to only a half of that package. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+A\+LL@{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+A\+LL}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+A\+LL@{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+A\+LL}}}\mbox{\Hypertarget{a00211_ggab9c963ca37255da71b00d94e1b106f9dab5778b34c961a5d56f98f1549edeaed0}\label{a00211_ggab9c963ca37255da71b00d94e1b106f9dab5778b34c961a5d56f98f1549edeaed0}} 
+H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+A\+LL&Select all N\+U\+MA nodes in the topology. The initiator {\ttfamily initiator} is ignored. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{a00211_ga33099ba58f607fc70925da3777688586}\label{a00211_ga33099ba58f607fc70925da3777688586}} 
+\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!hwloc\+\_\+location\+\_\+type\+\_\+e@{hwloc\+\_\+location\+\_\+type\+\_\+e}}
+\index{hwloc\+\_\+location\+\_\+type\+\_\+e@{hwloc\+\_\+location\+\_\+type\+\_\+e}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+location\+\_\+type\+\_\+e}{hwloc\_location\_type\_e}}
+{\footnotesize\ttfamily enum \hyperlink{a00211_ga33099ba58f607fc70925da3777688586}{hwloc\+\_\+location\+\_\+type\+\_\+e}}
+
+
+
+Type of location. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+P\+U\+S\+ET@{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+P\+U\+S\+ET}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+P\+U\+S\+ET@{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+P\+U\+S\+ET}}}\mbox{\Hypertarget{a00211_gga33099ba58f607fc70925da3777688586a7135318a86361ad75fd1648e6bf6d174}\label{a00211_gga33099ba58f607fc70925da3777688586a7135318a86361ad75fd1648e6bf6d174}} 
+H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+P\+U\+S\+ET&Location is given as a cpuset, in the location cpuset union field. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+O\+B\+J\+E\+CT@{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+O\+B\+J\+E\+CT}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+O\+B\+J\+E\+CT@{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+O\+B\+J\+E\+CT}}}\mbox{\Hypertarget{a00211_gga33099ba58f607fc70925da3777688586af637c39b23d48cff15ddb008644aaa84}\label{a00211_gga33099ba58f607fc70925da3777688586af637c39b23d48cff15ddb008644aaa84}} 
+H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+O\+B\+J\+E\+CT&Location is given as an object, in the location object union field. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{a00211_gab4bde745db676fc2ea4b47011cd9a80e}\label{a00211_gab4bde745db676fc2ea4b47011cd9a80e}} 
+\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!hwloc\+\_\+memattr\+\_\+id\+\_\+e@{hwloc\+\_\+memattr\+\_\+id\+\_\+e}}
+\index{hwloc\+\_\+memattr\+\_\+id\+\_\+e@{hwloc\+\_\+memattr\+\_\+id\+\_\+e}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+id\+\_\+e}{hwloc\_memattr\_id\_e}}
+{\footnotesize\ttfamily enum \hyperlink{a00211_gab4bde745db676fc2ea4b47011cd9a80e}{hwloc\+\_\+memattr\+\_\+id\+\_\+e}}
+
+
+
+Memory node attributes. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+C\+A\+P\+A\+C\+I\+TY@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+C\+A\+P\+A\+C\+I\+TY}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+C\+A\+P\+A\+C\+I\+TY@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+C\+A\+P\+A\+C\+I\+TY}}}\mbox{\Hypertarget{a00211_ggab4bde745db676fc2ea4b47011cd9a80eaa1cfa3ff3d56ff00ecabf7da4f5642cc}\label{a00211_ggab4bde745db676fc2ea4b47011cd9a80eaa1cfa3ff3d56ff00ecabf7da4f5642cc}} 
+H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+C\+A\+P\+A\+C\+I\+TY&\char`\"{}\+Capacity\char`\"{}. The capacity is returned in bytes (local\+\_\+memory attribute in objects). Best capacity nodes are nodes with {\bfseries higher capacity}.
+
+No initiator is involved when looking at this attribute. The corresponding attribute flags are \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5af29e65444a6ed00f5cc246df06f65815}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+H\+I\+G\+H\+E\+R\+\_\+\+F\+I\+R\+ST}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+L\+O\+C\+A\+L\+I\+TY@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+L\+O\+C\+A\+L\+I\+TY}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+L\+O\+C\+A\+L\+I\+TY@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+L\+O\+C\+A\+L\+I\+TY}}}\mbox{\Hypertarget{a00211_ggab4bde745db676fc2ea4b47011cd9a80ea9334e3a4c30a67f491c6523255134efe}\label{a00211_ggab4bde745db676fc2ea4b47011cd9a80ea9334e3a4c30a67f491c6523255134efe}} 
+H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+L\+O\+C\+A\+L\+I\+TY&\char`\"{}\+Locality\char`\"{}. The locality is returned as the number of P\+Us in that locality (e.\+g. the weight of its cpuset). Best locality nodes are nodes with {\bfseries smaller locality} (nodes that are local to very few P\+Us). Poor locality nodes are nodes with larger locality (nodes that are local to the entire machine).
+
+No initiator is involved when looking at this attribute. The corresponding attribute flags are \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5af29e65444a6ed00f5cc246df06f65815}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+H\+I\+G\+H\+E\+R\+\_\+\+F\+I\+R\+ST}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+B\+A\+N\+D\+W\+I\+D\+TH@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+B\+A\+N\+D\+W\+I\+D\+TH}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+B\+A\+N\+D\+W\+I\+D\+TH@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+B\+A\+N\+D\+W\+I\+D\+TH}}}\mbox{\Hypertarget{a00211_ggab4bde745db676fc2ea4b47011cd9a80ea25fe3c7376ae6f9b584bacdb039f8c0f}\label{a00211_ggab4bde745db676fc2ea4b47011cd9a80ea25fe3c7376ae6f9b584bacdb039f8c0f}} 
+H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+B\+A\+N\+D\+W\+I\+D\+TH&\char`\"{}\+Bandwidth\char`\"{}. The bandwidth is returned in Mi\+B/s, as seen from the given initiator location. Best bandwidth nodes are nodes with {\bfseries higher bandwidth}. The corresponding attribute flags are \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5af29e65444a6ed00f5cc246df06f65815}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+H\+I\+G\+H\+E\+R\+\_\+\+F\+I\+R\+ST} and \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+L\+A\+T\+E\+N\+CY@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+L\+A\+T\+E\+N\+CY}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+L\+A\+T\+E\+N\+CY@{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+L\+A\+T\+E\+N\+CY}}}\mbox{\Hypertarget{a00211_ggab4bde745db676fc2ea4b47011cd9a80ead1796413759b8b87b61ad195a9349b19}\label{a00211_ggab4bde745db676fc2ea4b47011cd9a80ead1796413759b8b87b61ad195a9349b19}} 
+H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+L\+A\+T\+E\+N\+CY&\char`\"{}\+Latency\char`\"{}. The latency is returned as nanoseconds, as seen from the given initiator location. Best latency nodes are nodes with {\bfseries smaller latency}. The corresponding attribute flags are \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9601b5b0e1e68635e7e9901f28bd93bf}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+L\+O\+W\+E\+R\+\_\+\+F\+I\+R\+ST} and \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR}. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{a00211_ga569e80c5be7ef27649b0ef5aa52ffcdc}\label{a00211_ga569e80c5be7ef27649b0ef5aa52ffcdc}} 
+\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs@{hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs}}
+\index{hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs@{hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs()}{hwloc\_get\_local\_numanode\_objs()}}
+{\footnotesize\ttfamily int hwloc\+\_\+get\+\_\+local\+\_\+numanode\+\_\+objs (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$}]{location,  }\item[{unsigned $\ast$}]{nr,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} $\ast$}]{nodes,  }\item[{unsigned long}]{flags }\end{DoxyParamCaption})}
+
+
+
+Return an array of local N\+U\+MA nodes. 
+
+By default only select the N\+U\+MA nodes whose locality is exactly the given {\ttfamily location}. More nodes may be selected if additional flags are given as a OR\textquotesingle{}ed set of \hyperlink{a00211_gab9c963ca37255da71b00d94e1b106f9d}{hwloc\+\_\+local\+\_\+numanode\+\_\+flag\+\_\+e}.
+
+If {\ttfamily location} is given as an explicit object, its C\+PU set is used to find N\+U\+MA nodes with the corresponding locality. If the object does not have a C\+PU set (e.\+g. I/O object), the C\+PU parent (where the I/O object is attached) is used.
+
+On input, {\ttfamily nr} points to the number of nodes that may be stored in the {\ttfamily nodes} array. On output, {\ttfamily nr} will be changed to the number of stored nodes, or the number of nodes that would have been stored if there were enough room.
+
+\begin{DoxyNote}{Note}
+Some of these N\+U\+MA nodes may not have any memory attribute values and hence not be reported as actual targets in other functions.
+
+The number of N\+U\+MA nodes in the topology (obtained by \hyperlink{a00205_ga0200466842c0e1f5da75e84dde460b10}{hwloc\+\_\+bitmap\+\_\+weight()} on the root object nodeset) may be used to allocate the {\ttfamily nodes} array.
+
+When an object C\+PU set is given as locality, for instance a Package, and when flags contain both \hyperlink{a00211_ggab9c963ca37255da71b00d94e1b106f9da200c6c133bb2125ba36d77ce9ca268cc}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+L\+A\+R\+G\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY} and \hyperlink{a00211_ggab9c963ca37255da71b00d94e1b106f9daac9c5e3a2cfb1b193e4acfceaf3bad57}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+L\+\_\+\+N\+U\+M\+A\+N\+O\+D\+E\+\_\+\+F\+L\+A\+G\+\_\+\+S\+M\+A\+L\+L\+E\+R\+\_\+\+L\+O\+C\+A\+L\+I\+TY}, the returned array corresponds to the nodeset of that object. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00211_ga9a453879892893cf8a3fcd431ade84cd}\label{a00211_ga9a453879892893cf8a3fcd431ade84cd}} 
+\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+initiator@{hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+initiator}}
+\index{hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+initiator@{hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+initiator}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+initiator()}{hwloc\_memattr\_get\_best\_initiator()}}
+{\footnotesize\ttfamily int hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+initiator (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t}}]{attribute,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{target,  }\item[{unsigned long}]{flags,  }\item[{struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$}]{best\+\_\+initiator,  }\item[{hwloc\+\_\+uint64\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})}
+
+
+
+Return the best initiator for the given attribute and target N\+U\+MA node. 
+
+If the attribute does not relate to a specific initiator (it does not have the flag \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR}), {\ttfamily -\/1} is returned and {\ttfamily errno} is set to {\ttfamily E\+I\+N\+V\+AL}.
+
+If {\ttfamily value} is non {\ttfamily N\+U\+LL}, the corresponding value is returned there.
+
+If multiple initiators have the same attribute values, only one is returned (and there is no way to clarify how that one is chosen). Applications that want to detect initiators with identical/similar values, or that want to look at values for multiple attributes, should rather get all values using \hyperlink{a00211_ga297e4a9adc2272446a4c7449dacef0df}{hwloc\+\_\+memattr\+\_\+get\+\_\+value()} and manually select the initiator they consider the best.
+
+The returned initiator should not be modified or freed, it belongs to the topology.
+
+{\ttfamily flags} must be {\ttfamily 0} for now.
+
+If there are no matching initiators, {\ttfamily -\/1} is returned with {\ttfamily errno} set to {\ttfamily E\+N\+O\+E\+NT}; \mbox{\Hypertarget{a00211_ga884d1f2ad745c2fa69c1583c82d28f10}\label{a00211_ga884d1f2ad745c2fa69c1583c82d28f10}} 
+\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+target@{hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+target}}
+\index{hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+target@{hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+target}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+target()}{hwloc\_memattr\_get\_best\_target()}}
+{\footnotesize\ttfamily int hwloc\+\_\+memattr\+\_\+get\+\_\+best\+\_\+target (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t}}]{attribute,  }\item[{struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$}]{initiator,  }\item[{unsigned long}]{flags,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t} $\ast$}]{best\+\_\+target,  }\item[{hwloc\+\_\+uint64\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})}
+
+
+
+Return the best target N\+U\+MA node for the given attribute and initiator. 
+
+If the attribute does not relate to a specific initiator (it does not have the flag \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR}), location {\ttfamily initiator} is ignored and may be {\ttfamily N\+U\+LL}.
+
+If {\ttfamily value} is non {\ttfamily N\+U\+LL}, the corresponding value is returned there.
+
+If multiple targets have the same attribute values, only one is returned (and there is no way to clarify how that one is chosen). Applications that want to detect targets with identical/similar values, or that want to look at values for multiple attributes, should rather get all values using \hyperlink{a00211_ga297e4a9adc2272446a4c7449dacef0df}{hwloc\+\_\+memattr\+\_\+get\+\_\+value()} and manually select the target they consider the best.
+
+{\ttfamily flags} must be {\ttfamily 0} for now.
+
+If there are no matching targets, {\ttfamily -\/1} is returned with {\ttfamily errno} set to {\ttfamily E\+N\+O\+E\+NT};
+
+\begin{DoxyNote}{Note}
+The initiator {\ttfamily initiator} should be of type \hyperlink{a00211_gga33099ba58f607fc70925da3777688586a7135318a86361ad75fd1648e6bf6d174}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+P\+U\+S\+ET} when refering to accesses performed by C\+PU cores. \hyperlink{a00211_gga33099ba58f607fc70925da3777688586af637c39b23d48cff15ddb008644aaa84}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+O\+B\+J\+E\+CT} is currently unused internally by hwloc, but users may for instance use it to provide custom information about host memory accesses performed by G\+P\+Us. 
+\end{DoxyNote}
+\mbox{\Hypertarget{a00211_ga79f44f8e1cfd2f97a19171417a75a137}\label{a00211_ga79f44f8e1cfd2f97a19171417a75a137}} 
+\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!hwloc\+\_\+memattr\+\_\+get\+\_\+by\+\_\+name@{hwloc\+\_\+memattr\+\_\+get\+\_\+by\+\_\+name}}
+\index{hwloc\+\_\+memattr\+\_\+get\+\_\+by\+\_\+name@{hwloc\+\_\+memattr\+\_\+get\+\_\+by\+\_\+name}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+get\+\_\+by\+\_\+name()}{hwloc\_memattr\_get\_by\_name()}}
+{\footnotesize\ttfamily int hwloc\+\_\+memattr\+\_\+get\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{const char $\ast$}]{name,  }\item[{\hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t} $\ast$}]{id }\end{DoxyParamCaption})}
+
+
+
+Return the identifier of the memory attribute with the given name. 
+
+\mbox{\Hypertarget{a00211_ga297e4a9adc2272446a4c7449dacef0df}\label{a00211_ga297e4a9adc2272446a4c7449dacef0df}} 
+\index{Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}!hwloc\+\_\+memattr\+\_\+get\+\_\+value@{hwloc\+\_\+memattr\+\_\+get\+\_\+value}}
+\index{hwloc\+\_\+memattr\+\_\+get\+\_\+value@{hwloc\+\_\+memattr\+\_\+get\+\_\+value}!Comparing memory node attributes for finding where to allocate on@{Comparing memory node attributes for finding where to allocate on}}
+\subsubsection{\texorpdfstring{hwloc\+\_\+memattr\+\_\+get\+\_\+value()}{hwloc\_memattr\_get\_value()}}
+{\footnotesize\ttfamily int hwloc\+\_\+memattr\+\_\+get\+\_\+value (\begin{DoxyParamCaption}\item[{\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\+\_\+topology\+\_\+t}}]{topology,  }\item[{\hyperlink{a00211_gacc82003a8610be554615995f0996c888}{hwloc\+\_\+memattr\+\_\+id\+\_\+t}}]{attribute,  }\item[{\hyperlink{a00185_ga79b8ab56877ef99ac59b833203391c7d}{hwloc\+\_\+obj\+\_\+t}}]{target\+\_\+node,  }\item[{struct \hyperlink{a00314}{hwloc\+\_\+location} $\ast$}]{initiator,  }\item[{unsigned long}]{flags,  }\item[{hwloc\+\_\+uint64\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})}
+
+
+
+Return an attribute value for a specific target N\+U\+MA node. 
+
+If the attribute does not relate to a specific initiator (it does not have the flag \hyperlink{a00212_gga78aceb4cac4d614c0f5e82dbfeb779e5a9d16523e285b2e22cfc78cc84dce8c96}{H\+W\+L\+O\+C\+\_\+\+M\+E\+M\+A\+T\+T\+R\+\_\+\+F\+L\+A\+G\+\_\+\+N\+E\+E\+D\+\_\+\+I\+N\+I\+T\+I\+A\+T\+OR}), location {\ttfamily initiator} is ignored and may be {\ttfamily N\+U\+LL}.
+
+{\ttfamily flags} must be {\ttfamily 0} for now.
+
+\begin{DoxyNote}{Note}
+The initiator {\ttfamily initiator} should be of type \hyperlink{a00211_gga33099ba58f607fc70925da3777688586a7135318a86361ad75fd1648e6bf6d174}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+P\+U\+S\+ET} when refering to accesses performed by C\+PU cores. \hyperlink{a00211_gga33099ba58f607fc70925da3777688586af637c39b23d48cff15ddb008644aaa84}{H\+W\+L\+O\+C\+\_\+\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+O\+B\+J\+E\+CT} is currently unused internally by hwloc, but users may for instance use it to provide custom information about host memory accesses performed by G\+P\+Us. 
+\end{DoxyNote}

@@ -1,0 +1,132 @@
+\hypertarget{a00158_source}{}\section{nvml.\+h}
+\label{a00158_source}\index{nvml.\+h@{nvml.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright © 2012-2020 Inria.  All rights reserved.}
+00003 \textcolor{comment}{ * See COPYING in top-level directory.}
+00004 \textcolor{comment}{ */}
+00005 
+00013 \textcolor{preprocessor}{#ifndef HWLOC\_NVML\_H}
+00014 \textcolor{preprocessor}{#define HWLOC\_NVML\_H}
+00015 
+00016 \textcolor{preprocessor}{#include "hwloc.h"}
+00017 \textcolor{preprocessor}{#include "hwloc/autogen/config.h"}
+00018 \textcolor{preprocessor}{#include "hwloc/helper.h"}
+00019 \textcolor{preprocessor}{#ifdef HWLOC\_LINUX\_SYS}
+00020 \textcolor{preprocessor}{#include "hwloc/linux.h"}
+00021 \textcolor{preprocessor}{#endif}
+00022 
+00023 \textcolor{preprocessor}{#include <nvml.h>}
+00024 
+00025 
+00026 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00027 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00028 \textcolor{preprocessor}{#endif}
+00029 
+00030 
+00055 \textcolor{keyword}{static} \_\_hwloc\_inline \textcolor{keywordtype}{int}
+\Hypertarget{a00158_source_l00056}\hyperlink{a00221_ga26cf0036d09ec4d7cb692380fac9659d}{00056} \hyperlink{a00221_ga26cf0036d09ec4d7cb692380fac9659d}{hwloc\_nvml\_get\_device\_cpuset}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology 
+      \_\_hwloc\_attribute\_unused,
+00057                              nvmlDevice\_t device, \hyperlink{a00183_ga4bbf39b68b6f568fb92739e7c0ea7801}{hwloc\_cpuset\_t} \textcolor{keyword}{set})
+00058 \{
+00059 \textcolor{preprocessor}{#ifdef HWLOC\_LINUX\_SYS}
+00060   \textcolor{comment}{/* If we're on Linux, use the sysfs mechanism to get the local cpus */}
+00061 \textcolor{preprocessor}{#define HWLOC\_NVML\_DEVICE\_SYSFS\_PATH\_MAX 128}
+00062   \textcolor{keywordtype}{char} path[HWLOC\_NVML\_DEVICE\_SYSFS\_PATH\_MAX];
+00063   nvmlReturn\_t nvres;
+00064   nvmlPciInfo\_t pci;
+00065 
+00066   \textcolor{keywordflow}{if} (!\hyperlink{a00193_ga68ffdcfd9175cdf40709801092f18017}{hwloc\_topology\_is\_thissystem}(topology)) \{
+00067     errno = EINVAL;
+00068     \textcolor{keywordflow}{return} -1;
+00069   \}
+00070 
+00071   nvres = nvmlDeviceGetPciInfo(device, &pci);
+00072   \textcolor{keywordflow}{if} (NVML\_SUCCESS != nvres) \{
+00073     errno = EINVAL;
+00074     \textcolor{keywordflow}{return} -1;
+00075   \}
+00076 
+00077   sprintf(path, \textcolor{stringliteral}{"/sys/bus/pci/devices/%04x:%02x:%02x.0/local\_cpus"}, pci.domain, pci.bus, pci.device);
+00078   \textcolor{keywordflow}{if} (\hyperlink{a00214_gaf72d83e273803226ce772973e37b85de}{hwloc\_linux\_read\_path\_as\_cpumask}(path, \textcolor{keyword}{set}) < 0
+00079       || \hyperlink{a00205_ga5b64be28f5a7176ed8ad0d6a90bdf108}{hwloc\_bitmap\_iszero}(\textcolor{keyword}{set}))
+00080     \hyperlink{a00205_ga72a29824798b48784b8217471ec8f14c}{hwloc\_bitmap\_copy}(\textcolor{keyword}{set}, \hyperlink{a00202_gaee30e03391c1ed7dfd617fb5c7bbb033}{hwloc\_topology\_get\_complete\_cpuset}
+      (topology));
+00081 \textcolor{preprocessor}{#else}
+00082   \textcolor{comment}{/* Non-Linux systems simply get a full cpuset */}
+00083   \hyperlink{a00205_ga72a29824798b48784b8217471ec8f14c}{hwloc\_bitmap\_copy}(\textcolor{keyword}{set}, \hyperlink{a00202_gaee30e03391c1ed7dfd617fb5c7bbb033}{hwloc\_topology\_get\_complete\_cpuset}
+      (topology));
+00084 \textcolor{preprocessor}{#endif}
+00085   \textcolor{keywordflow}{return} 0;
+00086 \}
+00087 
+00101 \textcolor{keyword}{static} \_\_hwloc\_inline \hyperlink{a00238}{hwloc\_obj\_t}
+\Hypertarget{a00158_source_l00102}\hyperlink{a00221_gacd50fd0e2766ee05bc13234b46714756}{00102} \hyperlink{a00221_gacd50fd0e2766ee05bc13234b46714756}{hwloc\_nvml\_get\_device\_osdev\_by\_index}(
+      \hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology, \textcolor{keywordtype}{unsigned} idx)
+00103 \{
+00104         \hyperlink{a00238}{hwloc\_obj\_t} osdev = NULL;
+00105         \textcolor{keywordflow}{while} ((osdev = \hyperlink{a00204_ga8b4584c8949e2c5f1c97ba7fe92b8145}{hwloc\_get\_next\_osdev}(topology, osdev)) != NULL) \{
+00106                 \textcolor{keywordflow}{if} (\hyperlink{a00184_gga64f5d539df299c97ae80ce53fc4b56c0aa3a09798ef2836abb236dc3a645ffc90}{HWLOC\_OBJ\_OSDEV\_GPU} == osdev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->
+      \hyperlink{a00242_a22904c25fe44b323bab5c9bc52660fca}{osdev}.\hyperlink{a00282_a31e019e27e54ac6138d04be639bb96f9}{type}
+00107                     && osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}
+00108                     && !strncmp(\textcolor{stringliteral}{"nvml"}, osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}, 4)
+00109                     && atoi(osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name} + 4) == (\textcolor{keywordtype}{int}) idx)
+00110                         \textcolor{keywordflow}{return} osdev;
+00111         \}
+00112         \textcolor{keywordflow}{return} NULL;
+00113 \}
+00114 
+00128 \textcolor{keyword}{static} \_\_hwloc\_inline \hyperlink{a00238}{hwloc\_obj\_t}
+\Hypertarget{a00158_source_l00129}\hyperlink{a00221_gaf176159b5760a191871eff23f5a69ee9}{00129} \hyperlink{a00221_gaf176159b5760a191871eff23f5a69ee9}{hwloc\_nvml\_get\_device\_osdev}(\hyperlink{a00186_ga9d1e76ee15a7dee158b786c30b6a6e38}{hwloc\_topology\_t} topology, 
+      nvmlDevice\_t device)
+00130 \{
+00131         \hyperlink{a00238}{hwloc\_obj\_t} osdev;
+00132         nvmlReturn\_t nvres;
+00133         nvmlPciInfo\_t pci;
+00134         \textcolor{keywordtype}{char} uuid[64];
+00135 
+00136         \textcolor{keywordflow}{if} (!\hyperlink{a00193_ga68ffdcfd9175cdf40709801092f18017}{hwloc\_topology\_is\_thissystem}(topology)) \{
+00137                 errno = EINVAL;
+00138                 \textcolor{keywordflow}{return} NULL;
+00139         \}
+00140 
+00141         nvres = nvmlDeviceGetPciInfo(device, &pci);
+00142         \textcolor{keywordflow}{if} (NVML\_SUCCESS != nvres)
+00143                 \textcolor{keywordflow}{return} NULL;
+00144 
+00145         nvres = nvmlDeviceGetUUID(device, uuid, \textcolor{keyword}{sizeof}(uuid));
+00146         \textcolor{keywordflow}{if} (NVML\_SUCCESS != nvres)
+00147                 uuid[0] = \textcolor{charliteral}{'\(\backslash\)0'};
+00148 
+00149         osdev = NULL;
+00150         \textcolor{keywordflow}{while} ((osdev = \hyperlink{a00204_ga8b4584c8949e2c5f1c97ba7fe92b8145}{hwloc\_get\_next\_osdev}(topology, osdev)) != NULL) \{
+00151                 \hyperlink{a00238}{hwloc\_obj\_t} pcidev = osdev->\hyperlink{a00238_adc494f6aed939992be1c55cca5822900}{parent};
+00152                 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *info;
+00153 
+00154                 \textcolor{keywordflow}{if} (strncmp(osdev->\hyperlink{a00238_abb709ec38f2970677e4e57d1d30be96d}{name}, \textcolor{stringliteral}{"nvml"}, 4))
+00155                         \textcolor{keywordflow}{continue};
+00156 
+00157                 \textcolor{keywordflow}{if} (pcidev
+00158                     && pcidev->\hyperlink{a00238_acc4f0803f244867e68fe0036800be5de}{type} == \hyperlink{a00184_ggacd37bb612667dc437d66bfb175a8dc55a5d8117a54df1fbd3606ab19e42cb0ea9}{HWLOC\_OBJ\_PCI\_DEVICE}
+00159                     && pcidev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->\hyperlink{a00242_a4203d713ce0f5beaa6ee0e9bdac70828}{pcidev}.\hyperlink{a00262_a8fba44988deb98613c1505a4019a34dc}{domain} == pci.domain
+00160                     && pcidev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->\hyperlink{a00242_a4203d713ce0f5beaa6ee0e9bdac70828}{pcidev}.\hyperlink{a00262_aae99e035e8d1387d7b8768aaa8eceb0a}{bus} == pci.bus
+00161                     && pcidev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->\hyperlink{a00242_a4203d713ce0f5beaa6ee0e9bdac70828}{pcidev}.\hyperlink{a00262_a3d70c84a12f7e93d14c8d47bf4fd9dc5}{dev} == pci.device
+00162                     && pcidev->\hyperlink{a00238_accd40e29f71f19e88db62ea3df02adc8}{attr}->\hyperlink{a00242_a4203d713ce0f5beaa6ee0e9bdac70828}{pcidev}.\hyperlink{a00262_a695f32df53f4ef728670bfcf31b74e0f}{func} == 0)
+00163                         \textcolor{keywordflow}{return} osdev;
+00164 
+00165                 info = \hyperlink{a00189_gab358661a92bb27d8542b255cc9f6f25e}{hwloc\_obj\_get\_info\_by\_name}(osdev, \textcolor{stringliteral}{"NVIDIAUUID"});
+00166                 \textcolor{keywordflow}{if} (info && !strcmp(info, uuid))
+00167                         \textcolor{keywordflow}{return} osdev;
+00168         \}
+00169 
+00170         \textcolor{keywordflow}{return} NULL;
+00171 \}
+00172 
+00176 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00177 \} \textcolor{comment}{/* extern "C" */}
+00178 \textcolor{preprocessor}{#endif}
+00179 
+00180 
+00181 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* HWLOC\_NVML\_H */}\textcolor{preprocessor}{}
+\end{DoxyCode}
