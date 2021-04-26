@@ -1,5 +1,5 @@
 #
-# Copyright © 2018-2020 Inria.  All rights reserved.
+# Copyright © 2018-2021 Inria.  All rights reserved.
 # See COPYING in top-level directory.
 #
 
@@ -25,6 +25,7 @@ _lstopo() {
 		   --distances
 		   --memattrs
 		   --cpukinds
+		   --windows-processor-groups
 		   -c --cpuset
 		   -C --cpuset-only
 		   --taskset
@@ -54,6 +55,7 @@ _lstopo() {
 		   --fontsize
 		   --gridsize
 		   --linespacing
+		   --thickness
 		   --horiz --horiz=
 		   --vert --vert=
 		   --rect --rect=
@@ -117,7 +119,7 @@ _lstopo() {
 	    --allow)
 		COMPREPLY=( `compgen -W "all local <mask> nodeset=<mask>" -- "$cur"` )
 		;;
-	    --restrict-flags | --export-xml-flags | --export-synthetic-flags | --fontsize | --gridsize | --linespacing)
+	    --restrict-flags | --export-xml-flags | --export-synthetic-flags | --fontsize | --gridsize | --linespacing | --thickness)
 		COMPREPLY=( "<integer>" "" )
 		;;
 	    --append-legend)
@@ -465,13 +467,15 @@ _hwloc_ps(){
     local OPTIONS=(-a
 		   --pid
 		   --name
+		   --uid
 		   -l --logical
 		   -p --physical
 		   -c --cpuset
+		   --single-ancestor
 		   -t --threads
 		   -e --get-last-cpu-location
 		   --pid-cmd
-		   --uid
+		   --short-name
 		   --disallowed --whole-system
 		   --json-server
 		   --json-port

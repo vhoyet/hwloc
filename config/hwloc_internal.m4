@@ -34,6 +34,9 @@ AC_DEFUN([HWLOC_DEFINE_ARGS],[
                 AC_HELP_STRING([--with-hwloc-symbol-prefix=STRING],
                                [STRING can be any valid C symbol name.  It will be prefixed to all public HWLOC symbols.  Default: "hwloc_"]))
 
+    # For the windows build
+    AC_ARG_VAR([HWLOC_MS_LIB], [Path to Microsoft's Visual Studio `lib' tool])
+
     # Debug mode?
     AC_ARG_ENABLE([debug],
                   AC_HELP_STRING([--enable-debug],
@@ -67,7 +70,7 @@ AC_DEFUN([HWLOC_DEFINE_ARGS],[
     # I/O?
     AC_ARG_ENABLE([io],
                   AS_HELP_STRING([--disable-io],
-                                 [Disable I/O discovery build entirely (PCI, LinuxIO, CUDA, OpenCL, NVML, RSMI, GL) instead of only disabling it at runtime by default]))
+                                 [Disable I/O discovery build entirely (PCI, LinuxIO, CUDA, OpenCL, NVML, RSMI, LevelZero, GL) instead of only disabling it at runtime by default]))
 
     # PCI?
     AC_ARG_ENABLE([pci],
@@ -93,6 +96,11 @@ AC_DEFUN([HWLOC_DEFINE_ARGS],[
                   AS_HELP_STRING([--disable-nvml],
                                  [Disable the NVML device discovery build (instead of only disabling NVML at runtime by default)]))
 
+    # CUDA version (for using its pkg-config cuda-x.y.pc)
+    AC_ARG_WITH([cuda-version],
+                AS_HELP_STRING([--with-cuda-version=<version>],
+		               [Specify the CUDA version (e.g. 11.2) for selecting the appropriate pkg-config file]))
+    AC_ARG_VAR([CUDA_VERSION], [The CUDA version (e.g. 11.2) for selecting the appropriate pkg-config file])
     # CUDA install path (and NVML and OpenCL)
     AC_ARG_WITH([cuda],
                 AS_HELP_STRING([--with-cuda=<dir>],
@@ -102,6 +110,11 @@ AC_DEFUN([HWLOC_DEFINE_ARGS],[
     AC_ARG_ENABLE([rsmi],
                   AS_HELP_STRING([--disable-rsmi],
                                  [Disable the ROCm SMI device discovery]))
+
+    # LevelZero
+    AC_ARG_ENABLE([levelzero],
+                  AS_HELP_STRING([--disable-levelzero],
+                                 [Disable the oneAPI Level Zero device discovery]))
 
     # GL/Display
     AC_ARG_ENABLE([gl],
@@ -134,7 +147,7 @@ AC_DEFUN([HWLOC_DEFINE_ARGS],[
 #-----------------------------------------------------------------------
 
 dnl We only build documentation if this is a developer checkout.
-dnl Distribution tarballs just install pre-built docuemntation that was
+dnl Distribution tarballs just install pre-built documentation that was
 dnl included in the tarball.
 
 # Probably only ever invoked by hwloc's configure.ac
@@ -326,7 +339,7 @@ EOF
     chosen_curses=""
     for curses in ncurses curses
     do
-      for lib in "" -ltermcap -l${curses}w -l$curses -ltinfo
+      for lib in "" -l${curses}w -l$curses -ltinfo -ltermcap
       do
         AC_MSG_CHECKING(termcap support using $curses and $lib)
         LIBS="$hwloc_old_LIBS $lib"
@@ -424,7 +437,10 @@ EOF
     AC_CHECK_HEADERS([infiniband/verbs.h], [
       AC_CHECK_LIB([ibverbs], [ibv_open_device],
                    [AC_DEFINE([HAVE_LIBIBVERBS], 1, [Define to 1 if we have -libverbs])
-                    hwloc_have_libibverbs=yes])
+                    hwloc_have_libibverbs=yes
+		    HWLOC_IBVERBS_LIBS=-libverbs
+		    AC_SUBST(HWLOC_IBVERBS_LIBS)
+		   ])
     ])
 
     AC_CHECK_PROGS(XMLLINT, [xmllint])
@@ -535,6 +551,7 @@ int foo(void) {
 	hwloc_config_prefix[tests/hwloc/ports/topology-cuda.c]:hwloc_config_prefix[hwloc/topology-cuda.c]
 	hwloc_config_prefix[tests/hwloc/ports/topology-nvml.c]:hwloc_config_prefix[hwloc/topology-nvml.c]
 	hwloc_config_prefix[tests/hwloc/ports/topology-rsmi.c]:hwloc_config_prefix[hwloc/topology-rsmi.c]
+	hwloc_config_prefix[tests/hwloc/ports/topology-levelzero.c]:hwloc_config_prefix[hwloc/topology-levelzero.c]
 	hwloc_config_prefix[tests/hwloc/ports/topology-gl.c]:hwloc_config_prefix[hwloc/topology-gl.c]
 	hwloc_config_prefix[tests/hwloc/ports/lstopo-windows.c]:hwloc_config_prefix[utils/lstopo/lstopo-windows.c]
         hwloc_config_prefix[tests/hwloc/ports/lstopo-android.c]:hwloc_config_prefix[utils/lstopo/lstopo-android.c])

@@ -2713,31 +2713,36 @@ hwloc_linux_knl_parse_numa_distances(unsigned nbnodes,
     return 0;
 
   if (nbnodes != 2 && nbnodes != 4 && nbnodes != 8) {
-    fprintf(stderr, "Ignoring KNL NUMA quirk, nbnodes (%u) isn't 2, 4 or 8.\n", nbnodes);
+    if (hwloc_hide_errors() < 2)
+      fprintf(stderr, "hwloc/linux: Ignoring KNL NUMA quirk, nbnodes (%u) isn't 2, 4 or 8.\n", nbnodes);
     return -1;
   }
 
   if (!distances) {
-    fprintf(stderr, "Ignoring KNL NUMA quirk, distance matrix missing.\n");
+    if (hwloc_hide_errors() < 2)
+      fprintf(stderr, "hwloc/linux: Ignoring KNL NUMA quirk, distance matrix missing.\n");
     return -1;
   }
 
   for(i=0; i<nbnodes; i++) {
     /* check we have 10 on the diagonal */
     if (distances[i*nbnodes+i] != 10) {
-      fprintf(stderr, "Ignoring KNL NUMA quirk, distance matrix does not contain 10 on the diagonal.\n");
+      if (hwloc_hide_errors() < 2)
+        fprintf(stderr, "hwloc/linux: hwloc/linux: Ignoring KNL NUMA quirk, distance matrix does not contain 10 on the diagonal.\n");
       return -1;
     }
     for(j=i+1; j<nbnodes; j++) {
       uint64_t distance = distances[i*nbnodes+j];
       /* check things are symmetric */
       if (distance != distances[i+j*nbnodes]) {
-	fprintf(stderr, "Ignoring KNL NUMA quirk, distance matrix isn't symmetric.\n");
+        if (hwloc_hide_errors() < 2)
+          fprintf(stderr, "hwloc/linux: Ignoring KNL NUMA quirk, distance matrix isn't symmetric.\n");
 	return -1;
       }
       /* check everything outside the diagonal is > 10 */
       if (distance <= 10) {
-	fprintf(stderr, "Ignoring KNL NUMA quirk, distance matrix contains values <= 10.\n");
+        if (hwloc_hide_errors() < 2)
+          fprintf(stderr, "hwloc/linux: Ignoring KNL NUMA quirk, distance matrix contains values <= 10.\n");
 	return -1;
       }
       /* did we already see this value? */
@@ -2749,7 +2754,8 @@ hwloc_linux_knl_parse_numa_distances(unsigned nbnodes,
       if (k == summary->nb_values) {
 	/* add a new value */
 	if (k == 4) {
-	  fprintf(stderr, "Ignoring KNL NUMA quirk, distance matrix contains more than 4 different values.\n");
+          if (hwloc_hide_errors() < 2)
+            fprintf(stderr, "hwloc/linux: Ignoring KNL NUMA quirk, distance matrix contains more than 4 different values.\n");
 	  return -1;
 	}
 	summary->values[k].value = distance;
@@ -2763,22 +2769,25 @@ hwloc_linux_knl_parse_numa_distances(unsigned nbnodes,
 
   if (nbnodes == 2) {
     if (summary->nb_values != 2) {
-      fprintf(stderr, "Ignoring KNL NUMA quirk, distance matrix for 2 nodes cannot contain %u different values instead of 2.\n",
-	      summary->nb_values);
+      if (hwloc_hide_errors() < 2)
+        fprintf(stderr, "hwloc/linux: Ignoring KNL NUMA quirk, distance matrix for 2 nodes cannot contain %u different values instead of 2.\n",
+                summary->nb_values);
       return -1;
     }
 
   } else if (nbnodes == 4) {
     if (summary->nb_values != 2 && summary->nb_values != 4) {
-      fprintf(stderr, "Ignoring KNL NUMA quirk, distance matrix for 8 nodes cannot contain %u different values instead of 2 or 4.\n",
-	      summary->nb_values);
+      if (hwloc_hide_errors() < 2)
+        fprintf(stderr, "hwloc/linux: Ignoring KNL NUMA quirk, distance matrix for 8 nodes cannot contain %u different values instead of 2 or 4.\n",
+                summary->nb_values);
       return -1;
     }
 
   } else if (nbnodes == 8) {
     if (summary->nb_values != 4) {
-      fprintf(stderr, "Ignoring KNL NUMA quirk, distance matrix for 8 nodes cannot contain %u different values instead of 4.\n",
-	      summary->nb_values);
+      if (hwloc_hide_errors() < 2)
+        fprintf(stderr, "hwloc/linux: Ignoring KNL NUMA quirk, distance matrix for 8 nodes cannot contain %u different values instead of 4.\n",
+                summary->nb_values);
       return -1;
     }
 
@@ -3308,14 +3317,16 @@ hwloc_linux_knl_numa_quirk(struct hwloc_topology *topology,
       && strcmp(hwdata.cluster_mode, "Quadrant")
       && strcmp(hwdata.cluster_mode, "SNC2")
       && strcmp(hwdata.cluster_mode, "SNC4")) {
-    fprintf(stderr, "Failed to find a usable KNL cluster mode (%s)\n", hwdata.cluster_mode);
+    if (hwloc_hide_errors() < 2)
+      fprintf(stderr, "hwloc/linux: Failed to find a usable KNL cluster mode (%s)\n", hwdata.cluster_mode);
     goto error;
   }
   if (strcmp(hwdata.memory_mode, "Cache")
       && strcmp(hwdata.memory_mode, "Flat")
       && strcmp(hwdata.memory_mode, "Hybrid25")
       && strcmp(hwdata.memory_mode, "Hybrid50")) {
-    fprintf(stderr, "Failed to find a usable KNL memory mode (%s)\n", hwdata.memory_mode);
+    if (hwloc_hide_errors() < 2)
+      fprintf(stderr, "hwloc/linux: Failed to find a usable KNL memory mode (%s)\n", hwdata.memory_mode);
     goto error;
   }
 
@@ -3336,7 +3347,8 @@ hwloc_linux_knl_numa_quirk(struct hwloc_topology *topology,
     if (!strcmp(hwdata.memory_mode, "Cache")) {
       /* Quadrant-Cache */
       if (nbnodes != 1) {
-	fprintf(stderr, "Found %u NUMA nodes instead of 1 in mode %s-%s\n", nbnodes, hwdata.cluster_mode, hwdata.memory_mode);
+        if (hwloc_hide_errors() < 2)
+          fprintf(stderr, "hwloc/linux: Found %u NUMA nodes instead of 1 in mode %s-%s\n", nbnodes, hwdata.cluster_mode, hwdata.memory_mode);
 	goto error;
       }
       hwloc_linux_knl_add_cluster(topology, nodes[0], NULL, &hwdata, mscache_as_l3, 1, failednodes);
@@ -3344,7 +3356,8 @@ hwloc_linux_knl_numa_quirk(struct hwloc_topology *topology,
     } else {
       /* Quadrant-Flat/Hybrid */
       if (nbnodes != 2) {
-	fprintf(stderr, "Found %u NUMA nodes instead of 2 in mode %s-%s\n", nbnodes, hwdata.cluster_mode, hwdata.memory_mode);
+        if (hwloc_hide_errors() < 2)
+          fprintf(stderr, "hwloc/linux: Found %u NUMA nodes instead of 2 in mode %s-%s\n", nbnodes, hwdata.cluster_mode, hwdata.memory_mode);
 	goto error;
       }
       if (!strcmp(hwdata.memory_mode, "Flat"))
@@ -3356,7 +3369,8 @@ hwloc_linux_knl_numa_quirk(struct hwloc_topology *topology,
     if (!strcmp(hwdata.memory_mode, "Cache")) {
       /* SNC2-Cache */
       if (nbnodes != 2) {
-	fprintf(stderr, "Found %u NUMA nodes instead of 2 in mode %s-%s\n", nbnodes, hwdata.cluster_mode, hwdata.memory_mode);
+        if (hwloc_hide_errors() < 2)
+          fprintf(stderr, "hwloc/linux: Found %u NUMA nodes instead of 2 in mode %s-%s\n", nbnodes, hwdata.cluster_mode, hwdata.memory_mode);
 	goto error;
       }
       hwloc_linux_knl_add_cluster(topology, nodes[0], NULL, &hwdata, mscache_as_l3, 2, failednodes);
@@ -3366,11 +3380,13 @@ hwloc_linux_knl_numa_quirk(struct hwloc_topology *topology,
       /* SNC2-Flat/Hybrid */
       unsigned ddr[2], mcdram[2];
       if (nbnodes != 4) {
-	fprintf(stderr, "Found %u NUMA nodes instead of 2 in mode %s-%s\n", nbnodes, hwdata.cluster_mode, hwdata.memory_mode);
+        if (hwloc_hide_errors() < 2)
+          fprintf(stderr, "hwloc/linux: Found %u NUMA nodes instead of 2 in mode %s-%s\n", nbnodes, hwdata.cluster_mode, hwdata.memory_mode);
 	goto error;
       }
       if (hwloc_linux_knl_identify_4nodes(distances, &dist, ddr, mcdram) < 0) {
-	fprintf(stderr, "Unexpected distance layout for mode %s-%s\n", hwdata.cluster_mode, hwdata.memory_mode);
+        if (hwloc_hide_errors() < 2)
+          fprintf(stderr, "Uhwloc/linux: nexpected distance layout for mode %s-%s\n", hwdata.cluster_mode, hwdata.memory_mode);
 	goto error;
       }
       if (!strcmp(hwdata.memory_mode, "Flat"))
@@ -3383,7 +3399,8 @@ hwloc_linux_knl_numa_quirk(struct hwloc_topology *topology,
     if (!strcmp(hwdata.memory_mode, "Cache")) {
       /* SNC4-Cache */
       if (nbnodes != 4) {
-	fprintf(stderr, "Found %u NUMA nodes instead of 4 in mode %s-%s\n", nbnodes, hwdata.cluster_mode, hwdata.memory_mode);
+        if (hwloc_hide_errors() < 2)
+          fprintf(stderr, "hwloc/linux: Found %u NUMA nodes instead of 4 in mode %s-%s\n", nbnodes, hwdata.cluster_mode, hwdata.memory_mode);
 	goto error;
       }
       hwloc_linux_knl_add_cluster(topology, nodes[0], NULL, &hwdata, mscache_as_l3, 4, failednodes);
@@ -3395,11 +3412,13 @@ hwloc_linux_knl_numa_quirk(struct hwloc_topology *topology,
       /* SNC4-Flat/Hybrid */
       unsigned ddr[4], mcdram[4];
       if (nbnodes != 8) {
-	fprintf(stderr, "Found %u NUMA nodes instead of 2 in mode %s-%s\n", nbnodes, hwdata.cluster_mode, hwdata.memory_mode);
+        if (hwloc_hide_errors() < 2)
+          fprintf(stderr, "hwloc/linux: Found %u NUMA nodes instead of 2 in mode %s-%s\n", nbnodes, hwdata.cluster_mode, hwdata.memory_mode);
 	goto error;
       }
       if (hwloc_linux_knl_identify_8nodes(distances, &dist, ddr, mcdram) < 0) {
-	fprintf(stderr, "Unexpected distance layout for mode %s-%s\n", hwdata.cluster_mode, hwdata.memory_mode);
+        if (hwloc_hide_errors() < 2)
+          fprintf(stderr, "hwloc/linux: Unexpected distance layout for mode %s-%s\n", hwdata.cluster_mode, hwdata.memory_mode);
 	goto error;
       }
       if (!strcmp(hwdata.memory_mode, "Flat"))
@@ -3679,7 +3698,8 @@ list_sysfsnode(struct hwloc_topology *topology,
     char *sn, *tn;
     hwloc_bitmap_asprintf(&sn, nodeset);
     hwloc_bitmap_asprintf(&tn, topology->levels[0][0]->nodeset);
-    fprintf(stderr, "linux/sysfs: ignoring nodes because nodeset %s doesn't match existing nodeset %s.\n", tn, sn);
+    if (hwloc_hide_errors() < 2)
+      fprintf(stderr, "hwloc/linux: ignoring nodes because nodeset %s doesn't match existing nodeset %s.\n", tn, sn);
     free(sn);
     free(tn);
     hwloc_bitmap_free(nodeset);
@@ -3847,7 +3867,8 @@ look_sysfsnode(struct hwloc_topology *topology,
 	failednodes++;
 	continue;
       }
-      fprintf(stderr, "node P#%u cpuset intersects with previous nodes, forcing its acceptance\n", osnode);
+      if (hwloc_hide_errors() < 2)
+        fprintf(stderr, "hwloc/linux: node P#%u cpuset intersects with previous nodes, forcing its acceptance\n", osnode);
     }
     hwloc_bitmap_or(nodes_cpuset, nodes_cpuset, cpuset);
 
@@ -6088,6 +6109,117 @@ hwloc_linuxfs_lookup_infiniband_class(struct hwloc_backend *backend, unsigned os
   return 0;
 }
 
+static void
+hwloc_linuxfs_ve_class_fillinfos(int root_fd,
+                                 struct hwloc_obj *obj, const char *osdevpath)
+{
+  char path[296]; /* osdevpath <= 256 */
+  char tmp[64];
+  unsigned val;
+  obj->subtype = strdup("VectorEngine");
+
+  snprintf(path, sizeof(path), "%s/model", osdevpath); /* in GB */
+  if (hwloc_read_path_by_length(path, tmp, sizeof(tmp), root_fd) > 0) {
+    char *end = strchr(tmp, '\n');
+    if (end)
+      *end = '\0';
+    hwloc_obj_add_info(obj, "VectorEngineModel", tmp);
+  }
+
+  snprintf(path, sizeof(path), "%s/serial", osdevpath); /* in GB */
+  if (hwloc_read_path_by_length(path, tmp, sizeof(tmp), root_fd) > 0) {
+    char *end = strchr(tmp, '\n');
+    if (end)
+      *end = '\0';
+    hwloc_obj_add_info(obj, "VectorEngineSerialNumber", tmp);
+  }
+
+  snprintf(path, sizeof(path), "%s/partitioning_mode", osdevpath); /* in GB */
+  if (hwloc_read_path_by_length(path, tmp, sizeof(tmp), root_fd) > 0) {
+    if (atoi(tmp) > 0)
+      hwloc_obj_add_info(obj, "VectorEngineNUMAPartitioned", "1");
+  }
+
+  snprintf(path, sizeof(path), "%s/num_of_core", osdevpath);
+  if (hwloc_read_path_by_length(path, tmp, sizeof(tmp), root_fd) > 0) {
+    size_t len;
+    len = strspn(tmp, "0123456789");
+    tmp[len] = '\0';
+    hwloc_obj_add_info(obj, "VectorEngineCores", tmp);
+  }
+
+  snprintf(path, sizeof(path), "%s/memory_size", osdevpath); /* in GB */
+  if (!hwloc_read_path_as_uint(path, &val, root_fd)) {
+    snprintf(tmp, sizeof(tmp), "%llu", ((unsigned long long) val) * 1024*1024); /* convert from GB to kB */
+    hwloc_obj_add_info(obj, "VectorEngineMemorySize", tmp);
+  }
+  snprintf(path, sizeof(path), "%s/cache_llc", osdevpath); /* in kB */
+  if (hwloc_read_path_by_length(path, tmp, sizeof(tmp), root_fd) > 0) {
+    size_t len;
+    len = strspn(tmp, "0123456789");
+    tmp[len] = '\0';
+    hwloc_obj_add_info(obj, "VectorEngineLLCSize", tmp);
+  }
+  snprintf(path, sizeof(path), "%s/cache_l2", osdevpath); /* in kB */
+  if (hwloc_read_path_by_length(path, tmp, sizeof(tmp), root_fd) > 0) {
+    size_t len;
+    len = strspn(tmp, "0123456789");
+    tmp[len] = '\0';
+    hwloc_obj_add_info(obj, "VectorEngineL2Size", tmp);
+  }
+  snprintf(path, sizeof(path), "%s/cache_l1d", osdevpath); /* in kB */
+  if (hwloc_read_path_by_length(path, tmp, sizeof(tmp), root_fd) > 0) {
+    size_t len;
+    len = strspn(tmp, "0123456789");
+    tmp[len] = '\0';
+    hwloc_obj_add_info(obj, "VectorEngineL1dSize", tmp);
+  }
+  snprintf(path, sizeof(path), "%s/cache_l1i", osdevpath); /* in kB */
+  if (hwloc_read_path_by_length(path, tmp, sizeof(tmp), root_fd) > 0) {
+    size_t len;
+    len = strspn(tmp, "0123456789");
+    tmp[len] = '\0';
+    hwloc_obj_add_info(obj, "VectorEngineL1iSize", tmp);
+  }
+}
+
+static int
+hwloc_linuxfs_lookup_ve_class(struct hwloc_backend *backend, unsigned osdev_flags)
+{
+  struct hwloc_linux_backend_data_s *data = backend->private_data;
+  int root_fd = data->root_fd;
+  DIR *dir;
+  struct dirent *dirent;
+
+  dir = hwloc_opendir("/sys/class/ve", root_fd);
+  if (!dir)
+    return 0;
+
+  while ((dirent = readdir(dir)) != NULL) {
+    char path[256];
+    hwloc_obj_t obj, parent;
+    int err;
+
+    if (!strcmp(dirent->d_name, ".") || !strcmp(dirent->d_name, ".."))
+      continue;
+
+    err = snprintf(path, sizeof(path), "/sys/class/ve/%s", dirent->d_name);
+    if ((size_t) err > sizeof(path))
+      continue;
+    parent = hwloc_linuxfs_find_osdev_parent(backend, root_fd, path, osdev_flags);
+    if (!parent)
+      continue;
+
+    obj = hwloc_linux_add_os_device(backend, parent, HWLOC_OBJ_OSDEV_COPROC, dirent->d_name);
+
+    hwloc_linuxfs_ve_class_fillinfos(root_fd, obj, path);
+  }
+
+  closedir(dir);
+
+  return 0;
+}
+
 static int
 hwloc_linuxfs_lookup_drm_class(struct hwloc_backend *backend, unsigned osdev_flags)
 {
@@ -6288,8 +6420,9 @@ hwloc__get_firmware_dmi_memory_info_one(struct hwloc_topology *topology,
     }
     /* couldn't read a single full string from that buffer, we're screwed */
     if (!boff) {
-      fprintf(stderr, "hwloc could read a DMI firmware entry #%u in %s\n",
-	      i, path);
+      if (hwloc_hide_errors() < 2)
+        fprintf(stderr, "hwloc/linux: hwloc could read a DMI firmware entry #%u in %s\n",
+                i, path);
       break;
     }
     /* reread buffer after previous string */
@@ -6405,8 +6538,8 @@ hwloc_linuxfs_pci_look_pcidevices(struct hwloc_backend *backend)
 #ifndef HWLOC_HAVE_32BITS_PCI_DOMAIN
     if (domain > 0xffff) {
       static int warned = 0;
-      if (!warned && !hwloc_hide_errors())
-	fprintf(stderr, "Ignoring PCI device with non-16bit domain.\nPass --enable-32bits-pci-domain to configure to support such devices\n(warning: it would break the library ABI, don't enable unless really needed).\n");
+      if (!warned && hwloc_hide_errors() < 2)
+	fprintf(stderr, "hwloc/linux: Ignoring PCI device with non-16bit domain.\nPass --enable-32bits-pci-domain to configure to support such devices\n(warning: it would break the library ABI, don't enable unless really needed).\n");
       warned = 1;
       continue;
     }
@@ -6644,6 +6777,7 @@ hwloc_look_linuxfs(struct hwloc_backend *backend, struct hwloc_disc_status *dsta
     hwloc_linuxfs_lookup_dax_class(backend, osdev_flags);
     hwloc_linuxfs_lookup_net_class(backend, osdev_flags);
     hwloc_linuxfs_lookup_infiniband_class(backend, osdev_flags);
+    hwloc_linuxfs_lookup_ve_class(backend, osdev_flags);
     if (ofilter != HWLOC_TYPE_FILTER_KEEP_IMPORTANT) {
       hwloc_linuxfs_lookup_drm_class(backend, osdev_flags);
       hwloc_linuxfs_lookup_dma_class(backend, osdev_flags);
@@ -6742,7 +6876,8 @@ hwloc_linux_component_instantiate(struct hwloc_topology *topology,
       goto out_with_data;
     }
 #else
-    fprintf(stderr, "Cannot change Linux fsroot without openat() support.\n");
+    if (hwloc_hide_errors() < 2)
+      fprintf(stderr, "hwloc/linux: Cannot change fsroot without openat() support.\n");
     errno = ENOSYS;
     goto out_with_data;
 #endif

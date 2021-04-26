@@ -1,5 +1,5 @@
 /*
- * Copyright © 2013-2020 Inria.  All rights reserved.
+ * Copyright © 2013-2021 Inria.  All rights reserved.
  * Copyright © 2016 Cisco Systems, Inc.  All rights reserved.
  * See COPYING in top-level directory.
  */
@@ -325,7 +325,20 @@ struct hwloc_component {
  * @{
  */
 
-/** \brief Check whether insertion errors are hidden */
+/** \brief Check whether error messages are hidden.
+ *
+ * Callers should print critical error messages
+ * (e.g. invalid hw topo info, invalid config)
+ * only if this function returns strictly less than 2.
+ *
+ * Callers should print non-critical error messages
+ * (e.g. failure to initialize CUDA)
+ * if this function returns 0.
+ *
+ * This function return 1 by default (show critical only),
+ * 0 in lstopo (show all),
+ * or anything set in HWLOC_HIDE_ERRORS in the environment.
+ */
 HWLOC_DECLSPEC int hwloc_hide_errors(void);
 
 /** \brief Add an object to the topology.
@@ -487,6 +500,7 @@ hwloc_filter_check_pcidev_subtype_important(unsigned classid)
 	  || baseclass == 0x0b /* PCI_BASE_CLASS_PROCESSOR */
 	  || classid == 0x0c04 /* PCI_CLASS_SERIAL_FIBER */
 	  || classid == 0x0c06 /* PCI_CLASS_SERIAL_INFINIBAND */
+          || baseclass == 0x06 /* PCI_BASE_CLASS_BRIDGE with non-PCI downstream. the core will drop the useless ones later */
 	  || baseclass == 0x12 /* Processing Accelerators */);
 }
 
@@ -602,14 +616,69 @@ HWLOC_DECLSPEC int hwloc_pcidisc_tree_attach(struct hwloc_topology *topology, st
  * @{
  */
 
-/** \brief Find the normal parent of a PCI bus ID.
+/** \brief Find the object or a parent of a PCI bus ID.
  *
- * Look at PCI affinity to find out where the given PCI bus ID should be attached.
+ * When attaching a new object (typically an OS device) whose locality
+ * is specified by PCI bus ID, this function returns the PCI object
+ * to use as a parent for attaching.
  *
- * This function should be used to attach an I/O device under the corresponding
- * PCI object (if any), or under a normal (non-I/O) object with same locality.
+ * If the exact PCI device with this bus ID exists, it is returned.
+ * Otherwise (for instance if it was filtered out), the function returns
+ * another object with similar locality (for instance a parent bridge,
+ * or the local CPU Package).
  */
 HWLOC_DECLSPEC struct hwloc_obj * hwloc_pci_find_parent_by_busid(struct hwloc_topology *topology, unsigned domain, unsigned bus, unsigned dev, unsigned func);
+
+/** \brief Find the PCI device or bridge matching a PCI bus ID exactly.
+ *
+ * This is useful for adding specific information about some objects
+ * based on their PCI id. When it comes to attaching objects based on
+ * PCI locality, hwloc_pci_find_parent_by_busid() should be preferred.
+ */
+HWLOC_DECLSPEC struct hwloc_obj * hwloc_pci_find_by_busid(struct hwloc_topology *topology, unsigned domain, unsigned bus, unsigned dev, unsigned func);
+
+/** \brief Handle to a new distances structure during its addition to the topology. */
+typedef void * hwloc_backend_distances_add_handle_t;
+
+/** \brief Create a new empty distances structure.
+ *
+ * This is identical to hwloc_distances_add_create()
+ * but this variant is designed for backend inserting
+ * distances during topology discovery.
+ */
+HWLOC_DECLSPEC hwloc_backend_distances_add_handle_t
+hwloc_backend_distances_add_create(hwloc_topology_t topology,
+                                   const char *name, unsigned long kind,
+                                   unsigned long flags);
+
+/** \brief Specify the objects and values in a new empty distances structure.
+ *
+ * This is similar to hwloc_distances_add_values()
+ * but this variant is designed for backend inserting
+ * distances during topology discovery.
+ *
+ * The only semantical difference is that \p objs and \p values
+ * are not duplicated, but directly attached to the topology.
+ * On success, these arrays are given to the core and should not
+ * ever be freed by the caller anymore.
+ */
+HWLOC_DECLSPEC int
+hwloc_backend_distances_add_values(hwloc_topology_t topology,
+                                   hwloc_backend_distances_add_handle_t handle,
+                                   unsigned nbobjs, hwloc_obj_t *objs,
+                                   hwloc_uint64_t *values,
+                                   unsigned long flags);
+
+/** \brief Commit a new distances structure.
+ *
+ * This is similar to hwloc_distances_add_commit()
+ * but this variant is designed for backend inserting
+ * distances during topology discovery.
+ */
+HWLOC_DECLSPEC int
+hwloc_backend_distances_add_commit(hwloc_topology_t topology,
+                                   hwloc_backend_distances_add_handle_t handle,
+                                   unsigned long flags);
 
 /** @} */
 

@@ -55,6 +55,7 @@ void usage(const char *name, FILE *where)
   fprintf (where, "  -l --logical       Use logical object indexes (default)\n");
   fprintf (where, "  -p --physical      Use physical object indexes\n");
   fprintf (where, "  -c --cpuset        Show cpuset instead of objects\n");
+  fprintf (where, "  --single-ancestor  Show a single ancestor containing the binding\n");
 #ifdef HWLOC_LINUX_SYS
   fprintf (where, "  -t --threads       Show threads\n");
 #endif
@@ -62,10 +63,10 @@ void usage(const char *name, FILE *where)
   fprintf (where, "  -e --get-last-cpu-location\n");
   fprintf (where, "                     Retrieve the last processors where the tasks ran\n");
   fprintf (where, "  --pid-cmd <cmd>    Append the output of <cmd> <pid> to each PID line\n");
+  fprintf (where, "  --short-name       Show only the process short name instead of the path\n");
   fprintf (where, "  --disallowed       Include objects disallowed by administrative limitations\n");
   fprintf (where, "  --json-server      Run as a JSON server\n");
   fprintf (where, "  --json-port <n>    Use port <n> for JSON server (default is %d)\n", JSON_PORT);
-  fprintf (where, "  --short-name       Show only the process short name instead of the path\n");
   fprintf (where, "  -v --verbose       Increase verbosity\n");
 }
 
@@ -86,9 +87,8 @@ static void print_task(hwloc_topology_t topology,
     int first = 1;
     char type[64];
     unsigned idx;
-    hwloc_obj_t obj;
     if (single_ancestor) {
-      obj = hwloc_get_obj_covering_cpuset(topology, cpuset);
+      hwloc_obj_t obj = hwloc_get_obj_covering_cpuset(topology, cpuset);
       while (obj->parent && hwloc_bitmap_isequal(obj->cpuset, obj->parent->cpuset) && !hwloc_obj_type_is_cache(obj->parent->type) )
         obj = obj->parent;
 
@@ -98,12 +98,12 @@ static void print_task(hwloc_topology_t topology,
         printf("%s", type);
       else
         printf("%s:%u", type, idx);
-    } else while (!hwloc_bitmap_iszero(remaining)) {
-      obj = hwloc_get_first_largest_obj_inside_cpuset(topology, remaining);
+    } else {
+     while (!hwloc_bitmap_iszero(remaining)) {
+      hwloc_obj_t obj = hwloc_get_first_largest_obj_inside_cpuset(topology, remaining);
       /* don't show a cache if there's something equivalent and nicer */
       while (hwloc_obj_type_is_cache(obj->type) && obj->arity == 1)
         obj = obj->first_child;
-      
       hwloc_obj_type_snprintf(type, sizeof(type), obj, 1);
       idx = logical ? obj->logical_index : obj->os_index;
       if (idx == (unsigned) -1)
@@ -112,6 +112,7 @@ static void print_task(hwloc_topology_t topology,
         printf("%s%s:%u", first ? "" : " ", type, idx);
       hwloc_bitmap_andnot(remaining, remaining, obj->cpuset);
       first = 0;
+     }
     }
     hwloc_bitmap_free(remaining);
   }
