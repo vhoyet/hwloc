@@ -37,6 +37,19 @@ io.on('connection', ( socket ) => {
     
   });
 
+  socket.on('IsHwlocVersion25', ( msg ) => {
+    exec('../../../utils/hwloc/hwloc-ps --version', ( error, stdout, stderr ) => {
+
+      if ( error )
+        return;
+
+      if ( stderr )
+        return;
+      
+      socket.emit('IsHwlocVersion25', true);
+    });
+  });
+
   socket.on('get_xml', ( msg ) => {
     exec('../../../utils/lstopo/lstopo --of xml', ( error, stdout, stderr ) => {
 
@@ -139,6 +152,8 @@ function buildProcessesObject(processesStr) {
     
     if ( processesArray[i] && processesArray[i][0] != ' ' ) {
         processArray = processesArray[i].split('\t');
+        if ( processArray[4] )
+          processArray[4] = processArray[4].replace(/(OMPI_COMM_WORLD_RANK=)|(PMIX_RANK=)|(PMI_RANK=)|(SLURM_PROCID=)/g, '');
         processObject = { PID: processArray[0], name: processArray[1], object: processArray[3], mpiRank: processArray[4], threads: new Array() };
         processesObject.processes.push(processObject);
 

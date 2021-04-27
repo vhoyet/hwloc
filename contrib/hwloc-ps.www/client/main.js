@@ -1,10 +1,12 @@
 const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const isMac = process.platform === 'darwin';
-const path = require('path')
+const path = require('path');
 const io = require('socket.io-client');
 const version = "1.0.0";
-var socket;
+var IsHwlocVersion25 = false;
 var HPPORT = 3000;
+var socket;
+
 
 const fs = require('fs');
 let focusedProcess = null;
@@ -80,6 +82,10 @@ function setAppHandler() {
       app.quit()
     }
   })
+
+  socket.on('IsHwlocVersion25', (msg) => {
+    IsHwlocVersion25 = msg;
+  });
 
   ipcMain.on('hwloc-bind', (event, pid, runner) => {
     console.log(pid, runner)
@@ -163,6 +169,7 @@ function setGlobalVariables() {
   socket.emit('get_xml', '');
   socket.emit('get_svg', '');
   socket.emit('hwloc-ps', getPsArgs(), true);
+  socket.emit('IsHwlocVersion25', '')
   global.showProcesses = true;
 }
 
@@ -358,8 +365,12 @@ function closeWindowModal() {
 function getPsArgs() {
   if ( focusedProcess )
     return '-t --pid ' + focusedProcess;
-  else if ( global.mpiMode )
+  else if ( global.mpiMode && IsHwlocVersion25)
+    return '--pid-cmd mpirank';
+  else if ( global.mpiMode ) {
     return '--pid-cmd ./get-mpi-rank.sh';
+  }
+    
   else
     return '-a -t';
 }
