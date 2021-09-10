@@ -20,8 +20,6 @@ static void
 native_svg_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor, unsigned depth __hwloc_attribute_unused, unsigned x, unsigned width, unsigned y, unsigned height, hwloc_obj_t obj, unsigned box_id)
 {
   FILE *file = loutput->file;
-  struct lstopo_obj_userdata *ou = obj ? obj->userdata : NULL;
-  unsigned thickness = loutput->thickness;
   int r = lcolor->r, g = lcolor->g, b = lcolor->b;
   char parent_id[128] = "";
   char parent_complement[12] = "";
@@ -30,9 +28,8 @@ native_svg_box(struct lstopo_output *loutput, const struct lstopo_color *lcolor,
   char class[128] = "";
   char complement[12] = "";
   
-
-  if (obj && ( ((struct lstopo_obj_userdata *)obj->userdata)->parent_box_id == 1 || ((struct lstopo_obj_userdata *)obj->userdata)->parent_box_id == 2 ))
-    snprintf(parent_complement, sizeof parent_complement, "_%u", ((struct lstopo_obj_userdata *)obj->userdata)->parent_box_id);
+  if (obj && obj->parent && ( ((struct lstopo_obj_userdata *)obj->parent->userdata)->box_id == 1 || ((struct lstopo_obj_userdata *)obj->parent->userdata)->box_id == 2 ))
+    snprintf(parent_complement, sizeof parent_complement, "_%u", ((struct lstopo_obj_userdata *)obj->parent->userdata)->box_id);
     
   if (box_id)
     snprintf(complement, sizeof complement, "_%u", box_id);

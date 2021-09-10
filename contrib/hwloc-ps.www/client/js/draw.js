@@ -47,7 +47,7 @@ function expandTopology(svgContent, svgRoot, boxes, texts, bridges, circles, ele
           moveChildren(svgContent, boxes, bridges, circles, box, yLag, 'y')
 
         if ( isElementLarger(width, box) ) {
-          //??? Using only box here seems to cause a reference problem for some reasons.
+          // Using only box here seems to cause a reference problem for some reasons ?
           let tmpBox = box
           box.setAttribute("transform","translate(" + 0 + ", " + 0 + ")");
           moveElements(boxes, texts, bridges, circles, box, yLag, 0);
@@ -64,7 +64,7 @@ function expandTopology(svgContent, svgRoot, boxes, texts, bridges, circles, ele
           moveChildren(svgContent, boxes, bridges, circles, box, xLag, 'x');
 
         if ( isElementLonger(height, box) ) {
-          //??? Using only box here seems to cause a reference problem for some reasons.
+          // Using only box here seems to cause a reference problem for some reasons ?
           let tmpBox = box
           box.setAttribute("transform","translate(" + 0 + ", " + 0 + ")");
           moveElements(boxes, texts, bridges, circles, box, 0, xLag);
@@ -196,10 +196,9 @@ function drawInfos(svgRoot, infos, element) {
   }
 
   drawXmlInfos(infos.xml);
-
   if ( infos.processes )
     drawProcessInfos(infos.processes);
-  
+
   return { xLag: maxWidth - width, 
            yLag: parseInt(y) - element.getAttribute('y') - marginBottom };
 
