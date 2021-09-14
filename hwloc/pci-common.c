@@ -1,5 +1,5 @@
 /*
- * Copyright © 2009-2020 Inria.  All rights reserved.
+ * Copyright © 2009-2021 Inria.  All rights reserved.
  * See COPYING in top-level directory.
  */
 
@@ -146,8 +146,9 @@ hwloc_pci_discovery_prepare(struct hwloc_topology *topology)
 	  }
 	  free(buffer);
 	} else {
-	  fprintf(stderr, "Ignoring HWLOC_PCI_LOCALITY file `%s' too large (%lu bytes)\n",
-		  env, (unsigned long) st.st_size);
+          if (hwloc_hide_errors() < 2)
+            fprintf(stderr, "hwloc/pci: Ignoring HWLOC_PCI_LOCALITY file `%s' too large (%lu bytes)\n",
+                    env, (unsigned long) st.st_size);
 	}
       }
       close(fd);
@@ -206,8 +207,11 @@ hwloc_pci_traverse_print_cb(void * cbdata __hwloc_attribute_unused,
     else
       hwloc_debug("%s Bridge [%04x:%04x]", busid,
 		  pcidev->attr->pcidev.vendor_id, pcidev->attr->pcidev.device_id);
-    hwloc_debug(" to %04x:[%02x:%02x]\n",
-		pcidev->attr->bridge.downstream.pci.domain, pcidev->attr->bridge.downstream.pci.secondary_bus, pcidev->attr->bridge.downstream.pci.subordinate_bus);
+    if (pcidev->attr->bridge.downstream_type == HWLOC_OBJ_BRIDGE_PCI)
+      hwloc_debug(" to %04x:[%02x:%02x]\n",
+                  pcidev->attr->bridge.downstream.pci.domain, pcidev->attr->bridge.downstream.pci.secondary_bus, pcidev->attr->bridge.downstream.pci.subordinate_bus);
+    else
+      assert(0);
   } else
     hwloc_debug("%s Device [%04x:%04x (%04x:%04x) rev=%02x class=%04x]\n", busid,
 		pcidev->attr->pcidev.vendor_id, pcidev->attr->pcidev.device_id,
@@ -251,11 +255,11 @@ hwloc_pci_compare_busids(struct hwloc_obj *a, struct hwloc_obj *b)
   if (a->attr->pcidev.domain > b->attr->pcidev.domain)
     return HWLOC_PCI_BUSID_HIGHER;
 
-  if (a->type == HWLOC_OBJ_BRIDGE
+  if (a->type == HWLOC_OBJ_BRIDGE && a->attr->bridge.downstream_type == HWLOC_OBJ_BRIDGE_PCI
       && b->attr->pcidev.bus >= a->attr->bridge.downstream.pci.secondary_bus
       && b->attr->pcidev.bus <= a->attr->bridge.downstream.pci.subordinate_bus)
     return HWLOC_PCI_BUSID_SUPERSET;
-  if (b->type == HWLOC_OBJ_BRIDGE
+  if (b->type == HWLOC_OBJ_BRIDGE && b->attr->bridge.downstream_type == HWLOC_OBJ_BRIDGE_PCI
       && a->attr->pcidev.bus >= b->attr->bridge.downstream.pci.secondary_bus
       && a->attr->pcidev.bus <= b->attr->bridge.downstream.pci.subordinate_bus)
     return HWLOC_PCI_BUSID_INCLUDED;
@@ -302,7 +306,7 @@ hwloc_pci_add_object(struct hwloc_obj *parent, struct hwloc_obj **parent_io_firs
       new->next_sibling = *curp;
       *curp = new;
       new->parent = parent;
-      if (new->type == HWLOC_OBJ_BRIDGE) {
+      if (new->type == HWLOC_OBJ_BRIDGE && new->attr->bridge.downstream_type == HWLOC_OBJ_BRIDGE_PCI) {
 	/* look at remaining siblings and move some below new */
 	childp = &new->io_first_child;
 	curp = &new->next_sibling;
@@ -329,7 +333,7 @@ hwloc_pci_add_object(struct hwloc_obj *parent, struct hwloc_obj **parent_io_firs
     }
     case HWLOC_PCI_BUSID_EQUAL: {
       static int reported = 0;
-      if (!reported && !hwloc_hide_errors()) {
+      if (!reported && hwloc_hide_errors() < 2) {
         fprintf(stderr, "*********************************************************\n");
         fprintf(stderr, "* hwloc %s received invalid PCI information.\n", HWLOC_VERSION);
         fprintf(stderr, "*\n");
@@ -411,7 +415,7 @@ hwloc_pcidisc_add_hostbridges(struct hwloc_topology *topology,
     dstnextp = &child->next_sibling;
 
     /* compute hostbridge secondary/subordinate buses */
-    if (child->type == HWLOC_OBJ_BRIDGE
+    if (child->type == HWLOC_OBJ_BRIDGE && child->attr->bridge.downstream_type == HWLOC_OBJ_BRIDGE_PCI
 	&& child->attr->bridge.downstream.pci.subordinate_bus > current_subordinate)
       current_subordinate = child->attr->bridge.downstream.pci.subordinate_bus;
 
@@ -486,7 +490,8 @@ hwloc__pci_find_busid_parent(struct hwloc_topology *topology, struct hwloc_pcide
     if (env) {
       static int reported = 0;
       if (!topology->pci_has_forced_locality && !reported) {
-	fprintf(stderr, "Environment variable %s is deprecated, please use HWLOC_PCI_LOCALITY instead.\n", env);
+        if (!hwloc_hide_errors())
+          fprintf(stderr, "hwloc/pci: Environment variable %s is deprecated, please use HWLOC_PCI_LOCALITY instead.\n", env);
 	reported = 1;
       }
       if (*env) {
@@ -565,7 +570,7 @@ hwloc_pcidisc_tree_attach(struct hwloc_topology *topology, struct hwloc_obj *tre
     assert(pciobj->type == HWLOC_OBJ_PCI_DEVICE
 	   || (pciobj->type == HWLOC_OBJ_BRIDGE && pciobj->attr->bridge.upstream_type == HWLOC_OBJ_BRIDGE_PCI));
 
-    if (obj->type == HWLOC_OBJ_BRIDGE) {
+    if (obj->type == HWLOC_OBJ_BRIDGE && obj->attr->bridge.downstream_type == HWLOC_OBJ_BRIDGE_PCI) {
       domain = obj->attr->bridge.downstream.pci.domain;
       bus_min = obj->attr->bridge.downstream.pci.secondary_bus;
       bus_max = obj->attr->bridge.downstream.pci.subordinate_bus;
@@ -805,13 +810,14 @@ hwloc_pcidisc_find_linkspeed(const unsigned char *config,
    * PCIe Gen3 = 8  GT/s signal-rate per lane with 128/130 encoding = 1   GB/s data-rate per lane
    * PCIe Gen4 = 16 GT/s signal-rate per lane with 128/130 encoding = 2   GB/s data-rate per lane
    * PCIe Gen5 = 32 GT/s signal-rate per lane with 128/130 encoding = 4   GB/s data-rate per lane
+   * PCIe Gen6 = 64 GT/s signal-rate per lane with 128/130 encoding = 8   GB/s data-rate per lane
    */
 
   /* lanespeed in Gbit/s */
   if (speed <= 2)
     lanespeed = 2.5f * speed * 0.8f;
   else
-    lanespeed = 8.0f * (1<<(speed-3)) * 128/130; /* assume Gen6 will be 64 GT/s and so on */
+    lanespeed = 8.0f * (1<<(speed-3)) * 128/130; /* assume Gen7 will be 128 GT/s and so on */
 
   /* linkspeed in GB/s */
   *linkspeed = lanespeed * width / 8;

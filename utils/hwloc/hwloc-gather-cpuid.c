@@ -1,5 +1,5 @@
 /*
- * Copyright © 2015-2020 Inria.  All rights reserved.
+ * Copyright © 2015-2021 Inria.  All rights reserved.
  * See COPYING in top-level directory.
  */
 
@@ -49,6 +49,7 @@ static int dump_one_proc(hwloc_topology_t topo, hwloc_obj_t pu, const char *path
   unsigned highest_cpuid, highest_ext_cpuid;
   unsigned i;
   int has_intel_x2apic = 0;
+  int has_intel_pconfig = 0;
   int has_intel_sgx = 0;
   int has_amd_topoext = 0;
   FILE *output;
@@ -138,6 +139,8 @@ static int dump_one_proc(hwloc_topology_t topo, hwloc_obj_t pu, const char *path
     unsigned max;
     regs[0] = 0x7; regs[2] = 0;
     dump_one_cpuid(output, regs, 0x5);
+    if (regs[3] & (1<<18))
+      has_intel_pconfig = 1;
     if (regs[1] & (1<<2))
       has_intel_sgx = 1;
     max = regs[0];
@@ -285,13 +288,27 @@ static int dump_one_proc(hwloc_topology_t topo, hwloc_obj_t pu, const char *path
     }
   }
 
+  /* 0x19 = Key Locker Leaf on Intel ; Reserved on AMD */
+  if (highest_cpuid >= 0x19) {
+    regs[0] = 0x19;
+    dump_one_cpuid(output, regs, 0x1);
+  }
+
   /* 0x1a = Hybrid Information Enumeration Leaf on Intel ; Reserved on AMD */
   if (highest_cpuid >= 0x1a) {
     regs[0] = 0x1a; regs[2] = 0;
     dump_one_cpuid(output, regs, 0x5);
   }
 
-  /* 0x1b = (Removed) PCONFIG Information on Intel ; Reserved on AMD */
+  /* 0x1b = PCONFIG Information on Intel ; Reserved on AMD */
+  if (has_intel_pconfig && highest_cpuid >= 0x1b) {
+    for(i=0; ; i++) {
+      regs[0] = 0x1b; regs[2] = i;
+      dump_one_cpuid(output, regs, 0x5);
+      if (!(regs[0] & 0xfff))
+	break;
+    }
+  }
 
   /* 0x1f = V2 Extended Topology Enumeration on Intel ; Reserved on AMD */
   if (highest_cpuid >= 0x1f) {
@@ -441,6 +458,7 @@ void usage(const char *callname, FILE *where)
   fprintf(where, "Options:\n");
   fprintf(where, "  -c <n>       Only gather for logical processor with logical index <n>\n");
   fprintf(where, "  -s --silent  Do not show verbose messages\n");
+  fprintf(where, "  --version    Report version and exit\n");
   fprintf(where, "  -h --help    Show this usage\n");
 }
 
@@ -456,7 +474,12 @@ int main(int argc, const char * const argv[])
   int err;
   int ret = EXIT_SUCCESS;
 
-  callname = argv[0];
+  callname = strrchr(argv[0], '/');
+  if (!callname)
+    callname = argv[0];
+  else
+    callname++;
+
   argc--; argv++;
 
   hwloc_utils_check_api_version(callname);
@@ -476,6 +499,9 @@ int main(int argc, const char * const argv[])
       verbose--;
       argc--;
       argv++;
+    } else if (!strcmp (argv[0], "--version")) {
+      printf("%s %s\n", callname, HWLOC_VERSION);
+      exit(EXIT_SUCCESS);
     } else if (!strcmp(argv[0], "-h") || !strcmp(argv[0], "--help")) {
       usage(callname, stdout);
       goto out;

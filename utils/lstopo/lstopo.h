@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009 CNRS
- * Copyright © 2009-2020 Inria.  All rights reserved.
+ * Copyright © 2009-2021 Inria.  All rights reserved.
  * Copyright © 2009-2010, 2012, 2015 Université Bordeaux
  * Copyright © 2011 Cisco Systems, Inc.  All rights reserved.
  * Copyright © 2020 Hewlett Packard Enterprise.  All rights reserved.
@@ -90,9 +90,11 @@ struct lstopo_output {
   int show_distances_only;
   int show_memattrs_only;
   int show_cpukinds_only;
+  int show_windows_processor_groups_only;
   hwloc_obj_type_t show_only;
   int show_cpuset;
   int show_taskset;
+  int transform_distances;
 
   /* draw config */
   char title[256];
@@ -176,7 +178,7 @@ struct lstopo_obj_userdata {
 #define LSTOPO_STYLE_T2  0x4
   unsigned style_set; /* OR'ed LSTOPO_STYLE_* */
 
-  /* PU style for CPU kind */
+  /* PU style for CPU kind, 0 for normal style */
   unsigned cpukind_style;
 
   /* object size (including children if they are outside of it, not including borders) */
@@ -216,6 +218,20 @@ struct lstopo_obj_userdata {
 		       * max of above text[].width + optional padding
 		       */
 };
+
+static __hwloc_inline unsigned
+lstopo_obj_cpukind_style(struct lstopo_output *loutput, hwloc_obj_t obj)
+{
+  if (loutput->show_cpukinds) {
+    if (obj && obj->userdata) {
+      struct lstopo_obj_userdata *ou = obj->userdata;
+      return ou->cpukind_style;
+    }
+  }
+  return 0;
+}
+
+#define CPUKIND_STYLE(_loutput, _obj) (((_loutput)->show_cpukinds && (_obj != NULL)) ? (_obj)->cpukind_style : 0)
 
 typedef int output_method (struct lstopo_output *output, const char *filename);
 extern output_method output_console, output_synthetic, output_ascii, output_tikz, output_fig, output_png, output_pdf, output_ps, output_nativesvg, output_cairosvg, output_x11, output_windows, output_xml, output_android, output_shmem;
